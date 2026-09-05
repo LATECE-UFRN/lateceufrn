@@ -1,0 +1,21 @@
+{
+  "name": "Portal LATECE",
+  "short_name": "LATECE",
+  "description": "Laboratório de Tecnologia Assistiva do Centro de Educação da UFRN",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#2e1065",
+  "theme_color": "#2e1065",
+  "icons": [
+    {
+      "src": "./assets/images/logos/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/images/logos/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

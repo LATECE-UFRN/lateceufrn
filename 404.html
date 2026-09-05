@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página não encontrada — LATECE</title>
+  <link rel="icon" type="image/x-icon" href="./assets/images/logos/favicon.ico">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9f9fb;
+      color: #1a1a2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+    .error-container {
+      max-width: 560px;
+      background: #ffffff;
+      padding: 3rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e0e8;
+    }
+    .error-code {
+      font-size: 6rem;
+      font-weight: 800;
+      color: #2e1065;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .error-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2e1065;
+      margin-bottom: 0.75rem;
+    }
+    .error-text {
+      font-size: 1rem;
+      color: #4a4a6a;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .btn-home {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: linear-gradient(135deg, #461491 0%, #7f38f1 55%, #5c57a6 100%);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46, 16, 101, 0.15);
+    }
+    .btn-home:focus-visible {
+      outline: 2px solid #2e1065;
+      outline-offset: 2px;
+    }
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: #8a86a0;
+    }
+    .footer-note a {
+      color: #2e1065;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  </style>
+  <!-- NOVO: carrega path.js para resolver BASE_PATH -->
+  <script src="./js/path.js"></script>
+</head>
+<body>
+  <div class="error-container">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Página não encontrada</h1>
+    <p class="error-text">
+      O conteúdo que você procura pode ter sido removido, renomeado ou estar temporariamente indisponível.
+      <br><br>
+      <span style="font-size: 2.5rem; display: block;">🔍</span>
+    </p>
+    <!-- Link corrigido: usa JavaScript para definir o href com BASE_PATH -->
+    <a href="#" id="back-home-link" class="btn-home">← Voltar para o Início</a>
+    <div class="footer-note">
+      <a href="#" id="footer-home-link">LATECE — Laboratório de Tecnologia Assistiva</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Função para obter a raiz do site (com BASE_PATH)
+      function getHomeUrl() {
+        if (window.BASE_PATH) {
+          return window.BASE_PATH + '/';
+        }
+        // Fallback: tenta extrair o subdiretório da URL atual
+        const path = window.location.pathname;
+        const match = path.match(/^(\/lateceufrn)/);
+        if (match) return match[1] + '/';
+        // Último recurso: volta para a raiz
+        return '/';
+      }
+      const homeUrl = getHomeUrl();
+      document.getElementById('back-home-link').href = homeUrl;
+      document.getElementById('footer-home-link').href = homeUrl;
+    })();
+  </script>
+</body>
+</html>

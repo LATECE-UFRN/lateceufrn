@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — LATECE Admin</title>
+  <meta name="description" content="Acesso ao painel administrativo do Portal LATECE.">
+  <link rel="icon" type="image/x-icon" href="./assets/images/logos/favicon.ico">
+  
+  <!-- CSS base -->
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/accessibility.css">
+  <link rel="stylesheet" href="./css/admin.css">
+
+  <script src="./js/path.js"></script>
+
+</head>
+<body>
+
+  <a href="#login-form" class="skip-link">Pular para o formulário de login</a>
+
+  <div class="login-page" style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--color-gray-50);padding:var(--spacing-lg);">
+
+    <div class="login-container" style="width:100%;max-width:28rem;">
+
+      <header class="login-header" style="text-align:center;margin-bottom:var(--spacing-xl);">
+        <div style="display:flex;align-items:center;justify-content:center;width:4rem;height:4rem;background:var(--color-primary-gradient);border-radius:var(--radius-md);margin:0 auto var(--spacing-md);">
+          <span style="color:var(--color-white);font-weight:bold;font-size:1.5rem;">L</span>
+        </div>
+        <h1 style="font-size:1.875rem;font-weight:800;color:var(--color-gray-900);">LATECE</h1>
+        <p style="font-size:1.125rem;color:var(--color-gray-600);">Laboratório de Tecnologia Assistiva</p>
+        <p style="margin-top:var(--spacing-sm);font-size:0.875rem;color:var(--color-gray-500);">Acesso ao painel administrativo</p>
+      </header>
+
+      <div class="login-form" style="background:var(--color-white);padding:var(--spacing-xl);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);">
+
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="username" class="form-label" data-i18n="auth.username">Nome de usuário</label>
+            <input type="text" id="username" class="form-control" placeholder="Digite seu nome de usuário" data-i18n-placeholder="auth.usernamePlaceholder" required autofocus>
+            <div class="error-message" id="username-error" style="color:var(--color-terracotta);font-size:0.875rem;margin-top:var(--spacing-xs);display:none;"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label" data-i18n="auth.password">Senha</label>
+            <div style="position:relative;">
+              <input type="password" id="password" class="form-control" placeholder="Digite sua senha" data-i18n-placeholder="auth.passwordPlaceholder" required>
+              <button type="button" id="password-toggle" style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-gray-400);padding:0;font-size:1.25rem;" aria-label="Mostrar senha">👁️</button>
+            </div>
+            <div class="error-message" id="password-error" style="color:var(--color-terracotta);font-size:0.875rem;margin-top:var(--spacing-xs);display:none;"></div>
+          </div>
+
+          <div class="form-group" style="margin-top:var(--spacing-lg);">
+            <button type="submit" class="btn btn-primary" style="width:100%;padding:0.75rem;font-size:1rem;" data-i18n="auth.login">Entrar</button>
+          </div>
+
+          <div id="login-error" class="error-box" style="display:none;padding:var(--spacing-md);border:1px solid var(--color-terracotta);border-radius:var(--radius-md);background:#fef2f2;color:var(--color-terracotta);font-size:0.875rem;margin-top:var(--spacing-md);">
+            <span id="login-error-text"></span>
+          </div>
+        </form>
+
+        <div id="loading-overlay" style="display:none;text-align:center;padding:var(--spacing-md);color:var(--color-gray-500);">
+          <div class="loading-spinner" style="margin:0 auto var(--spacing-sm);"></div>
+          <p data-i18n="auth.loggingIn">Entrando...</p>
+        </div>
+
+      </div>
+
+      <footer class="login-footer" style="text-align:center;margin-top:var(--spacing-xl);">
+        <p style="font-size:0.875rem;color:var(--color-gray-500);">&copy; 2026 LATECE — UFRN</p>
+        <p style="font-size:0.75rem;color:var(--color-gray-400);">Laboratório de Tecnologia Assistiva</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <script type="module" src="./js/auth.js"></script>
+  <script type="module" src="./js/i18n.js"></script>
+  <script type="module">
+    import { login, isAuthenticated } from './js/auth.js';
+    import { t } from './js/i18n.js';
+
+    const form = document.getElementById('login-form');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const usernameError = document.getElementById('username-error');
+    const passwordError = document.getElementById('password-error');
+    const loginError = document.getElementById('login-error');
+    const loginErrorText = document.getElementById('login-error-text');
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const toggleBtn = document.getElementById('password-toggle');
+
+    // Toggle password visibility
+    toggleBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      toggleBtn.textContent = isPassword ? '🙈' : '👁️';
+      toggleBtn.setAttribute('aria-label', isPassword ? 'Ocultar senha' : 'Mostrar senha');
+    });
+
+    // Redirecionar se já estiver logado
+    if (isAuthenticated()) {
+      window.location.href = './admin/';
+    }
+
+    // Limpar erros ao digitar
+    usernameInput.addEventListener('input', () => {
+      usernameError.style.display = 'none';
+      loginError.style.display = 'none';
+    });
+    passwordInput.addEventListener('input', () => {
+      passwordError.style.display = 'none';
+      loginError.style.display = 'none';
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Limpar erros anteriores
+      usernameError.style.display = 'none';
+      passwordError.style.display = 'none';
+      loginError.style.display = 'none';
+
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      // Validação
+      let isValid = true;
+      if (!username || username.length < 3) {
+        usernameError.textContent = 'Informe o usuário ou e-mail válido.';
+        usernameError.style.display = 'block';
+        isValid = false;
+      }
+      if (!password || password.length < 6) {
+        passwordError.textContent = 'A senha deve ter pelo menos 6 caracteres.';
+        passwordError.style.display = 'block';
+        isValid = false;
+      }
+      if (!isValid) return;
+
+      // Mostrar loading
+      form.style.display = 'none';
+      loadingOverlay.style.display = 'block';
+      submitBtn.disabled = true;
+
+      try {
+        const result = await login(username, password);
+        if (result.success) {
+          window.location.href = './admin/';
+        } else {
+          loginErrorText.textContent = result.error || 'Usuário ou senha inválidos.';
+          loginError.style.display = 'block';
+          form.style.display = 'block';
+          loadingOverlay.style.display = 'none';
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        loginErrorText.textContent = 'Erro ao conectar ao servidor. Tente novamente.';
+        loginError.style.display = 'block';
+        form.style.display = 'block';
+        loadingOverlay.style.display = 'none';
+        submitBtn.disabled = false;
+        console.error('Login error:', err);
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sugestões — LATECE — Contribua com suas ideias</title>
+  <meta name="description" content="Envie suas sugestões, ideias e contribuições para o Laboratório de Tecnologia Assistiva (LATECE) da UFRN. Sua participação é fundamental para construirmos um futuro mais acessível.">
+  <link rel="icon" type="image/x-icon" href="./assets/images/logos/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://vlibras.gov.br">
+
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/accessibility.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://latece.ufrn.br/sugestoes.html">
+  <meta property="og:title" content="Sugestões — LATECE — Contribua com suas ideias">
+  <meta property="og:description" content="Envie suas sugestões para o Laboratório de Tecnologia Assistiva da UFRN.">
+  <meta property="og:image" content="https://latece.ufrn.br/assets/images/logos/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sugestões — LATECE">
+  <meta name="twitter:description" content="Envie suas sugestões para o LATECE.">
+  <meta name="twitter:image" content="https://latece.ufrn.br/assets/images/logos/og-image.jpg">
+
+  <link rel="canonical" href="https://latece.ufrn.br/sugestoes.html">
+
+  <script src="./js/path.js"></script>
+
+  <style>
+    /* Estilos específicos para a página de sugestões (já incluídos em components.css, mas complementares) */
+    .suggestion-form .form-group {
+      margin-bottom: var(--space-5);
+    }
+    .suggestion-form .form-label {
+      font-weight: var(--font-semibold);
+      color: var(--color-text);
+    }
+    .suggestion-form .form-control {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-body);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      background-color: var(--color-white);
+    }
+    .suggestion-form .form-control:focus {
+      border-color: var(--color-primary);
+      box-shadow: var(--focus-ring);
+      outline: none;
+    }
+    .suggestion-form .form-control.is-invalid {
+      border-color: var(--color-error);
+    }
+    .suggestion-form .form-control.is-valid {
+      border-color: var(--color-success);
+    }
+    .suggestion-form .error-message {
+      color: var(--color-error);
+      font-size: var(--font-size-small);
+      margin-top: var(--space-1);
+      display: none;
+    }
+    .suggestion-form .error-message.visible {
+      display: block;
+    }
+    .suggestion-form .success-message {
+      background: var(--color-green);
+      color: var(--color-white);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-5);
+      display: none;
+    }
+    .suggestion-form .success-message.visible {
+      display: block;
+    }
+    .suggestion-form .btn-submit {
+      width: 100%;
+      padding: var(--space-3);
+      font-size: var(--font-size-body-lg);
+    }
+    .suggestion-intro {
+      max-width: 720px;
+      margin: 0 auto var(--space-8);
+      text-align: center;
+    }
+    .suggestion-intro p {
+      font-size: var(--font-size-body-lg);
+      color: var(--color-text-muted);
+    }
+    .suggestion-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-5);
+      margin-bottom: var(--space-8);
+    }
+    .benefit-card {
+      background: var(--color-white);
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-subtle);
+      text-align: center;
+      border: 1px solid var(--color-border);
+    }
+    .benefit-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-2);
+    }
+    .benefit-card h3 {
+      font-size: var(--font-size-h4);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+    .benefit-card p {
+      font-size: var(--font-size-small);
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+    .form-container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--color-white);
+      padding: var(--space-8);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-medium);
+    }
+    .form-container .form-title {
+      text-align: center;
+      margin-bottom: var(--space-6);
+    }
+    @media (max-width: 768px) {
+      .form-container {
+        padding: var(--space-5);
+      }
+      .suggestion-benefits {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .suggestion-benefits {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <div id="app">
+    <header id="main-header"></header>
+
+    <main id="main-content">
+
+      <!-- ===== HERO ===== -->
+      <section class="hero hero-simplified" aria-label="Sugestões">
+        <div class="container">
+          <div class="hero-grid hero-grid-centered">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero-badge">Participe</div>
+              <h1 class="hero-title">
+                Sua <span class="hero-highlight">sugestão</span><br>
+                pode transformar o LATECE
+              </h1>
+              <p class="hero-subtitle">Compartilhe ideias, melhorias e observações sobre acessibilidade, tecnologia assistiva e inclusão. Sua contribuição é fundamental.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== INTRODUÇÃO ===== -->
+      <section class="section-light" style="padding: clamp(2rem, 4vw, 4rem) 0;">
+        <div class="container">
+          <div class="suggestion-intro">
+            <h2 data-i18n="suggestions.introTitle">Por que sua sugestão importa?</h2>
+            <p data-i18n="suggestions.introText">O LATECE é um espaço construído coletivamente. Suas ideias nos ajudam a melhorar nossos projetos, pesquisas, equipamentos e a forma como comunicamos a tecnologia assistiva. Cada contribuição é uma semente para um futuro mais inclusivo.</p>
+          </div>
+
+          <div class="suggestion-benefits">
+            <div class="benefit-card">
+              <div class="icon">💡</div>
+              <h3 data-i18n="suggestions.benefit1.title">Ideias inovadoras</h3>
+              <p data-i18n="suggestions.benefit1.desc">Novas soluções para desafios de acessibilidade.</p>
+            </div>
+            <div class="benefit-card">
+              <div class="icon">🤝</div>
+              <h3 data-i18n="suggestions.benefit2.title">Participação comunitária</h3>
+              <p data-i18n="suggestions.benefit2.desc">Construção colaborativa do conhecimento.</p>
+            </div>
+            <div class="benefit-card">
+              <div class="icon">♿</div>
+              <h3 data-i18n="suggestions.benefit3.title">Acessibilidade em foco</h3>
+              <p data-i18n="suggestions.benefit3.desc">Melhorias contínuas baseadas em experiência real.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FORMULÁRIO ===== -->
+      <section style="padding: clamp(2rem, 4vw, 4rem) 0;">
+        <div class="container">
+          <div class="form-container">
+            <h2 class="form-title" data-i18n="suggestions.formTitle">Envie sua sugestão</h2>
+            <form id="suggestion-form" class="suggestion-form" action="https://api.staticforms.dev/submit" method="POST" novalidate>
+              <!-- Campos ocultos obrigatórios da API Static Forms -->
+              <input type="hidden" name="apiKey" value="sf_3c5b8e60120c880ee6bcdb04">
+              <input type="hidden" name="_redirect" value="https://latece.ufrn.br/sugestoes.html?success=true">
+              <!-- O campo _subject será preenchido via JavaScript com o título da sugestão -->
+              <input type="hidden" name="_subject" id="form-subject" value="Nova sugestão - LATECE">
+
+              <div class="form-group">
+                <label for="suggestion-category" class="form-label" data-i18n="suggestions.category">Categoria</label>
+                <select id="suggestion-category" name="category" class="form-control" required>
+                  <option value="" data-i18n="suggestions.categoryPlaceholder">Selecione uma categoria</option>
+                  <option value="acessibilidade" data-i18n="suggestions.catAcessibilidade">Acessibilidade</option>
+                  <option value="tecnologia" data-i18n="suggestions.catTecnologia">Tecnologia Assistiva</option>
+                  <option value="pesquisa" data-i18n="suggestions.catPesquisa">Pesquisa</option>
+                  <option value="ensino" data-i18n="suggestions.catEnsino">Ensino e Extensão</option>
+                  <option value="equipamentos" data-i18n="suggestions.catEquipamentos">Equipamentos</option>
+                  <option value="website" data-i18n="suggestions.catWebsite">Website e Comunicação</option>
+                  <option value="outro" data-i18n="suggestions.catOutro">Outro</option>
+                </select>
+                <div class="error-message" id="category-error" data-i18n="suggestions.required">Por favor, selecione uma categoria.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="suggestion-title" class="form-label" data-i18n="suggestions.title">Título da sugestão</label>
+                <input type="text" id="suggestion-title" name="title" class="form-control" placeholder="Ex: Melhoria no sistema de busca" data-i18n-placeholder="suggestions.titlePlaceholder" required maxlength="100">
+                <div class="error-message" id="title-error" data-i18n="suggestions.required">Por favor, insira um título (mínimo 5 caracteres).</div>
+              </div>
+
+              <div class="form-group">
+                <label for="suggestion-description" class="form-label" data-i18n="suggestions.description">Descrição detalhada</label>
+                <textarea id="suggestion-description" name="message" class="form-control" rows="5" placeholder="Descreva sua ideia, problema ou melhoria..." data-i18n-placeholder="suggestions.descriptionPlaceholder" required></textarea>
+                <div class="error-message" id="description-error" data-i18n="suggestions.required">A descrição é obrigatória (mínimo 20 caracteres).</div>
+              </div>
+
+              <div class="form-group">
+                <label for="suggestion-impact" class="form-label" data-i18n="suggestions.impact">Impacto esperado</label>
+                <select id="suggestion-impact" name="impact" class="form-control" required>
+                  <option value="" data-i18n="suggestions.impactPlaceholder">Selecione o impacto</option>
+                  <option value="baixo" data-i18n="suggestions.impactLow">Baixo (pequena melhoria)</option>
+                  <option value="medio" data-i18n="suggestions.impactMedium">Médio (melhoria significativa)</option>
+                  <option value="alto" data-i18n="suggestions.impactHigh">Alto (transformação relevante)</option>
+                </select>
+                <div class="error-message" id="impact-error" data-i18n="suggestions.required">Selecione o impacto esperado.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="suggestion-accessibility" class="form-label" data-i18n="suggestions.accessibility">Relação com acessibilidade</label>
+                <textarea id="suggestion-accessibility" name="accessibility" class="form-control" rows="3" placeholder="Como essa sugestão contribui para a acessibilidade? (opcional)" data-i18n-placeholder="suggestions.accessibilityPlaceholder"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="suggestion-email" class="form-label" data-i18n="suggestions.email">Seu e-mail (obrigatório)</label>
+                <input type="email" id="suggestion-email" name="email" class="form-control" placeholder="seu@email.com" data-i18n-placeholder="suggestions.emailPlaceholder" required>
+                <p style="font-size: var(--font-size-small); color: var(--color-text-muted); margin-top: var(--space-1);" data-i18n="suggestions.emailNote">Utilizaremos apenas para contato sobre sua sugestão, se necessário.</p>
+                <div class="error-message" id="email-error" style="display:none;" data-i18n="suggestions.required">Por favor, insira um e-mail válido.</div>
+              </div>
+
+              <div class="form-group" style="margin-top: var(--space-6);">
+                <button type="submit" class="btn btn-primary btn-submit" data-i18n="suggestions.submit">Enviar sugestão</button>
+              </div>
+
+              <!-- Mensagem de sucesso (inicialmente oculta) -->
+              <div id="form-success" class="success-message" data-i18n="suggestions.successMessage">
+                ✅ Sua sugestão foi enviada com sucesso! Agradecemos sua contribuição.
+              </div>
+
+              <!-- Mensagem de erro geral -->
+              <div id="form-error" class="error-message" style="text-align:center; margin-top: var(--space-3); display:none;" data-i18n="suggestions.errorMessage">
+                Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo e-mail latece@ufrn.br.
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ORIENTAÇÕES FINAIS ===== -->
+      <section style="padding: clamp(2rem, 4vw, 4rem) 0;">
+        <div class="container">
+          <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+            <h2 data-i18n="suggestions.finalTitle">O que acontece com sua sugestão?</h2>
+            <p data-i18n="suggestions.finalText">Todas as sugestões são lidas pela equipe do LATECE. As melhores ideias são discutidas em nossas reuniões e podem se tornar projetos, melhorias no site ou novos recursos. Sua participação é essencial para crescermos juntos.</p>
+            <div style="margin-top: var(--space-5); display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+              <a href="./" class="btn btn-secondary" data-i18n="suggestions.backHome">Voltar ao início</a>
+              <a href="./about.html" class="btn btn-outline" data-i18n="suggestions.about">Conheça o LATECE</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+  </div>
+
+  <!-- Carrega main.js para injetar header e footer -->
+  <script type="module" src="./js/main.js"></script>
+
+  <!-- Script do formulário (executado após main.js) -->
+  <script type="module">
+  import { t } from './js/i18n.js';
+
+  const form = document.getElementById('suggestion-form');
+  const emailInput = document.getElementById('suggestion-email');
+  const titleInput = document.getElementById('suggestion-title');
+  const subjectInput = document.getElementById('form-subject');
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+  const emailError = document.getElementById('email-error');
+
+  // Atualiza o assunto do e-mail com o título da sugestão (se preenchido)
+  titleInput.addEventListener('input', function() {
+    const title = this.value.trim() || 'Nova sugestão - LATECE';
+    subjectInput.value = title;
+  });
+
+  // Validação do email em tempo real (oculta erro ao digitar)
+  emailInput.addEventListener('input', function() {
+    emailError.style.display = 'none';
+  });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault(); // Impede o redirecionamento
+
+    // Limpa mensagens anteriores
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    emailError.style.display = 'none';
+
+    // Validações
+    let isValid = true;
+
+    // Categoria
+    const category = document.getElementById('suggestion-category');
+    if (!category.value) {
+      document.getElementById('category-error').style.display = 'block';
+      isValid = false;
+    } else {
+      document.getElementById('category-error').style.display = 'none';
+    }
+
+    // Título
+    const title = titleInput.value.trim();
+    if (title.length < 5) {
+      document.getElementById('title-error').style.display = 'block';
+      isValid = false;
+    } else {
+      document.getElementById('title-error').style.display = 'none';
+    }
+
+    // Descrição
+    const description = document.getElementById('suggestion-description').value.trim();
+    if (description.length < 20) {
+      document.getElementById('description-error').style.display = 'block';
+      isValid = false;
+    } else {
+      document.getElementById('description-error').style.display = 'none';
+    }
+
+    // Impacto
+    const impact = document.getElementById('suggestion-impact');
+    if (!impact.value) {
+      document.getElementById('impact-error').style.display = 'block';
+      isValid = false;
+    } else {
+      document.getElementById('impact-error').style.display = 'none';
+    }
+
+    // Email (obrigatório)
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      emailError.textContent = 'Por favor, insira um e-mail válido.';
+      emailError.style.display = 'block';
+      isValid = false;
+    } else {
+      emailError.style.display = 'none';
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    // Exibe loading (opcional)
+    const submitBtn = form.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      // Coleta todos os dados do formulário
+      const formData = new FormData(form);
+      // Converte para objeto para enviar como JSON
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      // Envia para a API Static Forms via fetch
+      const response = await fetch('https://api.staticforms.dev/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        // Sucesso: limpa o formulário e exibe mensagem
+        form.reset();
+        // Reseta o assunto para o padrão
+        subjectInput.value = 'Nova sugestão - LATECE';
+        // Exibe mensagem de sucesso
+        successMsg.style.display = 'block';
+        // Opcional: esconder após alguns segundos
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 8000);
+      } else {
+        // Erro na resposta da API
+        errorMsg.style.display = 'block';
+      }
+    } catch (error) {
+      console.error('Erro ao enviar:', error);
+      errorMsg.style.display = 'block';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar sugestão';
+    }
+  });
+
+  // Se a URL contiver ?success=true, exibe a mensagem de sucesso (para redirecionamentos, se houver)
+  if (window.location.search.includes('success=true')) {
+    successMsg.style.display = 'block';
+    const newUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, newUrl);
+  }
+  </script>
+</body>
+</html>
