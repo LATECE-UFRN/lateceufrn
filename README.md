@@ -1,3 +1,5 @@
+# README.md — VERSÃO REFINADA
+
 <!--
   README.md — Portal LATECE
   Versão: 3.0 (pós‑migração e correções)
@@ -189,10 +191,7 @@ O projeto implementa um sistema de temas baseado em **variáveis CSS** e no atri
 | **Baixa Visão** | `low-vision` | 🟡 Parcial | Aumento de fonte e ajustes de contraste. |
 | **Alto Contraste** | `.high-contrast` (classe) | ✅ Funcional | Contraste máximo, fundo preto e branco. |
 
-<div align="center">
-
-🎨 Sistema de Temas
-</div>
+## 🎨 Sistema de Temas
 
 :root {
   --bg: #ffffff;
@@ -322,13 +321,90 @@ A identidade visual do LATECE é baseada em uma paleta de cores que reflete a se
 </tbody>
 </table>
 
-## 🔤 Tipografia
 <div align="center">
 
-Elemento	Família	Pesos	Escala
-Títulos	'Montserrat', sans-serif	400–800	0.75rem a 3.5rem
-Corpo	'Open Sans', sans-serif	400–700	Hierarquia clara
+## 🔤 Tipografia
+
 </div>
+
+O sistema tipográfico do LATECE combina **legibilidade**, **acessibilidade** e **identidade visual** em uma escala harmoniosa e responsiva.
+
+---
+
+### 📐 Escala Tipográfica
+
+<table>
+  <thead>
+    <tr>
+      <th align="left">Elemento</th>
+      <th align="left">Família</th>
+      <th align="center">Pesos</th>
+      <th align="left">Escala</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Títulos</strong><br>
+        <small>Headings, títulos de seção</small>
+      </td>
+      <td>
+        <code>'Montserrat', sans-serif</code>
+      </td>
+      <td align="center">
+        <code>400</code> • <code>500</code> • <code>600</code> • <code>700</code> • <code>800</code>
+      </td>
+      <td>
+        <code>0.75rem</code> → <code>3.5rem</code><br>
+        <small>Responsivo com <code>clamp()</code></small>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Corpo</strong><br>
+        <small>Texto corrido, parágrafos</small>
+      </td>
+      <td>
+        <code>'Open Sans', sans-serif</code>
+      </td>
+      <td align="center">
+        <code>400</code> • <code>500</code> • <code>600</code> • <code>700</code>
+      </td>
+      <td>
+        <code>0.875rem</code> → <code>1.25rem</code><br>
+        <small>Base: <code>1rem = 16px</code></small>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+### 🎯 Hierarquia Visual
+
+```text
+H1 — 3.5rem  — Hero, títulos principais
+H2 — 2.5rem  — Seções primárias
+H3 — 1.75rem — Subseções
+H4 — 1.25rem — Títulos de cards
+H5 — 1rem    — Destaques secundários
+H6 — 0.875rem — Metadados
+
+Body — 1rem   — Conteúdo principal
+Small — 0.875rem — Legendas, notas
+```
+
+---
+
+### ✨ Características
+
+- **Legibilidade:** Fontes sans-serif otimizadas para telas
+- **Acessibilidade:** Contraste adequado e tamanhos ajustáveis
+- **Responsividade:** Escala fluida com `clamp()` e `rem`
+- **Consistência:** Hierarquia clara em todas as páginas
+
+---
+
 
 ## 🧩 Componentes Visuais
 <table>
@@ -374,6 +450,9 @@ O portal LATECE é uma aplicação estática com componentes dinâmicos, constru
 
 ### 📐 Diagrama de Arquitetura
 
+# Arquitetura Portal LATECE
+
+```mermaid
 flowchart TD
     A[👤 Usuário] --> B[📄 HTML5]
     A --> C[🎨 CSS3]
@@ -409,35 +488,13 @@ flowchart TD
     style B fill:#E34F26,stroke:#181717,stroke-width:2px,color:#fff
     style C fill:#1572B6,stroke:#181717,stroke-width:2px,color:#fff
     style D fill:#F7DF1E,stroke:#181717,stroke-width:2px,color:#1a1a2e
-    style E fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style F fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style G fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style H fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
     style I fill:#2E1065,stroke:#7C3AED,stroke-width:2px,color:#fff
-    style J fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style K fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style L fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style M fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style N fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style O fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style P fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
     style Q fill:#000000,stroke:#181717,stroke-width:2px,color:#fff
-    style R fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style S fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style T fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style U fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style V fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style W fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style X fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style Y fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-    style Z fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
-
-<div align="center">
+```
 
 LATECE — Laboratório de Tecnologia Assistiva
 Universidade Federal do Rio Grande do Norte
 
-</div>
 
 ### Tecnologias Utilizadas
 
