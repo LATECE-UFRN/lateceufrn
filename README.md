@@ -1,6 +1,5 @@
 # README.md — VERSÃO REFINADA
 
-```markdown
 <!--
   README.md — Portal LATECE
   Versão: 3.0 (pós‑migração e correções)
@@ -192,9 +191,11 @@ O projeto implementa um sistema de temas baseado em **variáveis CSS** e no atri
 | **Baixa Visão** | `low-vision` | 🟡 Parcial | Aumento de fonte e ajustes de contraste. |
 | **Alto Contraste** | `.high-contrast` (classe) | ✅ Funcional | Contraste máximo, fundo preto e branco. |
 
-### Exemplo de definição de variáveis
+<div align="center">
 
-```css
+🎨 Sistema de Temas
+</div>
+
 :root {
   --bg: #ffffff;
   --text: #1a1a2e;
@@ -208,68 +209,184 @@ O projeto implementa um sistema de temas baseado em **variáveis CSS** e no atri
   --surface: #242842;
   --border: #51577D;
 }
-```
 
----
+### 🎨 Identidade Visual
 
-## Identidade Visual
+A identidade visual do LATECE é baseada em uma paleta de cores que reflete a seriedade, a inovação e o compromisso com a acessibilidade. O sistema de design está documentado em variables.css e aplicado globalmente.
 
-A identidade visual do LATECE é baseada em uma paleta de cores que reflete a seriedade, a inovação e o compromisso com a acessibilidade. O sistema de design está documentado em `variables.css` e aplicado globalmente.
+## 🎨 Paleta de Cores
+<table>
+<thead>
+<tr>
+<th align="left">Função</th>
+<th align="center">Cor (Claro)</th>
+<th align="center">Cor (Escuro)</th>
+<th align="left">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primária</strong></td>
+<td align="center"><code>#2E1065</code></td>
+<td align="center"><code>#B9A3FF</code></td>
+<td>Ações principais, links, destaques</td>
+</tr>
+<tr>
+<td><strong>Primária (light)</strong></td>
+<td align="center"><code>#7C3AED</code></td>
+<td align="center"><code>#D0C3FF</code></td>
+<td>Hovers, links sobre fundos escuros</td>
+</tr>
+<tr>
+<td><strong>Primária (dark)</strong></td>
+<td align="center"><code>#1A0A3A</code></td>
+<td align="center"><code>#8F73E6</code></td>
+<td>Gradientes, estados ativos</td>
+</tr>
+<tr>
+<td><strong>Secundária</strong></td>
+<td align="center"><code>#928B45</code></td>
+<td align="center"><code>#E6C76B</code></td>
+<td>Badges, categorias, ícones</td>
+</tr>
+<tr>
+<td><strong>Acento</strong></td>
+<td align="center"><code>#C77A5B</code></td>
+<td align="center"><code>#E6A078</code></td>
+<td>Chamadas, elementos decorativos</td>
+</tr>
+<tr>
+<td><strong>Sucesso</strong></td>
+<td align="center"><code>#2E7D32</code></td>
+<td align="center"><code>#69D391</code></td>
+<td>Mensagens de sucesso</td>
+</tr>
+<tr>
+<td><strong>Aviso</strong></td>
+<td align="center"><code>#B76E2E</code></td>
+<td align="center"><code>#F0C674</code></td>
+<td>Alertas e avisos</td>
+</tr>
+<tr>
+<td><strong>Erro</strong></td>
+<td align="center"><code>#C62828</code></td>
+<td align="center"><code>#FF8585</code></td>
+<td>Mensagens de erro</td>
+</tr>
+<tr>
+<td><strong>Fundo global</strong></td>
+<td align="center"><code>#FFFFFF</code></td>
+<td align="center"><code>#10111F</code></td>
+<td>Body e áreas principais</td>
+</tr>
+<tr>
+<td><strong>Superfície</strong></td>
+<td align="center"><code>#FFFFFF</code></td>
+<td align="center"><code>#242842</code></td>
+<td>Cards, formulários, blocos</td>
+</tr>
+<tr>
+<td><strong>Superfície elevada</strong></td>
+<td align="center"><code>#F9F9FB</code></td>
+<td align="center"><code>#2D3150</code></td>
+<td>Modais, dropdowns, tooltips</td>
+</tr>
+<tr>
+<td><strong>Texto principal</strong></td>
+<td align="center"><code>#1A1A2E</code></td>
+<td align="center"><code>#F7F5FF</code></td>
+<td>Títulos e conteúdo principal</td>
+</tr>
+<tr>
+<td><strong>Texto secundário</strong></td>
+<td align="center"><code>#4D4A6E</code></td>
+<td align="center"><code>#D7D3E8</code></td>
+<td>Descrições, metadados</td>
+</tr>
+<tr>
+<td><strong>Texto muted</strong></td>
+<td align="center"><code>#6B6788</code></td>
+<td align="center"><code>#AAA6C2</code></td>
+<td>Informações auxiliares</td>
+</tr>
+<tr>
+<td><strong>Borda</strong></td>
+<td align="center"><code>#E2E0E8</code></td>
+<td align="center"><code>#51577D</code></td>
+<td>Divisores e limites de componentes</td>
+</tr>
+<tr>
+<td><strong>Borda forte</strong></td>
+<td align="center"><code>#C8C5D4</code></td>
+<td align="center"><code>#737AA6</code></td>
+<td>Controles e limites funcionais</td>
+</tr>
+</tbody>
+</table>
 
-### Paleta de Cores
+## 🔤 Tipografia
+<div align="center">
 
-| Função | Cor (Claro) | Cor (Escuro) | Uso |
-|--------|-------------|--------------|-----|
-| **Primária** | `#2E1065` | `#B9A3FF` | Ações principais, links, destaques |
-| **Primária (light)** | `#7C3AED` | `#D0C3FF` | Hovers, links sobre fundos escuros |
-| **Primária (dark)** | `#1A0A3A` | `#8F73E6` | Gradientes, estados ativos |
-| **Secundária** | `#928B45` | `#E6C76B` | Badges, categorias, ícones |
-| **Acento** | `#C77A5B` | `#E6A078` | Chamadas, elementos decorativos |
-| **Sucesso** | `#2E7D32` | `#69D391` | Mensagens de sucesso |
-| **Aviso** | `#B76E2E` | `#F0C674` | Alertas e avisos |
-| **Erro** | `#C62828` | `#FF8585` | Mensagens de erro |
-| **Fundo global** | `#FFFFFF` | `#10111F` | Body e áreas principais |
-| **Superfície** | `#FFFFFF` | `#242842` | Cards, formulários, blocos |
-| **Superfície elevada** | `#F9F9FB` | `#2D3150` | Modais, dropdowns, tooltips |
-| **Texto principal** | `#1A1A2E` | `#F7F5FF` | Títulos e conteúdo principal |
-| **Texto secundário** | `#4D4A6E` | `#D7D3E8` | Descrições, metadados |
-| **Texto muted** | `#6B6788` | `#AAA6C2` | Informações auxiliares |
-| **Borda** | `#E2E0E8` | `#51577D` | Divisores e limites de componentes |
-| **Borda forte** | `#C8C5D4` | `#737AA6` | Controles e limites funcionais |
+Elemento	Família	Pesos	Escala
+Títulos	'Montserrat', sans-serif	400–800	0.75rem a 3.5rem
+Corpo	'Open Sans', sans-serif	400–700	Hierarquia clara
+</div>
 
-### Tipografia
+## 🧩 Componentes Visuais
+<table>
+<tr>
+<td valign="top">
 
-- **Títulos**: `'Montserrat', sans-serif` (pesos 400–800)
-- **Corpo**: `'Open Sans', sans-serif` (pesos 400–700)
-- **Escala**: `0.75rem` a `3.5rem`, com clareza hierárquica.
+Cards
+border-radius: 16px
 
-### Componentes visuais
+box-shadow suave
 
-- **Cards**: `border-radius: 16px`, `box-shadow` suave, hover com elevação.
-- **Botões**: `border-radius: 8px`, transições suaves, estados hover/focus/active.
-- **Hero**: Gradientes e formas orgânicas, com alto contraste.
-- **Ícones**: Utilizados para ações e informações complementares.
+Hover com elevação </td>
+<td valign="top">
 
----
+Botões
+border-radius: 8px
 
-## Arquitetura Técnica
+Transições suaves
 
-O portal LATECE é uma **aplicação estática com componentes dinâmicos**, construída com tecnologias web padrão, sem frameworks ou bibliotecas externas.
+Estados hover/focus/active </td>
+</tr>
+<tr>
+<td valign="top">
 
-### Diagrama de Arquitetura
+Hero
+Gradientes
 
-```mermaid
+Formas orgânicas
+
+Alto contraste </td>
+<td valign="top">
+
+Ícones
+Ações
+
+Informações complementares </td>
+</tr>
+</table>
+
+## 🏗️ Arquitetura Técnica
+
+O portal LATECE é uma aplicação estática com componentes dinâmicos, construída com tecnologias web padrão, sem frameworks ou bibliotecas externas.
+
+### 📐 Diagrama de Arquitetura
+
 flowchart TD
-    A[Usuário] --> B[HTML5]
-    A --> C[CSS3]
-    A --> D[JavaScript]
+    A[👤 Usuário] --> B[📄 HTML5]
+    A --> C[🎨 CSS3]
+    A --> D[⚙️ JavaScript]
 
-    B --> E[Páginas]
-    E --> F[Header]
-    E --> G[Footer]
-    E --> H[Conteúdo]
+    B --> E[📑 Páginas]
+    E --> F[🔝 Header]
+    E --> G[🔻 Footer]
+    E --> H[📝 Conteúdo]
 
-    D --> I[Módulos]
+    D --> I[📦 Módulos]
     I --> J[components.js]
     I --> K[data.js]
     I --> L[i18n.js]
@@ -278,8 +395,8 @@ flowchart TD
     I --> O[main.js]
     I --> P[admin.js]
 
-    K --> Q[JSON]
-    L --> R[locales/*.json]
+    K --> Q[📊 JSON]
+    L --> R[🌐 locales/*.json]
     Q --> S[equipment.json]
     Q --> T[publications.json]
     Q --> U[news-fallback.json]
@@ -289,7 +406,40 @@ flowchart TD
     C --> X[components.css]
     C --> Y[accessibility.css]
     C --> Z[admin.css]
-```
+
+    style A fill:#2E1065,stroke:#7C3AED,stroke-width:2px,color:#fff
+    style B fill:#E34F26,stroke:#181717,stroke-width:2px,color:#fff
+    style C fill:#1572B6,stroke:#181717,stroke-width:2px,color:#fff
+    style D fill:#F7DF1E,stroke:#181717,stroke-width:2px,color:#1a1a2e
+    style E fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style F fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style G fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style H fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style I fill:#2E1065,stroke:#7C3AED,stroke-width:2px,color:#fff
+    style J fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style K fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style L fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style M fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style N fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style O fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style P fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style Q fill:#000000,stroke:#181717,stroke-width:2px,color:#fff
+    style R fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style S fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style T fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style U fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style V fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style W fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style X fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style Y fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+    style Z fill:#242842,stroke:#51577D,stroke-width:2px,color:#F7F5FF
+
+<div align="center">
+
+LATECE — Laboratório de Tecnologia Assistiva
+Universidade Federal do Rio Grande do Norte
+
+</div>
 
 ### Tecnologias Utilizadas
 
