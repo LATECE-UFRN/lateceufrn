@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — LATECE</title>
+  <meta name="description" content="Painel administrativo do Portal LATECE.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/x-icon" href="../assets/images/logos/favicon.ico">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/accessibility.css">
+  <link rel="stylesheet" href="../css/admin.css">
+
+  <!-- Carrega path.js antes dos módulos -->
+  <script src="../js/path.js"></script>
+
+  <style>
+    /* Estilo para a mensagem de indisponibilidade do admin */
+    #admin-unavailable-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    #admin-unavailable-overlay.active {
+      display: flex;
+    }
+    .admin-unavailable-box {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      max-width: 560px;
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-heavy);
+      text-align: center;
+    }
+    .admin-unavailable-box .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .admin-unavailable-box h2 {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .admin-unavailable-box p {
+      color: var(--color-gray-600);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .admin-unavailable-box .btn {
+      min-width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#admin-content" class="skip-link">Pular para o conteúdo</a>
+
+  <div id="app" class="admin-dashboard">
+
+    <!-- Header (renderizado via JS) -->
+    <header id="admin-header" class="admin-header">
+      <!-- O conteúdo será injetado pelo admin.js -->
+    </header>
+
+    <div class="admin-content">
+      <!-- Sidebar (renderizado via JS) -->
+      <aside id="admin-sidebar" class="admin-sidebar">
+        <!-- O conteúdo será injetado pelo admin.js -->
+      </aside>
+
+      <!-- Main Content -->
+      <main id="admin-content" class="admin-main" role="main">
+        <!-- Loading inicial -->
+        <div class="loading-container" style="padding:3rem 0;">
+          <div class="loading-spinner"></div>
+          <p>Carregando painel...</p>
+        </div>
+      </main>
+    </div>
+
+  </div>
+
+  <!-- Modal Container para admin -->
+  <div id="modal-container"></div>
+
+  <!-- Overlay de indisponibilidade do admin -->
+  <div id="admin-unavailable-overlay">
+    <div class="admin-unavailable-box">
+      <div class="icon">🔧</div>
+      <h2>Painel Administrativo Indisponível</h2>
+      <p>
+        O painel administrativo está disponível apenas no <strong>ambiente de desenvolvimento</strong> 
+        com o backend ativo. No GitHub Pages, as funcionalidades de administração (login, criação/edição de notícias, etc.) não estão disponíveis.
+      </p>
+      <p style="font-size: 0.9rem; color: var(--color-gray-500);">
+        Caso esteja desenvolvendo localmente, certifique-se de que o servidor backend (Node.js + PostgreSQL) esteja em execução.
+      </p>
+      <a href="../" class="btn btn-primary btn-lg">← Voltar ao site</a>
+    </div>
+  </div>
+
+  <script type="module" src="../js/admin.js"></script>
+</body>
+</html>

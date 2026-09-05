@@ -1,0 +1,636 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "team": "Equipe",
+    "equipment": "Equipamentos",
+    "publications": "Publicações",
+    "news": "Notícias",
+    "suggestions": "Sugestões",
+    "admin": "Administração",
+    "login": "Login",
+    "logout": "Sair",
+    "profile": "Meu Perfil",
+    "administrator": "Administrador"
+  },
+  "footer": {
+    "description": "Laboratório de Tecnologia Assistiva do Centro de Educação",
+    "tagline": "Promovendo inclusão e acessibilidade através da tecnologia",
+    "quickLinks": "Links Rápidos",
+    "resources": "Recursos",
+    "contact": "Contato",
+    "termsOfUse": "Termos de Uso",
+    "privacyPolicy": "Política de Privacidade",
+    "support": "Suporte (STI/UFRN)",
+    "devTeam": "Equipe de Desenvolvimento",
+    "copyright": "Todos os direitos reservados.",
+    "developedBy": "Desenvolvido por",
+    "finepScholar": "Bolsista FINEP",
+    "address": "UFRN — Campus Central, Natal/RN"
+  },
+  "home": {
+    "title": "Portal LATECE — Laboratório de Tecnologia Assistiva UFRN",
+    "subtitle": "Laboratório de Tecnologia Assistiva",
+    "titlePart1": "Tecnologia que",
+    "titlePart2": "amplia possibilidades",
+    "description": "Promovendo inclusão e acessibilidade através da pesquisa, inovação e formação humana.",
+    "mission": "Nossa Missão",
+    "missionText": "Desenvolver pesquisas, práticas e recursos de Tecnologia Assistiva que favoreçam a participação de pessoas com necessidades educacionais específicas em diferentes contextos de aprendizagem e participação social.",
+    "latestNews": "Últimas Notícias",
+    "viewAll": "Ver Todas",
+    "equipment": "Equipamentos",
+    "publications": "Publicações",
+    "learnMore": "Conheça o LATECE",
+    "quickAccess": "Acesso Rápido",
+    "quickAboutTitle": "Sobre o LATECE",
+    "quickAboutText": "Conheça a missão, visão e objetivos do laboratório.",
+    "quickEquipmentTitle": "Equipamentos",
+    "quickEquipmentText": "Explore o acervo de tecnologias assistivas disponíveis.",
+    "quickPublicationsTitle": "Publicações",
+    "quickPublicationsText": "Acesse artigos, teses e demais produções científicas.",
+    "foundation": "Fundação",
+    "researchers": "Pesquisadores",
+    "projects": "Projetos"
+  },
+  "about": {
+    "title": "Sobre o LATECE — Laboratório de Tecnologia Assistiva UFRN",
+    "heroBadge": "Laboratório de Tecnologia Assistiva",
+    "heroTitle1": "Conheça o",
+    "heroTitle2": "LATECE",
+    "heroSubtitle": "Nossa missão, visão e os objetivos que orientam nosso compromisso com um futuro mais acessível.",
+    "whoWeAre": "Quem Somos",
+    "whoWeAreText1": "O Laboratório de Tecnologia Assistiva do Centro de Educação (LATECE), vinculado ao Laboratório Interdisciplinar de Formação de Educadores (LIFE) da Universidade Federal do Rio Grande do Norte, é um espaço de ensino, pesquisa e extensão dedicado à Tecnologia Assistiva.",
+    "whoWeAreText2": "A Tecnologia Assistiva compreende recursos, estratégias, serviços e práticas voltados à promoção da acessibilidade, autonomia e participação de pessoas com deficiência e com necessidades educacionais específicas (BRASIL, 2015). O laboratório atua em diferentes áreas da Tecnologia Assistiva, como Comunicação Alternativa, acessibilidade ao computador, adequação postural, mobilidade, acessibilidade sensorial e produção de materiais pedagógicos acessíveis.",
+    "whoWeAreText3": "Fundado em 2017, o LATECE desenvolve pesquisas, ações formativas e projetos voltados à acessibilidade e à inclusão. O laboratório mantém parcerias com escolas, serviços especializados, setores da universidade e instituições de ensino superior, como a Universidade do Estado do Rio Grande do Norte (UERN), a Universidade do Estado do Rio de Janeiro (UERJ) e a Universidade Federal Rural do Rio de Janeiro (UFRRJ). Parte das ações e recursos do laboratório é viabilizada por meio de editais de pesquisa e inovação financiados pelo Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) e pela Financiadora de Estudos e Projetos (FINEP).",
+    "mission": "Nossa Missão",
+    "missionText": "Desenvolver pesquisas, práticas e recursos de Tecnologia Assistiva que favoreçam a participação de pessoas com necessidades educacionais específicas em diferentes contextos de aprendizagem e participação social.",
+    "vision": "Nossa Visão",
+    "visionText": "Ser um centro de referência nacional e internacional em pesquisa, desenvolvimento e inovação em Tecnologia Assistiva, transformando a sociedade por meio da tecnologia inclusiva.",
+    "objectives": "Nossos Objetivos Estratégicos",
+    "teaching": "Ensino e Extensão",
+    "teachingText": "Integração entre ensino, pesquisa e ações extensionistas voltadas à inclusão e acessibilidade.",
+    "training": "Formação Docente",
+    "trainingText": "Formação inicial e continuada de professores para atuação em contextos inclusivos.",
+    "assistive": "Tecnologia Assistiva",
+    "assistiveText": "Desenvolvimento e adaptação de recursos de Tecnologia Assistiva para diferentes necessidades.",
+    "materials": "Materiais Acessíveis",
+    "materialsText": "Produção de materiais pedagógicos acessíveis para apoiar processos educacionais inclusivos.",
+    "communication": "Comunicação Alternativa",
+    "communicationText": "Pesquisas e práticas voltadas à Comunicação Alternativa e ampliada.",
+    "partnerships": "Parcerias Institucionais",
+    "partnershipsText": "Colaboração com escolas, serviços especializados e setores da universidade.",
+    "justification": "Justificativa",
+    "justificationText1": "A tecnologia assistiva é um campo vital para garantir os direitos e a plena participação de pessoas com deficiência na sociedade. No Brasil, a demanda por soluções acessíveis e inovadoras é crescente, impulsionada pela legislação e pela conscientização social.",
+    "justificationText2": "O LATECE surge como uma resposta estratégica a essa demanda, posicionando a UFRN na vanguarda da pesquisa em inclusão. Nosso laboratório não apenas cria tecnologia, mas também forma a próxima geração de especialistas na área.",
+    "justificationText3": "Ao integrar pesquisa, ensino e extensão, o LATECE cria um ciclo virtuoso que beneficia alunos, pesquisadores e, principalmente, a comunidade, gerando um impacto social duradouro e significativo.",
+    "highlight": "Nosso Diferencial",
+    "highlightText": "Focamos em projetos de código aberto e hardware livre para maximizar o alcance e a replicabilidade de nossas soluções, garantindo que a tecnologia chegue a quem mais precisa.",
+    "cta": "Faça Parte da Mudança",
+    "ctaText": "Sua paixão por tecnologia e inclusão pode fazer a diferença. Conheça nossa equipe e nossos projetos.",
+    "meetTeam": "Conheça a Equipe",
+    "exploreEquipment": "Explore os Equipamentos"
+  },
+  "team": {
+    "title": "Equipe — LATECE — Pesquisadores e Colaboradores",
+    "heroBadge": "Pessoas que fazem a diferença",
+    "heroTitle1": "Nossa",
+    "heroTitle2": "Equipe",
+    "subtitle": "Conheça os profissionais dedicados à pesquisa, desenvolvimento e inovação em Tecnologia Assistiva.",
+    "exploreMembers": "Explorar Membros",
+    "members": "Membros",
+    "researchAreas": "Áreas de pesquisa",
+    "partnerInstitutions": "Instituições parceiras",
+    "coordinators": "Coordenação",
+    "collaborators": "Colaboradores",
+    "researchers": "Pesquisadores",
+    "students": "Estudantes",
+    "developmentTeam": "Equipe de Desenvolvimento",
+    "noMembers": "Nenhum membro da equipe encontrado no momento.",
+    "noMembersTitle": "Nenhum membro cadastrado",
+    "noMembersSubtitle": "A equipe será atualizada em breve",
+    "emailLabel": "Enviar email para {name}",
+    "lattesLabel": "Ver currículo Lattes de {name}",
+    "linkedinLabel": "Ver LinkedIn de {name}"
+  },
+  "equipment": {
+    "title": "Equipamentos de Tecnologia Assistiva",
+    "subtitle": "Explore nossos recursos e tecnologias para acessibilidade",
+    "category": "Categoria",
+    "description": "Descrição",
+    "allCategories": "Todas as Categorias",
+    "search": "Buscar equipamento...",
+    "noResults": "Nenhum equipamento encontrado",
+    "noResultsSubtitle": "Tente ajustar os filtros de busca",
+    "clearFilters": "Limpar Filtros",
+    "categories": {
+      "CAA": "Comunicação Aumentativa e Alternativa",
+      "VidaDiaria": "Auxílio para Vida Diária e Prática",
+      "AcessibilidadeComputador": "Acessibilidade no Computador",
+      "BaixaVisao": "Baixa Visão e Tradução Sensorial",
+      "LivrosJogos": "Livros e Jogos Adaptados"
+    },
+    "heroBadge": "Recursos para acessibilidade",
+    "heroTitle1": "Equipamentos de",
+    "heroTitle2": "Tecnologia Assistiva",
+    "heroSubtitle": "Explore nosso catálogo de recursos e tecnologias que promovem autonomia e inclusão.",
+    "exploreCatalog": "Explorar Catálogo"
+  },
+  "publications": {
+    "title": "Publicações e Pesquisas",
+    "subtitle": "Repositório de conhecimento em Tecnologia Assistiva",
+    "type": "Tipo",
+    "year": "Ano",
+    "author": "Autor",
+    "authors": "Autores",
+    "abstract": "Resumo",
+    "download": "Baixar Publicação",
+    "viewDetails": "Ver Detalhes",
+    "access": "Acessar",
+    "accessEbook": "Acessar E-book",
+    "allTypes": "Todos os Tipos",
+    "allYears": "Todos os Anos",
+    "search": "Pesquisar publicações...",
+    "noResults": "Nenhuma publicação encontrada",
+    "clearFilters": "Limpar Filtros",
+    "types": {
+      "article": "Artigo Científico",
+      "tcc": "TCC",
+      "material": "Material Didático",
+      "report": "Relatório Técnico",
+      "presentation": "Apresentação",
+      "dissertation": "Dissertação",
+      "thesis": "Tese",
+      "chapter": "Capítulo de Livro",
+      "book": "E-book / Livro"
+    },
+    "modal": {
+      "publicationType": "Tipo de Publicação",
+      "year": "Ano",
+      "authors": "Autores",
+      "status": "Status",
+      "abstract": "Resumo",
+      "keywords": "Palavras-chave"
+    },
+    "statusLabels": {
+      "published": "Publicado",
+      "submitted": "Submetido",
+      "in_progress": "Em Andamento"
+    },
+    "heroBadge": "Produção científica",
+    "heroTitle1": "Publicações e",
+    "heroTitle2": "Pesquisas",
+    "heroSubtitle": "Acesse o repositório de conhecimento em Tecnologia Assistiva do LATECE.",
+    "explorePublications": "Explorar Publicações"
+  },
+  "news": {
+    "title": "Notícias e Eventos",
+    "subtitle": "Acompanhe as últimas novidades, pesquisas e acontecimentos do LATECE",
+    "readMore": "Leia Mais",
+    "watch": "Assistir",
+    "publishedOn": "Publicado em",
+    "by": "por",
+    "featured": "Destaque",
+    "noNews": "Nenhuma notícia encontrada",
+    "emptySubtitle": "Tente ajustar os termos da sua busca ou limpar os filtros",
+    "clearFilters": "Limpar Filtros",
+    "search": "Pesquisar por título ou conteúdo...",
+    "allCategories": "Todas as Categorias",
+    "loading": "Carregando notícias...",
+    "unknownAuthor": "Autor Desconhecido",
+    "tags": "Tags",
+    "share": "Compartilhar",
+    "notFoundTitle": "Notícia não encontrada",
+    "notFoundText": "A notícia que você está procurando não existe ou foi removida.",
+    "backToNews": "Voltar para Notícias",
+    "categories": {
+      "Event": "📅 Evento",
+      "News": "📰 Notícia",
+      "Notice": "⚠️ Aviso",
+      "Workshop": "🎓 Workshop",
+      "Lecture": "🎤 Palestra",
+      "Research": "🔬 Pesquisa"
+    },
+    "heroBadge": "Acompanhe o LATECE",
+    "heroTitle1": "Notícias e",
+    "heroTitle2": "Eventos",
+    "heroSubtitle": "Fique por dentro das últimas novidades, pesquisas e acontecimentos do laboratório."
+  },
+  "newsDetail": {
+    "backToNews": "← Voltar para Notícias"
+  },
+  "suggestions": {
+    "introTitle": "Por que sua sugestão importa?",
+    "introText": "O LATECE é um espaço construído coletivamente. Suas ideias nos ajudam a melhorar nossos projetos, pesquisas, equipamentos e a forma como comunicamos a tecnologia assistiva. Cada contribuição é uma semente para um futuro mais inclusivo.",
+    "benefit1": {
+      "title": "Ideias inovadoras",
+      "desc": "Novas soluções para desafios de acessibilidade."
+    },
+    "benefit2": {
+      "title": "Participação comunitária",
+      "desc": "Construção colaborativa do conhecimento."
+    },
+    "benefit3": {
+      "title": "Acessibilidade em foco",
+      "desc": "Melhorias contínuas baseadas em experiência real."
+    },
+    "formTitle": "Envie sua sugestão",
+    "category": "Categoria",
+    "categoryPlaceholder": "Selecione uma categoria",
+    "catAcessibilidade": "Acessibilidade",
+    "catTecnologia": "Tecnologia Assistiva",
+    "catPesquisa": "Pesquisa",
+    "catEnsino": "Ensino e Extensão",
+    "catEquipamentos": "Equipamentos",
+    "catWebsite": "Website e Comunicação",
+    "catOutro": "Outro",
+    "title": "Título da sugestão",
+    "titlePlaceholder": "Ex: Melhoria no sistema de busca",
+    "description": "Descrição detalhada",
+    "descriptionPlaceholder": "Descreva sua ideia, problema ou melhoria...",
+    "impact": "Impacto esperado",
+    "impactPlaceholder": "Selecione o impacto",
+    "impactLow": "Baixo (pequena melhoria)",
+    "impactMedium": "Médio (melhoria significativa)",
+    "impactHigh": "Alto (transformação relevante)",
+    "accessibility": "Relação com acessibilidade",
+    "accessibilityPlaceholder": "Como essa sugestão contribui para a acessibilidade? (opcional)",
+    "email": "Seu e-mail (opcional)",
+    "emailPlaceholder": "seu@email.com",
+    "emailNote": "Utilizaremos apenas para contato sobre sua sugestão, se necessário.",
+    "submit": "Enviar sugestão",
+    "successMessage": "✅ Sua sugestão foi enviada com sucesso! Agradecemos sua contribuição.",
+    "errorMessage": "Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo e-mail latece@ufrn.br.",
+    "finalTitle": "O que acontece com sua sugestão?",
+    "finalText": "Todas as sugestões são lidas pela equipe do LATECE. As melhores ideias são discutidas em nossas reuniões e podem se tornar projetos, melhorias no site ou novos recursos. Sua participação é essencial para crescermos juntos.",
+    "backHome": "Voltar ao início",
+    "about": "Conheça o LATECE",
+    "required": "Este campo é obrigatório.",
+    "heroBadge": "Participe",
+    "heroTitle1": "Sua",
+    "heroTitle2": "sugestão",
+    "heroTitle3": "pode transformar o LATECE",
+    "heroSubtitle": "Compartilhe ideias, melhorias e observações sobre acessibilidade, tecnologia assistiva e inclusão. Sua contribuição é fundamental."
+  },
+  "credits": {
+    "title": "Créditos — Equipe de Desenvolvimento — LATECE",
+    "subtitle": "Equipe responsável pelo desenvolvimento deste portal",
+    "intro": "Este portal foi desenvolvido como parte das ações do Laboratório de Tecnologia Assistiva do Centro de Educação (LATECE), vinculado à Universidade Federal do Rio Grande do Norte (UFRN), com recursos de fomento concedidos pela Financiadora de Estudos e Projetos (FINEP).",
+    "teamHeading": "Equipe de Desenvolvimento",
+    "roles": {
+      "webDev": "Desenvolvedora Web — Bolsista FINEP",
+      "researchFellow": "Bolsista de Iniciação Científica — FINEP"
+    },
+    "affiliations": {
+      "uern": "Vinculada à Universidade do Estado do Rio Grande do Norte (UERN)"
+    },
+    "descriptions": {
+      "eduarda": "Responsável pelo projeto, desenvolvimento e manutenção deste portal institucional, através de bolsa de fomento concedida pela FINEP para o projeto LATECE."
+    },
+    "fundingHeading": "Fomento e Apoio Institucional",
+    "fundingIntro": "O desenvolvimento deste portal foi possível graças ao apoio das seguintes instituições:",
+    "funding": {
+      "finep": "Financiadora de Estudos e Projetos — Bolsa de fomento",
+      "tecincluir": "Programa de apoio à pesquisa, desenvolvimento e inovação em Tecnologia Assistiva",
+      "ufrn": "Universidade Federal do Rio Grande do Norte",
+      "uern": "Universidade do Estado do Rio Grande do Norte"
+    },
+    "techHeading": "Tecnologias Utilizadas",
+    "heroBadge": "Equipe de Desenvolvimento",
+    "heroTitle": "Créditos",
+    "heroSubtitle": "Conheça as pessoas e instituições que tornaram este portal possível.",
+    "backToHome": "← Voltar ao Início"
+  },
+  "legal": {
+    "terms": {
+      "title": "Termos de Uso — LATECE — Portal do Laboratório de Tecnologia Assistiva UFRN",
+      "subtitle": "Condições de utilização do Portal LATECE. Leia com atenção.",
+      "heroBadge": "Documentação institucional",
+      "heroTitle1": "Termos de",
+      "heroTitle2": "Uso",
+      "heroSubtitle": "Condições de utilização do Portal LATECE. Leia com atenção.",
+      "lastUpdated": "Última atualização: 22 de agosto de 2026",
+      "section1": {
+        "title": "1. Aceitação dos Termos",
+        "text": "Ao acessar e utilizar o Portal do Laboratório de Tecnologia Assistiva do Centro de Educação (LATECE), vinculado à Universidade Federal do Rio Grande do Norte (UFRN), você concorda com os presentes Termos de Uso. Caso não concorde com qualquer disposição aqui descrita, solicitamos que não utilize o Portal."
+      },
+      "section2": {
+        "title": "2. Descrição do Serviço",
+        "text": "O Portal LATECE é um site institucional de caráter informativo e acadêmico que tem como finalidade:",
+        "list": [
+          "Divulgar informações sobre o Laboratório de Tecnologia Assistiva",
+          "Apresentar projetos de pesquisa, extensão e ensino desenvolvidos pelo LATECE",
+          "Disponibilizar informações sobre a equipe, equipamentos e publicações",
+          "Publicar notícias e eventos relacionados à tecnologia assistiva e educação inclusiva",
+          "Promover a visibilidade das ações do laboratório junto à comunidade acadêmica e à sociedade"
+        ],
+        "note": "O Portal não realiza transações comerciais, não oferece serviços pagos e não exige cadastro de usuários comuns para navegação."
+      },
+      "section3": {
+        "title": "3. Propriedade Intelectual",
+        "text": "Todo o conteúdo disponibilizado no Portal LATECE — incluindo textos, imagens, logotipos, vídeos, gráficos, layout e código-fonte — é de propriedade do LATECE/UFRN ou de seus respectivos autores e está protegido pela legislação brasileira de direitos autorais (Lei nº 9.610/1998) e de propriedade industrial (Lei nº 9.279/1996).",
+        "allowed": "É permitido:",
+        "allowedList": [
+          "Acessar e visualizar o conteúdo para fins pessoais e educacionais",
+          "Compartilhar links do Portal em redes sociais e outros meios, desde que citada a fonte",
+          "Citar trechos do conteúdo em trabalhos acadêmicos, respeitando as normas de referência bibliográfica"
+        ],
+        "prohibited": "É proibido:",
+        "prohibitedList": [
+          "Reproduzir, distribuir ou modificar o conteúdo para fins comerciais sem autorização prévia",
+          "Utilizar a marca, logotipo ou identidade visual do LATECE sem consentimento expresso",
+          "Realizar engenharia reversa ou descompilar o código-fonte do Portal"
+        ]
+      },
+      "section4": {
+        "title": "4. Uso Aceitável",
+        "text": "O usuário se compromete a utilizar o Portal de forma ética e em conformidade com a legislação vigente, sendo vedado:",
+        "list": [
+          "Utilizar o Portal para fins ilícitos ou contrários à moral e aos bons costumes",
+          "Tentar acessar áreas restritas do sistema sem autorização (acesso administrativo)",
+          "Realizar ataques de negação de serviço (DDoS), injeção de código (SQL Injection, XSS) ou qualquer tentativa de exploração de vulnerabilidades",
+          "Utilizar robôs, scrapers ou mecanismos automatizados para coleta massiva de dados sem autorização",
+          "Transmitir conteúdo malicioso, vírus ou código que possa comprometer a segurança do Portal"
+        ]
+      },
+      "section5": {
+        "title": "5. Coleta de Dados",
+        "text": "O Portal LATECE não coleta informações pessoais identificáveis de visitantes comuns. No entanto, dados técnicos são coletados automaticamente para fins de segurança e melhoria do serviço. Para informações detalhadas sobre os dados coletados e seu tratamento, consulte nossa Política de Privacidade."
+      },
+      "section6": {
+        "title": "6. Limitação de Responsabilidade",
+        "text": "O LATECE/UFRN empenha-se em manter as informações do Portal atualizadas e precisas, porém não garante que o conteúdo esteja livre de erros, omissões ou desatualizações.",
+        "list": [
+          "Danos diretos ou indiretos decorrentes do uso ou da impossibilidade de uso do Portal",
+          "Conteúdo de sites externos acessados por meio de links disponíveis no Portal",
+          "Interrupções temporárias no serviço por motivos de manutenção, atualização ou falhas técnicas",
+          "Decisões tomadas com base exclusivamente nas informações disponibilizadas no Portal"
+        ]
+      },
+      "section7": {
+        "title": "7. Links Externos",
+        "text": "O Portal pode conter links para sites de terceiros (como Instagram, YouTube, repositórios acadêmicos). Esses links são fornecidos apenas para conveniência e referência. O LATECE/UFRN não endossa, controla ou se responsabiliza pelo conteúdo, políticas de privacidade ou práticas desses sites externos."
+      },
+      "section8": {
+        "title": "8. Disponibilidade do Serviço",
+        "text": "O LATECE/UFRN não garante que o Portal estará disponível de forma ininterrupta ou livre de erros. O serviço pode ser temporariamente suspenso para manutenção, atualizações ou por motivos de força maior, sem aviso prévio."
+      },
+      "section9": {
+        "title": "9. Modificações dos Termos",
+        "text": "O LATECE/UFRN reserva-se o direito de modificar estes Termos de Uso a qualquer momento, sem aviso prévio. As alterações entram em vigor imediatamente após a publicação no Portal. A data da última atualização será sempre indicada no topo deste documento. O uso continuado do Portal após alterações constitui aceitação dos novos termos."
+      },
+      "section10": {
+        "title": "10. Legislação Aplicável e Foro",
+        "text": "Estes Termos de Uso são regidos pela legislação da República Federativa do Brasil, em especial:",
+        "list": [
+          "Lei nº 12.965/2014 — Marco Civil da Internet",
+          "Lei nº 13.709/2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)",
+          "Lei nº 9.610/1998 — Lei de Direitos Autorais",
+          "Constituição Federal de 1988"
+        ],
+        "forum": "Para a resolução de quaisquer controvérsias decorrentes destes Termos, fica eleito o Foro da Justiça Federal de Natal, Estado do Rio Grande do Norte."
+      },
+      "section11": {
+        "title": "11. Contato",
+        "text": "Em caso de dúvidas sobre estes Termos de Uso, entre em contato:",
+        "institution": "LATECE — Laboratório de Tecnologia Assistiva do Centro de Educação / UFRN",
+        "email": "latece@ufrn.br",
+        "phone": "(84) 3342-2270",
+        "address": "Campus Central UFRN — Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900"
+      }
+    },
+    "privacy": {
+      "title": "Política de Privacidade — LATECE — Proteção de Dados",
+      "subtitle": "Transparência sobre como tratamos seus dados no Portal LATECE.",
+      "heroBadge": "Transparência",
+      "heroTitle1": "Política de",
+      "heroTitle2": "Privacidade",
+      "heroSubtitle": "Entenda como tratamos seus dados e protegemos sua privacidade no Portal LATECE.",
+      "lastUpdated": "Última atualização: 22 de agosto de 2026",
+      "section1": {
+        "title": "1. Controlador de Dados",
+        "text": "O controlador dos dados pessoais tratados por meio deste Portal é o Laboratório de Tecnologia Assistiva do Centro de Educação (LATECE), vinculado à Universidade Federal do Rio Grande do Norte (UFRN).",
+        "controller": "Universidade Federal do Rio Grande do Norte (UFRN), por meio do Laboratório de Tecnologia Assistiva do Centro de Educação (LATECE).",
+        "cnpj": "24.365.710/0001-83 (UFRN)",
+        "address": "Campus Central UFRN — Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900",
+        "email": "latece@ufrn.br",
+        "phone": "(84) 3342-2270"
+      },
+      "section2": {
+        "title": "2. Dados Coletados Automaticamente",
+        "text": "O Portal LATECE é um site institucional de caráter público e informativo. Não exigimos cadastro, login ou qualquer forma de identificação pessoal para visitantes. No entanto, durante a navegação, determinados dados técnicos são coletados automaticamente pelos servidores e infraestrutura do site. Além disso, determinados dados não são solicitados ou coletados automaticamente, mas podem ser fornecidos voluntariamente pelo usuário.",
+        "subtitle1": "2.1. Dados Técnicos de Navegação",
+        "tableHeader": ["Dado Coletado", "Finalidade", "Base Legal (LGPD)"],
+        "tableRows": [
+          ["Endereço IP", "Segurança, prevenção de ataques e geração de estatísticas agregadas", "A definir conforme a finalidade e orientação institucional da UFRN"],
+          ["Tipo de navegador (User-Agent)", "Compatibilidade técnica e estatísticas de acesso", "A definir conforme a finalidade e orientação institucional da UFRN"],
+          ["Sistema operacional", "Compatibilidade técnica", "A definir conforme a finalidade e orientação institucional da UFRN"],
+          ["Páginas visitadas e tempo de permanência", "Melhoria do serviço e análise de uso", "A definir conforme a finalidade e orientação institucional da UFRN"],
+          ["Data e hora de acesso", "Registro de atividades e segurança", "A definir conforme a finalidade e orientação institucional da UFRN"],
+          ["Localização aproximada (via IP)", "Estatísticas geográficas agregadas", "A definir conforme a finalidade e orientação institucional da UFRN"],
+          ["URL de origem (Referer)", "Análise de tráfego", "A definir conforme a finalidade e orientação institucional da UFRN"]
+        ],
+        "subtitle2": "2.2. Logs de Erro do Servidor",
+        "logsText": "Quando ocorrem erros técnicos no Portal, o servidor registra automaticamente logs contendo informações como: a URL acessada, o tipo de erro, o endereço IP do solicitante e o timestamp do evento. Esses logs são utilizados exclusivamente para diagnóstico técnico e correção de falhas, sendo retidos por no máximo 90 dias.",
+        "subtitle3": "2.3. Cookies de Sessão",
+        "cookieText": "O Portal utiliza um único cookie técnico essencial:",
+        "cookieTableHeader": ["Cookie", "Finalidade", "Duração"],
+        "cookieRows": [
+          ["auth_token", "Manter a sessão de administradores autenticados no painel administrativo", "24 horas"]
+        ],
+        "cookieNote": "Este cookie é criado apenas quando um administrador realiza login no painel administrativo. Visitantes comuns do Portal não recebem este cookie. O Portal não utiliza cookies de rastreamento, marketing ou publicidade."
+      },
+      "section3": {
+        "title": "3. Dados Fornecidos Voluntariamente (Formulários e Inscrições)",
+        "text": "Em ocasiões específicas (como formulários de contato, inscrições em eventos, workshops ou participação em pesquisas), o usuário poderá fornecer dados pessoais voluntariamente. Nesses casos, aplicam-se as seguintes diretrizes:",
+        "list": [
+          "Quais dados são solicitados: Apenas os estritamente necessários para a finalidade específica (ex: nome e e-mail para contato ou certificação).",
+          "Para que são utilizados: Exclusivamente para a finalidade informada no momento da coleta (ex: responder à mensagem, emitir certificado).",
+          "Quem recebe e terceiros envolvidos: Os dados são recebidos apenas pela equipe do LATECE responsável pela demanda. Não há compartilhamento com terceiros, salvo plataformas institucionais da UFRN para emissão de certificados ou sistemas acadêmicos, se aplicável.",
+          "Armazenamento e retenção: Os dados podem ser encaminhados por e-mail institucional ou armazenados temporariamente no banco de dados. Eles são retidos apenas pelo tempo necessário para atender à finalidade, sendo excluídos em seguida, observadas as obrigações legais da UFRN.",
+          "Como solicitar a exclusão: O titular pode, a qualquer momento, solicitar a exclusão de seus dados voluntários enviando um e-mail para latece@ufrn.br, sujeito à análise de viabilidade técnica e legal."
+        ]
+      },
+      "section4": {
+        "title": "4. Dados que NÃO Coletamos",
+        "text": "Para total transparência, declaramos que o Portal LATECE NÃO coleta os seguintes tipos de dados:",
+        "list": [
+          "Nome, CPF, RG ou outros documentos de identificação de visitantes (salvo preenchimento voluntário de formulários)",
+          "E-mail ou telefone de visitantes (salvo preenchimento voluntário de formulários)",
+          "Dados de pagamento ou informações financeiras",
+          "Dados biométricos (impressão digital, reconhecimento facial)",
+          "Dados de saúde",
+          "Geolocalização precisa (GPS)",
+          "Dados comportamentais para fins de publicidade ou perfilamento"
+        ]
+      },
+      "section5": {
+        "title": "5. Finalidade do Tratamento de Dados",
+        "text": "Os dados técnicos coletados automaticamente são utilizados exclusivamente para:",
+        "list": [
+          "Garantir a segurança e estabilidade do Portal",
+          "Prevenir e detectar atividades maliciosas (ataques DDoS, tentativas de invasão, spam)",
+          "Gerar estatísticas agregadas e anônimas sobre o uso do Portal",
+          "Diagnosticar e corrigir falhas técnicas",
+          "Cumprir obrigações legais previstas no Marco Civil da Internet (Lei nº 12.965/2014)"
+        ]
+      },
+      "section6": {
+        "title": "6. Compartilhamento de Dados",
+        "text": "Os dados coletados pelo Portal LATECE não são compartilhados com terceiros para fins comerciais. O compartilhamento pode ocorrer apenas nas seguintes hipóteses:",
+        "list": [
+          "Com a Superintendência de Tecnologia da Informação (STI) da UFRN, responsável pela infraestrutura de rede e servidores",
+          "Com autoridades públicas, mediante ordem judicial ou determinação legal, conforme previsto em lei",
+          "Para cumprimento de obrigação legal ou regulatória"
+        ]
+      },
+      "section7": {
+        "title": "7. Direitos do Titular dos Dados",
+        "text": "Em conformidade com o Art. 18 da Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você possui os seguintes direitos em relação aos seus dados pessoais:",
+        "list": [
+          "Confirmação — Confirmar a existência de tratamento de dados pessoais",
+          "Acesso — Acessar os dados pessoais que tratamos sobre você",
+          "Correção — Solicitar a correção de dados incompletos, inexatos ou desatualizados",
+          "Anonimização, bloqueio ou eliminação — Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade",
+          "Portabilidade — Solicitar a portabilidade dos dados a outro fornecedor de serviço, observados os requisitos e limitações previstos na LGPD e na regulamentação aplicável à Administração Pública",
+          "Eliminação — Solicitar a eliminação dos dados pessoais tratados com consentimento",
+          "Informação — Ser informado sobre entidades com as quais seus dados foram compartilhados",
+          "Revogação — Revogar o consentimento a qualquer momento (aplicável aos casos em que o tratamento baseia-se exclusivamente no consentimento, como formulários voluntários)"
+        ],
+        "contact": "Para exercer qualquer desses direitos, entre em contato pelo e-mail latece@ufrn.br."
+      },
+      "section8": {
+        "title": "8. Segurança dos Dados",
+        "text": "O Portal LATECE adota medidas técnicas e administrativas para proteger os dados tratados, incluindo:",
+        "list": [
+          "Criptografia de comunicação via HTTPS/TLS",
+          "Headers de segurança HTTP (Content-Security-Policy, X-Frame-Options, HSTS)",
+          "Proteção contra ataques XSS (Cross-Site Scripting) e CSRF (Cross-Site Request Forgery)",
+          "Rate limiting para prevenção de abuso e ataques de força bruta",
+          "Autenticação por tokens JWT com expiração automática",
+          "Senhas de administradores armazenadas com hash bcrypt (nunca em texto claro)",
+          "Validação e sanitização de todas as entradas de dados",
+          "Consultas ao banco de dados parametrizadas (prevenção de SQL Injection)"
+        ]
+      },
+      "section9": {
+        "title": "9. Retenção dos Dados",
+        "text": "Os dados coletados são retidos pelos seguintes períodos:",
+        "tableHeader": ["Tipo de Dado", "Período de Retenção", "Justificativa"],
+        "tableRows": [
+          ["Logs de acesso (IP, User-Agent)", "6 meses", "Art. 15, Marco Civil da Internet"],
+          ["Logs de erro", "90 dias", "Necessidade técnica"],
+          ["Cookie auth_token", "24 horas (auto-expiração)", "Sessão administrativa"]
+        ]
+      },
+      "section10": {
+        "title": "10. Transferência Internacional e Serviços de Terceiros",
+        "text": "Algumas páginas do Portal podem incorporar serviços de terceiros, como vídeos hospedados pelo YouTube. Ao acessar conteúdo incorporado, determinadas informações técnicas (como endereço IP e cookies técnicos) podem ser processadas pelo respectivo provedor, de acordo com suas próprias políticas de privacidade.",
+        "note": "Nesses casos, a transferência de dados e o processamento ocorrem sob a responsabilidade desses terceiros, em conformidade com as leis de proteção de dados aplicáveis aos seus serviços."
+      },
+      "section11": {
+        "title": "11. Proteção de Menores",
+        "text": "O Portal institucional não solicita nem coleta deliberadamente dados pessoais de crianças e adolescentes para fins de navegação ou publicidade.",
+        "note": "Eventuais tratamentos de dados pessoais de crianças e adolescentes realizados no âmbito de pesquisas, projetos ou atividades acadêmicas do LATECE observarão requisitos legais, éticos e institucionais próprios, incluindo, quando aplicável, as normas relativas à pesquisa com seres humanos."
+      },
+      "section12": {
+        "title": "12. Alterações nesta Política",
+        "text": "Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças nas práticas de tratamento de dados ou na legislação aplicável. A data da última atualização é sempre indicada no topo deste documento. Recomendamos que consulte esta página regularmente."
+      },
+      "section13": {
+        "title": "13. Legislação Aplicável",
+        "text": "Esta Política de Privacidade é regida pela legislação brasileira, em especial:",
+        "list": [
+          "Lei nº 13.709/2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)",
+          "Lei nº 12.965/2014 — Marco Civil da Internet",
+          "Decreto nº 8.771/2016 — Regulamentação do Marco Civil da Internet",
+          "Constituição Federal de 1988 — Art. 5º, X e XII (privacidade e sigilo)"
+        ]
+      },
+      "section14": {
+        "title": "14. Contato e Encarregado de Dados (DPO)",
+        "text": "Para dúvidas, solicitações ou reclamações relacionadas ao tratamento de dados pessoais, entre em contato:",
+        "dpo": "Encarregado pelo tratamento: Informações e canal de contato disponibilizados pela Universidade Federal do Rio Grande do Norte (UFRN)",
+        "email": "latece@ufrn.br",
+        "phone": "(84) 3342-2270",
+        "address": "Campus Central UFRN — Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900",
+        "anpd": "Caso não obtenha resposta satisfatória, você poderá apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD) por meio do site www.gov.br/anpd."
+      }
+    }
+  },
+  "auth": {
+    "username": "Nome de usuário",
+    "usernamePlaceholder": "Digite seu nome de usuário",
+    "password": "Senha",
+    "passwordPlaceholder": "Digite sua senha",
+    "login": "Entrar",
+    "loggingIn": "Entrando..."
+  },
+  "admin": {
+    "title": "Painel de Administração",
+    "dashboard": "Dashboard",
+    "news": "Notícias",
+    "equipment": "Equipamentos",
+    "publications": "Publicações",
+    "team": "Equipe",
+    "settings": "Configurações",
+    "addNew": "Adicionar Novo",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "search": "Pesquisar...",
+    "status": "Status",
+    "draft": "Rascunho",
+    "published": "Publicado",
+    "actions": "Ações"
+  },
+  "forms": {
+    "title": "Título",
+    "content": "Conteúdo",
+    "excerpt": "Resumo",
+    "name": "Nome",
+    "description": "Descrição",
+    "email": "E-mail",
+    "role": "Função",
+    "bio": "Biografia",
+    "image": "Imagem",
+    "file": "Arquivo",
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "selectOption": "Selecione uma opção...",
+    "uploadFile": "Fazer upload de arquivo",
+    "chooseFile": "Escolher arquivo"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "warning": "Aviso",
+    "info": "Informação",
+    "close": "Fechar",
+    "back": "Voltar",
+    "backToHome": "← Voltar ao Início",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "page": "Página",
+    "of": "de",
+    "results": "resultados",
+    "noData": "Nenhum dado disponível",
+    "tryAgain": "Tentar novamente",
+    "contact": "Contato",
+    "address": "Endereço",
+    "phone": "Telefone",
+    "email": "E-mail",
+    "website": "Website"
+  },
+  "accessibility": {
+    "skipToContent": "Pular para o conteúdo",
+    "highContrast": "Alto contraste",
+    "normalContrast": "Contraste normal",
+    "increaseFont": "Aumentar fonte",
+    "decreaseFont": "Diminuir fonte",
+    "screenReader": "Leitor de tela",
+    "keyboardNavigation": "Navegação por teclado"
+  }
+}

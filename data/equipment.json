@@ -1,0 +1,306 @@
+{
+  "version": "2.0.0",
+  "updatedAt": "2026-08-23T00:00:00Z",
+  "items": [
+    {
+      "id": 1,
+      "name": "Prancha de Comunicação (modelo 1)",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/PRANCHA-DE-CAA.jpeg",
+      "description": "Prancha com pictogramas para apoio à comunicação alternativa. Recurso físico, impresso em alta resolução.",
+      "order": 0,
+      "download": null
+    },
+    {
+      "id": 2,
+      "name": "Prancha de Comunicação (modelo 2)",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/PRANCHA-DE-CAA-2.jpeg",
+      "description": "Prancha com pictogramas para apoio à comunicação alternativa. Versão com organização semântica.",
+      "order": 1,
+      "download": null
+    },
+    {
+      "id": 3,
+      "name": "Prancha de Comunicação (modelo 3)",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/PRANCHA-DE-CAA-3.jpeg",
+      "description": "Prancha com pictogramas para apoio à comunicação alternativa. Modelo com maior densidade de símbolos.",
+      "order": 2,
+      "download": null
+    },
+    {
+      "id": 4,
+      "name": "Conversia",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/CONVERSIA.jpeg",
+      "description": "Dispositivo digital interativo utilizado para apoiar a comunicação por meio de símbolos e interfaces acessíveis.",
+      "order": 3,
+      "download": {
+        "type": "APK",
+        "url": "./assets/downloads/conversia.apk",
+        "size": "18 MB",
+        "version": "1.5.2",
+        "platform": "Android 5.0+",
+        "license": "Gratuito para uso educacional"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Expressia",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/EXPRESSIA.jpeg",
+      "description": "Software de comunicação que utiliza pictogramas para auxiliar na expressão de ideias, emoções e necessidades.",
+      "order": 4,
+      "download": {
+        "type": "APK",
+        "url": "./assets/downloads/expressia.apk",
+        "size": "22 MB",
+        "version": "2.0.1",
+        "platform": "Android 5.0+",
+        "license": "Gratuito"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Flip Book de Comunicação",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/FLIP-BOOK.jpeg",
+      "description": "Caderno com imagens organizadas que permite a comunicação por meio da seleção visual de símbolos.",
+      "order": 5,
+      "download": null
+    },
+    {
+      "id": 7,
+      "name": "Vocalizador",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/VOCALIZADOR.jpeg",
+      "description": "Dispositivo eletrônico que reproduz mensagens gravadas ao pressionar botões, facilitando a comunicação de pessoas com dificuldades na fala.",
+      "order": 6,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/vocalizador-manual.pdf",
+        "size": "2 MB",
+        "version": "1.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    },
+    {
+      "id": 8,
+      "name": "ACIONADORES",
+      "category": "VidaDiaria",
+      "imageUrl": "assets/images/equipment/vida/ACIONADORES.jpeg",
+      "description": "Dispositivo adaptado que permite ao usuário ativar comandos por meio de toques simples, pressão ou outros movimentos, facilitando o acesso a computadores e equipamentos eletrônicos.",
+      "order": 7,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/acionadores-guia.pdf",
+        "size": "1.5 MB",
+        "version": "1.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    },
+    {
+      "id": 9,
+      "name": "COLIBRI",
+      "category": "VidaDiaria",
+      "imageUrl": "assets/images/equipment/vida/COLIBRI.jpeg",
+      "description": "Dispositivo de acesso alternativo que possibilita a interação com o computador, indicado para pessoas com mobilidade reduzida nos membros.",
+      "order": 8,
+      "download": {
+        "type": "EXE",
+        "url": "./assets/downloads/colibri-setup.exe",
+        "size": "45 MB",
+        "version": "4.1.0",
+        "platform": "Windows 10/11",
+        "license": "Gratuito"
+      }
+    },
+    {
+      "id": 10,
+      "name": "ENGROSSADOR DE LÁPIS",
+      "category": "VidaDiaria",
+      "imageUrl": "assets/images/equipment/vida/ENGROSSADOR-DE-LÁPIS.jpeg",
+      "description": "Acessório que aumenta a espessura do lápis ou caneta, proporcionando melhor encaixe na mão e facilitando a escrita para pessoas com dificuldades motoras.",
+      "order": 9,
+      "download": null
+    },
+    {
+      "id": 11,
+      "name": "Plano Inclinado para Escrita",
+      "category": "VidaDiaria",
+      "imageUrl": "assets/images/equipment/vida/PLANO-INCLINADO.jpeg",
+      "description": "Dispositivo que permite a escrita em posição inclinada, facilitando o acesso para pessoas com dificuldades motoras.",
+      "order": 10,
+      "download": null
+    },
+    {
+      "id": 12,
+      "name": "Lupa Eletrônica (modelo 1)",
+      "category": "BaixaVisao",
+      "imageUrl": "assets/images/equipment/baixa-visao/LUPA.jpeg",
+      "description": "Lupa eletrônica com ampliação digital para apoio a pessoas com baixa visão.",
+      "order": 11,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/lupa-eletronica-manual.pdf",
+        "size": "3 MB",
+        "version": "1.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Lupa Eletrônica (modelo 2)",
+      "category": "BaixaVisao",
+      "imageUrl": "assets/images/equipment/baixa-visao/LUPA-2.jpeg",
+      "description": "Lupa de leitura para apoio a pessoas com baixa visão.",
+      "order": 12,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/lupa-eletronica-manual-v2.pdf",
+        "size": "3.2 MB",
+        "version": "2.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Livro em Braille (volume 1)",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/LIVRO-EM-BRAILLE.jpeg",
+      "description": "Livro adaptado em escrita Braille para leitura tátil.",
+      "order": 13,
+      "download": null
+    },
+    {
+      "id": 15,
+      "name": "Livro em Braille (volume 2)",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/LIVRO-EM-BRAILLE-2.jpeg",
+      "description": "Livro adaptado em escrita Braille para leitura tátil.",
+      "order": 14,
+      "download": null
+    },
+    {
+      "id": 16,
+      "name": "Jogo Adaptado em Braille",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/jogo-adaptado-braille.jpeg",
+      "description": "Jogo educativo adaptado com peças em Braille, promovendo aprendizado e inclusão.",
+      "order": 15,
+      "download": null
+    },
+    {
+      "id": 17,
+      "name": "Livro Adaptado em CAA (modelo 1)",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/LIVRO-ADAPTADO-EM-CAA.jpeg",
+      "description": "Livro adaptado em comunicação aumentativa e alternativa, com símbolos e pictogramas.",
+      "order": 16,
+      "download": null
+    },
+    {
+      "id": 18,
+      "name": "Livro Adaptado em CAA (modelo 2)",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/LIVRO-COM-CAA.jpeg",
+      "description": "Livro adaptado em comunicação aumentativa e alternativa, com suporte visual ampliado.",
+      "order": 17,
+      "download": null
+    },
+    {
+      "id": 19,
+      "name": "Jogo de Cartas em Braille",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/JOGO-DE-CARTAS-EM-BRAILLE.jpeg",
+      "description": "Jogo educativo adaptado com peças em Braille.",
+      "order": 18,
+      "download": null
+    },
+    {
+      "id": 20,
+      "name": "Teclado Adaptado",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/TECLADO.jpeg",
+      "description": "Teclado adaptado com teclas ampliadas, coloridas e de fácil visualização, que facilita a digitação e a identificação das teclas por pessoas com dificuldades motoras ou cognitivas.",
+      "order": 19,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/teclado-adaptado-manual.pdf",
+        "size": "1.8 MB",
+        "version": "1.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    },
+    {
+      "id": 21,
+      "name": "Intellikeys",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/INTELLIKEYS.jpeg",
+      "description": "Teclado programável com sobreposições personalizáveis que permite adaptar funções e comandos conforme as necessidades do usuário.",
+      "order": 20,
+      "download": {
+        "type": "ZIP",
+        "url": "./assets/downloads/intellikeys-driver.zip",
+        "size": "28 MB",
+        "version": "5.2.1",
+        "platform": "Windows 10/11",
+        "license": "Gratuito para uso educacional"
+      }
+    },
+    {
+      "id": 22,
+      "name": "Mouse Adaptado",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/MOUSE-ADAPTADO.jpeg",
+      "description": "Dispositivo apontador adaptado para facilitar o uso por pessoas com limitações motoras, podendo possuir botões ampliados e formato ergonômico.",
+      "order": 21,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/mouse-adaptado-manual.pdf",
+        "size": "1.2 MB",
+        "version": "1.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    },
+    {
+      "id": 23,
+      "name": "Teclado Tátil",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/TECLADO-TATIL.jpeg",
+      "description": "Teclado com marcações em relevo ou texturas diferenciadas, auxiliando pessoas com deficiência visual na identificação das teclas.",
+      "order": 22,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/teclado-tatil-guia.pdf",
+        "size": "1.5 MB",
+        "version": "1.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    },
+    {
+      "id": 24,
+      "name": "TICs",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/TICS.jpeg",
+      "description": "Conjunto de tecnologias da informação e comunicação que promovem acessibilidade digital, ampliando a autonomia de pessoas com deficiência no uso do computador.",
+      "order": 23,
+      "download": {
+        "type": "PDF",
+        "url": "./assets/downloads/tics-catalogo.pdf",
+        "size": "4.5 MB",
+        "version": "1.0",
+        "platform": "Documentação",
+        "license": "Acesso livre"
+      }
+    }
+  ]
+}

@@ -1,0 +1,636 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "team": "Team",
+    "equipment": "Equipment",
+    "publications": "Publications",
+    "news": "News",
+    "suggestions": "Suggestions",
+    "admin": "Administration",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "My Profile",
+    "administrator": "Administrator"
+  },
+  "footer": {
+    "description": "Assistive Technology Laboratory of the Education Center",
+    "tagline": "Promoting inclusion and accessibility through technology",
+    "quickLinks": "Quick Links",
+    "resources": "Resources",
+    "contact": "Contact",
+    "termsOfUse": "Terms of Use",
+    "privacyPolicy": "Privacy Policy",
+    "support": "Support (STI/UFRN)",
+    "devTeam": "Development Team",
+    "copyright": "All rights reserved.",
+    "developedBy": "Developed by",
+    "finepScholar": "FINEP Scholar",
+    "address": "UFRN — Central Campus, Natal/RN"
+  },
+  "home": {
+    "title": "LATECE Portal — Assistive Technology Laboratory UFRN",
+    "subtitle": "Assistive Technology Laboratory",
+    "titlePart1": "Technology that",
+    "titlePart2": "expands possibilities",
+    "description": "Promoting inclusion and accessibility through research, innovation, and human development.",
+    "mission": "Our Mission",
+    "missionText": "Develop and disseminate assistive technologies that promote inclusion and autonomy for people with disabilities in educational and social environments.",
+    "latestNews": "Latest News",
+    "viewAll": "View All",
+    "equipment": "Equipment",
+    "publications": "Publications",
+    "learnMore": "Learn about LATECE",
+    "quickAccess": "Quick Access",
+    "quickAboutTitle": "About LATECE",
+    "quickAboutText": "Learn about the mission, vision, and objectives of the laboratory.",
+    "quickEquipmentTitle": "Equipment",
+    "quickEquipmentText": "Explore the catalog of available assistive technologies.",
+    "quickPublicationsTitle": "Publications",
+    "quickPublicationsText": "Access articles, theses, and other scientific productions.",
+    "foundation": "Foundation",
+    "researchers": "Researchers",
+    "projects": "Projects"
+  },
+  "about": {
+    "title": "About LATECE — Assistive Technology Laboratory UFRN",
+    "heroBadge": "Assistive Technology Laboratory",
+    "heroTitle1": "Learn about",
+    "heroTitle2": "LATECE",
+    "heroSubtitle": "Our mission, vision, and the objectives that drive us to create a more accessible future.",
+    "whoWeAre": "Who We Are",
+    "whoWeAreText1": "The Assistive Technology Laboratory of the Education Center (LATECE), linked to the Interdisciplinary Laboratory of Educator Training (LIFE) at the Federal University of Rio Grande do Norte, is a space for teaching, research, and community outreach dedicated to Assistive Technology.",
+    "whoWeAreText2": "Assistive Technology comprises resources, strategies, services, and practices aimed at promoting accessibility, autonomy, and participation for people with disabilities and specific educational needs. The laboratory operates in different areas of Assistive Technology, such as Alternative Communication, computer accessibility, postural adjustment, mobility, sensory accessibility, and the production of accessible pedagogical materials.",
+    "whoWeAreText3": "Founded in 2017, LATECE conducts research, training activities, and projects focused on accessibility and inclusion. The laboratory maintains partnerships with schools, specialized services, university sectors, and higher education institutions. Part of the laboratory's actions and resources is made possible through research and innovation grants funded by the National Council for Scientific and Technological Development (CNPq) and the Brazilian Innovation Agency (FINEP).",
+    "mission": "Our Mission",
+    "missionText": "To develop and disseminate innovative assistive technologies that promote inclusion, autonomy, and quality of life for people with disabilities, fostering a collaborative learning and research environment.",
+    "vision": "Our Vision",
+    "visionText": "To be a national and international reference center in research, development, and innovation in Assistive Technology, transforming society through inclusive technology.",
+    "objectives": "Our Strategic Objectives",
+    "teaching": "Teaching and Community Outreach",
+    "teachingText": "Integration of teaching, research, and extension actions focused on inclusion and accessibility.",
+    "training": "Teacher Training",
+    "trainingText": "Initial and continuing education of teachers to work in inclusive contexts.",
+    "assistive": "Assistive Technology",
+    "assistiveText": "Development and adaptation of Assistive Technology resources for different needs.",
+    "materials": "Accessible Materials",
+    "materialsText": "Production of accessible pedagogical materials to support inclusive educational processes.",
+    "communication": "Alternative Communication",
+    "communicationText": "Research and practices focused on Augmentative and Alternative Communication.",
+    "partnerships": "Institutional Partnerships",
+    "partnershipsText": "Collaboration with schools, specialized services, and university sectors.",
+    "justification": "Justification",
+    "justificationText1": "Assistive technology is a vital field for ensuring the rights and full participation of people with disabilities in society. In Brazil, the demand for accessible and innovative solutions is growing, driven by legislation and social awareness.",
+    "justificationText2": "LATECE emerges as a strategic response to this demand, positioning UFRN at the forefront of inclusion research. Our laboratory not only creates technology but also trains the next generation of experts in the field.",
+    "justificationText3": "By integrating research, teaching, and community outreach, LATECE creates a virtuous cycle that benefits students, researchers, and, most importantly, the community, generating a lasting and significant social impact.",
+    "highlight": "Our Differential",
+    "highlightText": "We focus on open-source and open-hardware projects to maximize the reach and replicability of our solutions, ensuring that technology reaches those who need it most.",
+    "cta": "Be Part of the Change",
+    "ctaText": "Your passion for technology and inclusion can make a difference. Get to know our team and our projects.",
+    "meetTeam": "Meet the Team",
+    "exploreEquipment": "Explore Equipment"
+  },
+  "team": {
+    "title": "Team — LATECE — Researchers and Collaborators",
+    "heroBadge": "People who make a difference",
+    "heroTitle1": "Our",
+    "heroTitle2": "Team",
+    "subtitle": "Meet the professionals dedicated to research, development, and innovation in Assistive Technology.",
+    "exploreMembers": "Explore Members",
+    "members": "Members",
+    "researchAreas": "Research areas",
+    "partnerInstitutions": "Partner institutions",
+    "coordinators": "Coordination",
+    "collaborators": "Collaborators",
+    "researchers": "Researchers",
+    "students": "Students",
+    "developmentTeam": "Development Team",
+    "noMembers": "No team members found at this time.",
+    "noMembersTitle": "No members registered",
+    "noMembersSubtitle": "The team will be updated soon",
+    "emailLabel": "Send email to {name}",
+    "lattesLabel": "View Lattes curriculum of {name}",
+    "linkedinLabel": "View LinkedIn of {name}"
+  },
+  "equipment": {
+    "title": "Assistive Technology Equipment",
+    "subtitle": "Explore our resources and technologies for accessibility",
+    "category": "Category",
+    "description": "Description",
+    "allCategories": "All Categories",
+    "search": "Search equipment...",
+    "noResults": "No equipment found",
+    "noResultsSubtitle": "Try adjusting the search filters",
+    "clearFilters": "Clear Filters",
+    "categories": {
+      "CAA": "Augmentative and Alternative Communication",
+      "VidaDiaria": "Daily Living and Practical Aids",
+      "AcessibilidadeComputador": "Computer Accessibility",
+      "BaixaVisao": "Low Vision and Sensory Translation",
+      "LivrosJogos": "Adapted Books and Games"
+    },
+    "heroBadge": "Resources for accessibility",
+    "heroTitle1": "Assistive Technology",
+    "heroTitle2": "Equipment",
+    "heroSubtitle": "Explore our catalog of resources and technologies that promote autonomy and inclusion.",
+    "exploreCatalog": "Explore Catalog"
+  },
+  "publications": {
+    "title": "Publications and Research",
+    "subtitle": "Repository of knowledge in Assistive Technology",
+    "type": "Type",
+    "year": "Year",
+    "author": "Author",
+    "authors": "Authors",
+    "abstract": "Abstract",
+    "download": "Download Publication",
+    "viewDetails": "View Details",
+    "access": "Access",
+    "accessEbook": "Access E-book",
+    "allTypes": "All Types",
+    "allYears": "All Years",
+    "search": "Search publications...",
+    "noResults": "No publications found",
+    "clearFilters": "Clear Filters",
+    "types": {
+      "article": "Scientific Article",
+      "tcc": "Final Project",
+      "material": "Educational Material",
+      "report": "Technical Report",
+      "presentation": "Presentation",
+      "dissertation": "Dissertation",
+      "thesis": "Thesis",
+      "chapter": "Book Chapter",
+      "book": "E-book / Book"
+    },
+    "modal": {
+      "publicationType": "Publication Type",
+      "year": "Year",
+      "authors": "Authors",
+      "status": "Status",
+      "abstract": "Abstract",
+      "keywords": "Keywords"
+    },
+    "statusLabels": {
+      "published": "Published",
+      "submitted": "Submitted",
+      "in_progress": "In Progress"
+    },
+    "heroBadge": "Scientific production",
+    "heroTitle1": "Publications and",
+    "heroTitle2": "Research",
+    "heroSubtitle": "Access the repository of knowledge in Assistive Technology at LATECE.",
+    "explorePublications": "Explore Publications"
+  },
+  "news": {
+    "title": "News and Events",
+    "subtitle": "Follow the latest news, research, and events from LATECE",
+    "readMore": "Read More",
+    "watch": "Watch",
+    "publishedOn": "Published on",
+    "by": "by",
+    "featured": "Featured",
+    "noNews": "No news found",
+    "emptySubtitle": "Try adjusting your search terms or clearing filters",
+    "clearFilters": "Clear Filters",
+    "search": "Search by title or content...",
+    "allCategories": "All Categories",
+    "loading": "Loading news...",
+    "unknownAuthor": "Unknown Author",
+    "tags": "Tags",
+    "share": "Share",
+    "notFoundTitle": "News not found",
+    "notFoundText": "The news you are looking for does not exist or has been removed.",
+    "backToNews": "Back to News",
+    "categories": {
+      "Event": "📅 Event",
+      "News": "📰 News",
+      "Notice": "⚠️ Notice",
+      "Workshop": "🎓 Workshop",
+      "Lecture": "🎤 Lecture",
+      "Research": "🔬 Research"
+    },
+    "heroBadge": "Follow LATECE",
+    "heroTitle1": "News and",
+    "heroTitle2": "Events",
+    "heroSubtitle": "Stay up to date with the latest news, research, and events from the laboratory."
+  },
+  "newsDetail": {
+    "backToNews": "← Back to News"
+  },
+  "suggestions": {
+    "introTitle": "Why does your suggestion matter?",
+    "introText": "LATECE is a space built collectively. Your ideas help us improve our projects, research, equipment, and how we communicate assistive technology. Every contribution is a seed for a more inclusive future.",
+    "benefit1": {
+      "title": "Innovative ideas",
+      "desc": "New solutions for accessibility challenges."
+    },
+    "benefit2": {
+      "title": "Community participation",
+      "desc": "Collaborative construction of knowledge."
+    },
+    "benefit3": {
+      "title": "Accessibility in focus",
+      "desc": "Continuous improvements based on real experience."
+    },
+    "formTitle": "Send your suggestion",
+    "category": "Category",
+    "categoryPlaceholder": "Select a category",
+    "catAcessibilidade": "Accessibility",
+    "catTecnologia": "Assistive Technology",
+    "catPesquisa": "Research",
+    "catEnsino": "Teaching and Outreach",
+    "catEquipamentos": "Equipment",
+    "catWebsite": "Website and Communication",
+    "catOutro": "Other",
+    "title": "Suggestion title",
+    "titlePlaceholder": "Ex: Improvement in the search system",
+    "description": "Detailed description",
+    "descriptionPlaceholder": "Describe your idea, problem, or improvement...",
+    "impact": "Expected impact",
+    "impactPlaceholder": "Select the impact",
+    "impactLow": "Low (small improvement)",
+    "impactMedium": "Medium (significant improvement)",
+    "impactHigh": "High (relevant transformation)",
+    "accessibility": "Relationship with accessibility",
+    "accessibilityPlaceholder": "How does this suggestion contribute to accessibility? (optional)",
+    "email": "Your email (optional)",
+    "emailPlaceholder": "your@email.com",
+    "emailNote": "We will only use it to contact you about your suggestion, if necessary.",
+    "submit": "Send suggestion",
+    "successMessage": "✅ Your suggestion was sent successfully! We appreciate your contribution.",
+    "errorMessage": "An error occurred while sending. Please try again or contact us at latece@ufrn.br.",
+    "finalTitle": "What happens to your suggestion?",
+    "finalText": "All suggestions are read by the LATECE team. The best ideas are discussed in our meetings and may become projects, website improvements, or new features. Your participation is essential for us to grow together.",
+    "backHome": "Back to Home",
+    "about": "Learn about LATECE",
+    "required": "This field is required.",
+    "heroBadge": "Participate",
+    "heroTitle1": "Your",
+    "heroTitle2": "suggestion",
+    "heroTitle3": "can transform LATECE",
+    "heroSubtitle": "Share ideas, improvements, and observations about accessibility, assistive technology, and inclusion. Your contribution is essential."
+  },
+  "credits": {
+    "title": "Credits — Development Team — LATECE",
+    "subtitle": "Team responsible for the development of this portal",
+    "intro": "This portal was developed as part of the Assistive Technology Laboratory (LATECE) initiatives at the Federal University of Rio Grande do Norte (UFRN), with funding provided by the Brazilian Innovation Agency (FINEP).",
+    "teamHeading": "Development Team",
+    "roles": {
+      "webDev": "Web Developer — FINEP Fellow",
+      "researchFellow": "Undergraduate Research Assistant — FINEP Fellow"
+    },
+    "affiliations": {
+      "uern": "Affiliated with the State University of Rio Grande do Norte (UERN)"
+    },
+    "descriptions": {
+      "eduarda": "Responsible for the design, development, and maintenance of this institutional portal, supported by a FINEP research grant for the LATECE project."
+    },
+    "fundingHeading": "Funding and Institutional Support",
+    "fundingIntro": "The development of this portal was made possible thanks to the support of the following institutions:",
+    "funding": {
+      "finep": "Brazilian Innovation Agency — Research Grant",
+      "tecincluir": "Support program for research, development, and innovation",
+      "ufrn": "Federal University of Rio Grande do Norte",
+      "uern": "State University of Rio Grande do Norte"
+    },
+    "techHeading": "Technologies Used",
+    "heroBadge": "Development Team",
+    "heroTitle": "Credits",
+    "heroSubtitle": "Meet the people and institutions that made this portal possible.",
+    "backToHome": "← Back to Home"
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms of Use — LATECE — Assistive Technology Laboratory Portal UFRN",
+      "subtitle": "Conditions of use for the LATECE Portal. Read carefully.",
+      "heroBadge": "Institutional documentation",
+      "heroTitle1": "Terms of",
+      "heroTitle2": "Use",
+      "heroSubtitle": "Conditions of use for the LATECE Portal. Read carefully.",
+      "lastUpdated": "Last updated: August 22, 2026",
+      "section1": {
+        "title": "1. Acceptance of Terms",
+        "text": "By accessing and using the Assistive Technology Laboratory of the Education Center (LATECE) Portal, linked to the Federal University of Rio Grande do Norte (UFRN), you agree to these Terms of Use. If you do not agree with any provision described herein, we ask that you do not use the Portal."
+      },
+      "section2": {
+        "title": "2. Description of Service",
+        "text": "The LATECE Portal is an institutional website of an informative and academic nature, whose purpose is:",
+        "list": [
+          "To disseminate information about the Assistive Technology Laboratory",
+          "To present research, extension, and teaching projects developed by LATECE",
+          "To provide information about the team, equipment, and publications",
+          "To publish news and events related to assistive technology and inclusive education",
+          "To promote the visibility of the laboratory's actions to the academic community and society"
+        ],
+        "note": "The Portal does not carry out commercial transactions, does not offer paid services, and does not require registration of common users for browsing."
+      },
+      "section3": {
+        "title": "3. Intellectual Property",
+        "text": "All content made available on the LATECE Portal — including texts, images, logos, videos, graphics, layout, and source code — is the property of LATECE/UFRN or its respective authors and is protected by Brazilian copyright (Law No. 9.610/1998) and industrial property (Law No. 9.279/1996) legislation.",
+        "allowed": "It is permitted:",
+        "allowedList": [
+          "To access and view the content for personal and educational purposes",
+          "To share Portal links on social media and other media, provided the source is cited",
+          "To quote excerpts of the content in academic works, respecting bibliographic reference standards"
+        ],
+        "prohibited": "It is prohibited:",
+        "prohibitedList": [
+          "To reproduce, distribute, or modify the content for commercial purposes without prior authorization",
+          "To use the LATECE brand, logo, or visual identity without express consent",
+          "To reverse engineer or decompile the Portal's source code"
+        ]
+      },
+      "section4": {
+        "title": "4. Acceptable Use",
+        "text": "The user agrees to use the Portal ethically and in accordance with current legislation, and it is forbidden:",
+        "list": [
+          "To use the Portal for illegal purposes or contrary to morals and good customs",
+          "To attempt to access restricted areas of the system without authorization (administrative access)",
+          "To carry out denial of service attacks (DDoS), code injection (SQL Injection, XSS), or any attempt to exploit vulnerabilities",
+          "To use robots, scrapers, or automated mechanisms for mass data collection without authorization",
+          "To transmit malicious content, viruses, or code that could compromise the Portal's security"
+        ]
+      },
+      "section5": {
+        "title": "5. Data Collection",
+        "text": "The LATECE Portal does not collect personally identifiable information from common visitors. However, technical data is automatically collected for security and service improvement purposes. For detailed information about the data collected and its processing, please see our Privacy Policy."
+      },
+      "section6": {
+        "title": "6. Limitation of Liability",
+        "text": "LATECE/UFRN strives to keep the Portal information up to date and accurate, but does not guarantee that the content is free from errors, omissions, or outdated information.",
+        "list": [
+          "Direct or indirect damages arising from the use or inability to use the Portal",
+          "Content of external sites accessed through links available on the Portal",
+          "Temporary service interruptions due to maintenance, updates, or force majeure",
+          "Decisions made solely based on the information provided on the Portal"
+        ]
+      },
+      "section7": {
+        "title": "7. External Links",
+        "text": "The Portal may contain links to third-party sites (such as Instagram, YouTube, academic repositories). These links are provided for convenience and reference only. LATECE/UFRN does not endorse, control, or take responsibility for the content, privacy policies, or practices of these external sites."
+      },
+      "section8": {
+        "title": "8. Service Availability",
+        "text": "LATECE/UFRN does not guarantee that the Portal will be available uninterrupted or error-free. The service may be temporarily suspended for maintenance, updates, or due to force majeure, without prior notice."
+      },
+      "section9": {
+        "title": "9. Modifications to the Terms",
+        "text": "LATECE/UFRN reserves the right to modify these Terms of Use at any time, without prior notice. Changes take effect immediately after publication on the Portal. The date of the last update will always be indicated at the top of this document. Continued use of the Portal after changes constitutes acceptance of the new terms."
+      },
+      "section10": {
+        "title": "10. Applicable Law and Jurisdiction",
+        "text": "These Terms of Use are governed by the laws of the Federative Republic of Brazil, in particular:",
+        "list": [
+          "Law No. 12.965/2014 — Brazilian Civil Rights Framework for the Internet",
+          "Law No. 13.709/2018 — General Data Protection Law (LGPD)",
+          "Law No. 9.610/1998 — Copyright Law",
+          "Federal Constitution of 1988"
+        ],
+        "forum": "For the resolution of any disputes arising from these Terms, the Federal Court of Natal, State of Rio Grande do Norte, is elected."
+      },
+      "section11": {
+        "title": "11. Contact",
+        "text": "If you have any questions about these Terms of Use, please contact:",
+        "institution": "LATECE — Assistive Technology Laboratory of the Education Center / UFRN",
+        "email": "latece@ufrn.br",
+        "phone": "(84) 3342-2270",
+        "address": "Central Campus UFRN — Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy — LATECE — Data Protection",
+      "subtitle": "Transparency on how we handle your data on the LATECE Portal.",
+      "heroBadge": "Transparency",
+      "heroTitle1": "Privacy",
+      "heroTitle2": "Policy",
+      "heroSubtitle": "Understand how we handle your data and protect your privacy on the LATECE Portal.",
+      "lastUpdated": "Last updated: August 22, 2026",
+      "section1": {
+        "title": "1. Data Controller",
+        "text": "The controller of personal data processed through this Portal is the Assistive Technology Laboratory of the Education Center (LATECE), linked to the Federal University of Rio Grande do Norte (UFRN).",
+        "controller": "Federal University of Rio Grande do Norte (UFRN), through the Assistive Technology Laboratory of the Education Center (LATECE).",
+        "cnpj": "24.365.710/0001-83 (UFRN)",
+        "address": "Central Campus UFRN — Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900",
+        "email": "latece@ufrn.br",
+        "phone": "(84) 3342-2270"
+      },
+      "section2": {
+        "title": "2. Automatically Collected Data",
+        "text": "The LATECE Portal is an institutional website of a public and informational nature. We do not require registration, login, or any form of personal identification for visitors. However, during browsing, certain technical data is automatically collected by the servers and infrastructure of the site. Additionally, certain data are not requested or collected automatically, but may be voluntarily provided by the user.",
+        "subtitle1": "2.1. Technical Browsing Data",
+        "tableHeader": ["Data Collected", "Purpose", "Legal Basis (LGPD)"],
+        "tableRows": [
+          ["IP Address", "Security, attack prevention, and generation of aggregate statistics", "To be defined according to the purpose and institutional guidance of UFRN"],
+          ["Browser type (User-Agent)", "Technical compatibility and access statistics", "To be defined according to the purpose and institutional guidance of UFRN"],
+          ["Operating system", "Technical compatibility", "To be defined according to the purpose and institutional guidance of UFRN"],
+          ["Pages visited and time spent", "Service improvement and usage analysis", "To be defined according to the purpose and institutional guidance of UFRN"],
+          ["Date and time of access", "Activity log and security", "To be defined according to the purpose and institutional guidance of UFRN"],
+          ["Approximate location (via IP)", "Aggregate geographic statistics", "To be defined according to the purpose and institutional guidance of UFRN"],
+          ["Source URL (Referer)", "Traffic analysis", "To be defined according to the purpose and institutional guidance of UFRN"]
+        ],
+        "subtitle2": "2.2. Server Error Logs",
+        "logsText": "When technical errors occur on the Portal, the server automatically records logs containing information such as: the URL accessed, the type of error, the IP address of the requester, and the timestamp of the event. These logs are used exclusively for technical diagnosis and fault correction, and are retained for a maximum of 90 days.",
+        "subtitle3": "2.3. Session Cookies",
+        "cookieText": "The Portal uses a single essential technical cookie:",
+        "cookieTableHeader": ["Cookie", "Purpose", "Duration"],
+        "cookieRows": [
+          ["auth_token", "Maintain the session of authenticated administrators in the administrative panel", "24 hours"]
+        ],
+        "cookieNote": "This cookie is created only when an administrator logs into the administrative panel. Regular visitors to the Portal do not receive this cookie. The Portal does not use tracking, marketing, or advertising cookies."
+      },
+      "section3": {
+        "title": "3. Voluntarily Provided Data (Forms and Registrations)",
+        "text": "On specific occasions (such as contact forms, event registrations, workshops, or participation in research), the user may voluntarily provide personal data. In these cases, the following guidelines apply:",
+        "list": [
+          "What data is requested: Only those strictly necessary for the specific purpose (e.g., name and email for contact or certification).",
+          "What they are used for: Exclusively for the purpose informed at the time of collection (e.g., to respond to the message, issue a certificate).",
+          "Who receives and third parties involved: Data is received only by the LATECE team responsible for the demand. There is no sharing with third parties, except for institutional UFRN platforms for issuing certificates or academic systems, if applicable.",
+          "Storage and retention: Data may be forwarded by institutional email or temporarily stored in the database. They are retained only for as long as necessary to fulfill the purpose, and then deleted, subject to UFRN's legal obligations.",
+          "How to request deletion: The data subject may, at any time, request the deletion of their voluntary data by sending an email to latece@ufrn.br, subject to technical and legal feasibility analysis."
+        ]
+      },
+      "section4": {
+        "title": "4. Data NOT Collected",
+        "text": "For full transparency, we declare that the LATECE Portal does NOT collect the following types of data:",
+        "list": [
+          "Name, ID, or other identification documents from visitors (except voluntary form filling)",
+          "Email or phone number from visitors (except voluntary form filling)",
+          "Payment data or financial information",
+          "Biometric data (fingerprint, facial recognition)",
+          "Health data",
+          "Precise geolocation (GPS)",
+          "Behavioral data for advertising or profiling purposes"
+        ]
+      },
+      "section5": {
+        "title": "5. Purpose of Data Processing",
+        "text": "Automatically collected technical data is used exclusively for:",
+        "list": [
+          "Ensuring the security and stability of the Portal",
+          "Preventing and detecting malicious activities (DDoS attacks, intrusion attempts, spam)",
+          "Generating aggregated and anonymous statistics on Portal usage",
+          "Diagnosing and correcting technical failures",
+          "Complying with legal obligations under the Brazilian Civil Rights Framework for the Internet (Law No. 12.965/2014)"
+        ]
+      },
+      "section6": {
+        "title": "6. Data Sharing",
+        "text": "Data collected by the LATECE Portal is not shared with third parties for commercial purposes. Sharing may occur only in the following hypotheses:",
+        "list": [
+          "With the Superintendence of Information Technology (STI) of UFRN, responsible for the network infrastructure and servers",
+          "With public authorities, upon court order or legal determination, as provided by law",
+          "To comply with legal or regulatory obligations"
+        ]
+      },
+      "section7": {
+        "title": "7. Data Subject Rights",
+        "text": "In accordance with Art. 18 of the General Data Protection Law (Law No. 13.709/2018), you have the following rights regarding your personal data:",
+        "list": [
+          "Confirmation — Confirm the existence of processing of personal data",
+          "Access — Access the personal data we process about you",
+          "Correction — Request the correction of incomplete, inaccurate, or outdated data",
+          "Anonymization, blocking, or deletion — Request the anonymization, blocking, or deletion of unnecessary or non-compliant data",
+          "Portability — Request the portability of data to another service provider, subject to the requirements and limitations set forth in the LGPD and applicable regulations for Public Administration",
+          "Deletion — Request the deletion of personal data processed with consent",
+          "Information — Be informed about entities with which your data has been shared",
+          "Revocation — Revoke consent at any time (applicable to cases where processing is based solely on consent, such as voluntary forms)"
+        ],
+        "contact": "To exercise any of these rights, please contact us at latece@ufrn.br."
+      },
+      "section8": {
+        "title": "8. Data Security",
+        "text": "The LATECE Portal adopts technical and administrative measures to protect processed data, including:",
+        "list": [
+          "Communication encryption via HTTPS/TLS",
+          "HTTP security headers (Content-Security-Policy, X-Frame-Options, HSTS)",
+          "Protection against XSS (Cross-Site Scripting) and CSRF (Cross-Site Request Forgery) attacks",
+          "Rate limiting to prevent abuse and brute force attacks",
+          "JWT token authentication with automatic expiration",
+          "Administrator passwords stored with bcrypt hash (never in plain text)",
+          "Validation and sanitization of all data inputs",
+          "Parameterized database queries (prevention of SQL Injection)"
+        ]
+      },
+      "section9": {
+        "title": "9. Data Retention",
+        "text": "Collected data is retained for the following periods:",
+        "tableHeader": ["Data Type", "Retention Period", "Justification"],
+        "tableRows": [
+          ["Access logs (IP, User-Agent)", "6 months", "Art. 15, Brazilian Civil Rights Framework for the Internet"],
+          ["Error logs", "90 days", "Technical necessity"],
+          ["auth_token cookie", "24 hours (auto-expiration)", "Administrative session"]
+        ]
+      },
+      "section10": {
+        "title": "10. International Transfer and Third-Party Services",
+        "text": "Some Portal pages may incorporate third-party services, such as videos hosted on YouTube. When accessing embedded content, certain technical information (such as IP address and technical cookies) may be processed by the respective provider, in accordance with their own privacy policies.",
+        "note": "In these cases, data transfer and processing occur under the responsibility of these third parties, in compliance with the data protection laws applicable to their services."
+      },
+      "section11": {
+        "title": "11. Protection of Minors",
+        "text": "The institutional Portal does not request or deliberately collect personal data from children and adolescents for browsing or advertising purposes.",
+        "note": "Any processing of personal data of children and adolescents carried out within the scope of LATECE research, projects, or academic activities will observe its own legal, ethical, and institutional requirements, including, when applicable, the rules regarding research involving human subjects."
+      },
+      "section12": {
+        "title": "12. Changes to this Policy",
+        "text": "This Privacy Policy may be updated periodically to reflect changes in data processing practices or applicable legislation. The date of the last update is always indicated at the top of this document. We recommend that you check this page regularly."
+      },
+      "section13": {
+        "title": "13. Applicable Law",
+        "text": "This Privacy Policy is governed by Brazilian law, in particular:",
+        "list": [
+          "Law No. 13.709/2018 — General Data Protection Law (LGPD)",
+          "Law No. 12.965/2014 — Brazilian Civil Rights Framework for the Internet",
+          "Decree No. 8.771/2016 — Regulation of the Civil Rights Framework for the Internet",
+          "Federal Constitution of 1988 — Art. 5, X and XII (privacy and secrecy)"
+        ]
+      },
+      "section14": {
+        "title": "14. Contact and Data Protection Officer (DPO)",
+        "text": "For questions, requests, or complaints related to the processing of personal data, please contact:",
+        "dpo": "Data Protection Officer: Information and contact channel provided by the Federal University of Rio Grande do Norte (UFRN)",
+        "email": "latece@ufrn.br",
+        "phone": "(84) 3342-2270",
+        "address": "Central Campus UFRN — Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900",
+        "anpd": "If you do not receive a satisfactory response, you may file a complaint with the National Data Protection Authority (ANPD) through the website www.gov.br/anpd."
+      }
+    }
+  },
+  "auth": {
+    "username": "Username",
+    "usernamePlaceholder": "Enter your username",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "login": "Login",
+    "loggingIn": "Logging in..."
+  },
+  "admin": {
+    "title": "Administration Panel",
+    "dashboard": "Dashboard",
+    "news": "News",
+    "equipment": "Equipment",
+    "publications": "Publications",
+    "team": "Team",
+    "settings": "Settings",
+    "addNew": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "search": "Search...",
+    "status": "Status",
+    "draft": "Draft",
+    "published": "Published",
+    "actions": "Actions"
+  },
+  "forms": {
+    "title": "Title",
+    "content": "Content",
+    "excerpt": "Excerpt",
+    "name": "Name",
+    "description": "Description",
+    "email": "Email",
+    "role": "Role",
+    "bio": "Biography",
+    "image": "Image",
+    "file": "File",
+    "required": "Required",
+    "optional": "Optional",
+    "selectOption": "Select an option...",
+    "uploadFile": "Upload file",
+    "chooseFile": "Choose file"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information",
+    "close": "Close",
+    "back": "Back",
+    "backToHome": "← Back to Home",
+    "next": "Next",
+    "previous": "Previous",
+    "page": "Page",
+    "of": "of",
+    "results": "results",
+    "noData": "No data available",
+    "tryAgain": "Try again",
+    "contact": "Contact",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "website": "Website"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to content",
+    "highContrast": "High contrast",
+    "normalContrast": "Normal contrast",
+    "increaseFont": "Increase font",
+    "decreaseFont": "Decrease font",
+    "screenReader": "Screen reader",
+    "keyboardNavigation": "Keyboard navigation"
+  }
+}
