@@ -1,5 +1,3 @@
-# README.md — VERSÃO REFINADA
-
 <!--
   README.md — Portal LATECE
   Versão: 3.0 (pós‑migração e correções)
