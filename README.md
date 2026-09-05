@@ -1,3 +1,6 @@
+# README.md — VERSÃO REFINADA
+
+```markdown
 <!--
   README.md — Portal LATECE
   Versão: 3.0 (pós‑migração e correções)
@@ -205,98 +208,123 @@ O projeto implementa um sistema de temas baseado em **variáveis CSS** e no atri
   --surface: #242842;
   --border: #51577D;
 }
-Identidade Visual
-A identidade visual do LATECE é baseada em uma paleta de cores que reflete a seriedade, a inovação e o compromisso com a acessibilidade. O sistema de design está documentado em variables.css e aplicado globalmente.
+```
 
-Paleta de Cores
-Função	Cor (Claro)	Cor (Escuro)	Uso
-Primária	#2E1065	#B9A3FF	Ações principais, links, destaques
-Primária (light)	#7C3AED	#D0C3FF	Hovers, links sobre fundos escuros
-Primária (dark)	#1A0A3A	#8F73E6	Gradientes, estados ativos
-Secundária	#928B45	#E6C76B	Badges, categorias, ícones
-Acento	#C77A5B	#E6A078	Chamadas, elementos decorativos
-Sucesso	#2E7D32	#69D391	Mensagens de sucesso
-Aviso	#B76E2E	#F0C674	Alertas e avisos
-Erro	#C62828	#FF8585	Mensagens de erro
-Fundo global	#FFFFFF	#10111F	Body e áreas principais
-Superfície	#FFFFFF	#242842	Cards, formulários, blocos
-Superfície elevada	#F9F9FB	#2D3150	Modais, dropdowns, tooltips
-Texto principal	#1A1A2E	#F7F5FF	Títulos e conteúdo principal
-Texto secundário	#4D4A6E	#D7D3E8	Descrições, metadados
-Texto muted	#6B6788	#AAA6C2	Informações auxiliares
-Borda	#E2E0E8	#51577D	Divisores e limites de componentes
-Borda forte	#C8C5D4	#737AA6	Controles e limites funcionais
-Tipografia
-Títulos: 'Montserrat', sans-serif (pesos 400–800)
+---
 
-Corpo: 'Open Sans', sans-serif (pesos 400–700)
+## Identidade Visual
 
-Escala: 0.75rem a 3.5rem, com clareza hierárquica.
+A identidade visual do LATECE é baseada em uma paleta de cores que reflete a seriedade, a inovação e o compromisso com a acessibilidade. O sistema de design está documentado em `variables.css` e aplicado globalmente.
 
-Componentes visuais
-Cards: border-radius: 16px, box-shadow suave, hover com elevação.
+### Paleta de Cores
 
-Botões: border-radius: 8px, transições suaves, estados hover/focus/active.
+| Função | Cor (Claro) | Cor (Escuro) | Uso |
+|--------|-------------|--------------|-----|
+| **Primária** | `#2E1065` | `#B9A3FF` | Ações principais, links, destaques |
+| **Primária (light)** | `#7C3AED` | `#D0C3FF` | Hovers, links sobre fundos escuros |
+| **Primária (dark)** | `#1A0A3A` | `#8F73E6` | Gradientes, estados ativos |
+| **Secundária** | `#928B45` | `#E6C76B` | Badges, categorias, ícones |
+| **Acento** | `#C77A5B` | `#E6A078` | Chamadas, elementos decorativos |
+| **Sucesso** | `#2E7D32` | `#69D391` | Mensagens de sucesso |
+| **Aviso** | `#B76E2E` | `#F0C674` | Alertas e avisos |
+| **Erro** | `#C62828` | `#FF8585` | Mensagens de erro |
+| **Fundo global** | `#FFFFFF` | `#10111F` | Body e áreas principais |
+| **Superfície** | `#FFFFFF` | `#242842` | Cards, formulários, blocos |
+| **Superfície elevada** | `#F9F9FB` | `#2D3150` | Modais, dropdowns, tooltips |
+| **Texto principal** | `#1A1A2E` | `#F7F5FF` | Títulos e conteúdo principal |
+| **Texto secundário** | `#4D4A6E` | `#D7D3E8` | Descrições, metadados |
+| **Texto muted** | `#6B6788` | `#AAA6C2` | Informações auxiliares |
+| **Borda** | `#E2E0E8` | `#51577D` | Divisores e limites de componentes |
+| **Borda forte** | `#C8C5D4` | `#737AA6` | Controles e limites funcionais |
 
-Hero: Gradientes e formas orgânicas, com alto contraste.
+### Tipografia
 
-Ícones: Utilizados para ações e informações complementares.
+- **Títulos**: `'Montserrat', sans-serif` (pesos 400–800)
+- **Corpo**: `'Open Sans', sans-serif` (pesos 400–700)
+- **Escala**: `0.75rem` a `3.5rem`, com clareza hierárquica.
 
-Arquitetura Técnica
-O portal LATECE é uma aplicação estática com componentes dinâmicos, construída com tecnologias web padrão, sem frameworks ou bibliotecas externas.
+### Componentes visuais
 
-Diagrama de Arquitetura
+- **Cards**: `border-radius: 16px`, `box-shadow` suave, hover com elevação.
+- **Botões**: `border-radius: 8px`, transições suaves, estados hover/focus/active.
+- **Hero**: Gradientes e formas orgânicas, com alto contraste.
+- **Ícones**: Utilizados para ações e informações complementares.
 
+---
 
+## Arquitetura Técnica
 
+O portal LATECE é uma **aplicação estática com componentes dinâmicos**, construída com tecnologias web padrão, sem frameworks ou bibliotecas externas.
 
+### Diagrama de Arquitetura
 
+```mermaid
+flowchart TD
+    A[Usuário] --> B[HTML5]
+    A --> C[CSS3]
+    A --> D[JavaScript]
 
+    B --> E[Páginas]
+    E --> F[Header]
+    E --> G[Footer]
+    E --> H[Conteúdo]
 
+    D --> I[Módulos]
+    I --> J[components.js]
+    I --> K[data.js]
+    I --> L[i18n.js]
+    I --> M[accessibility.js]
+    I --> N[news.js]
+    I --> O[main.js]
+    I --> P[admin.js]
 
+    K --> Q[JSON]
+    L --> R[locales/*.json]
+    Q --> S[equipment.json]
+    Q --> T[publications.json]
+    Q --> U[news-fallback.json]
+    Q --> V[team.json]
 
+    C --> W[variables.css]
+    C --> X[components.css]
+    C --> Y[accessibility.css]
+    C --> Z[admin.css]
+```
 
+### Tecnologias Utilizadas
 
+| Tecnologia | Uso |
+|------------|-----|
+| **HTML5** | Estrutura semântica das páginas |
+| **CSS3** | Estilização, variáveis, temas, responsividade |
+| **JavaScript (ES Modules)** | Lógica, componentes, interatividade, carregamento de dados |
+| **JSON** | Dados de conteúdo (equipe, equipamentos, publicações, notícias) e traduções |
+| **GitHub Pages** | Hospedagem e publicação do site estático |
 
+### Organização dos Módulos JavaScript
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Tecnologias Utilizadas
-Tecnologia	Uso
-HTML5	Estrutura semântica das páginas
-CSS3	Estilização, variáveis, temas, responsividade
-JavaScript (ES Modules)	Lógica, componentes, interatividade, carregamento de dados
-JSON	Dados de conteúdo (equipe, equipamentos, publicações, notícias) e traduções
-GitHub Pages	Hospedagem e publicação do site estático
-Organização dos Módulos JavaScript
 O código JavaScript é organizado em módulos ES, permitindo reutilização e manutenção facilitada.
 
-Módulo	Finalidade
-path.js	Resolução de caminhos para compatibilidade com GitHub Pages (subdiretório).
-main.js	Ponto de entrada para o site público.
-components.js	Fábrica de componentes HTML (header, footer, cards, modais, paginação).
-data.js	Carregamento de dados JSON com fallback.
-i18n.js	Internacionalização (carregamento de traduções, aplicação ao DOM).
-accessibility.js	Painel de acessibilidade, temas, preferências.
-news.js	Lógica específica para notícias (fetch, filtros, paginação).
-admin.js	Painel administrativo (SPA, com roteador).
-auth.js	Autenticação (fallback para credenciais fixas).
-router.js	Roteamento SPA para o painel administrativo.
-Estrutura do Projeto
+| Módulo | Finalidade |
+|--------|------------|
+| `path.js` | Resolução de caminhos para compatibilidade com GitHub Pages (subdiretório). |
+| `main.js` | Ponto de entrada para o site público. |
+| `components.js` | Fábrica de componentes HTML (header, footer, cards, modais, paginação). |
+| `data.js` | Carregamento de dados JSON com fallback. |
+| `i18n.js` | Internacionalização (carregamento de traduções, aplicação ao DOM). |
+| `accessibility.js` | Painel de acessibilidade, temas, preferências. |
+| `news.js` | Lógica específica para notícias (fetch, filtros, paginação). |
+| `admin.js` | Painel administrativo (SPA, com roteador). |
+| `auth.js` | Autenticação (fallback para credenciais fixas). |
+| `router.js` | Roteamento SPA para o painel administrativo. |
+
+---
+
+## Estrutura do Projeto
+
 A árvore abaixo representa a estrutura de diretórios e os principais arquivos do projeto, com base na versão atual.
 
-text
+```
 lateceufrn/
 ├── .nojekyll                 # Impede processamento Jekyll no GitHub Pages
 ├── 404.html                  # Página de erro personalizada
@@ -352,44 +380,62 @@ lateceufrn/
     ├── en.json               # Traduções para inglês
     ├── es.json               # Traduções para espanhol
     └── pt.json               # Traduções para português
-Explicação dos Diretórios
-Diretório/Arquivo	Responsabilidade
-css/	Todos os estilos do projeto, organizados por responsabilidade.
-js/	Código JavaScript modular (ES Modules).
-data/	Arquivos JSON com dados de conteúdo (equipe, equipamentos, publicações, notícias).
-locales/	Arquivos de tradução para os idiomas suportados.
-assets/	Recursos estáticos: imagens, ícones, logotipos, arquivos para download.
-admin/	Arquivos do painel administrativo.
-.nojekyll	Arquivo de configuração para GitHub Pages, impedindo o processamento Jekyll.
-Sistema de Componentes
-O portal utiliza um sistema de componentes reutilizáveis, implementados em JavaScript (via components.js) e estilizados globalmente. Os componentes são injetados dinamicamente nas páginas, garantindo consistência e facilitando a manutenção.
+```
 
-Componentes Principais
-Componente	Função	Páginas	Dependências
-Header	Barra superior com navegação, logo e seletor de idioma.	Todas	components.js, i18n.js, path.js
-Footer	Rodapé com informações institucionais, links e mapa.	Todas	components.js, path.js
-TeamCard	Exibe membro da equipe com foto, nome, função, instituição e ícone Lattes.	Team	components.js, i18n.js
-EquipmentCard	Exibe equipamento com imagem, categoria, descrição e download.	Equipment	components.js, i18n.js, path.js
-PublicationItem	Exibe publicação com resumo, autores, ano e ações.	Publications	components.js, i18n.js
-NewsCard	Exibe notícia com imagem/vídeo, título, resumo.	Home, News	components.js, i18n.js, path.js
-NewsDetail	Exibe conteúdo completo de uma notícia.	News Detail	components.js, i18n.js, path.js
-Carousel	Loop infinito de notícias na Home.	Home	components.js, news.js
-Pagination	Navegação entre páginas de listas.	Equipment, Publications, News	components.js
-Modal	Sobreposição para detalhes de equipamentos/publicações.	Equipment, Publications	components.js, i18n.js, path.js
-AccessibilityPanel	Controles de acessibilidade (contraste, fonte, temas).	Todas	accessibility.js
-LanguageSelector	Seletor de idioma (dropdown).	Todas	main.js, i18n.js
-BackToTop	Botão para voltar ao topo da página.	Todas	main.js
-Sistema de Dados
-Os dados de conteúdo são armazenados em arquivos JSON localizados no diretório data/. Eles são carregados via fetch utilizando a função resolvePath (do módulo path.js) para garantir caminhos corretos em qualquer ambiente (subdiretório).
+### Explicação dos Diretórios
 
-Arquivos JSON
-Arquivo	Finalidade	Chave principal	Consumidores
-team.json	Dados da equipe	members	data.js → loadTeamData()
-equipment.json	Catálogo de equipamentos	items	data.js → loadEquipmentData()
-publications.json	Repositório de publicações	items	data.js → loadPublicationsData()
-news-fallback.json	Notícias (fallback)	items	data.js → loadNewsFallback()
-Exemplo de Estrutura (team.json)
-json
+| Diretório/Arquivo | Responsabilidade |
+|-------------------|------------------|
+| **`css/`** | Todos os estilos do projeto, organizados por responsabilidade. |
+| **`js/`** | Código JavaScript modular (ES Modules). |
+| **`data/`** | Arquivos JSON com dados de conteúdo (equipe, equipamentos, publicações, notícias). |
+| **`locales/`** | Arquivos de tradução para os idiomas suportados. |
+| **`assets/`** | Recursos estáticos: imagens, ícones, logotipos, arquivos para download. |
+| **`admin/`** | Arquivos do painel administrativo. |
+| **`.nojekyll`** | Arquivo de configuração para GitHub Pages, impedindo o processamento Jekyll. |
+
+---
+
+## Sistema de Componentes
+
+O portal utiliza um sistema de componentes reutilizáveis, implementados em JavaScript (via `components.js`) e estilizados globalmente. Os componentes são injetados dinamicamente nas páginas, garantindo consistência e facilitando a manutenção.
+
+### Componentes Principais
+
+| Componente | Função | Páginas | Dependências |
+|------------|--------|---------|--------------|
+| **Header** | Barra superior com navegação, logo e seletor de idioma. | Todas | `components.js`, `i18n.js`, `path.js` |
+| **Footer** | Rodapé com informações institucionais, links e mapa. | Todas | `components.js`, `path.js` |
+| **TeamCard** | Exibe membro da equipe com foto, nome, função, instituição e ícone Lattes. | Team | `components.js`, `i18n.js` |
+| **EquipmentCard** | Exibe equipamento com imagem, categoria, descrição e download. | Equipment | `components.js`, `i18n.js`, `path.js` |
+| **PublicationItem** | Exibe publicação com resumo, autores, ano e ações. | Publications | `components.js`, `i18n.js` |
+| **NewsCard** | Exibe notícia com imagem/vídeo, título, resumo. | Home, News | `components.js`, `i18n.js`, `path.js` |
+| **NewsDetail** | Exibe conteúdo completo de uma notícia. | News Detail | `components.js`, `i18n.js`, `path.js` |
+| **Carousel** | Loop infinito de notícias na Home. | Home | `components.js`, `news.js` |
+| **Pagination** | Navegação entre páginas de listas. | Equipment, Publications, News | `components.js` |
+| **Modal** | Sobreposição para detalhes de equipamentos/publicações. | Equipment, Publications | `components.js`, `i18n.js`, `path.js` |
+| **AccessibilityPanel** | Controles de acessibilidade (contraste, fonte, temas). | Todas | `accessibility.js` |
+| **LanguageSelector** | Seletor de idioma (dropdown). | Todas | `main.js`, `i18n.js` |
+| **BackToTop** | Botão para voltar ao topo da página. | Todas | `main.js` |
+
+---
+
+## Sistema de Dados
+
+Os dados de conteúdo são armazenados em arquivos JSON localizados no diretório `data/`. Eles são carregados via `fetch` utilizando a função `resolvePath` (do módulo `path.js`) para garantir caminhos corretos em qualquer ambiente (subdiretório).
+
+### Arquivos JSON
+
+| Arquivo | Finalidade | Chave principal | Consumidores |
+|---------|------------|-----------------|--------------|
+| `team.json` | Dados da equipe | `members` | `data.js` → `loadTeamData()` |
+| `equipment.json` | Catálogo de equipamentos | `items` | `data.js` → `loadEquipmentData()` |
+| `publications.json` | Repositório de publicações | `items` | `data.js` → `loadPublicationsData()` |
+| `news-fallback.json` | Notícias (fallback) | `items` | `data.js` → `loadNewsFallback()` |
+
+### Exemplo de Estrutura (team.json)
+
+```json
 {
   "version": "1.0.0",
   "updatedAt": "2026-09-03T00:00:00Z",
@@ -407,592 +453,681 @@ json
     }
   ]
 }
-Carregamento e Fallback
-Todos os dados são carregados via data.js, que utiliza fetch com resolvePath. Em caso de erro de carregamento, a função retorna um array vazio, garantindo que a interface não quebre.
+```
 
-Internacionalização
-O portal suporta três idiomas: Português (pt), Inglês (en) e Espanhol (es). A internacionalização é gerenciada pelo módulo i18n.js, que carrega arquivos de tradução JSON e aplica dinamicamente ao DOM sem modificar a URL.
+### Carregamento e Fallback
 
-Arquivos de Tradução
-locales/pt.json — Português
+Todos os dados são carregados via `data.js`, que utiliza `fetch` com `resolvePath`. Em caso de erro de carregamento, a função retorna um array vazio, garantindo que a interface não quebre.
 
-locales/en.json — Inglês
+---
 
-locales/es.json — Espanhol
+## Internacionalização
 
-Mecanismo
-O idioma é detectado a partir de localStorage ou do navegador.
+O portal suporta três idiomas: **Português (pt)**, **Inglês (en)** e **Espanhol (es)**. A internacionalização é gerenciada pelo módulo `i18n.js`, que carrega arquivos de tradução JSON e aplica dinamicamente ao DOM sem modificar a URL.
 
-O arquivo de tradução correspondente é carregado via fetch (com resolvePath).
+### Arquivos de Tradução
 
-Os elementos HTML com os atributos data-i18n, data-i18n-placeholder, data-i18n-aria-label e data-i18n-title são traduzidos automaticamente.
+- `locales/pt.json` — Português
+- `locales/en.json` — Inglês
+- `locales/es.json` — Espanhol
 
-O seletor de idioma (dropdown) permite a troca manual, persistindo a escolha em localStorage.
+### Mecanismo
 
-Exemplo de Uso
-html
+1. O idioma é detectado a partir de `localStorage` ou do navegador.
+2. O arquivo de tradução correspondente é carregado via `fetch` (com `resolvePath`).
+3. Os elementos HTML com os atributos `data-i18n`, `data-i18n-placeholder`, `data-i18n-aria-label` e `data-i18n-title` são traduzidos automaticamente.
+4. O seletor de idioma (dropdown) permite a troca manual, persistindo a escolha em `localStorage`.
+
+### Exemplo de Uso
+
+```html
 <h1 data-i18n="home.title">Portal LATECE</h1>
 <input type="text" data-i18n-placeholder="search.placeholder" placeholder="Buscar...">
 <button data-i18n="nav.home">Início</button>
-Páginas e Funcionalidades
-1. Página Inicial (index.html)
-Hero: Chamada principal com estatísticas (fundação, pesquisadores, projetos).
+```
 
-Missão: Bloco com a missão do LATECE.
+---
 
-Carrossel de Notícias: Loop infinito das últimas notícias.
+## Páginas e Funcionalidades
 
-Acesso Rápido: Links para Sobre, Equipamentos e Publicações.
+### 1. Página Inicial (index.html)
 
-2. Sobre (about.html)
-Quem Somos: História e descrição do laboratório.
+- **Hero**: Chamada principal com estatísticas (fundação, pesquisadores, projetos).
+- **Missão**: Bloco com a missão do LATECE.
+- **Carrossel de Notícias**: Loop infinito das últimas notícias.
+- **Acesso Rápido**: Links para Sobre, Equipamentos e Publicações.
 
-Missão e Visão: Cards com a missão e visão.
+### 2. Sobre (about.html)
 
-Objetivos Estratégicos: Lista de objetivos com ícones.
+- **Quem Somos**: História e descrição do laboratório.
+- **Missão e Visão**: Cards com a missão e visão.
+- **Objetivos Estratégicos**: Lista de objetivos com ícones.
+- **Justificativa**: Textos explicativos.
+- **Nosso Diferencial**: Card destacado.
 
-Justificativa: Textos explicativos.
+### 3. Equipe (team.html)
 
-Nosso Diferencial: Card destacado.
+- Lista de membros organizados por categoria (Coordenação, Equipe Técnica, Bolsistas, Pesquisadores Parceiros, Colaboradores, Desenvolvedores).
+- Cada membro é exibido em um card com foto (ou iniciais), nome, função, instituição e ícone do Lattes (link para currículo).
+- Cards com tamanho padronizado (altura mínima 360px, largura máxima 320px).
 
-3. Equipe (team.html)
-Lista de membros organizados por categoria (Coordenação, Equipe Técnica, Bolsistas, Pesquisadores Parceiros, Colaboradores, Desenvolvedores).
+### 4. Equipamentos (equipment.html)
 
-Cada membro é exibido em um card com foto (ou iniciais), nome, função, instituição e ícone do Lattes (link para currículo).
+- Catálogo com filtros (busca por nome/descrição, categoria).
+- Paginação (10 itens por página).
+- Cards com imagem, nome, categoria, descrição e botão de download (quando disponível).
+- Modal com detalhes adicionais.
 
-Cards com tamanho padronizado (altura mínima 360px, largura máxima 320px).
+### 5. Publicações (publications.html)
 
-4. Equipamentos (equipment.html)
-Catálogo com filtros (busca por nome/descrição, categoria).
+- Lista com filtros (busca, tipo, ano).
+- Paginação (10 itens por página).
+- Cards com título, autores, ano, resumo e ações (ver detalhes, download/acessar).
 
-Paginação (10 itens por página).
+### 6. Notícias (news.html e news-detail.html)
 
-Cards com imagem, nome, categoria, descrição e botão de download (quando disponível).
+- **Listagem**: Filtros (busca, categoria), paginação (10 itens por página).
+- **Detalhe**: Conteúdo completo, com suporte a vídeo (YouTube), tags e links relacionados.
+- **Carrossel na Home**: Loop infinito das últimas notícias.
 
-Modal com detalhes adicionais.
+### 7. Sugestões (sugestoes.html)
 
-5. Publicações (publications.html)
-Lista com filtros (busca, tipo, ano).
+- Formulário com campos: categoria, título, descrição, impacto, relação com acessibilidade, e-mail.
+- Validação no lado do cliente.
+- Envio via API Static Forms.
+- Mensagens de sucesso/erro.
 
-Paginação (10 itens por página).
+### 8. Termos de Uso e Política de Privacidade
 
-Cards com título, autores, ano, resumo e ações (ver detalhes, download/acessar).
+- Documentos institucionais com conteúdo estático.
 
-6. Notícias (news.html e news-detail.html)
-Listagem: Filtros (busca, categoria), paginação (10 itens por página).
+### 9. Painel Administrativo (admin/index.html)
 
-Detalhe: Conteúdo completo, com suporte a vídeo (YouTube), tags e links relacionados.
+- **Login**: Autenticação com fallback para credenciais fixas (admin/admin123) quando a API não está disponível.
+- **Dashboard**: Visão geral com estatísticas mock.
+- **Gerenciar Notícias**: Listagem, filtros e ações (visualizar, editar, publicar, excluir). **Modo de leitura** em produção, pois as operações CRUD dependem de backend.
+- **Criar/Editar Notícia**: Formulário com campos e upload de imagem. **Operações dependem de backend**.
+- **Criar Usuário**: Disponível apenas para administradores. Depende de backend.
 
-Carrossel na Home: Loop infinito das últimas notícias.
+---
 
-7. Sugestões (sugestoes.html)
-Formulário com campos: categoria, título, descrição, impacto, relação com acessibilidade, e-mail.
+## Responsividade
 
-Validação no lado do cliente.
+O portal foi desenvolvido com uma abordagem **mobile-first**, utilizando breakpoints definidos no CSS para garantir uma experiência consistente em diferentes dispositivos.
 
-Envio via API Static Forms.
+| Breakpoint | Largura | Comportamento |
+|------------|---------|---------------|
+| **Mobile** | < 480px | Layout em coluna única, menu hambúrguer, ajustes de espaçamento. |
+| **Tablet** | 480px – 768px | Grids com 2 colunas, ajustes de tipografia. |
+| **Desktop** | 768px – 1024px | Grids com 3 ou 4 colunas, navegação completa. |
+| **Wide** | > 1024px | Conteúdo centralizado com largura máxima. |
 
-Mensagens de sucesso/erro.
+### Principais Adaptações
 
-8. Termos de Uso e Política de Privacidade
-Documentos institucionais com conteúdo estático.
+- **Header**: Top bar oculta em dispositivos móveis. Menu hambúrguer com overlay.
+- **Cards**: Grids responsivos com `auto-fit` e `minmax`.
+- **Carrossel**: Máscara lateral removida em mobile, adaptação de tamanho dos cards.
+- **Formulários**: Campos em largura total, empilhamento vertical.
+- **Tipografia**: Tamanhos ajustados via `clamp()`.
 
-9. Painel Administrativo (admin/index.html)
-Login: Autenticação com fallback para credenciais fixas (admin/admin123) quando a API não está disponível.
+---
 
-Dashboard: Visão geral com estatísticas mock.
+## Performance
 
-Gerenciar Notícias: Listagem, filtros e ações (visualizar, editar, publicar, excluir). Modo de leitura em produção, pois as operações CRUD dependem de backend.
-
-Criar/Editar Notícia: Formulário com campos e upload de imagem. Operações dependem de backend.
-
-Criar Usuário: Disponível apenas para administradores. Depende de backend.
-
-Responsividade
-O portal foi desenvolvido com uma abordagem mobile-first, utilizando breakpoints definidos no CSS para garantir uma experiência consistente em diferentes dispositivos.
-
-Breakpoint	Largura	Comportamento
-Mobile	< 480px	Layout em coluna única, menu hambúrguer, ajustes de espaçamento.
-Tablet	480px – 768px	Grids com 2 colunas, ajustes de tipografia.
-Desktop	768px – 1024px	Grids com 3 ou 4 colunas, navegação completa.
-Wide	> 1024px	Conteúdo centralizado com largura máxima.
-Principais Adaptações
-Header: Top bar oculta em dispositivos móveis. Menu hambúrguer com overlay.
-
-Cards: Grids responsivos com auto-fit e minmax.
-
-Carrossel: Máscara lateral removida em mobile, adaptação de tamanho dos cards.
-
-Formulários: Campos em largura total, empilhamento vertical.
-
-Tipografia: Tamanhos ajustados via clamp().
-
-Performance
 O portal é leve e rápido, utilizando técnicas de otimização para melhorar a experiência do usuário.
 
-Aspecto	Estratégia	Impacto
-JavaScript	Módulos ES, carregamento assíncrono (type="module")	Menor tempo de bloqueio.
-CSS	8 arquivos, carregamento síncrono no <head>	Renderização bloqueante, mas leve.
-Imagens	Lazy loading (atributo loading="lazy")	Redução de carregamento inicial.
-Fontes	Google Fonts com preconnect	Acelera carregamento de fontes.
-Carrossel	Animação infinita com prefers-reduced-motion	Respeita preferências do usuário.
-Recomendações de Melhoria
-Minificar CSS e JavaScript para produção.
+| Aspecto | Estratégia | Impacto |
+|---------|------------|---------|
+| **JavaScript** | Módulos ES, carregamento assíncrono (type="module") | Menor tempo de bloqueio. |
+| **CSS** | 8 arquivos, carregamento síncrono no `<head>` | Renderização bloqueante, mas leve. |
+| **Imagens** | Lazy loading (atributo `loading="lazy"`) | Redução de carregamento inicial. |
+| **Fontes** | Google Fonts com `preconnect` | Acelera carregamento de fontes. |
+| **Carrossel** | Animação infinita com `prefers-reduced-motion` | Respeita preferências do usuário. |
 
-Utilizar loading="lazy" para imagens fora da viewport (já parcialmente aplicado).
+### Recomendações de Melhoria
 
-Implementar um sistema de cache para dados JSON.
+- Minificar CSS e JavaScript para produção.
+- Utilizar `loading="lazy"` para imagens fora da viewport (já parcialmente aplicado).
+- Implementar um sistema de cache para dados JSON.
 
-SEO
+---
+
+## SEO
+
 O portal foi estruturado com boas práticas de SEO para melhorar a visibilidade em mecanismos de busca.
 
-Prática	Implementação
-Títulos	Definidos com data-i18n-title (dinâmico) ou <title> estático.
-Meta descrições	Presentes em todas as páginas.
-Open Graph	Tags og:title, og:description, og:image em todas as páginas.
-Twitter Cards	Tags twitter:card, twitter:title, twitter:description, twitter:image.
-Canonical	link rel="canonical" em todas as páginas.
-Heading hierarchy	Uso consistente de h1, h2, h3, h4.
-Estrutura semântica	HTML semântico (article, section, nav, header, footer).
-Dados estruturados	JSON-LD para notícias (injetado dinamicamente).
-Pendências de SEO
-Sitemap XML não encontrado.
+| Prática | Implementação |
+|---------|---------------|
+| **Títulos** | Definidos com `data-i18n-title` (dinâmico) ou `<title>` estático. |
+| **Meta descrições** | Presentes em todas as páginas. |
+| **Open Graph** | Tags `og:title`, `og:description`, `og:image` em todas as páginas. |
+| **Twitter Cards** | Tags `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`. |
+| **Canonical** | `link rel="canonical"` em todas as páginas. |
+| **Heading hierarchy** | Uso consistente de `h1`, `h2`, `h3`, `h4`. |
+| **Estrutura semântica** | HTML semântico (`article`, `section`, `nav`, `header`, `footer`). |
+| **Dados estruturados** | JSON-LD para notícias (injetado dinamicamente). |
 
-Robots.txt não encontrado.
+### Pendências de SEO
 
-Segurança
+- Sitemap XML não encontrado.
+- Robots.txt não encontrado.
+
+---
+
+## Segurança
+
 O portal, por ser estático, apresenta riscos limitados. No entanto, foram adotadas medidas para garantir a segurança básica.
 
-Aspecto	Implementação	Observação
-innerHTML	Usado em componentes (dados de JSON confiável)	Risco baixo, pois os dados são locais.
-eval	Não utilizado	—
-Formulários	Validação no cliente; envio para API externa (Static Forms)	Dados não sensíveis.
-APIs externas	Apenas Static Forms e YouTube (embeds)	Sem chaves expostas.
-localStorage	Preferências de usuário (idioma, acessibilidade, tema), token JWT	Token armazenado em localStorage (risco XSS, mas ambiente estático).
-XSS	Potencial em createNewsDetail com news.content	Recomenda-se sanitizar ou confiar que o JSON é seguro.
-Recomendações
-Sanitizar dados de news.content antes de usar innerHTML.
+| Aspecto | Implementação | Observação |
+|---------|---------------|------------|
+| **innerHTML** | Usado em componentes (dados de JSON confiável) | Risco baixo, pois os dados são locais. |
+| **eval** | Não utilizado | — |
+| **Formulários** | Validação no cliente; envio para API externa (Static Forms) | Dados não sensíveis. |
+| **APIs externas** | Apenas Static Forms e YouTube (embeds) | Sem chaves expostas. |
+| **localStorage** | Preferências de usuário (idioma, acessibilidade, tema), token JWT | Token armazenado em localStorage (risco XSS, mas ambiente estático). |
+| **XSS** | Potencial em `createNewsDetail` com `news.content` | Recomenda-se sanitizar ou confiar que o JSON é seguro. |
 
-Utilizar textContent sempre que possível.
+### Recomendações
 
-Revisar a exposição de tokens em localStorage.
+- Sanitizar dados de `news.content` antes de usar `innerHTML`.
+- Utilizar `textContent` sempre que possível.
+- Revisar a exposição de tokens em localStorage.
 
-GitHub Pages
-O portal é publicado no GitHub Pages, utilizando o subdiretório /lateceufrn/ como base. A configuração inclui:
+---
 
-Arquivo .nojekyll: Impede o processamento Jekyll, garantindo que arquivos e pastas com underscore não sejam ignorados.
+## GitHub Pages
 
-Mecanismo de caminhos: path.js define BASE_PATH e a função resolvePath(), garantindo que todos os recursos (imagens, CSS, JS, JSON) sejam carregados corretamente, independentemente do subdiretório.
+O portal é publicado no **GitHub Pages**, utilizando o subdiretório `/lateceufrn/` como base. A configuração inclui:
 
-Página 404: Personalizada, com redirecionamento para o subdiretório.
+- **Arquivo `.nojekyll`**: Impede o processamento Jekyll, garantindo que arquivos e pastas com underscore não sejam ignorados.
+- **Mecanismo de caminhos**: `path.js` define `BASE_PATH` e a função `resolvePath()`, garantindo que todos os recursos (imagens, CSS, JS, JSON) sejam carregados corretamente, independentemente do subdiretório.
+- **Página 404**: Personalizada, com redirecionamento para o subdiretório.
 
-URL de Produção
-https://polimatastudio.github.io/lateceufrn/
+### URL de Produção
 
-Publicação Futura
-Embora atualmente hospedado no GitHub Pages, o projeto é preparado para ser publicado em um domínio institucional da UFRN. Para isso, basta ajustar o BASE_PATH ou remover o prefixo e atualizar os caminhos relativos.
+[https://polimatastudio.github.io/lateceufrn/](https://polimatastudio.github.io/lateceufrn/)
 
-Instalação e Execução Local
-Pré-requisitos
-Navegador web moderno (Chrome, Firefox, Edge, Safari)
+### Publicação Futura
 
-(Opcional) Servidor HTTP local para desenvolvimento
+Embora atualmente hospedado no GitHub Pages, o projeto é preparado para ser publicado em um domínio institucional da UFRN. Para isso, basta ajustar o `BASE_PATH` ou remover o prefixo e atualizar os caminhos relativos.
 
-Método Recomendado
-O projeto utiliza módulos ES (type="module") e fetch para carregar arquivos JSON. Portanto, não é recomendado abrir os arquivos HTML diretamente no navegador (via file://), pois isso pode causar erros de CORS e de carregamento de módulos.
+---
+
+## Instalação e Execução Local
+
+### Pré-requisitos
+
+- Navegador web moderno (Chrome, Firefox, Edge, Safari)
+- (Opcional) Servidor HTTP local para desenvolvimento
+
+### Método Recomendado
+
+O projeto utiliza módulos ES (`type="module"`) e `fetch` para carregar arquivos JSON. Portanto, **não é recomendado abrir os arquivos HTML diretamente no navegador** (via `file://`), pois isso pode causar erros de CORS e de carregamento de módulos.
 
 Utilize um servidor HTTP local. Exemplos:
 
-Python 3
-bash
+#### Python 3
+
+```bash
 # No diretório raiz do projeto
 python3 -m http.server 8000
-Node.js (http-server)
-bash
+```
+
+#### Node.js (http-server)
+
+```bash
 # Instalação global (uma vez)
 npm install -g http-server
 
 # No diretório raiz do projeto
 http-server -p 8000
-VS Code (Live Server)
+```
+
+#### VS Code (Live Server)
+
 Instale a extensão "Live Server" e clique em "Go Live" no canto inferior direito.
 
-PHP (integrado)
-bash
+#### PHP (integrado)
+
+```bash
 php -S localhost:8000
-Após iniciar o servidor, acesse http://localhost:8000 no navegador.
+```
 
-Desenvolvimento
-Fluxo de Trabalho
-Clone o repositório
+Após iniciar o servidor, acesse `http://localhost:8000` no navegador.
 
-bash
+---
+
+## Desenvolvimento
+
+### Fluxo de Trabalho
+
+1. **Clone o repositório**
+
+```bash
 git clone https://github.com/polimatastudio/lateceufrn.git
 cd lateceufrn
-Execute um servidor local (conforme descrito acima).
+```
 
-Edite os arquivos (HTML, CSS, JS, JSON) conforme necessário.
+2. **Execute um servidor local** (conforme descrito acima).
 
-Teste as alterações:
+3. **Edite os arquivos** (HTML, CSS, JS, JSON) conforme necessário.
 
-Verifique a console do navegador para erros.
+4. **Teste as alterações**:
+   - Verifique a console do navegador para erros.
+   - Teste a responsividade (Chrome DevTools).
+   - Teste a acessibilidade (painel de acessibilidade, teclado, leitores de tela).
 
-Teste a responsividade (Chrome DevTools).
+5. **Valide os caminhos**: Certifique-se de que todos os recursos estão sendo carregados corretamente com `resolvePath`.
 
-Teste a acessibilidade (painel de acessibilidade, teclado, leitores de tela).
+6. **Publique** (se aplicável):
+   - Faça o commit e push para o repositório.
+   - O GitHub Pages publicará automaticamente a partir da branch principal.
 
-Valide os caminhos: Certifique-se de que todos os recursos estão sendo carregados corretamente com resolvePath.
+### Cuidados ao Desenvolver
 
-Publique (se aplicável):
+- **Use `resolvePath()` sempre que referenciar um recurso interno** (CSS, JS, imagens, JSON).
+- **Não use caminhos absolutos** (ex: `/assets/...`).
+- **Mantenha a identidade visual**: cores, tipografia, espaçamentos devem permanecer consistentes.
+- **Respeite a acessibilidade**: não remova atributos ARIA ou recursos do painel.
+- **Teste em múltiplos navegadores e dispositivos**.
 
-Faça o commit e push para o repositório.
+---
 
-O GitHub Pages publicará automaticamente a partir da branch principal.
+## Testes e Qualidade
 
-Cuidados ao Desenvolver
-Use resolvePath() sempre que referenciar um recurso interno (CSS, JS, imagens, JSON).
+### Testes Realizados
 
-Não use caminhos absolutos (ex: /assets/...).
+| Tipo | Cobertura | Status | Observações |
+|------|-----------|--------|-------------|
+| **Navegação manual** | Todas as páginas | ✅ | Links e menus funcionam. |
+| **Responsividade** | Mobile, tablet, desktop | ✅ | Breakpoints funcionais. |
+| **Paginação** | Equipamentos, Publicações, Notícias | ✅ | Funciona em todos os níveis. |
+| **Filtros** | Busca e categoria/tipo/ano | ✅ | Funcionam. |
+| **Internacionalização** | pt, en, es | ✅ | Traduções aplicadas; seletor corrigido. |
+| **Acessibilidade básica** | Teclado, foco, painel | ✅ | Funcional. |
+| **GitHub Pages** | Caminhos, 404, assets | ✅ | Site publicado e navegável. |
+| **Formulário de sugestões** | Envio via Static Forms | ✅ | Funciona com validação e feedback. |
+| **Admin** | Modo de leitura | 🟡 | Funcionalidades CRUD não testadas (back-end ausente). |
 
-Mantenha a identidade visual: cores, tipografia, espaçamentos devem permanecer consistentes.
+### Testes Recomendados (Futuros)
 
-Respeite a acessibilidade: não remova atributos ARIA ou recursos do painel.
+- Auditoria de contraste com ferramentas (WAVE, axe DevTools).
+- Testes com leitores de tela (NVDA, VoiceOver).
+- Avaliação de performance com Lighthouse.
+- Testes de segurança (XSS, CSRF).
 
-Teste em múltiplos navegadores e dispositivos.
+---
 
-Testes e Qualidade
-Testes Realizados
-Tipo	Cobertura	Status	Observações
-Navegação manual	Todas as páginas	✅	Links e menus funcionam.
-Responsividade	Mobile, tablet, desktop	✅	Breakpoints funcionais.
-Paginação	Equipamentos, Publicações, Notícias	✅	Funciona em todos os níveis.
-Filtros	Busca e categoria/tipo/ano	✅	Funcionam.
-Internacionalização	pt, en, es	✅	Traduções aplicadas; seletor corrigido.
-Acessibilidade básica	Teclado, foco, painel	✅	Funcional.
-GitHub Pages	Caminhos, 404, assets	✅	Site publicado e navegável.
-Formulário de sugestões	Envio via Static Forms	✅	Funciona com validação e feedback.
-Admin	Modo de leitura	🟡	Funcionalidades CRUD não testadas (back-end ausente).
-Testes Recomendados (Futuros)
-Auditoria de contraste com ferramentas (WAVE, axe DevTools).
+## Manutenção
 
-Testes com leitores de tela (NVDA, VoiceOver).
+### Onde Alterar
 
-Avaliação de performance com Lighthouse.
+| Área | Arquivo | Instruções |
+|------|---------|------------|
+| **Cores e temas** | `css/variables.css` | Ajuste as variáveis CSS no bloco `:root` (claro) e `[data-theme="dark"]` (escuro). |
+| **Tipografia** | `css/variables.css` | Altere as variáveis de fonte e tamanho. |
+| **Menu de navegação** | `js/components.js` (header) | Atualize a lista de links no `createHeader()`. |
+| **Notícias** | `data/news-fallback.json` | Adicione ou modifique itens; siga a estrutura existente. |
+| **Equipamentos** | `data/equipment.json` | Adicione ou modifique itens; siga a estrutura existente. |
+| **Publicações** | `data/publications.json` | Adicione ou modifique itens; siga a estrutura existente. |
+| **Equipe** | `data/team.json` | Adicione ou modifique membros; siga a estrutura existente. |
+| **Traduções** | `locales/*.json` | Adicione ou modifique chaves de tradução. |
+| **Imagens** | `assets/images/` | Adicione imagens nos diretórios correspondentes. |
+| **Arquivos para download** | `assets/downloads/` | Adicione arquivos (APK, PDF, etc.) e atualize o JSON. |
+| **Componentes globais** | `js/components.js`, `css/components.css` | Modifique com cuidado, pois afetam todas as páginas. |
 
-Testes de segurança (XSS, CSRF).
+### Passos para Adicionar uma Nova Notícia
 
-Manutenção
-Onde Alterar
-Área	Arquivo	Instruções
-Cores e temas	css/variables.css	Ajuste as variáveis CSS no bloco :root (claro) e [data-theme="dark"] (escuro).
-Tipografia	css/variables.css	Altere as variáveis de fonte e tamanho.
-Menu de navegação	js/components.js (header)	Atualize a lista de links no createHeader().
-Notícias	data/news-fallback.json	Adicione ou modifique itens; siga a estrutura existente.
-Equipamentos	data/equipment.json	Adicione ou modifique itens; siga a estrutura existente.
-Publicações	data/publications.json	Adicione ou modifique itens; siga a estrutura existente.
-Equipe	data/team.json	Adicione ou modifique membros; siga a estrutura existente.
-Traduções	locales/*.json	Adicione ou modifique chaves de tradução.
-Imagens	assets/images/	Adicione imagens nos diretórios correspondentes.
-Arquivos para download	assets/downloads/	Adicione arquivos (APK, PDF, etc.) e atualize o JSON.
-Componentes globais	js/components.js, css/components.css	Modifique com cuidado, pois afetam todas as páginas.
-Passos para Adicionar uma Nova Notícia
-Abra data/news-fallback.json.
+1. Abra `data/news-fallback.json`.
+2. Adicione um novo objeto no array `items` com os campos: `id`, `title`, `excerpt`, `content`, `category`, `createdAt`, `imageUrl`, `status`, `isVideo` (opcional), `videoUrl` (opcional), `links` (opcional).
+3. Salve o arquivo.
+4. A notícia aparecerá automaticamente na listagem, no carrossel da Home e na página de detalhe.
 
-Adicione um novo objeto no array items com os campos: id, title, excerpt, content, category, createdAt, imageUrl, status, isVideo (opcional), videoUrl (opcional), links (opcional).
+### Passos para Adicionar um Novo Membro da Equipe
 
-Salve o arquivo.
+1. Abra `data/team.json`.
+2. Adicione um novo objeto no array `members` com os campos: `id`, `name`, `role`, `roleLabel`, `photoUrl`, `lattesUrl`, `order`, `institution`, `showPhoto`.
+3. Coloque a foto (se houver) em `assets/images/team/`.
+4. Salve o arquivo.
+5. O membro aparecerá automaticamente na página Equipe, na categoria correspondente ao `role`.
 
-A notícia aparecerá automaticamente na listagem, no carrossel da Home e na página de detalhe.
+---
 
-Passos para Adicionar um Novo Membro da Equipe
-Abra data/team.json.
+## Guia de Extensão
 
-Adicione um novo objeto no array members com os campos: id, name, role, roleLabel, photoUrl, lattesUrl, order, institution, showPhoto.
+### Adicionar um Novo Tema
 
-Coloque a foto (se houver) em assets/images/team/.
+1. Defina as variáveis no `variables.css` sob um novo seletor, ex: `[data-theme="new-theme"]`.
+2. Adicione a opção no seletor de temas (painel de acessibilidade) em `accessibility.js`.
+3. Atualize a função `setTheme` e o `localStorage` se necessário.
 
-Salve o arquivo.
+### Adicionar um Novo Idioma
 
-O membro aparecerá automaticamente na página Equipe, na categoria correspondente ao role.
+1. Crie um novo arquivo de tradução em `locales/` (ex: `fr.json`).
+2. Adicione o idioma à lista de opções em `main.js` (`setupLanguageSelector`).
+3. Atualize a detecção de idioma em `i18n.js`.
 
-Guia de Extensão
-Adicionar um Novo Tema
-Defina as variáveis no variables.css sob um novo seletor, ex: [data-theme="new-theme"].
+### Adicionar um Novo Componente
+
+1. Crie a função no `components.js` que retorne o HTML do componente.
+2. Adicione os estilos correspondentes no `components.css`.
+3. Importe e use a função em `main.js` ou `admin.js`.
+
+### Adicionar uma Nova Página
+
+1. Crie o arquivo HTML na raiz.
+2. Inclua a estrutura base (header, footer, conteúdo).
+3. Adicione a página ao menu de navegação em `components.js`.
+4. (Opcional) Adicione lógica de carregamento de dados em `main.js`.
+
+---
+
+## Convenções de Desenvolvimento
+
+### Nomenclatura
+
+- **HTML**: Classes em `kebab-case` (ex: `team-card`, `quick-access`).
+- **CSS**: Variáveis em `--kebab-case` (ex: `--color-primary`).
+- **JavaScript**: Funções em `camelCase` (ex: `loadTeamData`), arquivos em `kebab-case` (ex: `components.js`).
+- **JSON**: Chaves em `camelCase` (ex: `photoUrl`, `roleLabel`).
+
+### Organização de CSS
+
+- **Temas**: Definidos em `variables.css` via `:root` e `[data-theme="..."]`.
+- **Componentes**: Estilos em `components.css`, com seções comentadas.
+- **Acessibilidade**: Estilos em `accessibility.css`.
+- **Utilitários**: Em `utilities.css`.
+
+### JavaScript Modules
+
+- Use `import` e `export` para organizar o código.
+- Cada módulo deve ter uma responsabilidade clara.
+- Funções devem ser documentadas com JSDoc (recomendado).
+
+---
+
+## Limitações Conhecidas
+
+| Limitação | Descrição | Impacto |
+|-----------|-----------|---------|
+| **Admin sem backend** | O painel administrativo opera em modo de leitura; as operações CRUD (criar, editar, excluir) dependem de uma API que não existe no ambiente de produção. | Baixo (para uso público); alto (para administração). |
+| **Modais sem aprisionamento de foco** | O foco não fica restrito ao modal quando aberto. | Médio (acessibilidade). |
+| **Páginas legais não traduzidas** | Termos de Uso e Política de Privacidade não possuem atributos `data-i18n`. | Baixo (conteúdo estático em português). |
+| **VLibras ausente** | Não há integração com o VLibras (Libras). | Médio (acessibilidade para surdos). |
+| **Sitemap e robots.txt ausentes** | Não há arquivos de SEO complementares. | Baixo. |
+| **Contraste não testado formalmente** | Não foram realizados testes formais de contraste com ferramentas. | Médio (acessibilidade). |
+
+---
+
+## Roadmap
+
+| Funcionalidade | Status | Prioridade |
+|----------------|--------|------------|
+| **Aprisionamento de foco em modais** | 📋 Planejado | Alta |
+| **VLibras** | 📋 Planejado | Média |
+| **Sitemap e robots.txt** | 📋 Planejado | Baixa |
+| **Testes de contraste e leitores de tela** | 📋 Planejado | Média |
+| **Temas adicionais (daltonismo, texto grande)** | 📋 Planejado | Baixa |
+| **Download de arquivos (APK, PDF, etc.)** | 🟡 Pendente | Alta |
+| **Painel administrativo completo (CRUD)** | 📋 Planejado | Alta (com backend) |
+| **Sistema de busca global** | 📋 Planejado | Média |
+| **Novos idiomas** | 📋 Planejado | Baixa |
+
+---
+
+## Matriz de Estado do Projeto
+
+| Área | Estado | Observação |
+|------|--------|------------|
+| **Front-end** | ✅ Funcional | Todas as páginas públicas navegáveis. |
+| **Acessibilidade** | ✅ Funcional | Painel de acessibilidade, temas, ajustes de fonte. |
+| **Temas** | ✅ Funcional | Claro, escuro, baixa visão, alto contraste. |
+| **Internacionalização** | ✅ Funcional | pt, en, es; seletor funcional. |
+| **Notícias** | ✅ Funcional | Listagem, filtros, paginação, detalhe. |
+| **Equipamentos** | ✅ Funcional | Catálogo, filtros, paginação, modais. |
+| **Publicações** | ✅ Funcional | Listagem, filtros, paginação, modais. |
+| **Equipe** | ✅ Funcional | Listagem com cards padronizados e ícone Lattes. |
+| **Sugestões** | ✅ Funcional | Formulário com validação e envio. |
+| **GitHub Pages** | ✅ Funcional | Publicação em subdiretório com `resolvePath`. |
+| **Responsividade** | ✅ Funcional | Adaptado para mobile, tablet e desktop. |
+| **SEO** | 🟡 Parcial | Tags OG e dados estruturados, mas sem sitemap. |
+| **Performance** | 🟡 Parcial | Leve, mas sem minificação. |
+| **Admin** | 🟡 Modo de leitura | Depende de backend para CRUD. |
+
+---
+
+## Diagrama Geral do Sistema
+
+```mermaid
+flowchart LR
+    subgraph Cliente
+        Navegador
+    end
 
-Adicione a opção no seletor de temas (painel de acessibilidade) em accessibility.js.
+    subgraph Portal_LATECE
+        HTML[HTML5]
+        CSS[CSS3]
+        JS[JavaScript ES Modules]
+        JSON[Dados JSON]
+    end
 
-Atualize a função setTheme e o localStorage se necessário.
+    subgraph Recursos
+        Imagens[assets/images/]
+        Fontes[Google Fonts]
+        API[Static Forms]
+        YouTube[YouTube Embed]
+    end
+
+    Navegador --> HTML
+    Navegador --> CSS
+    Navegador --> JS
+    JS --> JSON
+    HTML --> Imagens
+    CSS --> Fontes
+    JS --> API
+    JS --> YouTube
+```
+
+---
 
-Adicionar um Novo Idioma
-Crie um novo arquivo de tradução em locales/ (ex: fr.json).
+## Fluxo de Acessibilidade
 
-Adicione o idioma à lista de opções em main.js (setupLanguageSelector).
+```mermaid
+flowchart TD
+    U[Usuário] --> P[Painel de Acessibilidade]
+    P --> C[Ativar Alto Contraste]
+    P --> F[Ajustar Fonte]
+    P --> E[Ajustar Espaçamento]
+    P --> M[Ativar Redução de Movimento]
+    P --> T[Selecionar Tema]
 
-Atualize a detecção de idioma em i18n.js.
+    T --> T1[Padrão]
+    T --> T2[Escuro]
+    T --> T3[Baixa Visão]
 
-Adicionar um Novo Componente
-Crie a função no components.js que retorne o HTML do componente.
+    C --> A1[Aplicar Classe .high-contrast]
+    F --> A2[Ajustar --font-size]
+    E --> A3[Ajustar line-height e letter-spacing]
+    M --> A4[Adicionar data-reduced-motion]
+    T --> A5[Aplicar data-theme]
 
-Adicione os estilos correspondentes no components.css.
+    A1 --> DOM[(DOM)]
+    A2 --> DOM
+    A3 --> DOM
+    A4 --> DOM
+    A5 --> DOM
+```
 
-Importe e use a função em main.js ou admin.js.
+---
 
-Adicionar uma Nova Página
-Crie o arquivo HTML na raiz.
+## Guia Visual
 
-Inclua a estrutura base (header, footer, conteúdo).
+### Cores Primárias
 
-Adicione a página ao menu de navegação em components.js.
+| Cor | Valor Claro | Valor Escuro | Uso |
+|-----|-------------|--------------|-----|
+| Primária | `#2E1065` | `#B9A3FF` | Botões principais, links |
+| Primária (light) | `#7C3AED` | `#D0C3FF` | Hovers |
+| Primária (dark) | `#1A0A3A` | `#8F73E6` | Gradientes |
 
-(Opcional) Adicione lógica de carregamento de dados em main.js.
+### Tipografia
 
-Convenções de Desenvolvimento
-Nomenclatura
-HTML: Classes em kebab-case (ex: team-card, quick-access).
+- **Títulos**: `'Montserrat', sans-serif`
+- **Corpo**: `'Open Sans', sans-serif`
+- **Escala**: `clamp()` para responsividade.
 
-CSS: Variáveis em --kebab-case (ex: --color-primary).
+### Componentes
 
-JavaScript: Funções em camelCase (ex: loadTeamData), arquivos em kebab-case (ex: components.js).
+#### Cards
 
-JSON: Chaves em camelCase (ex: photoUrl, roleLabel).
+- **Fundo**: `var(--surface)` (branco no claro, `#242842` no escuro).
+- **Borda**: 2px sólida, com cor contrastante em cada tema.
+- **Border-radius**: 16px (`var(--radius-lg)`).
+- **Sombra**: `var(--shadow-subtle)` com elevação no hover.
+- **Hover**: `transform: translateY(-4px)`, sombra elevada e borda interativa.
 
-Organização de CSS
-Temas: Definidos em variables.css via :root e [data-theme="..."].
+#### Botões
 
-Componentes: Estilos em components.css, com seções comentadas.
+- **Primário**: Gradiente roxo, texto branco.
+- **Secundário**: Fundo `--surface`, texto roxo.
+- **Outline**: Transparente, borda roxa.
 
-Acessibilidade: Estilos em accessibility.css.
+#### Formulários
 
-Utilitários: Em utilities.css.
+- **Campos**: Fundo `--control-bg`, borda `--control-border`.
+- **Foco**: Borda `--border-interactive` e sombra `--focus-ring`.
 
-JavaScript Modules
-Use import e export para organizar o código.
+---
 
-Cada módulo deve ter uma responsabilidade clara.
+## Documentação para Desenvolvedores
 
-Funções devem ser documentadas com JSDoc (recomendado).
+### Entendendo a Arquitetura
 
-Limitações Conhecidas
-Limitação	Descrição	Impacto
-Admin sem backend	O painel administrativo opera em modo de leitura; as operações CRUD (criar, editar, excluir) dependem de uma API que não existe no ambiente de produção.	Baixo (para uso público); alto (para administração).
-Modais sem aprisionamento de foco	O foco não fica restrito ao modal quando aberto.	Médio (acessibilidade).
-Páginas legais não traduzidas	Termos de Uso e Política de Privacidade não possuem atributos data-i18n.	Baixo (conteúdo estático em português).
-VLibras ausente	Não há integração com o VLibras (Libras).	Médio (acessibilidade para surdos).
-Sitemap e robots.txt ausentes	Não há arquivos de SEO complementares.	Baixo.
-Contraste não testado formalmente	Não foram realizados testes formais de contraste com ferramentas.	Médio (acessibilidade).
-Roadmap
-Funcionalidade	Status	Prioridade
-Aprisionamento de foco em modais	📋 Planejado	Alta
-VLibras	📋 Planejado	Média
-Sitemap e robots.txt	📋 Planejado	Baixa
-Testes de contraste e leitores de tela	📋 Planejado	Média
-Temas adicionais (daltonismo, texto grande)	📋 Planejado	Baixa
-Download de arquivos (APK, PDF, etc.)	🟡 Pendente	Alta
-Painel administrativo completo (CRUD)	📋 Planejado	Alta (com backend)
-Sistema de busca global	📋 Planejado	Média
-Novos idiomas	📋 Planejado	Baixa
-Matriz de Estado do Projeto
-Área	Estado	Observação
-Front-end	✅ Funcional	Todas as páginas públicas navegáveis.
-Acessibilidade	✅ Funcional	Painel de acessibilidade, temas, ajustes de fonte.
-Temas	✅ Funcional	Claro, escuro, baixa visão, alto contraste.
-Internacionalização	✅ Funcional	pt, en, es; seletor funcional.
-Notícias	✅ Funcional	Listagem, filtros, paginação, detalhe.
-Equipamentos	✅ Funcional	Catálogo, filtros, paginação, modais.
-Publicações	✅ Funcional	Listagem, filtros, paginação, modais.
-Equipe	✅ Funcional	Listagem com cards padronizados e ícone Lattes.
-Sugestões	✅ Funcional	Formulário com validação e envio.
-GitHub Pages	✅ Funcional	Publicação em subdiretório com resolvePath.
-Responsividade	✅ Funcional	Adaptado para mobile, tablet e desktop.
-SEO	🟡 Parcial	Tags OG e dados estruturados, mas sem sitemap.
-Performance	🟡 Parcial	Leve, mas sem minificação.
-Admin	🟡 Modo de leitura	Depende de backend para CRUD.
-Diagrama Geral do Sistema
+- **Páginas**: Cada página HTML é independente e possui seu próprio conteúdo.
+- **Header e Footer**: São injetados via JavaScript (`components.js`) em todas as páginas.
+- **Dados**: Carregados de JSON via `data.js` e `fetch`.
+- **Temas**: Gerenciados por variáveis CSS e `data-theme`.
+- **Acessibilidade**: Controlada pelo módulo `accessibility.js`.
 
+### Arquivos Críticos
 
+- `js/path.js`: Fundamentais para resolução de caminhos no GitHub Pages.
+- `css/variables.css`: Base de todos os tokens visuais.
+- `js/main.js`: Ponto de entrada do site público.
+- `js/components.js`: Todos os componentes reutilizáveis.
+- `js/data.js`: Carregamento de dados.
+- `css/components.css`: Estilos globais de componentes.
 
+### Cuidados ao Modificar
 
+1. **Sempre use `resolvePath()`** para recursos internos.
+2. **Não remova funcionalidades de acessibilidade**.
+3. **Teste a alteração nos dois temas** (claro e escuro).
+4. **Verifique a responsividade** em diferentes tamanhos de tela.
+5. **Evite `!important`** sempre que possível; prefira aumentar a especificidade.
 
+---
 
+## Documentação para Usuários
 
+### Como navegar
 
+- **Menu principal**: No topo da página, com links para as principais seções.
+- **Menu mobile**: Acessível pelo ícone de hambúrguer em telas pequenas.
+- **Voltar ao topo**: Clique no botão ↑ no canto inferior direito.
 
+### Como usar a acessibilidade
 
+1. Clique no ícone ♿ no canto inferior direito.
+2. No painel que se abre, você pode:
+   - **Trocar o tema** (Padrão, Escuro, Baixa Visão).
+   - **Ativar Alto Contraste**.
+   - **Ajustar o tamanho da fonte** (A+, A-, Reset).
+   - **Ajustar espaçamento** (linhas e letras).
+   - **Ativar Redução de Movimento**.
 
+### Como consultar equipamentos
 
-Fluxo de Acessibilidade
+- Acesse a página "Equipamentos".
+- Use a barra de busca para encontrar um equipamento específico.
+- Filtre por categoria.
+- Clique no card para ver detalhes (imagem, descrição completa).
+- Se disponível, clique em "Baixar" para obter o arquivo.
 
+### Como consultar publicações
 
+- Acesse a página "Publicações".
+- Use a barra de busca para encontrar publicações por título, autor ou resumo.
+- Filtre por tipo e ano.
+- Clique em "Ver detalhes" para ler o resumo completo e acessar o arquivo (se disponível).
 
+### Como enviar uma sugestão
 
+- Acesse a página "Sugestões".
+- Preencha todos os campos obrigatórios.
+- Clique em "Enviar sugestão".
+- Você receberá uma confirmação em tela.
 
+---
 
+## Créditos e Equipe
 
+### Coordenação
 
+| Nome | Função | Lattes |
+|------|--------|--------|
+| Débora Nunes | Coordenadora Geral | [Lattes](http://lattes.cnpq.br/1188086132826132) |
+| Katiene Symone de Brito Pessoa da Silva | Vice-Coordenadora | [Lattes](http://lattes.cnpq.br/2655772002844453) |
+| Débora Deliberato | Coordenadora Científica | [Lattes](http://lattes.cnpq.br/5154063375333536) |
 
+### Equipe Técnica e de Pesquisa
 
+| Nome | Função | Lattes |
+|------|--------|--------|
+| Rozejane Domingos da Silva | Responsável pelos Recursos e Materiais | [Lattes](http://lattes.cnpq.br/2417765298828650) |
+| Renata Lima de Morais | Responsável pela Capacitação de Recursos Humanos | [Lattes](http://lattes.cnpq.br/8097072918541335) |
+| Natália de Oliveira Rodrigues | Bolsista de Apoio Técnico | [Lattes](https://lattes.cnpq.br/8240104590435357) |
 
+### Bolsistas
 
+| Nome | Função | Lattes |
+|------|--------|--------|
+| Rita de Cassia Barbosa Paiva Magalhaes | Bolsista FINEP | [Lattes](http://lattes.cnpq.br/0351736925269307) |
+| Luciana | Bolsista CNPq/UFRN | — |
+| Gabriela | Bolsista CNPq/UFRN | — |
+| Marcone Arruda de Almeida | Bolsista FINEP | [Lattes](http://lattes.cnpq.br/9706042052182211) |
 
+### Desenvolvedores
 
+| Nome | Função | Lattes |
+|------|--------|--------|
+| Maria Eduarda Ferreira de Lima | Desenvolvedora — UERN | [Lattes](http://lattes.cnpq.br/0805155024765743) |
+| Artemisia Kimberlly Marques da Silva | Desenvolvedora — UERN | [Lattes](http://lattes.cnpq.br/7854607386223805) |
 
+---
 
-Guia Visual
-Cores Primárias
-Cor	Valor Claro	Valor Escuro	Uso
-Primária	#2E1065	#B9A3FF	Botões principais, links
-Primária (light)	#7C3AED	#D0C3FF	Hovers
-Primária (dark)	#1A0A3A	#8F73E6	Gradientes
-Tipografia
-Títulos: 'Montserrat', sans-serif
+## Contato
 
-Corpo: 'Open Sans', sans-serif
+| Canal | Informação |
+|-------|------------|
+| **E-mail** | [latece@ufrn.br](mailto:latece@ufrn.br) |
+| **Telefone** | (84) 3342-2270 |
+| **Endereço** | UFRN — Campus Central, Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900 |
+| **Instagram** | [@latece_ufrn](https://www.instagram.com/latece_ufrn/) |
+| **YouTube** | [Canal LATECE](https://www.youtube.com/channel/UCie5HHDcac4k2-7DaKWEuTQ) |
 
-Escala: clamp() para responsividade.
+---
 
-Componentes
-Cards
-Fundo: var(--surface) (branco no claro, #242842 no escuro).
+## Licença
 
-Borda: 2px sólida, com cor contrastante em cada tema.
-
-Border-radius: 16px (var(--radius-lg)).
-
-Sombra: var(--shadow-subtle) com elevação no hover.
-
-Hover: transform: translateY(-4px), sombra elevada e borda interativa.
-
-Botões
-Primário: Gradiente roxo, texto branco.
-
-Secundário: Fundo --surface, texto roxo.
-
-Outline: Transparente, borda roxa.
-
-Formulários
-Campos: Fundo --control-bg, borda --control-border.
-
-Foco: Borda --border-interactive e sombra --focus-ring.
-
-Documentação para Desenvolvedores
-Entendendo a Arquitetura
-Páginas: Cada página HTML é independente e possui seu próprio conteúdo.
-
-Header e Footer: São injetados via JavaScript (components.js) em todas as páginas.
-
-Dados: Carregados de JSON via data.js e fetch.
-
-Temas: Gerenciados por variáveis CSS e data-theme.
-
-Acessibilidade: Controlada pelo módulo accessibility.js.
-
-Arquivos Críticos
-js/path.js: Fundamentais para resolução de caminhos no GitHub Pages.
-
-css/variables.css: Base de todos os tokens visuais.
-
-js/main.js: Ponto de entrada do site público.
-
-js/components.js: Todos os componentes reutilizáveis.
-
-js/data.js: Carregamento de dados.
-
-css/components.css: Estilos globais de componentes.
-
-Cuidados ao Modificar
-Sempre use resolvePath() para recursos internos.
-
-Não remova funcionalidades de acessibilidade.
-
-Teste a alteração nos dois temas (claro e escuro).
-
-Verifique a responsividade em diferentes tamanhos de tela.
-
-Evite !important sempre que possível; prefira aumentar a especificidade.
-
-Documentação para Usuários
-Como navegar
-Menu principal: No topo da página, com links para as principais seções.
-
-Menu mobile: Acessível pelo ícone de hambúrguer em telas pequenas.
-
-Voltar ao topo: Clique no botão ↑ no canto inferior direito.
-
-Como usar a acessibilidade
-Clique no ícone ♿ no canto inferior direito.
-
-No painel que se abre, você pode:
-
-Trocar o tema (Padrão, Escuro, Baixa Visão).
-
-Ativar Alto Contraste.
-
-Ajustar o tamanho da fonte (A+, A-, Reset).
-
-Ajustar espaçamento (linhas e letras).
-
-Ativar Redução de Movimento.
-
-Como consultar equipamentos
-Acesse a página "Equipamentos".
-
-Use a barra de busca para encontrar um equipamento específico.
-
-Filtre por categoria.
-
-Clique no card para ver detalhes (imagem, descrição completa).
-
-Se disponível, clique em "Baixar" para obter o arquivo.
-
-Como consultar publicações
-Acesse a página "Publicações".
-
-Use a barra de busca para encontrar publicações por título, autor ou resumo.
-
-Filtre por tipo e ano.
-
-Clique em "Ver detalhes" para ler o resumo completo e acessar o arquivo (se disponível).
-
-Como enviar uma sugestão
-Acesse a página "Sugestões".
-
-Preencha todos os campos obrigatórios.
-
-Clique em "Enviar sugestão".
-
-Você receberá uma confirmação em tela.
-
-Créditos e Equipe
-Coordenação
-Nome	Função	Lattes
-Débora Nunes	Coordenadora Geral	Lattes
-Katiene Symone de Brito Pessoa da Silva	Vice-Coordenadora	Lattes
-Débora Deliberato	Coordenadora Científica	Lattes
-Equipe Técnica e de Pesquisa
-Nome	Função	Lattes
-Rozejane Domingos da Silva	Responsável pelos Recursos e Materiais	Lattes
-Renata Lima de Morais	Responsável pela Capacitação de Recursos Humanos	Lattes
-Natália de Oliveira Rodrigues	Bolsista de Apoio Técnico	Lattes
-Bolsistas
-Nome	Função	Lattes
-Rita de Cassia Barbosa Paiva Magalhaes	Bolsista FINEP	Lattes
-Luciana	Bolsista CNPq/UFRN	—
-Gabriela	Bolsista CNPq/UFRN	—
-Marcone Arruda de Almeida	Bolsista FINEP	Lattes
-Desenvolvedores
-Nome	Função	Lattes
-Maria Eduarda Ferreira de Lima	Desenvolvedora — UERN	Lattes
-Artemisia Kimberlly Marques da Silva	Desenvolvedora — UERN	Lattes
-Contato
-Canal	Informação
-E-mail	latece@ufrn.br
-Telefone	(84) 3342-2270
-Endereço	UFRN — Campus Central, Av. Senador Salgado Filho, 3000, Lagoa Nova, Natal/RN — CEP 59078-900
-Instagram	@latece_ufrn
-YouTube	Canal LATECE
-Licença
-Este projeto é de propriedade da Universidade Federal do Rio Grande do Norte (UFRN) e do Laboratório de Tecnologia Assistiva (LATECE). Todos os direitos reservados.
+Este projeto é de propriedade da **Universidade Federal do Rio Grande do Norte (UFRN)** e do **Laboratório de Tecnologia Assistiva (LATECE)**. Todos os direitos reservados.
 
 A licença específica não foi identificada nos arquivos do projeto. Para informações sobre uso, reprodução ou distribuição, entre em contato com o LATECE.
 
-<p align="center"> <strong>LATECE — Laboratório de Tecnologia Assistiva</strong><br> <em>Promovendo inclusão e acessibilidade através da pesquisa, inovação e formação humana.</em> </p> ```
+---
+
+<p align="center">
+  <strong>LATECE — Laboratório de Tecnologia Assistiva</strong><br>
+  <em>Promovendo inclusão e acessibilidade através da pesquisa, inovação e formação humana.</em>
+</p>
+```
