@@ -33,6 +33,27 @@
   <link rel="canonical" href="https://latece.ufrn.br/about.html">
 
   <script src="./js/path.js"></script>
+
+  <style>
+  /* Controle de visibilidade das versões do texto "Quem Somos" */
+  @media (max-width: 768px) {
+    .about-text-desktop {
+      display: none !important;
+    }
+    .about-text-mobile {
+      display: flex !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .about-text-mobile {
+      display: none !important;
+    }
+    .about-text-desktop {
+      display: flex !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 
@@ -105,19 +126,30 @@
       <section class="about-intro section-light" style="padding: clamp(3rem, 6vw, 5rem) 0;">
         <div class="container">
           <div class="about-intro-grid" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start;">
-            <div class="about-intro-content">
-              <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; color: var(--color-primary); margin-bottom: var(--spacing-xl);" data-i18n="about.whoWeAre">Quem Somos</h2>
-              <div style="display: flex; flex-direction: column; gap: var(--spacing-lg);">
-                <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;" data-i18n="about.whoWeAreText1">
-                  O Laboratório de Tecnologia Assistiva do Centro de Educação (LATECE), vinculado ao Laboratório Interdisciplinar de Formação de Educadores (LIFE) da Universidade Federal do Rio Grande do Norte, é um espaço de ensino, pesquisa e extensão dedicado à Tecnologia Assistiva.
-                </p>
-                <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;" data-i18n="about.whoWeAreText2">
-                  A Tecnologia Assistiva compreende recursos, estratégias, serviços e práticas voltados à promoção da acessibilidade, autonomia e participação de pessoas com deficiência e com necessidades educacionais específicas (BRASIL, 2015). O laboratório atua em diferentes áreas da Tecnologia Assistiva, como Comunicação Alternativa, acessibilidade ao computador, adequação postural, mobilidade, acessibilidade sensorial e produção de materiais pedagógicos acessíveis.
-                </p>
-                <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;" data-i18n="about.whoWeAreText3">
-                  Fundado em 2017, o LATECE desenvolve pesquisas, ações formativas e projetos voltados à acessibilidade e à inclusão. O laboratório mantém parcerias com escolas, serviços especializados, setores da universidade e instituições de ensino superior, como a Universidade do Estado do Rio Grande do Norte (UERN), a Universidade do Estado do Rio de Janeiro (UERJ) e a Universidade Federal Rural do Rio de Janeiro (UFRRJ). Parte das ações e recursos do laboratório é viabilizada por meio de editais de pesquisa e inovação financiados pelo Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) e pela Financiadora de Estudos e Projetos (FINEP).
-                </p>
-              </div>
+<div class="about-intro-content">
+  <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; color: var(--color-primary); margin-bottom: var(--spacing-xl);" data-i18n="about.whoWeAre">Quem Somos</h2>
+
+  <!-- VERSÃO DESKTOP (texto completo) -->
+  <div class="about-text-desktop" style="display: flex; flex-direction: column; gap: var(--spacing-lg);">
+    <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;" data-i18n="about.whoWeAreText1">
+      O Laboratório de Tecnologia Assistiva do Centro de Educação (LATECE), vinculado ao Laboratório Interdisciplinar de Formação de Educadores (LIFE) da Universidade Federal do Rio Grande do Norte, é um espaço de ensino, pesquisa e extensão dedicado à Tecnologia Assistiva.
+    </p>
+    <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;" data-i18n="about.whoWeAreText2">
+      A Tecnologia Assistiva compreende recursos, estratégias, serviços e práticas voltados à promoção da acessibilidade, autonomia e participação de pessoas com deficiência e com necessidades educacionais específicas (BRASIL, 2015). O laboratório atua em diferentes áreas da Tecnologia Assistiva, como Comunicação Alternativa, acessibilidade ao computador, adequação postural, mobilidade, acessibilidade sensorial e produção de materiais pedagógicos acessíveis.
+    </p>
+    <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;" data-i18n="about.whoWeAreText3">
+      Fundado em 2017, o LATECE desenvolve pesquisas, ações formativas e projetos voltados à acessibilidade e à inclusão. O laboratório mantém parcerias com escolas, serviços especializados, setores da universidade e instituições de ensino superior, como a Universidade do Estado do Rio Grande do Norte (UERN), a Universidade do Estado do Rio de Janeiro (UERJ) e a Universidade Federal Rural do Rio de Janeiro (UFRRJ). Parte das ações e recursos do laboratório é viabilizada por meio de editais de pesquisa e inovação financiados pelo Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) e pela Financiadora de Estudos e Projetos (FINEP).
+    </p>
+  </div>
+
+<div class="about-text-mobile" style="display: none; flex-direction: column; gap: var(--spacing-lg);">
+  <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;">
+    O LATECE, vinculado ao LIFE/UFRN, é um espaço de ensino, pesquisa e extensão dedicado à Tecnologia Assistiva, promovendo acessibilidade e autonomia para pessoas com deficiência.
+  </p>
+  <p style="font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.9; color: var(--color-primary); text-align: justify;">
+    Fundado em 2017, o laboratório atua em parceria com instituições de ensino e desenvolve projetos financiados pelo CNPq e FINEP.
+  </p>
+</div>
             </div>
             <div class="about-intro-side" style="display: flex; flex-direction: column; align-items: center; gap: var(--spacing-lg);">
               <div style="width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-xl);">
