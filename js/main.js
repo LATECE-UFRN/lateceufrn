@@ -466,25 +466,22 @@ async function loadTeamPage() {
       }
 
       // Pesquisadores Parceiros
-      if (groups.partner.length > 0) {
-        html += `<h2 class="section-title">Pesquisadores Parceiros</h2>`;
-        html += `<p style="text-align:center;color:var(--text-secondary);margin-bottom:var(--space-4);">Pesquisadores que mantêm parcerias acadêmicas e científicas com o LATECE.</p>`;
-        html += `<div class="members-grid centered-grid">${groups.partner.map(m => createTeamCard(m, locale)).join('')}</div>`;
-      }
+if (groups.partner.length > 0) {
+  html += `<h2 class="section-title">Pesquisadores Parceiros</h2>`;
+  html += `<div class="members-grid centered-grid">${groups.partner.map(m => createTeamCard(m, locale)).join('')}</div>`;
+}
 
       // Colaboradores
-      if (groups.collaborator.length > 0) {
-        html += `<h2 class="section-title">Colaboradores</h2>`;
-        html += `<p style="text-align:center;color:var(--text-secondary);margin-bottom:var(--space-4);">Docentes e pesquisadores que colaboram com atividades de ensino, pesquisa, extensão e formação desenvolvidas pelo LATECE.</p>`;
-        html += `<div class="members-grid centered-grid">${groups.collaborator.map(m => createTeamCard(m, locale)).join('')}</div>`;
-      }
+if (groups.collaborator.length > 0) {
+  html += `<h2 class="section-title">Colaboradores</h2>`;
+  html += `<div class="members-grid centered-grid">${groups.collaborator.map(m => createTeamCard(m, locale)).join('')}</div>`;
+}
 
       // Desenvolvedores
-      if (groups.developer.length > 0) {
-        html += `<h2 class="section-title">Desenvolvedores</h2>`;
-        html += `<p style="text-align:center;color:var(--text-secondary);margin-bottom:var(--space-4);">Profissionais e pesquisadores que contribuem para o desenvolvimento de sistemas, recursos e soluções tecnológicas vinculadas aos projetos do LATECE.</p>`;
-        html += `<div class="members-grid centered-grid">${groups.developer.map(m => createTeamCard(m, locale)).join('')}</div>`;
-      }
+if (groups.developer.length > 0) {
+  html += `<h2 class="section-title">Desenvolvedores</h2>`;
+  html += `<div class="members-grid centered-grid">${groups.developer.map(m => createTeamCard(m, locale)).join('')}</div>`;
+}
 
       container.innerHTML = html;
 
