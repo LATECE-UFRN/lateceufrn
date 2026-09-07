@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiência 360º — LATECE — Laboratório de Tecnologia Assistiva UFRN</title>
+  <meta name="description" content="Explore virtualmente os espaços do Laboratório de Tecnologia Assistiva da UFRN. Uma experiência imersiva em 360º pelo LATECE.">
+  <link rel="icon" type="image/x-icon" href="./assets/images/logos/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://vlibras.gov.br">
+
+  <!-- CSS do Portal (caminhos padrão da raiz) -->
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/accessibility.css">
+
+  <!-- CSS específico da Experiência 360º (agora na pasta global css/) -->
+  <link rel="stylesheet" href="./css/experiencia-360.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://latece-ufrn.github.io/lateceufrn/experiencia-360.html">
+  <meta property="og:title" content="Experiência 360º — LATECE — UFRN">
+  <meta property="og:description" content="Explore virtualmente os espaços do Laboratório de Tecnologia Assistiva da UFRN.">
+  <meta property="og:image" content="https://latece-ufrn.github.io/lateceufrn/assets/images/logos/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Experiência 360º — LATECE">
+  <meta name="twitter:description" content="Explore virtualmente o LATECE em 360º.">
+  <meta name="twitter:image" content="https://latece-ufrn.github.io/lateceufrn/assets/images/logos/og-image.jpg">
+
+  <link rel="canonical" href="https://latece-ufrn.github.io/lateceufrn/experiencia-360.html">
+
+  <!-- path.js (caminho padrão da raiz) -->
+  <script src="./js/path.js"></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <div id="app">
+    <!-- Header injetado pelo main.js -->
+    <header id="main-header"></header>
+
+    <main id="main-content">
+
+      <!-- ===== HERO DA EXPERIÊNCIA 360º ===== -->
+      <section class="hero hero-360" aria-label="Experiência 360º LATECE">
+        <div class="container">
+          <div class="hero-grid hero-grid-centered">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero-badge">Tecnologia Assistiva</div>
+              <h1 class="hero-title">
+                Experiência<br>
+                <span class="hero-highlight">360º</span>
+              </h1>
+              <p class="hero-subtitle">
+                Explore virtualmente os espaços do Laboratório de Tecnologia Assistiva da UFRN.
+                Conheça os ambientes, equipamentos e pesquisas que fazem do LATECE um centro de
+                inovação e inclusão.
+              </p>
+              <div class="hero-actions">
+                <a href="./experiencia-360-indisponivel.html" class="btn btn-primary btn-lg" aria-label="Iniciar experiência 360º">
+                  🌀 Explorar o LATECE em 360º
+                </a>
+                <a href="#ambientes" class="btn btn-outline btn-lg">
+                  Conheça os ambientes
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== LISTA DE AMBIENTES (FALLBACK ACESSÍVEL) ===== -->
+      <section id="ambientes" class="section-light" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+        <div class="container">
+          <h2 style="text-align:center;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--color-primary);margin-bottom:var(--spacing-xl);">
+            Conheça os ambientes do LATECE
+          </h2>
+          <p style="text-align:center;max-width:720px;margin:0 auto var(--spacing-2xl);font-size:1.1rem;color:var(--color-text-muted);">
+            O LATECE é feito para todos. Em breve, você poderá vivenciá-los em 360º — uma evolução natural da nossa missão de incluir e inspirar.
+          </p>
+
+          <div class="ambientes-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--spacing-lg);">
+
+            <!-- Card 1: Entrada -->
+            <div class="card" style="padding:var(--spacing-lg);text-align:center;">
+              <div style="font-size:3rem;margin-bottom:var(--spacing-md);">🚪</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--color-primary);">Entrada / Recepção</h3>
+              <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.6;">
+                Acesso principal ao LATECE. Espaço acolhedor com informações institucionais e
+                orientação aos visitantes.
+              </p>
+              <a href="./experiencia-360-indisponivel.html" class="btn btn-sm btn-secondary" style="margin-top:var(--spacing-md);">
+                Ver em 360º
+              </a>
+            </div>
+
+            <!-- Card 2: Laboratório 01 -->
+            <div class="card" style="padding:var(--spacing-lg);text-align:center;">
+              <div style="font-size:3rem;margin-bottom:var(--spacing-md);">🔬</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--color-primary);">Laboratório de Pesquisa</h3>
+              <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.6;">
+                Ambiente dedicado a experimentos e estudos em Tecnologia Assistiva. Equipado com
+                recursos para avaliação e desenvolvimento de soluções.
+              </p>
+              <a href="./experiencia-360-indisponivel.html" class="btn btn-sm btn-secondary" style="margin-top:var(--spacing-md);">
+                Ver em 360º
+              </a>
+            </div>
+
+            <!-- Card 3: Equipamentos -->
+            <div class="card" style="padding:var(--spacing-lg);text-align:center;">
+              <div style="font-size:3rem;margin-bottom:var(--spacing-md);">🛠️</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--color-primary);">Área de Equipamentos</h3>
+              <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.6;">
+                Espaço onde estão disponíveis os recursos de Tecnologia Assistiva, como pranchas de
+                comunicação, dispositivos de acessibilidade e softwares especializados.
+              </p>
+              <a href="./experiencia-360-indisponivel.html" class="btn btn-sm btn-secondary" style="margin-top:var(--spacing-md);">
+                Ver em 360º
+              </a>
+            </div>
+
+            <!-- Card 4: Sala de Reuniões -->
+            <div class="card" style="padding:var(--spacing-lg);text-align:center;">
+              <div style="font-size:3rem;margin-bottom:var(--spacing-md);">🗣️</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--color-primary);">Sala de Reuniões</h3>
+              <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.6;">
+                Espaço colaborativo para discussões de projetos, orientações e encontros da equipe
+                do LATECE.
+              </p>
+              <a href="./experiencia-360-indisponivel.html" class="btn btn-sm btn-secondary" style="margin-top:var(--spacing-md);">
+                Ver em 360º
+              </a>
+            </div>
+
+            <!-- Card 5: Biblioteca/Arquivo -->
+            <div class="card" style="padding:var(--spacing-lg);text-align:center;">
+              <div style="font-size:3rem;margin-bottom:var(--spacing-md);">📚</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--color-primary);">Acervo e Publicações</h3>
+              <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.6;">
+                Espaço com publicações, livros e materiais produzidos pelo LATECE e parceiros,
+                disponíveis para consulta.
+              </p>
+              <a href="./experiencia-360-indisponivel.html" class="btn btn-sm btn-secondary" style="margin-top:var(--spacing-md);">
+                Ver em 360º
+              </a>
+            </div>
+
+            <!-- Card 6: Área Externa -->
+            <div class="card" style="padding:var(--spacing-lg);text-align:center;">
+              <div style="font-size:3rem;margin-bottom:var(--spacing-md);">🌿</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--color-primary);">Entorno / Campus</h3>
+              <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.6;">
+                Localização do LATECE no Campus Central da UFRN, com acessibilidade e integração
+                com a universidade.
+              </p>
+              <a href="./experiencia-360/tour/?node=campus" class="btn btn-sm btn-secondary" style="margin-top:var(--spacing-md);">
+                Ver em 360º
+              </a>
+            </div>
+
+          </div>
+
+          <p style="text-align:center;margin-top:var(--spacing-2xl);font-size:0.95rem;color:var(--color-text-muted);">
+            Os ambientes descritos acima são ilustrativos. Conforme o tour for desenvolvido,
+            os links direcionarão para os respectivos ambientes.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== CTA FINAL ===== -->
+      <section class="hero hero-simplified" style="padding:clamp(3rem,6vw,5rem)0;text-align:center;background:var(--color-primary-gradient);color:var(--color-white);">
+        <div class="container">
+          <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--color-white);margin-bottom:var(--spacing-md);">
+            Pronto para explorar?
+          </h2>
+          <p style="font-size:clamp(1rem,1.5vw,1.2rem);max-width:650px;margin:0 auto var(--spacing-xl);color:rgba(255,255,255,0.85);">
+            A experiência imersiva em 360º está em desenvolvimento — e será ainda mais incrível.
+          </p>
+          <a href="./experiencia-360-indisponivel.html" class="btn btn-secondary btn-lg" style="background:var(--color-white);color:var(--color-primary);border-color:var(--color-white);">
+            🌀 Iniciar tour imersivo
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer injetado pelo main.js -->
+    <footer id="main-footer"></footer>
+  </div>
+
+  <!-- Scripts do Portal (caminhos padrão da raiz) -->
+  <script type="module" src="./js/main.js"></script>
+
+  <!-- Script específico da Experiência 360º (agora na pasta global js/) -->
+  <script type="module" src="./js/experiencia-360.js"></script>
+
+</body>
+</html>
