@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama apprev="22615" appversion="8.0.6" hassounds="0" id="node1">
+  <transition blendcolor="0x000000" blendtime="1" delay="none" enabled="1" softedge="0" type="crossdissolve" zoomafterinfov="140" zoomafteroutfov="40" zoomfov="40" zoomin="0" zoomout="0" zoomoutpause="1" zoomspeed="2"/>
+  <control contextfullscreen="1" contextprojections="0" contextvr="1" dblclickfullscreen="0" hideabout="0" invertcontrol="1" invertwheel="0" lockedkeyboard="0" lockedkeyboardzoom="0" lockedmouse="0" lockedwheel="0" rubberband="0" sensitivity="8" simulatemass="1" speedwheel="1" zoomcentercursor="1"/>
+  <input height="638" levelbias="0.400" levelbiashidpi="1.000" levelingpitch="0" levelingroll="0" leveltilesize="1022" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg" overlap="1" width="638">
+    <level height="638" predecode="1" preload="1" width="638"/>
+    <preview color="0x808080" strip="1"/>
+  </input>
+  <userdata altitude="0.00" author="" capturedatetime="2026-09-01T14:03:53" comment="" copyright="" customnodeid="" datetime="01/09/2026 14:03" description="" heading="0" hideinlist="0" info="" latitude="-1000.00000000" longitude="0.00000000" nodeid="node1" source="" tags="Downloads" title=""/>
+  <view fovmode="2" pannorth="0">
+    <start fov="100" pan="0" projection="4" tilt="0"/>
+    <flyin fov="170" pan="0" projection="9" tilt="-90"/>
+    <min fov="1" pan="-180" tilt="-47.17"/>
+    <max fov="120" fovfisheye="360" fovstereographic="270" pan="180" scaletofit="0" tilt="47.17"/>
+  </view>
+  <hotspots smoothmovement="0">
+    <label background="1" backgroundalpha="1" backgroundcolor="0xffffff" border="1" borderalpha="1" bordercolor="0x000000" borderradius="1" enabled="1" height="20" textalpha="1" textcolor="0x000000" width="180" wordwrap="1"/>
+    <polystyle backgroundalpha="0.25098" backgroundcolor="0x0000ff" borderalpha="1" bordercolor="0x0000ff" handcursor="1" mode="0"/>
+  </hotspots>
+  <media/>
+  <animation animsequence="Animation01" clipsrandom="0" syncanimationwithvideo="0" useinautorotation="0"/>
+  <projectuserdata author="" comment="" copyright="" description="" tags="" title="" uuid="{635052c4-aac4-4394-8600-768f78576bcd}"/>
+</panorama>
