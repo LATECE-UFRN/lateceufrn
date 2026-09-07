@@ -76,11 +76,11 @@
     },
     {
       "id": 22,
-      "name": "Rita de Cassia",
+      "name": "Rita Caã Costa",
       "role": "student",
       "roleLabel": "Bolsista de Iniciação Científica FINEP",
       "photoUrl": "assets/images/team/rita.jpg",
-      "lattesUrl": "http://lattes.cnpq.br/0351736925269307",
+      "lattesUrl": "http://lattes.cnpq.br/4763212605117742",
       "email": null,
       "order": 6,
       "institution": "UFRN",
@@ -162,12 +162,12 @@
       "id": 32,
       "name": "Erika Soares",
       "role": "partner",
-      "roleLabel": "UERJ",
+      "roleLabel": "SME",
       "photoUrl": null,
       "lattesUrl": "",
       "email": null,
       "order": 13,
-      "institution": "UERJ",
+      "institution": "SME",
       "showPhoto": false
     },
     {
@@ -351,26 +351,38 @@
       "showPhoto": false
     },
     {
+      "id": 34,
+      "name": "Rita de Cassia Barbosa",
+      "role": "collaborator",
+      "roleLabel": "Docente do PPGEESP",
+      "photoUrl": null,
+      "lattesUrl": "http://lattes.cnpq.br/0351736925269307",
+      "email": null,
+      "order": 29,
+      "institution": "UFRN",
+      "showPhoto": false
+    },
+    {
       "id": 26,
-      "name": "Maria Eduarda Ferreira de Lima",
+      "name": "Maria Eduarda",
       "role": "developer",
       "roleLabel": "Desenvolvedora — UERN",
       "photoUrl": null,
       "lattesUrl": "http://lattes.cnpq.br/0805155024765743",
       "email": null,
-      "order": 29,
+      "order": 30,
       "institution": "UERN",
       "showPhoto": false
     },
     {
       "id": 27,
-      "name": "Artemisia Kimberlly Marques da Silva",
+      "name": "Artemisia Kimberlly",
       "role": "developer",
       "roleLabel": "Desenvolvedora — UERN",
       "photoUrl": null,
       "lattesUrl": "http://lattes.cnpq.br/7854607386223805",
       "email": null,
-      "order": 30,
+      "order": 31,
       "institution": "UERN",
       "showPhoto": false
     }
