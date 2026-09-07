@@ -2,7 +2,7 @@
  * Fábrica de componentes reutilizáveis.
  * Retorna strings HTML para injeção no DOM.
  * 
- * Versão 3.3 — Correção de caminhos de imagens usando resolvePath.
+ * Versão 3.5 — Link da Experiência 360º aponta para experiencia-360.html (raiz)
  */
 
 import { t, getLocale, setLocale } from './i18n.js';
@@ -16,6 +16,11 @@ export function createHeader(isAuthenticated = false) {
   const flags = { pt: '🇧🇷', en: '🇺🇸', es: '🇪🇸' };
   const languageNames = { pt: 'Português', en: 'English', es: 'Español' };
   
+  // Resolve caminhos para imagens
+  const logoPath = window.resolvePath('assets/images/logos/logo.png');
+  const instagramIcon = window.resolvePath('assets/images/icons/instagram.png');
+  const youtubeIcon = window.resolvePath('assets/images/icons/youtube.png');
+
   return `
     <!-- TOP BAR — VISÍVEL EM DESKTOP -->
     <div class="top-bar" role="banner" aria-label="Barra superior">
@@ -35,10 +40,10 @@ export function createHeader(isAuthenticated = false) {
             <span>(84) 3342-2270</span>
           </a>
           <a href="https://www.instagram.com/latece_ufrn/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram do LATECE">
-            <img src="./assets/images/icons/instagram.png" alt="Instagram" class="social-icon" loading="lazy" onerror="this.style.display='none'">
+            <img src="${instagramIcon}" alt="Instagram" class="social-icon" loading="lazy" onerror="this.style.display='none'">
           </a>
           <a href="https://www.youtube.com/channel/UCie5HHDcac4k2-7DaKWEuTQ" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube do LATECE">
-            <img src="./assets/images/icons/youtube.png" alt="YouTube" class="social-icon" loading="lazy" onerror="this.style.display='none'">
+            <img src="${youtubeIcon}" alt="YouTube" class="social-icon" loading="lazy" onerror="this.style.display='none'">
           </a>
         </div>
         <div class="top-bar-right">
@@ -63,7 +68,7 @@ export function createHeader(isAuthenticated = false) {
           <!-- Logo -->
           <a href="./" class="logo" aria-label="Página inicial do LATECE">
             <div class="logo-icon">
-              <img src="./assets/images/logos/logo.png" alt="LATECE" loading="lazy" onerror="this.style.display='none'">
+              <img src="${logoPath}" alt="LATECE" loading="lazy" onerror="this.style.display='none'">
             </div>
           </a>
 
@@ -77,6 +82,8 @@ export function createHeader(isAuthenticated = false) {
               <li><a href="./publications.html" class="nav-link" data-i18n="nav.publications">Publicações</a></li>
               <li><a href="./news.html" class="nav-link" data-i18n="nav.news">Notícias</a></li>
               <li><a href="./sugestoes.html" class="nav-link" data-i18n="nav.suggestions">Sugestões</a></li>
+              <!-- LINK CORRIGIDO: aponta para experiencia-360.html (raiz) -->
+              <li><a href="./experiencia-360.html" class="nav-link" data-i18n="nav.experiencia360">Experiência 360º</a></li>
             </ul>
           </nav>
 
@@ -120,6 +127,8 @@ export function createHeader(isAuthenticated = false) {
             <a href="./publications.html" class="mobile-nav-link" data-i18n="nav.publications">Publicações</a>
             <a href="./news.html" class="mobile-nav-link" data-i18n="nav.news">Notícias</a>
             <a href="./sugestoes.html" class="mobile-nav-link" data-i18n="nav.suggestions">Sugestões</a>
+            <!-- LINK CORRIGIDO: aponta para experiencia-360.html (raiz) -->
+            <a href="./experiencia-360.html" class="mobile-nav-link" data-i18n="nav.experiencia360">Experiência 360º</a>
             <div class="mobile-nav-divider"></div>
             ${isAuthenticated ? `
               <a href="./admin/" class="mobile-nav-link" data-i18n="nav.admin">Administração</a>
@@ -135,6 +144,12 @@ export function createHeader(isAuthenticated = false) {
 }
 
 export function createFooter(locale) {
+  // Resolve caminhos para imagens
+  const logoPath = window.resolvePath('assets/images/logos/logo.png');
+  const ufrnLogoPath = window.resolvePath('assets/images/logos/ufrn-logo-branca.png');
+  const instagramIcon = window.resolvePath('assets/images/icons/instagram.png');
+  const youtubeIcon = window.resolvePath('assets/images/icons/youtube.png');
+
   return `
     <footer class="site-footer" role="contentinfo">
       <div class="container">
@@ -145,8 +160,8 @@ export function createFooter(locale) {
             <p>Laboratório de Tecnologia Assistiva do Centro de Educação</p>
             <p><small>UFRN — Universidade Federal do Rio Grande do Norte</small></p>
             <div class="footer-institutional-logos" style="display:flex;align-items:center;gap:1.5rem;margin-top:var(--space-4);">
-              <img src="./assets/images/logos/logo.png" alt="LATECE" class="footer-logo-img" loading="lazy">
-              <img src="./assets/images/logos/ufrn-logo-branca.png" alt="UFRN" class="footer-logo-img" loading="lazy" onerror="this.style.display='none'">
+              <img src="${logoPath}" alt="LATECE" class="footer-logo-img" loading="lazy">
+              <img src="${ufrnLogoPath}" alt="UFRN" class="footer-logo-img" loading="lazy" onerror="this.style.display='none'">
             </div>
           </div>
 
@@ -159,6 +174,8 @@ export function createFooter(locale) {
               <li><a href="./equipment.html" class="footer-link">Equipamentos</a></li>
               <li><a href="./publications.html" class="footer-link">Publicações</a></li>
               <li><a href="./news.html" class="footer-link">Notícias</a></li>
+              <li><a href="./sugestoes.html" class="footer-link">Sugestões</a></li>
+              <li><a href="./experiencia-360.html" class="footer-link">Experiência 360°</a></li>
             </ul>
           </div>
 
@@ -182,10 +199,10 @@ export function createFooter(locale) {
               <p>📍 UFRN — Campus Central, Natal/RN</p>
               <div class="footer-social-links" style="display:flex;align-items:center;gap:1rem;margin-top:var(--space-3);">
                 <a href="https://www.instagram.com/latece_ufrn/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram do LATECE">
-                  <img src="./assets/images/icons/instagram.png" alt="Instagram" class="social-icon" loading="lazy" onerror="this.style.display='none'">
+                  <img src="${instagramIcon}" alt="Instagram" class="social-icon" loading="lazy" onerror="this.style.display='none'">
                 </a>
                 <a href="https://www.youtube.com/channel/UCie5HHDcac4k2-7DaKWEuTQ" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube do LATECE">
-                  <img src="./assets/images/icons/youtube.png" alt="YouTube" class="social-icon" loading="lazy" onerror="this.style.display='none'">
+                  <img src="${youtubeIcon}" alt="YouTube" class="social-icon" loading="lazy" onerror="this.style.display='none'">
                 </a>
               </div>
             </div>
@@ -236,10 +253,14 @@ export function createTeamCard(member, locale = 'pt') {
     .toUpperCase()
     .slice(0, 2);
 
-  // Foto ou placeholder
-  let photoHtml = '';
+  // Foto ou placeholder (com resolvePath)
+let photoHtml = '';
+// Para os grupos que não devem ter foto nem placeholder
+const noPhotoRoles = ['partner', 'collaborator', 'developer'];
+if (!noPhotoRoles.includes(member.role)) {
   if (hasPhoto) {
-    photoHtml = `<img src="./${member.photoUrl.replace(/^\//, '')}" alt="${member.name}" class="team-photo" loading="lazy">`;
+    const photoPath = window.resolvePath(member.photoUrl.replace(/^\//, ''));
+    photoHtml = `<img src="${photoPath}" alt="${member.name}" class="team-photo" loading="lazy">`;
   } else {
     photoHtml = `
       <div class="team-avatar-placeholder">
@@ -247,13 +268,16 @@ export function createTeamCard(member, locale = 'pt') {
       </div>
     `;
   }
+}
+// Caso contrário, photoHtml permanece vazio (sem foto e sem placeholder)
 
   // Ícone Lattes (sempre visível, com link se houver URL)
+  const lattesIconPath = window.resolvePath('assets/images/icons/lattes.png');
   const lattesIconHtml = member.lattesUrl
     ? `<a href="${member.lattesUrl}" target="_blank" rel="noopener noreferrer" class="team-lattes-link" aria-label="Currículo Lattes de ${member.name}">
-         <img src="./assets/images/icons/lattes.png" alt="Lattes" class="team-lattes-icon">
+         <img src="${lattesIconPath}" alt="Lattes" class="team-lattes-icon">
        </a>`
-    : `<img src="./assets/images/icons/lattes.png" alt="Lattes" class="team-lattes-icon">`;
+    : `<img src="${lattesIconPath}" alt="Lattes" class="team-lattes-icon">`;
 
   return `
     <div class="team-card" data-id="${member.id}">
@@ -270,38 +294,30 @@ export function createTeamCard(member, locale = 'pt') {
     </div>
   `;
 }
+
 /**
  * Cria um card de equipamento com suporte a download (quando disponível).
  * Estrutura esperada: { id, name, category, imageUrl, description, download: { type, url, size, version, platform, license } }
- * 
- * CORREÇÃO: Agora utiliza window.resolvePath para garantir caminhos absolutos das imagens.
  */
 export function createEquipmentCard(equipment) {
   console.log('[components] Criando card para:', equipment.name, 'imageUrl:', equipment.imageUrl);
   
-  // -------------------------------------------------------------
-  // 1. TRATAMENTO DA IMAGEM com resolvePath
-  // -------------------------------------------------------------
+  // Tratamento da imagem com resolvePath
   let imagePath = equipment.imageUrl || '';
-  // Remove barras iniciais
   if (imagePath.startsWith('/')) {
     imagePath = imagePath.substring(1);
   }
   
   let finalImage;
   if (imagePath) {
-    // Usa resolvePath para construir caminho absoluto
     finalImage = window.resolvePath(imagePath);
   } else {
-    // Fallback: placeholder
     finalImage = window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
   }
   
   console.log('[components] Caminho final da imagem:', finalImage);
 
-  // -------------------------------------------------------------
-  // 2. CATEGORIA (traduzida)
-  // -------------------------------------------------------------
+  // Categoria (traduzida)
   const categoryMap = {
     'CAA': t('equipment.categories.CAA') || 'Comunicação Aumentativa e Alternativa',
     'VidaDiaria': t('equipment.categories.VidaDiaria') || 'Auxílio para Vida Diária',
@@ -311,9 +327,7 @@ export function createEquipmentCard(equipment) {
   };
   const categoryLabel = categoryMap[equipment.category] || equipment.category;
 
-  // -------------------------------------------------------------
-  // 3. DOWNLOAD (objeto único, conforme JSON real)
-  // -------------------------------------------------------------
+  // Download
   let downloadHtml = '';
   const d = equipment.download;
   if (d && d.url) {
@@ -352,9 +366,6 @@ export function createEquipmentCard(equipment) {
     `;
   }
 
-  // -------------------------------------------------------------
-  // 4. HTML DO CARD
-  // -------------------------------------------------------------
   return `
     <div class="equipment-card" data-id="${equipment.id}" role="button" tabindex="0" aria-label="${equipment.name}">
       <div class="equipment-image">
