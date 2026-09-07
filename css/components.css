@@ -3377,3 +3377,100 @@ main {
 [data-theme="default"] .site-footer .footer-map-wrapper {
   background: #1a1a2e;
 }
+
+/* ============================================
+   CARDS COMPACTOS — Parceiros, Colaboradores, Desenvolvedores
+   ============================================ */
+
+/* Container compacto */
+.compact-group .team-card {
+  padding: var(--space-3);          /* 0.75rem (menor que o padrão 1.5rem) */
+  max-width: 220px;                 /* reduz a largura máxima */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Placeholder / Foto */
+.compact-group .team-card .team-photo,
+.compact-group .team-card .team-avatar-placeholder {
+  width: 80px;                      /* reduz de 120px para 80px */
+  height: 80px;
+  margin-bottom: var(--space-2);    /* reduz espaçamento inferior */
+}
+
+/* Nome */
+.compact-group .team-card .team-name {
+  font-size: var(--font-size-body); /* 16px (em vez de h4 ~19px) */
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-1);
+}
+
+/* Função */
+.compact-group .team-card .team-role {
+  font-size: var(--font-size-small); /* 14px */
+  margin-bottom: var(--space-1);
+}
+
+/* Instituição */
+.compact-group .team-card .team-institution {
+  font-size: var(--font-size-small); /* 14px */
+  margin-bottom: var(--space-1);
+}
+
+/* Divisória */
+.compact-group .team-card .team-divider {
+  width: 40%;                       /* mais curta */
+  margin: var(--space-2) auto;
+}
+
+/* Ícone Lattes */
+.compact-group .team-card .team-lattes-icon {
+  width: 20px;                      /* reduz de 28px */
+  height: 20px;
+}
+
+/* Remove espaçamento extra do wrapper do Lattes */
+.compact-group .team-card .team-lattes-wrapper {
+  margin-top: var(--space-1);
+}
+
+/* Ajustes para mobile: ainda menores */
+@media (max-width: 768px) {
+  .compact-group .team-card {
+    padding: var(--space-2);        /* 0.5rem */
+    max-width: 180px;
+  }
+  .compact-group .team-card .team-photo,
+  .compact-group .team-card .team-avatar-placeholder {
+    width: 60px;
+    height: 60px;
+  }
+  .compact-group .team-card .team-name {
+    font-size: var(--font-size-small);
+  }
+  .compact-group .team-card .team-role {
+    font-size: var(--font-size-caption);
+  }
+  .compact-group .team-card .team-institution {
+    font-size: var(--font-size-caption);
+  }
+  .compact-group .team-card .team-lattes-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ============================================
+   GAP REDUZIDO — Coordenação e Desenvolvedores
+   ============================================ */
+.compact-gap {
+  gap: 0.5rem !important; /* 8px (valor bem menor que o padrão 24px) */
+}
+
+/* Ainda menor em mobile */
+@media (max-width: 768px) {
+  .compact-gap {
+    gap: 0.25rem !important; /* 4px */
+  }
+}
