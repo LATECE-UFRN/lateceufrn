@@ -3301,3 +3301,79 @@ main {
   background: var(--color-primary-soft);
   color: var(--color-primary);
 }
+
+/* ============================================
+   CORREÇÃO FORÇADA DO CARROSSEL
+   ============================================ */
+.carousel-track {
+  animation: carouselScroll 40s linear infinite !important;
+  display: flex !important;
+  width: max-content !important;
+  will-change: transform !important;
+}
+
+@keyframes carouselScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Garantir que a redução de movimento não desative a animação */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    animation: carouselScroll 40s linear infinite !important;
+  }
+}
+
+/* ============================================
+   FOOTER — CORREÇÃO DE CONTRASTE NO TEMA CLARO
+   ============================================ */
+
+/* Tema claro: garante que os textos do footer sejam claros sobre fundo escuro */
+[data-theme="default"] .site-footer,
+[data-theme="default"] .site-footer * {
+  color: #ffffff !important; /* força branco para todos os textos */
+}
+
+/* Exceção: links devem ter underline e cor levemente diferente para indicar interação */
+[data-theme="default"] .site-footer a:not(.social-link) {
+  color: #d0c3ff !important; /* tom de roxo claro */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+[data-theme="default"] .site-footer a:not(.social-link):hover {
+  color: #ffffff !important;
+}
+
+/* Mantém a cor dos ícones sociais (já são imagens) */
+[data-theme="default"] .site-footer .social-link img {
+  filter: none; /* mantém as cores originais */
+}
+
+/* Ajuste para o copyright e textos menores */
+[data-theme="default"] .site-footer .copyright,
+[data-theme="default"] .site-footer .footer-bottom-links a {
+  color: #cccccc !important;
+}
+
+[data-theme="default"] .site-footer .footer-bottom-links a:hover {
+  color: #ffffff !important;
+}
+
+/* Ajuste para o texto "UFRN — Universidade..." e descrições */
+[data-theme="default"] .site-footer p,
+[data-theme="default"] .site-footer .description,
+[data-theme="default"] .site-footer .tagline {
+  color: #e0dce8 !important;
+}
+
+/* Ajuste para os títulos (h3, h4) */
+[data-theme="default"] .site-footer h3,
+[data-theme="default"] .site-footer h4 {
+  color: #ffffff !important;
+}
+
+/* Ajuste para o mapa (se houver, manter fundo) */
+[data-theme="default"] .site-footer .footer-map-wrapper {
+  background: #1a1a2e;
+}
