@@ -448,10 +448,10 @@ async function loadTeamPage() {
       let html = '';
 
       // Coordenação
-      if (groups.coordinator.length > 0) {
-        html += `<h2 class="section-title" data-i18n="team.coordinators">Coordenação</h2>`;
-        html += `<div class="members-grid centered-grid">${groups.coordinator.map(m => createTeamCard(m, locale)).join('')}</div>`;
-      }
+if (groups.coordinator.length > 0) {
+  html += `<h2 class="section-title" data-i18n="team.coordinators">Coordenação</h2>`;
+  html += `<div class="members-grid centered-grid compact-gap">${groups.coordinator.map(m => createTeamCard(m, locale)).join('')}</div>`;
+}
 
       // Equipe Técnica e de Pesquisa
       if (groups.technician.length > 0) {
@@ -468,19 +468,19 @@ async function loadTeamPage() {
       // Pesquisadores Parceiros
 if (groups.partner.length > 0) {
   html += `<h2 class="section-title">Pesquisadores Parceiros</h2>`;
-  html += `<div class="members-grid centered-grid">${groups.partner.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<div class="members-grid centered-grid compact-group">${groups.partner.map(m => createTeamCard(m, locale)).join('')}</div>`;
 }
 
       // Colaboradores
 if (groups.collaborator.length > 0) {
   html += `<h2 class="section-title">Colaboradores</h2>`;
-  html += `<div class="members-grid centered-grid">${groups.collaborator.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<div class="members-grid centered-grid compact-group">${groups.collaborator.map(m => createTeamCard(m, locale)).join('')}</div>`;
 }
 
       // Desenvolvedores
 if (groups.developer.length > 0) {
   html += `<h2 class="section-title">Desenvolvedores</h2>`;
-  html += `<div class="members-grid centered-grid">${groups.developer.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<div class="members-grid centered-grid compact-gap">${groups.developer.map(m => createTeamCard(m, locale)).join('')}</div>`;
 }
 
       container.innerHTML = html;
