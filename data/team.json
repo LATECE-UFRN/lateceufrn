@@ -54,7 +54,7 @@
       "id": 4,
       "name": "Renata Lima de Morais",
       "role": "technician",
-      "roleLabel": "Responsável pela Capacitação de Recursos Humanos",
+      "roleLabel": "Capacitação de Recursos Humanos",
       "photoUrl": "assets/images/team/renata.jpeg",
       "lattesUrl": "http://lattes.cnpq.br/8097072918541335",
       "email": null,
@@ -124,9 +124,9 @@
     },
     {
       "id": 24,
-      "name": "Wilfredo Blanco Figuerola",
+      "name": "Wilfredo Blanco",
       "role": "partner",
-      "roleLabel": "Docente do Departamento de Ciência da Computação, UERN",
+      "roleLabel": "Ciência da Computação, UERN",
       "photoUrl": null,
       "lattesUrl": "http://lattes.cnpq.br/9912829629195282",
       "email": null,
@@ -136,9 +136,9 @@
     },
     {
       "id": 25,
-      "name": "Raul Benites Paradeda",
+      "name": "Raul Benites",
       "role": "partner",
-      "roleLabel": "Docente do Departamento de Ciência da Computação, UERN",
+      "roleLabel": "Ciência da Computação, UERN",
       "photoUrl": null,
       "lattesUrl": "http://lattes.cnpq.br/7719675103212706",
       "email": null,
@@ -244,7 +244,7 @@
     },
     {
       "id": 13,
-      "name": "Jacyene Melo de Oliveira Araujo",
+      "name": "Jacyene Melo",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -256,7 +256,7 @@
     },
     {
       "id": 14,
-      "name": "Jefferson Fernandes Alves",
+      "name": "Jefferson Fernandes",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -268,7 +268,7 @@
     },
     {
       "id": 15,
-      "name": "Katia Regina Lopes Costa",
+      "name": "Katia Regina",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -280,7 +280,7 @@
     },
     {
       "id": 17,
-      "name": "Lisie Marlene da Silveira Melo Martins",
+      "name": "Lisie Martins",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -292,7 +292,7 @@
     },
     {
       "id": 18,
-      "name": "Maria da Apresentacao Barreto",
+      "name": "Maria da Apresentacao",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -304,7 +304,7 @@
     },
     {
       "id": 19,
-      "name": "Maria de Jesus Goncalves",
+      "name": "Maria de Jesus",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -316,7 +316,7 @@
     },
     {
       "id": 20,
-      "name": "Maristela de Oliveira Mosca",
+      "name": "Maristela de Oliveira",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -328,7 +328,7 @@
     },
     {
       "id": 21,
-      "name": "Pedro Luiz dos Santos Filho",
+      "name": "Pedro Luiz",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -340,7 +340,7 @@
     },
     {
       "id": 23,
-      "name": "Ronny Diogenes de Menezes",
+      "name": "Ronny Diogenes",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
@@ -352,7 +352,7 @@
     },
     {
       "id": 34,
-      "name": "Rita de Cassia Barbosa",
+      "name": "Rita de Cassia",
       "role": "collaborator",
       "roleLabel": "Docente do PPGEESP",
       "photoUrl": null,
