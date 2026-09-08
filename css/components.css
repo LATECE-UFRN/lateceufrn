@@ -2019,14 +2019,92 @@ textarea.form-control { min-height: 120px; resize: vertical; }
 }
 @media (min-width: 768px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .news-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ============================================================
+   MEMBROS DA EQUIPE — PADRONIZAÇÃO DE TAMANHOS E ESPAÇAMENTO
+   ============================================================ */
+
+/* Container principal: Flexbox para agrupamento centralizado e sem esticamento */
 .members-grid {
-  display: grid;
-  gap: var(--space-5);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  grid-auto-rows: 1fr; /* força todas as linhas a terem a mesma altura */
-  justify-items: center; /* centraliza os cards dentro das células */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;     /* centraliza o conjunto de cards */
+  align-items: stretch;       /* alinha alturas */
+  gap: var(--space-5);        /* espaçamento padrão entre cards */
+  margin: 0 auto;
+  max-width: 1400px;          /* evita que fique excessivamente largo em telas gigantes */
 }
-.members-grid.centered-grid { justify-items: center; }
+
+/* Cards padrão (ex: Bolsistas) */
+.members-grid .team-card {
+  flex: 0 0 auto;            /* não estica, não encolhe além do definido */
+  width: 100%;
+  max-width: 280px;
+  min-height: 340px;
+}
+
+/* GRUPO A — Coordenação + Equipe Técnica (maiores) */
+.members-grid.group-a .team-card {
+  max-width: 320px;
+  min-height: 320px;
+}
+
+/* GRUPO B — Parceiros + Colaboradores + Desenvolvedores (menores) */
+.members-grid.group-b .team-card {
+  max-width: 240px;
+  min-height: 240px;
+}
+
+/* ============================================================
+   RESPONSIVIDADE — TABLET
+   ============================================================ */
+@media (max-width: 1024px) {
+  .members-grid {
+    gap: var(--space-4);
+  }
+  .members-grid .team-card {
+    max-width: 260px;
+    min-height: 360px;
+  }
+  .members-grid.group-a .team-card {
+    max-width: 280px;
+    min-height: 380px;
+  }
+  .members-grid.group-b .team-card {
+    max-width: 220px;
+    min-height: 320px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVIDADE — MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .members-grid {
+    gap: var(--space-3);
+  }
+  .members-grid .team-card,
+  .members-grid.group-a .team-card,
+  .members-grid.group-b .team-card {
+    max-width: 260px;          /* unifica um pouco no tablet */
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .members-grid {
+    gap: var(--space-3);
+    justify-content: center;
+  }
+  .members-grid .team-card,
+  .members-grid.group-a .team-card,
+  .members-grid.group-b .team-card {
+    max-width: 100%;           /* ocupa toda a largura disponível */
+    min-height: auto;          /* altura automática conforme o conteúdo */
+    flex: 0 0 100%;            /* força uma coluna */
+  }
+}
+
 .equipment-grid .grid-container {
   display: grid;
   gap: var(--space-5);
