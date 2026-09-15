@@ -2019,92 +2019,14 @@ textarea.form-control { min-height: 120px; resize: vertical; }
 }
 @media (min-width: 768px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .news-grid { grid-template-columns: repeat(3, 1fr); } }
-
-/* ============================================================
-   MEMBROS DA EQUIPE — PADRONIZAÇÃO DE TAMANHOS E ESPAÇAMENTO
-   ============================================================ */
-
-/* Container principal: Flexbox para agrupamento centralizado e sem esticamento */
 .members-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;     /* centraliza o conjunto de cards */
-  align-items: stretch;       /* alinha alturas */
-  gap: var(--space-5);        /* espaçamento padrão entre cards */
-  margin: 0 auto;
-  max-width: 1400px;          /* evita que fique excessivamente largo em telas gigantes */
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-rows: 1fr; /* força todas as linhas a terem a mesma altura */
+  justify-items: center; /* centraliza os cards dentro das células */
 }
-
-/* Cards padrão (ex: Bolsistas) */
-.members-grid .team-card {
-  flex: 0 0 auto;            /* não estica, não encolhe além do definido */
-  width: 100%;
-  max-width: 280px;
-  min-height: 340px;
-}
-
-/* GRUPO A — Coordenação + Equipe Técnica (maiores) */
-.members-grid.group-a .team-card {
-  max-width: 320px;
-  min-height: 320px;
-}
-
-/* GRUPO B — Parceiros + Colaboradores + Desenvolvedores (menores) */
-.members-grid.group-b .team-card {
-  max-width: 240px;
-  min-height: 240px;
-}
-
-/* ============================================================
-   RESPONSIVIDADE — TABLET
-   ============================================================ */
-@media (max-width: 1024px) {
-  .members-grid {
-    gap: var(--space-4);
-  }
-  .members-grid .team-card {
-    max-width: 260px;
-    min-height: 360px;
-  }
-  .members-grid.group-a .team-card {
-    max-width: 280px;
-    min-height: 380px;
-  }
-  .members-grid.group-b .team-card {
-    max-width: 220px;
-    min-height: 320px;
-  }
-}
-
-/* ============================================================
-   RESPONSIVIDADE — MOBILE
-   ============================================================ */
-@media (max-width: 768px) {
-  .members-grid {
-    gap: var(--space-3);
-  }
-  .members-grid .team-card,
-  .members-grid.group-a .team-card,
-  .members-grid.group-b .team-card {
-    max-width: 260px;          /* unifica um pouco no tablet */
-    min-height: 360px;
-  }
-}
-
-@media (max-width: 480px) {
-  .members-grid {
-    gap: var(--space-3);
-    justify-content: center;
-  }
-  .members-grid .team-card,
-  .members-grid.group-a .team-card,
-  .members-grid.group-b .team-card {
-    max-width: 100%;           /* ocupa toda a largura disponível */
-    min-height: auto;          /* altura automática conforme o conteúdo */
-    flex: 0 0 100%;            /* força uma coluna */
-  }
-}
-
+.members-grid.centered-grid { justify-items: center; }
 .equipment-grid .grid-container {
   display: grid;
   gap: var(--space-5);
@@ -3456,99 +3378,237 @@ main {
   background: #1a1a2e;
 }
 
-/* ============================================
-   CARDS COMPACTOS — Parceiros, Colaboradores, Desenvolvedores
-   ============================================ */
 
-/* Container compacto */
-.compact-group .team-card {
-  padding: var(--space-3);          /* 0.75rem (menor que o padrão 1.5rem) */
-  max-width: 220px;                 /* reduz a largura máxima */
+/* ============================================================
+   CARROSSEL INSTITUCIONAL DO HERO — Página Inicial
+   Transforma o hero estático em carrossel de slides,
+   preservando o conteúdo original no primeiro slide.
+   ============================================================ */
+
+.hero-carousel {
+  display: block;
+  padding: 0;
+  background: none;
+  min-height: clamp(380px, 60vh, 650px);
+}
+
+/* Desabilita as sobreposições globais do .hero (agora por slide) */
+.hero-carousel::before,
+.hero-carousel::after {
+  content: none;
+  display: none;
+}
+
+.hero-carousel .hero-slides {
+  position: relative;
+  display: grid;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  min-height: inherit;
 }
 
-/* Placeholder / Foto */
-.compact-group .team-card .team-photo,
-.compact-group .team-card .team-avatar-placeholder {
-  width: 80px;                      /* reduz de 120px para 80px */
-  height: 80px;
-  margin-bottom: var(--space-2);    /* reduz espaçamento inferior */
+.hero-carousel .hero-slide {
+  grid-area: 1 / 1;
+  position: relative;
+  min-height: clamp(380px, 60vh, 650px);
+  display: flex;
+  align-items: center;
+  padding: var(--hero-padding);
+  background-color: var(--color-purple-900);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.9s ease, visibility 0s linear 0.9s;
+  overflow: hidden;
 }
 
-/* Nome */
-.compact-group .team-card .team-name {
-  font-size: var(--font-size-body); /* 16px (em vez de h4 ~19px) */
-  font-weight: var(--font-semibold);
-  margin-bottom: var(--space-1);
+.hero-carousel .hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+  transition: opacity 0.9s ease, visibility 0s linear 0s;
 }
 
-/* Função */
-.compact-group .team-card .team-role {
-  font-size: var(--font-size-small); /* 14px */
-  margin-bottom: var(--space-1);
+/* Sobreposições por slide (preservam o visual institucional) */
+.hero-carousel .hero-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 45% 55%, var(--hero-bg-glow) 0%, transparent 70%),
+    linear-gradient(to bottom, var(--hero-bg-top) 0%, var(--hero-bg-mid) 45%, var(--hero-bg-bottom) 100%);
+  pointer-events: none;
+  opacity: 0.88;
 }
 
-/* Instituição */
-.compact-group .team-card .team-institution {
-  font-size: var(--font-size-small); /* 14px */
-  margin-bottom: var(--space-1);
+.hero-carousel .hero-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.22) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
 }
 
-/* Divisória */
-.compact-group .team-card .team-divider {
-  width: 40%;                       /* mais curta */
-  margin: var(--space-2) auto;
+.hero-carousel .hero-slide > .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
 }
 
-/* Ícone Lattes */
-.compact-group .team-card .team-lattes-icon {
-  width: 20px;                      /* reduz de 28px */
-  height: 20px;
+/* ===== Setas laterais (discretas) ===== */
+.hero-carousel .hero-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.18);
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-fast);
+  touch-action: manipulation;
 }
 
-/* Remove espaçamento extra do wrapper do Lattes */
-.compact-group .team-card .team-lattes-wrapper {
-  margin-top: var(--space-1);
+.hero-carousel .hero-carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-50%) scale(1.05);
 }
 
-/* Ajustes para mobile: ainda menores */
+.hero-carousel .hero-carousel-arrow:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-carousel .hero-carousel-arrow--prev { left: 1rem; }
+.hero-carousel .hero-carousel-arrow--next { right: 1rem; }
+
+/* ===== Indicadores (bolinhas) ===== */
+.hero-carousel .hero-carousel-dots {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.hero-carousel .hero-carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast),
+              transform var(--transition-fast),
+              border-color var(--transition-fast);
+  touch-action: manipulation;
+}
+
+.hero-carousel .hero-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.hero-carousel .hero-carousel-dot:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.hero-carousel .hero-carousel-dot.is-active {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: scale(1.2);
+}
+
+/* ===== Tema escuro ===== */
+[data-theme="dark"] .hero-carousel .hero-carousel-arrow {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+[data-theme="dark"] .hero-carousel .hero-carousel-dot {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Alto contraste ===== */
+.high-contrast .hero-carousel .hero-carousel-arrow {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+.high-contrast .hero-carousel .hero-carousel-dot {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+.high-contrast .hero-carousel .hero-carousel-dot.is-active {
+  background: #ffffff !important;
+}
+
+/* ===== Responsividade ===== */
 @media (max-width: 768px) {
-  .compact-group .team-card {
-    padding: var(--space-2);        /* 0.5rem */
-    max-width: 180px;
+  .hero-carousel .hero-carousel-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1.25rem;
   }
-  .compact-group .team-card .team-photo,
-  .compact-group .team-card .team-avatar-placeholder {
-    width: 60px;
-    height: 60px;
+  .hero-carousel .hero-carousel-arrow--prev { left: 0.5rem; }
+  .hero-carousel .hero-carousel-arrow--next { right: 0.5rem; }
+  .hero-carousel .hero-carousel-dots { bottom: 0.75rem; }
+  .hero-carousel .hero-carousel-dot { width: 9px; height: 9px; }
+}
+
+@media (max-width: 480px) {
+  .hero-carousel .hero-carousel-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
   }
-  .compact-group .team-card .team-name {
-    font-size: var(--font-size-small);
-  }
-  .compact-group .team-card .team-role {
-    font-size: var(--font-size-caption);
-  }
-  .compact-group .team-card .team-institution {
-    font-size: var(--font-size-caption);
-  }
-  .compact-group .team-card .team-lattes-icon {
-    width: 16px;
-    height: 16px;
+  .hero-carousel .hero-carousel-dots {
+    bottom: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    gap: 0.4rem;
   }
 }
 
-/* ============================================
-   GAP REDUZIDO — Coordenação e Desenvolvedores
-   ============================================ */
-.compact-gap {
-  gap: 0.5rem !important; /* 8px (valor bem menor que o padrão 24px) */
-}
-
-/* Ainda menor em mobile */
-@media (max-width: 768px) {
-  .compact-gap {
-    gap: 0.25rem !important; /* 4px */
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel .hero-slide,
+  .hero-carousel .hero-slide.is-active {
+    transition: opacity 0.15s linear, visibility 0s linear;
+  }
+  .hero-carousel .hero-carousel-arrow:hover {
+    transform: translateY(-50%);
+  }
+  .hero-carousel .hero-carousel-dot.is-active {
+    transform: none;
   }
 }
