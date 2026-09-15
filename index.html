@@ -47,37 +47,134 @@
 
     <main id="main-content">
 
-      <!-- ===== HERO (HOME) ===== -->
-      <section class="hero hero-home" aria-label="Destaque principal">
-        <div class="container">
-          <div class="hero-grid">
-            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
-              <div class="hero-badge" data-i18n="home.subtitle">Laboratório de Tecnologia Assistiva</div>
-              <h1 class="hero-title">
-                <span data-i18n="home.titlePart1">Tecnologia que</span><br>
-                <span class="hero-highlight" data-i18n="home.titlePart2">amplia possibilidades</span>
-              </h1>
-              <p class="hero-subtitle" data-i18n="home.description">Promovendo inclusão e acessibilidade através da pesquisa, inovação e formação humana.</p>
-              <div class="hero-actions">
-                <a href="./about.html" class="btn btn-primary btn-lg" data-i18n="home.learnMore">Conheça o LATECE</a>
-                <a href="./equipment.html" class="btn btn-outline btn-lg" data-i18n="home.equipment">Equipamentos</a>
-              </div>
-              <div class="hero-stats">
-                <div class="stat-item">
-                  <span class="stat-number" data-target="2017">2017</span>
-                  <span class="stat-label" data-i18n="home.foundation">Fundação</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number" data-target="+20">+20</span>
-                  <span class="stat-label" data-i18n="home.researchers">Pesquisadores</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number" data-target="+50">+50</span>
-                  <span class="stat-label" data-i18n="home.projects">Projetos</span>
+      <!-- ===== HERO (HOME) — CARROSSEL INSTITUCIONAL ===== -->
+      <section class="hero hero-carousel" aria-label="Destaque principal" data-carousel>
+        <div class="hero-slides">
+
+          <!-- Slide 1 — Conteúdo original da Home (fonte de verdade) -->
+          <div class="hero-slide is-active"
+               data-slide="0"
+               style="background-image: url('./assets/images/illustrations/hero-bg.jpg');"
+               aria-hidden="false">
+            <div class="container">
+              <div class="hero-grid">
+                <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+                  <div class="hero-badge" data-i18n="home.subtitle">Laboratório de Tecnologia Assistiva</div>
+                  <h1 class="hero-title">
+                    <span data-i18n="home.titlePart1">Tecnologia que</span><br>
+                    <span class="hero-highlight" data-i18n="home.titlePart2">amplia possibilidades</span>
+                  </h1>
+                  <p class="hero-subtitle" data-i18n="home.description">Promovendo inclusão e acessibilidade através da pesquisa, inovação e formação humana.</p>
+                  <div class="hero-actions">
+                    <a href="./about.html" class="btn btn-primary btn-lg" data-i18n="home.learnMore">Conheça o LATECE</a>
+                    <a href="./equipment.html" class="btn btn-outline btn-lg" data-i18n="home.equipment">Equipamentos</a>
+                  </div>
+                  <div class="hero-stats">
+                    <div class="stat-item">
+                      <span class="stat-number" data-target="2017">2017</span>
+                      <span class="stat-label" data-i18n="home.foundation">Fundação</span>
+                    </div>
+                    <div class="stat-item">
+                      <span class="stat-number" data-target="+20">+20</span>
+                      <span class="stat-label" data-i18n="home.researchers">Pesquisadores</span>
+                    </div>
+                    <div class="stat-item">
+                      <span class="stat-number" data-target="+50">+50</span>
+                      <span class="stat-label" data-i18n="home.projects">Projetos</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Slide 2 — Pesquisa e Inovação (conteúdo alinhado à missão do site) -->
+          <div class="hero-slide"
+               data-slide="1"
+               style="background-image: url('./assets/images/illustrations/testinho.jpg');"
+               aria-hidden="true">
+            <div class="container">
+              <div class="hero-grid">
+                <div class="hero-content">
+                  <div class="hero-badge">Pesquisa e Inovação</div>
+                  <h2 class="hero-title">
+                    <span>Pesquisa e Inovação em</span><br>
+                    <span class="hero-highlight">Tecnologia Assistiva</span>
+                  </h2>
+                  <p class="hero-subtitle">Desenvolvemos pesquisas que promovem a participação de pessoas com necessidades educacionais específicas em diferentes contextos.</p>
+                  <div class="hero-actions">
+                    <a href="./about.html" class="btn btn-primary btn-lg">Sobre o LATECE</a>
+                    <a href="./publications.html" class="btn btn-outline btn-lg">Publicações</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 — Equipamentos (conteúdo reaproveitado de equipment.html) -->
+          <div class="hero-slide"
+               data-slide="2"
+               style="background-image: url('./assets/images/illustrations/placeholder-equipment.jpg');"
+               aria-hidden="true">
+            <div class="container">
+              <div class="hero-grid">
+                <div class="hero-content">
+                  <div class="hero-badge">Recursos para acessibilidade</div>
+                  <h2 class="hero-title">
+                    <span>Equipamentos de</span><br>
+                    <span class="hero-highlight">Tecnologia Assistiva</span>
+                  </h2>
+                  <p class="hero-subtitle">Explore nosso catálogo de recursos e tecnologias que promovem autonomia e inclusão.</p>
+                  <div class="hero-actions">
+                    <a href="./equipment.html" class="btn btn-primary btn-lg">Ver Equipamentos</a>
+                    <a href="./about.html" class="btn btn-outline btn-lg">Sobre o LATECE</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 — Notícias e Eventos (conteúdo reaproveitado de news.html) -->
+          <div class="hero-slide"
+               data-slide="3"
+               style="background-image: url('./assets/images/illustrations/placeholder-news.jpg');"
+               aria-hidden="true">
+            <div class="container">
+              <div class="hero-grid">
+                <div class="hero-content">
+                  <div class="hero-badge">Acompanhe o LATECE</div>
+                  <h2 class="hero-title">
+                    <span>Notícias e</span><br>
+                    <span class="hero-highlight">Eventos</span>
+                  </h2>
+                  <p class="hero-subtitle">Fique por dentro das últimas novidades, pesquisas e acontecimentos do laboratório.</p>
+                  <div class="hero-actions">
+                    <a href="./news.html" class="btn btn-primary btn-lg">Ver Notícias</a>
+                    <a href="./sugestoes.html" class="btn btn-outline btn-lg">Enviar Sugestão</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Setas de navegação -->
+        <button type="button"
+                class="hero-carousel-arrow hero-carousel-arrow--prev"
+                aria-label="Slide anterior"
+                data-carousel-prev>‹</button>
+        <button type="button"
+                class="hero-carousel-arrow hero-carousel-arrow--next"
+                aria-label="Próximo slide"
+                data-carousel-next>›</button>
+
+        <!-- Indicadores (bolinhas) -->
+        <div class="hero-carousel-dots" role="tablist" aria-label="Navegação de slides">
+          <button type="button" class="hero-carousel-dot is-active" role="tab" aria-label="Ir para o slide 1" aria-selected="true"  data-carousel-dot="0"></button>
+          <button type="button" class="hero-carousel-dot"           role="tab" aria-label="Ir para o slide 2" aria-selected="false" data-carousel-dot="1"></button>
+          <button type="button" class="hero-carousel-dot"           role="tab" aria-label="Ir para o slide 3" aria-selected="false" data-carousel-dot="2"></button>
+          <button type="button" class="hero-carousel-dot"           role="tab" aria-label="Ir para o slide 4" aria-selected="false" data-carousel-dot="3"></button>
         </div>
       </section>
 
