@@ -277,6 +277,126 @@ function updateCounterElement(elementId, value, isPlus = false) {
 }
 
 // ============================================
+// CARROSSEL INSTITUCIONAL DO HERO (Home)
+// ============================================
+
+function initHeroCarousel() {
+  const carousel = document.querySelector('[data-carousel]');
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.hero-slide');
+  const dots = carousel.querySelectorAll('.hero-carousel-dot');
+  const prevBtn = carousel.querySelector('[data-carousel-prev]');
+  const nextBtn = carousel.querySelector('[data-carousel-next]');
+
+  if (slides.length < 2) return;
+
+  const AUTOPLAY_INTERVAL = 6500;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let currentIndex = 0;
+  let autoTimer = null;
+
+  function goToSlide(index) {
+    const total = slides.length;
+    const newIndex = ((index % total) + total) % total;
+    if (newIndex === currentIndex) return;
+
+    const oldSlide = slides[currentIndex];
+    const newSlide = slides[newIndex];
+
+    oldSlide.classList.remove('is-active');
+    oldSlide.setAttribute('aria-hidden', 'true');
+
+    newSlide.classList.add('is-active');
+    newSlide.setAttribute('aria-hidden', 'false');
+
+    if (dots[currentIndex]) {
+      dots[currentIndex].classList.remove('is-active');
+      dots[currentIndex].setAttribute('aria-selected', 'false');
+    }
+    if (dots[newIndex]) {
+      dots[newIndex].classList.add('is-active');
+      dots[newIndex].setAttribute('aria-selected', 'true');
+    }
+
+    currentIndex = newIndex;
+  }
+
+  function nextSlide() { goToSlide(currentIndex + 1); }
+  function prevSlide() { goToSlide(currentIndex - 1); }
+
+  function startAuto() {
+    if (prefersReducedMotion) return;
+    stopAuto();
+    autoTimer = window.setInterval(nextSlide, AUTOPLAY_INTERVAL);
+  }
+
+  function stopAuto() {
+    if (autoTimer) {
+      window.clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  function restartAuto() {
+    stopAuto();
+    startAuto();
+  }
+
+  // Controles manuais
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      restartAuto();
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      restartAuto();
+    });
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      goToSlide(i);
+      restartAuto();
+    });
+  });
+
+  // Pausa ao interagir (hover/foco)
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+  carousel.addEventListener('focusin', stopAuto);
+  carousel.addEventListener('focusout', (e) => {
+    if (!carousel.contains(e.relatedTarget)) startAuto();
+  });
+
+  // Navegação por teclado (setas esquerda/direita)
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevSlide();
+      restartAuto();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextSlide();
+      restartAuto();
+    }
+  });
+
+  // Pausa quando a aba perde visibilidade
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAuto();
+    else startAuto();
+  });
+
+  startAuto();
+}
+
+
+// ============================================
 // SCROLL REVEAL
 // ============================================
 
@@ -448,16 +568,16 @@ async function loadTeamPage() {
       let html = '';
 
       // Coordenação
-if (groups.coordinator.length > 0) {
-  html += `<h2 class="section-title" data-i18n="team.coordinators">Coordenação</h2>`;
-  html += `<div class="members-grid centered-grid group-a">${groups.coordinator.map(m => createTeamCard(m, locale)).join('')}</div>`;
-}
+      if (groups.coordinator.length > 0) {
+        html += `<h2 class="section-title" data-i18n="team.coordinators">Coordenação</h2>`;
+        html += `<div class="members-grid centered-grid">${groups.coordinator.map(m => createTeamCard(m, locale)).join('')}</div>`;
+      }
 
       // Equipe Técnica e de Pesquisa
-if (groups.technician.length > 0) {
-  html += `<h2 class="section-title">Equipe Técnica e de Pesquisa</h2>`;
-  html += `<div class="members-grid centered-grid group-a">${groups.technician.map(m => createTeamCard(m, locale)).join('')}</div>`;
-}
+      if (groups.technician.length > 0) {
+        html += `<h2 class="section-title">Equipe Técnica e de Pesquisa</h2>`;
+        html += `<div class="members-grid centered-grid">${groups.technician.map(m => createTeamCard(m, locale)).join('')}</div>`;
+      }
 
       // Bolsistas
       if (groups.student.length > 0) {
@@ -468,19 +588,19 @@ if (groups.technician.length > 0) {
       // Pesquisadores Parceiros
 if (groups.partner.length > 0) {
   html += `<h2 class="section-title">Pesquisadores Parceiros</h2>`;
-  html += `<div class="members-grid centered-grid group-b">${groups.partner.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<div class="members-grid centered-grid">${groups.partner.map(m => createTeamCard(m, locale)).join('')}</div>`;
 }
 
       // Colaboradores
 if (groups.collaborator.length > 0) {
   html += `<h2 class="section-title">Colaboradores</h2>`;
-  html += `<div class="members-grid centered-grid group-b">${groups.collaborator.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<div class="members-grid centered-grid">${groups.collaborator.map(m => createTeamCard(m, locale)).join('')}</div>`;
 }
 
       // Desenvolvedores
 if (groups.developer.length > 0) {
   html += `<h2 class="section-title">Desenvolvedores</h2>`;
-  html += `<div class="members-grid centered-grid group-b">${groups.developer.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<div class="members-grid centered-grid">${groups.developer.map(m => createTeamCard(m, locale)).join('')}</div>`;
 }
 
       container.innerHTML = html;
@@ -1227,6 +1347,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   switch (page) {
     case 'home':
       await loadHomePage();
+      initHeroCarousel();
       break;
     case 'team':
       await loadTeamPage();
@@ -1255,6 +1376,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   initScrollReveal();
   createBackToTop();
   animateCounters();
+
+  // Garante que o conteúdo dos slides do carrossel esteja sempre visível,
+  // independentemente do estado do IntersectionObserver (evita "conteúdo preso"
+  // por causa da classe .reveal).
+  document.querySelectorAll('.hero-carousel .hero-slide .hero-content').forEach(el => {
+    el.classList.add('visible');
+  });
 
   window.syncHeaderScrollState = syncHeaderScrollState;
   console.log('Portal LATECE — carregado. Página:', page);
