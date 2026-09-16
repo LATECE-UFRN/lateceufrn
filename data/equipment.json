@@ -70,7 +70,7 @@
       "name": "ACIONADORES",
       "category": "VidaDiaria",
       "imageUrl": "assets/images/equipment/vida/ACIONADORES.jpeg",
-      "description": "Dispositivo adaptado que permite ao usuário ativar comandos por meio de toques simples, pressão ou outros movimentos, facilitando o acesso a computadores e equipamentos eletrônicos.",
+      "description": "Botões que substituem o clique do mouse que permite ao usuário ativar comandos por meio de toques simples, pressão ou outros movimentos, facilitando o acesso a dispositivos eletrônicos.",
       "order": 7,
       "download": null
     },
@@ -79,7 +79,7 @@
       "name": "COLIBRI",
       "category": "VidaDiaria",
       "imageUrl": "assets/images/equipment/vida/COLIBRI.jpeg",
-      "description": "Dispositivo de acesso alternativo que possibilita a interação com o computador, indicado para pessoas com mobilidade reduzida nos membros.",
+      "description": "Mouse de cabeça que possibilita o acesso a dispositivos eletrônicos para pessoas que não podem usar as mãos.",
       "order": 8,
       "download": null
     },
