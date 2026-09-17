@@ -7,6 +7,8 @@
     "publications": "Publicações",
     "news": "Notícias",
     "suggestions": "Sugestões",
+    "experiencia360": "Experiência 360º",
+    "language": "Idioma",
     "admin": "Administração",
     "login": "Login",
     "logout": "Sair",
@@ -50,9 +52,21 @@
     "quickPublicationsText": "Acesse artigos, teses e demais produções científicas.",
     "foundation": "Fundação",
     "researchers": "Pesquisadores",
-    "projects": "Projetos"
+    "projects": "Projetos",
+    "programmingTitle": "Acompanhe nossa programação"
   },
-  "about": {
+    "agenda": {
+    "regionLabel": "Agenda do LATECE",
+    "gridLabel": "Calendário de {month}",
+    "prevMonth": "Mês anterior",
+    "nextMonth": "Próximo mês",
+    "dayWithEvents": "Dia {day}, com atividades",
+    "dayNoEvents": "Dia {day}, sem atividades",
+    "selectDayHint": "Selecione um dia para ver as atividades.",
+    "noEventsOnDay": "Nenhuma atividade neste dia.",
+    "moreInfo": "Mais informações"
+  },
+    "about": {
     "title": "Sobre o LATECE — Laboratório de Tecnologia Assistiva UFRN",
     "heroBadge": "Laboratório de Tecnologia Assistiva",
     "heroTitle1": "Conheça o",
@@ -133,7 +147,13 @@
     "heroTitle1": "Equipamentos de",
     "heroTitle2": "Tecnologia Assistiva",
     "heroSubtitle": "Explore nosso catálogo de recursos e tecnologias que promovem autonomia e inclusão.",
-    "exploreCatalog": "Explorar Catálogo"
+    "exploreCatalog": "Explorar Catálogo",
+       "modal": {
+      "previousImage": "Imagem anterior",
+      "nextImage": "Próxima imagem",
+      "previousItem": "Recurso anterior",
+      "nextItem": "Próximo recurso"
+    }
   },
   "publications": {
     "title": "Publicações e Pesquisas",
