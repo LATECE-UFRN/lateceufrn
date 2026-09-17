@@ -3,12 +3,13 @@
  * Versão com correções de contadores e integração com Leitura Assistida
  */
 
-import { createHeader, createFooter, createNewsCard, createCarousel, createTeamCard, createEquipmentCard, createEquipmentModal, createPublicationItem, createPublicationModal, createNewsDetail, createPagination } from './components.js';
+import { createHeader, createFooter, createNewsCard, createCarousel, createTeamCard, createTeamListItem, createEquipmentCard, createEquipmentModal, createPublicationItem, createPublicationModal, createNewsDetail, createPagination } from './components.js';
 import { initAccessibility, closeAccessibilityPanel } from './accessibility.js';
 import { initI18n, t, getLocale, setLocale } from './i18n.js';
 import { loadTeamData, loadEquipmentData, loadPublicationsData, loadNewsFallback, paginateData } from './data.js';
 import { fetchNews, fetchNewsById, formatDate, getAvailableCategories } from './news.js';
 import { initSpeech } from './speech.js'; // NOVO: importação do módulo de leitura assistida
+import { initAgenda } from './agenda.js'; // NOVO: agenda na seção "Nossa Missão"
 
 // ============================================
 // ESTADO GLOBAL
@@ -585,22 +586,22 @@ async function loadTeamPage() {
         html += `<div class="members-grid centered-grid">${groups.student.map(m => createTeamCard(m, locale)).join('')}</div>`;
       }
 
-      // Pesquisadores Parceiros
+      // Pesquisadores Parceiros — LISTA
 if (groups.partner.length > 0) {
   html += `<h2 class="section-title">Pesquisadores Parceiros</h2>`;
-  html += `<div class="members-grid centered-grid">${groups.partner.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<ul class="team-list" role="list">${groups.partner.map(m => createTeamListItem(m)).join('')}</ul>`;
 }
 
-      // Colaboradores
+      // Colaboradores — LISTA
 if (groups.collaborator.length > 0) {
   html += `<h2 class="section-title">Colaboradores</h2>`;
-  html += `<div class="members-grid centered-grid">${groups.collaborator.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<ul class="team-list" role="list">${groups.collaborator.map(m => createTeamListItem(m)).join('')}</ul>`;
 }
 
-      // Desenvolvedores
+      // Desenvolvedores — LISTA
 if (groups.developer.length > 0) {
   html += `<h2 class="section-title">Desenvolvedores</h2>`;
-  html += `<div class="members-grid centered-grid">${groups.developer.map(m => createTeamCard(m, locale)).join('')}</div>`;
+  html += `<ul class="team-list" role="list">${groups.developer.map(m => createTeamListItem(m)).join('')}</ul>`;
 }
 
       container.innerHTML = html;
@@ -676,8 +677,8 @@ async function loadEquipmentPage() {
       grid.querySelectorAll('.equipment-card').forEach(card => {
         card.addEventListener('click', () => {
           const id = parseInt(card.dataset.id);
-          const item = allEquipment.find(e => e.id === id);
-          if (item) openEquipmentModal(item);
+          const item = filtered.find(e => e.id === id);
+          if (item) openEquipmentModal(item, filtered);
         });
       });
 
@@ -757,27 +758,140 @@ function setupEquipmentFilters() {
   }
 }
 
-function openEquipmentModal(item) {
+/* ---- Estado do modal de equipamentos ---- */
+const equipmentModalState = {
+  isOpen: false,
+  currentIndex: -1,
+  list: [],
+  originElement: null
+};
+
+function openEquipmentModal(item, list) {
   const container = document.getElementById('modal-container');
   if (!container) return;
+
+  const navList = Array.isArray(list) && list.length > 0
+    ? list
+    : (Array.isArray(allEquipment) ? allEquipment : []);
+  if (navList.length === 0) return;
+
+  equipmentModalState.originElement = document.activeElement;
+  equipmentModalState.list = navList;
+  equipmentModalState.isOpen = true;
+
+  const idx = navList.findIndex(e => e.id === item.id);
+  equipmentModalState.currentIndex = idx >= 0 ? idx : 0;
+
+  renderEquipmentModalContent();
+  document.body.style.overflow = 'hidden';
+}
+
+function renderEquipmentModalContent() {
+  const container = document.getElementById('modal-container');
+  if (!container) return;
+
+  const item = equipmentModalState.list[equipmentModalState.currentIndex];
+  if (!item) return;
+
   container.innerHTML = createEquipmentModal(item);
+
   const modal = container.querySelector('.modal');
   const closeBtn = modal.querySelector('.close-button');
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeEquipmentModal(); });
+  const prevBtn = modal.querySelector('[data-nav="prev"]');
+  const nextBtn = modal.querySelector('[data-nav="next"]');
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeEquipmentModal();
+  });
+
   closeBtn.addEventListener('click', closeEquipmentModal);
-  const escHandler = (e) => {
-    if (e.key === 'Escape') { closeEquipmentModal(); document.removeEventListener('keydown', escHandler); }
-  };
-  document.addEventListener('keydown', escHandler);
-  const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  if (focusable.length > 0) setTimeout(() => focusable[0].focus(), 100);
-  document.body.style.overflow = 'hidden';
+
+  prevBtn?.addEventListener('click', () => navigateEquipment(-1));
+  nextBtn?.addEventListener('click', () => navigateEquipment(1));
+
+  modal.querySelectorAll('.equipment-gallery-arrow').forEach(arrow => {
+    arrow.addEventListener('click', () => {
+      const dir = arrow.classList.contains('equipment-gallery-arrow--prev') ? -1 : 1;
+      navigateGalleryImage(dir);
+    });
+  });
+
+  setTimeout(() => { if (closeBtn) closeBtn.focus(); }, 80);
+}
+
+function navigateEquipment(direction) {
+  const total = equipmentModalState.list.length;
+  if (total === 0) return;
+
+  equipmentModalState.currentIndex =
+    (equipmentModalState.currentIndex + direction + total) % total;
+
+  renderEquipmentModalContent();
+
+  const selector = direction > 0 ? '[data-nav="next"]' : '[data-nav="prev"]';
+  setTimeout(() => {
+    const btn = document.querySelector(`#modal-container ${selector}`);
+    if (btn) btn.focus();
+  }, 40);
+}
+
+function navigateGalleryImage(direction) {
+  const gallery = document.querySelector('#modal-container .equipment-gallery');
+  if (!gallery) return;
+
+  const images = gallery.querySelectorAll('.equipment-gallery-img');
+  const total = images.length;
+  if (total <= 1) return;
+
+  let current = parseInt(gallery.dataset.currentImage || '0', 10);
+  current = (current + direction + total) % total;
+  gallery.dataset.currentImage = String(current);
+
+  images.forEach((img, i) => {
+    img.classList.toggle('is-active', i === current);
+  });
+
+  const label = gallery.querySelector('.equipment-gallery-current');
+  if (label) label.textContent = String(current + 1);
 }
 
 function closeEquipmentModal() {
   const container = document.getElementById('modal-container');
   if (container) container.innerHTML = '';
   document.body.style.overflow = '';
+
+  const origin = equipmentModalState.originElement;
+  equipmentModalState.isOpen = false;
+  equipmentModalState.currentIndex = -1;
+  equipmentModalState.list = [];
+  equipmentModalState.originElement = null;
+
+  if (origin && typeof origin.focus === 'function') {
+    setTimeout(() => origin.focus(), 50);
+  }
+}
+
+/* Atalhos de teclado (Esc, setas). Registrado UMA vez no DOMContentLoaded. */
+function handleEquipmentModalKeydown(e) {
+  if (!equipmentModalState.isOpen) return;
+
+  const tag = e.target && e.target.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeEquipmentModal();
+    return;
+  }
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    navigateEquipment(-1);
+    return;
+  }
+  if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    navigateEquipment(1);
+  }
 }
 
 // ============================================
@@ -1291,6 +1405,87 @@ function setupLanguageSelector() {
 }
 
 // ============================================
+// SELETOR DE IDIOMA MOBILE (inline)
+// ============================================
+function setupMobileLanguageSelector() {
+  const toggle = document.getElementById('locale-toggle-mobile');
+  const list = document.getElementById('mobile-language-list');
+  if (!toggle || !list) return;
+
+  const flags = { pt: '🇧🇷', en: '🇺🇸', es: '🇪🇸' };
+
+  // Sincroniza estado inicial do indicador
+  const currentLocale = getLocale();
+  const flagEl = document.getElementById('mobile-locale-flag');
+  if (flagEl) flagEl.textContent = flags[currentLocale] || '🌐';
+
+  function openMobileLanguageList() {
+    list.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+    setTimeout(() => {
+      const first = list.querySelector('.mobile-language-option');
+      if (first) first.focus();
+    }, 40);
+  }
+
+  function closeMobileLanguageList() {
+    list.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleMobileLanguageList() {
+    if (list.hidden) openMobileLanguageList();
+    else closeMobileLanguageList();
+  }
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileLanguageList();
+  });
+
+  // Ações das opções de idioma
+  list.querySelectorAll('.mobile-language-option').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const locale = btn.getAttribute('data-locale');
+      if (!locale) return;
+
+      if (locale !== getLocale()) {
+        await setLocale(locale);
+
+        // Atualiza indicador visual
+        if (flagEl) flagEl.textContent = flags[locale] || '🌐';
+        toggle.querySelector('[data-i18n="nav.language"]').textContent =
+          t('nav.language') || 'Idioma';
+
+        // Marca opção ativa
+        list.querySelectorAll('.mobile-language-option').forEach(b => {
+          b.classList.toggle('is-active', b.getAttribute('data-locale') === locale);
+        });
+
+        // Recarrega conteúdo dinâmico da página atual
+        const page = getPageFromPath();
+        if (page === 'team') loadTeamPage();
+        else if (page === 'equipment') loadEquipmentPage();
+        else if (page === 'publications') loadPublicationsPage();
+        else if (page === 'news') loadNewsPage();
+        else if (page === 'news-detail') loadNewsDetailPage();
+      }
+
+      closeMobileLanguageList();
+      closeMobileMenu();
+    });
+  });
+
+  // Fechar lista com Esc
+  list.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMobileLanguageList();
+      toggle.focus();
+    }
+  });
+}
+
+// ============================================
 // INICIALIZAÇÃO
 // ============================================
 
@@ -1309,6 +1504,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const menuButton = document.querySelector('.mobile-menu-button');
   if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    // Toggles internos (idioma, etc.) não devem fechar o menu
+    if (link.hasAttribute('data-no-close')) return;
     link.addEventListener('click', closeMobileMenu);
   });
   const overlay = document.querySelector('.mobile-overlay');
@@ -1332,6 +1529,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.addEventListener('load', syncHeaderScrollState);
 
   setupLanguageSelector();
+  setupMobileLanguageSelector();
   initAccessibility();
 
   // NOVO: Inicializa o módulo de leitura assistida
@@ -1348,6 +1546,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     case 'home':
       await loadHomePage();
       initHeroCarousel();
+      await initAgenda(); // NOVO: inicializa a agenda da seção "Nossa Missão"
       break;
     case 'team':
       await loadTeamPage();
@@ -1376,6 +1575,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   initScrollReveal();
   createBackToTop();
   animateCounters();
+
+  // Navegação por teclado no modal de equipamentos
+  document.addEventListener('keydown', handleEquipmentModalKeydown);
 
   // Garante que o conteúdo dos slides do carrossel esteja sempre visível,
   // independentemente do estado do IntersectionObserver (evita "conteúdo preso"
