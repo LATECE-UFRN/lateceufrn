@@ -129,6 +129,39 @@ export function createHeader(isAuthenticated = false) {
             <a href="./sugestoes.html" class="mobile-nav-link" data-i18n="nav.suggestions">Sugestões</a>
             <!-- LINK CORRIGIDO: aponta para experiencia-360.html (raiz) -->
             <a href="./experiencia-360.html" class="mobile-nav-link" data-i18n="nav.experiencia360">Experiência 360º</a>
+
+            <!-- Seletor de idioma inline (mobile) -->
+            <button type="button"
+                    class="mobile-nav-link mobile-nav-link--locale"
+                    id="locale-toggle-mobile"
+                    data-no-close
+                    aria-expanded="false"
+                    aria-controls="mobile-language-list">
+              <span class="flag" id="mobile-locale-flag" aria-hidden="true">${flags[locale] || '🌐'}</span>
+              <span data-i18n="nav.language">Idioma</span>
+              <span class="dropdown-arrow" aria-hidden="true">▼</span>
+            </button>
+            <ul class="mobile-language-list" id="mobile-language-list" hidden>
+              <li>
+                <button type="button" class="mobile-language-option ${locale === 'pt' ? 'is-active' : ''}" data-locale="pt">
+                  <span class="flag" aria-hidden="true">🇧🇷</span>
+                  <span>Português</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="mobile-language-option ${locale === 'en' ? 'is-active' : ''}" data-locale="en">
+                  <span class="flag" aria-hidden="true">🇺🇸</span>
+                  <span>English</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="mobile-language-option ${locale === 'es' ? 'is-active' : ''}" data-locale="es">
+                  <span class="flag" aria-hidden="true">🇪🇸</span>
+                  <span>Español</span>
+                </button>
+              </li>
+            </ul>
+
             <div class="mobile-nav-divider"></div>
             ${isAuthenticated ? `
               <a href="./admin/" class="mobile-nav-link" data-i18n="nav.admin">Administração</a>
@@ -296,6 +329,39 @@ if (!noPhotoRoles.includes(member.role)) {
 }
 
 /**
+ * Cria um item de lista horizontal para os grupos:
+ * Pesquisadores Parceiros, Colaboradores, Desenvolvedores.
+ * Estrutura: Nome | Função | Instituição | Lattes (sem avatar).
+ */
+export function createTeamListItem(member) {
+  const lattesIconPath = window.resolvePath('assets/images/icons/lattes.png');
+  const lattesIconHtml = member.lattesUrl
+    ? `<a href="${member.lattesUrl}" target="_blank" rel="noopener noreferrer"
+          class="team-list-lattes-link"
+          aria-label="Currículo Lattes de ${member.name}">
+         <img src="${lattesIconPath}" alt="Lattes" class="team-list-lattes-icon">
+       </a>`
+    : `<img src="${lattesIconPath}" alt="Lattes" class="team-list-lattes-icon">`;
+
+  return `
+    <li class="team-list-item">
+      <div class="team-list-cell team-list-cell--name">
+        <span class="team-list-name">${member.name}</span>
+      </div>
+      <div class="team-list-cell team-list-cell--role">
+        <span class="team-list-role">${member.roleLabel || member.role}</span>
+      </div>
+      <div class="team-list-cell team-list-cell--institution">
+        <span class="team-list-institution">${member.institution || ''}</span>
+      </div>
+      <div class="team-list-cell team-list-cell--lattes">
+        ${lattesIconHtml}
+      </div>
+    </li>
+  `;
+}
+
+/**
  * Cria um card de equipamento com suporte a download (quando disponível).
  * Estrutura esperada: { id, name, category, imageUrl, description, download: { type, url, size, version, platform, license } }
  */
@@ -385,6 +451,31 @@ export function createEquipmentCard(equipment) {
 }
 
 /**
+ * Normaliza as imagens de um equipamento em um array de URLs resolvidas.
+ * Suporta:
+ *   - equipment.images = ["path1", "path2"]  → múltiplas imagens
+ *   - equipment.imageUrl = "path"            → única imagem (fallback)
+ *   - ausência de ambos                       → placeholder existente
+ */
+function getEquipmentImages(equipment) {
+  if (Array.isArray(equipment.images) && equipment.images.length > 0) {
+    return equipment.images
+      .filter(Boolean)
+      .map(img => {
+        let p = String(img).trim();
+        if (p.startsWith('/')) p = p.substring(1);
+        return window.resolvePath(p);
+      });
+  }
+  let imagePath = equipment.imageUrl || '';
+  if (imagePath.startsWith('/')) imagePath = imagePath.substring(1);
+  const fallback = imagePath
+    ? window.resolvePath(imagePath)
+    : window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
+  return [fallback];
+}
+
+/**
  * Cria modal de equipamento com imagem usando resolvePath.
  */
 export function createEquipmentModal(equipment) {
@@ -403,19 +494,69 @@ export function createEquipmentModal(equipment) {
   };
   const categoryLabel = categoryMap[equipment.category] || equipment.category;
 
-  return `
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-${equipment.id}">
-      <div class="modal-content">
-        <button class="close-button" aria-label="Fechar">×</button>
-        <div class="modal-image">
-          <img src="${image}" alt="${equipment.name}" loading="lazy" onerror="this.onerror=null; this.src='${window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg')}';">
+  const images = getEquipmentImages(equipment);
+  const hasMultiple = images.length > 1;
+  const placeholder = window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
+
+  const galleryHtml = `
+    <div class="equipment-gallery" data-current-image="0" data-total-images="${images.length}">
+      <div class="equipment-gallery-viewport">
+        ${images.map((src, i) => `
+          <img class="equipment-gallery-img ${i === 0 ? 'is-active' : ''}"
+               src="${src}"
+               alt="${equipment.name} — ${i + 1}"
+               data-index="${i}"
+               loading="${i === 0 ? 'eager' : 'lazy'}"
+               onerror="this.onerror=null; this.src='${placeholder}';">
+        `).join('')}
+      </div>
+      ${hasMultiple ? `
+        <button type="button"
+                class="equipment-gallery-arrow equipment-gallery-arrow--prev"
+                aria-label="${t('equipment.modal.previousImage') || 'Imagem anterior'}">‹</button>
+        <button type="button"
+                class="equipment-gallery-arrow equipment-gallery-arrow--next"
+                aria-label="${t('equipment.modal.nextImage') || 'Próxima imagem'}">›</button>
+        <div class="equipment-gallery-indicator" aria-live="polite">
+          <span class="equipment-gallery-current">1</span>
+          <span aria-hidden="true">/</span>
+          <span class="equipment-gallery-total">${images.length}</span>
         </div>
+      ` : ''}
+    </div>
+  `;
+
+  return `
+    <div class="modal modal--equipment"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="modal-title-${equipment.id}">
+
+      <button type="button"
+              class="equipment-nav-btn equipment-nav-btn--prev"
+              data-nav="prev"
+              aria-label="${t('equipment.modal.previousItem') || 'Recurso anterior'}">
+        <span class="equipment-nav-icon" aria-hidden="true">←</span>
+        <span class="equipment-nav-text">${t('equipment.modal.previousItem') || 'Recurso anterior'}</span>
+      </button>
+
+      <div class="modal-content">
+        <button class="close-button" aria-label="${t('common.close') || 'Fechar'}">×</button>
+        ${galleryHtml}
         <div class="modal-body">
           <h2 id="modal-title-${equipment.id}">${equipment.name}</h2>
           <span class="equipment-category">${categoryLabel}</span>
           ${equipment.description ? `<p>${equipment.description}</p>` : ''}
         </div>
       </div>
+
+      <button type="button"
+              class="equipment-nav-btn equipment-nav-btn--next"
+              data-nav="next"
+              aria-label="${t('equipment.modal.nextItem') || 'Próximo recurso'}">
+        <span class="equipment-nav-text">${t('equipment.modal.nextItem') || 'Próximo recurso'}</span>
+        <span class="equipment-nav-icon" aria-hidden="true">→</span>
+      </button>
     </div>
   `;
 }
