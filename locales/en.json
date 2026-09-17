@@ -7,6 +7,8 @@
     "publications": "Publications",
     "news": "News",
     "suggestions": "Suggestions",
+    "experiencia360": "360º Experience",
+    "language": "Language",
     "admin": "Administration",
     "login": "Login",
     "logout": "Logout",
@@ -50,9 +52,21 @@
     "quickPublicationsText": "Access articles, theses, and other scientific productions.",
     "foundation": "Foundation",
     "researchers": "Researchers",
-    "projects": "Projects"
+    "projects": "Projects",
+    "programmingTitle": "Check out our schedule"
   },
-  "about": {
+    "agenda": {
+    "regionLabel": "LATECE Agenda",
+    "gridLabel": "Calendar for {month}",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "dayWithEvents": "Day {day}, with activities",
+    "dayNoEvents": "Day {day}, no activities",
+    "selectDayHint": "Select a day to view activities.",
+    "noEventsOnDay": "No activities on this day.",
+    "moreInfo": "More information"
+  },
+    "about": {
     "title": "About LATECE — Assistive Technology Laboratory UFRN",
     "heroBadge": "Assistive Technology Laboratory",
     "heroTitle1": "Learn about",
@@ -133,7 +147,13 @@
     "heroTitle1": "Assistive Technology",
     "heroTitle2": "Equipment",
     "heroSubtitle": "Explore our catalog of resources and technologies that promote autonomy and inclusion.",
-    "exploreCatalog": "Explore Catalog"
+    "exploreCatalog": "Explore Catalog",
+        "modal": {
+      "previousImage": "Previous image",
+      "nextImage": "Next image",
+      "previousItem": "Previous resource",
+      "nextItem": "Next resource"
+    }
   },
   "publications": {
     "title": "Publications and Research",
