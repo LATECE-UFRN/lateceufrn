@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-09-17T00:00:00Z",
+  "events": [
+    {
+      "id": 1,
+      "date": "2026-09-21",
+      "time": "14:00",
+      "endTime": "16:00",
+      "title": "Teste de programação",
+      "description": "Atividade de teste de programação para o projeto LATECE.",
+      "location": "LATECE",
+      "category": "reuniao",
+      "link": null
+    },
+    {
+      "id": 2,
+      "date": "2026-09-22",
+      "time": "10:00",
+      "endTime": "12:00",
+      "title": "Reunião de equipe",
+      "description": "Reunião semanal da equipe do projeto LATECE.",
+      "location": "Sala de reuniões do LATECE",
+      "category": "reuniao",
+      "link": null
+    },
+    {
+      "id": 3,
+      "date": "2026-09-22",
+      "time": "14:00",
+      "endTime": "16:00",
+      "title": "Reunião de equipe",
+      "description": "Reunião semanal da equipe do projeto LATECE.",
+      "location": "Sala de reuniões do LATECE",
+      "category": "reuniao",
+      "link": null
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="team.title">Equipe — LATECE — Pesquisadores e Colaboradores</title>
+  <meta name="description" content="Conheça a equipe de pesquisadores, colaboradores e estudantes do Laboratório de Tecnologia Assistiva do Centro de Educação da UFRN.">
+  <link rel="icon" type="image/x-icon" href="./assets/images/logos/favicon.ico">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://vlibras.gov.br">
+
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/accessibility.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://latece.ufrn.br/team.html">
+  <meta property="og:title" content="Equipe — LATECE — Pesquisadores e Colaboradores">
+  <meta property="og:description" content="Conheça a equipe de pesquisadores do LATECE.">
+  <meta property="og:image" content="https://latece.ufrn.br/assets/images/logos/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Equipe — LATECE — Pesquisadores e Colaboradores">
+  <meta name="twitter:description" content="Conheça a equipe do LATECE.">
+  <meta name="twitter:image" content="https://latece.ufrn.br/assets/images/logos/og-image.jpg">
+
+  <link rel="canonical" href="https://latece.ufrn.br/team.html">
+
+  <script src="./js/path.js"></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <div id="app">
+    <header id="main-header"></header>
+
+    <main id="main-content">
+
+      <!-- ===== HERO ===== -->
+      <section class="hero" aria-label="Nossa Equipe">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero-badge" data-i18n="team.heroBadge">Pessoas que fazem a diferença</div>
+              <h1 class="hero-title">
+                <span data-i18n="team.heroTitle1">Nossa</span><br>
+                <span class="hero-highlight" data-i18n="team.heroTitle2">Equipe</span>
+              </h1>
+              <p class="hero-subtitle" data-i18n="team.subtitle">Conheça os profissionais dedicados à pesquisa, desenvolvimento e inovação em Tecnologia Assistiva.</p>
+              <div class="hero-actions">
+                <a href="#team-container" class="btn btn-primary btn-lg" data-i18n="team.exploreMembers">Explorar Membros</a>
+                <a href="./about.html" class="btn btn-outline btn-lg" data-i18n="about.title">Sobre o LATECE</a>
+              </div>
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <span class="stat-number" id="team-count">0</span>
+                  <span class="stat-label" data-i18n="team.members">Membros</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">5</span>
+                  <span class="stat-label" data-i18n="team.researchAreas">Áreas de pesquisa</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">3</span>
+                  <span class="stat-label" data-i18n="team.partnerInstitutions">Instituições parceiras</span>
+                </div>
+              </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-up" data-aos-delay="300">
+              <div class="hero-circle">
+                <div class="hero-illustration">
+                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="200" height="200" role="img" aria-label="Ilustração da equipe">
+                    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                    <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="60" fill="white">👥</text>
+                    <circle cx="50" cy="50" r="6" fill="rgba(255,255,255,0.4)">
+                      <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="150" cy="50" r="4" fill="rgba(255,255,255,0.3)">
+                      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="50" cy="150" r="5" fill="rgba(255,255,255,0.3)">
+                      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="150" cy="150" r="7" fill="rgba(255,255,255,0.4)">
+                      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Members -->
+      <section class="team-members" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+        <div class="container">
+          <div id="team-container">
+            <div class="loading-container">
+              <div class="loading-spinner"></div>
+              <p data-i18n="common.loading">Carregando...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

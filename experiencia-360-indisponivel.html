@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Em construção — Experiência 360º LATECE</title>
+  <meta name="description" content="Em breve você poderá explorar virtualmente todos os ambientes do LATECE. Acompanhe as novidades.">
+  <link rel="icon" type="image/x-icon" href="./assets/images/logos/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://vlibras.gov.br">
+
+  <!-- CSS do Portal -->
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/accessibility.css">
+
+  <!-- CSS específico para a página de indisponibilidade (opcional) -->
+  <style>
+    .construcao-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+    .construcao-container h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-md);
+    }
+    .construcao-container p {
+      font-size: 1.2rem;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto var(--spacing-xl);
+      line-height: 1.7;
+    }
+    .video-wrapper-construcao {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-medium);
+      background: #000;
+      margin: var(--spacing-xl) 0;
+    }
+    .video-wrapper-construcao video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .back-link-construcao {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: var(--spacing-lg);
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .back-link-construcao:hover {
+      color: var(--color-primary-dark);
+    }
+    /* Ajustes para tema escuro */
+    [data-theme="dark"] .construcao-container h2 {
+      color: var(--text-primary);
+    }
+    [data-theme="dark"] .construcao-container p {
+      color: var(--text-secondary);
+    }
+  </style>
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://latece-ufrn.github.io/lateceufrn/experiencia-360-indisponivel.html">
+  <meta property="og:title" content="Em construção — Experiência 360º LATECE">
+  <meta property="og:description" content="Em breve você poderá explorar virtualmente todos os ambientes do LATECE.">
+  <meta property="og:image" content="https://latece-ufrn.github.io/lateceufrn/assets/images/logos/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Em construção — Experiência 360º LATECE">
+  <meta name="twitter:description" content="Em breve você poderá explorar virtualmente todos os ambientes do LATECE.">
+  <meta name="twitter:image" content="https://latece-ufrn.github.io/lateceufrn/assets/images/logos/og-image.jpg">
+
+  <link rel="canonical" href="https://latece-ufrn.github.io/lateceufrn/experiencia-360-indisponivel.html">
+
+  <!-- path.js -->
+  <script src="./js/path.js"></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <div id="app">
+    <header id="main-header"></header>
+
+    <main id="main-content">
+
+      <section class="section-light" style="padding: clamp(3rem, 6vw, 5rem) 0; min-height: 60vh; display: flex; align-items: center;">
+        <div class="container">
+          <div class="construcao-container">
+
+            <div style="font-size: 4rem; margin-bottom: var(--spacing-md);">🚧</div>
+
+            <h2>Experiência 360º em construção</h2>
+
+            <p>
+              Estamos preparando uma experiência imersiva completa para você explorar todos os
+              ambientes do LATECE em 360º. Em breve, novos conteúdos estarão disponíveis.
+            </p>
+
+            <!-- Vídeo em loop (placeholder) -->
+            <div class="video-wrapper-construcao">
+              <video autoplay muted loop playsinline aria-label="Vídeo institucional do LATECE">
+                <!-- Substitua o src pelo caminho real do seu vídeo -->
+                <source src="./assets/videos/tour-em-breve.mp4" type="video/mp4">
+                <!-- Fallback: mensagem para navegadores sem suporte a vídeo -->
+                <p style="color: var(--color-text-muted); padding: 2rem; text-align: center;">
+                  Seu navegador não suporta a reprodução de vídeo.<br>
+                  Você pode acompanhar as novidades do LATECE em nosso <a href="./news.html">portal de notícias</a>.
+                </p>
+              </video>
+            </div>
+
+            <p style="font-size: 1rem; color: var(--color-text-muted);">
+              Enquanto isso, conheça mais sobre o LATECE em nossa
+              <a href="./about.html" style="color: var(--color-primary); font-weight: 600;">página institucional</a>
+              ou acompanhe as <a href="./news.html" style="color: var(--color-primary); font-weight: 600;">notícias</a>.
+            </p>
+
+            <a href="./experiencia-360.html" class="back-link-construcao">
+              ← Voltar para a Experiência 360
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('.video-wrapper-construcao video');
+    if (video) {
+      // Define a velocidade: 0.5 = câmera lenta, 0.25 = muito lenta
+      video.playbackRate = 0.25; // Altere este valor conforme desejado
+    }
+  });
+  </script>
+
+</body>
+</html>

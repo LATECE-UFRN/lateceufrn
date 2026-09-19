@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipamentos — LATECE — Tecnologia Assistiva</title>
+  <meta name="description" content="Catálogo de equipamentos de Tecnologia Assistiva disponíveis no Laboratório de Tecnologia Assistiva do Centro de Educação da UFRN.">
+  <link rel="icon" type="image/x-icon" href="./assets/images/logos/favicon.ico">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://vlibras.gov.br">
+
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/accessibility.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://latece.ufrn.br/equipment.html">
+  <meta property="og:title" content="Equipamentos — LATECE — Tecnologia Assistiva">
+  <meta property="og:description" content="Catálogo de equipamentos de Tecnologia Assistiva do LATECE.">
+  <meta property="og:image" content="https://latece.ufrn.br/assets/images/logos/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Equipamentos — LATECE — Tecnologia Assistiva">
+  <meta name="twitter:description" content="Catálogo de equipamentos de Tecnologia Assistiva.">
+  <meta name="twitter:image" content="https://latece.ufrn.br/assets/images/logos/og-image.jpg">
+
+  <link rel="canonical" href="https://latece.ufrn.br/equipment.html">
+
+  <!-- Carrega path.js antes dos módulos -->
+  <script src="./js/path.js"></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <div id="app">
+    <header id="main-header"></header>
+
+    <main id="main-content">
+
+      <!-- ===== HERO ===== -->
+      <section class="hero" aria-label="Equipamentos de Tecnologia Assistiva">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero-badge">Recursos para acessibilidade</div>
+              <h1 class="hero-title">
+                Equipamentos de<br>
+                <span class="hero-highlight">Tecnologia Assistiva</span>
+              </h1>
+              <p class="hero-subtitle">Explore nosso catálogo de recursos e tecnologias que promovem autonomia e inclusão.</p>
+              <div class="hero-actions">
+                <a href="#equipment-container" class="btn btn-primary btn-lg">Explorar Catálogo</a>
+                <a href="./about.html" class="btn btn-outline btn-lg">Sobre o LATECE</a>
+              </div>
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <span class="stat-number" id="equipment-count">0</span>
+                  <span class="stat-label">Equipamentos</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">5</span>
+                  <span class="stat-label">Categorias</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">+100</span>
+                  <span class="stat-label">Beneficiados</span>
+                </div>
+              </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-up" data-aos-delay="300">
+              <div class="hero-circle">
+                <div class="hero-illustration">
+                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="200" height="200" role="img" aria-label="Ilustração de equipamentos">
+                    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                    <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="60" fill="white">🛠️</text>
+                    <circle cx="50" cy="50" r="6" fill="rgba(255,255,255,0.4)">
+                      <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="150" cy="50" r="4" fill="rgba(255,255,255,0.3)">
+                      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="50" cy="150" r="5" fill="rgba(255,255,255,0.3)">
+                      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="150" cy="150" r="7" fill="rgba(255,255,255,0.4)">
+                      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filters -->
+      <section class="filters-section" style="padding: var(--spacing-xl) 0; position: sticky; top: var(--header-height, 80px); z-index: 10;">
+        <div class="container">
+          <div class="filter-wrapper" style="display: flex; gap: var(--spacing-md); flex-wrap: wrap; align-items: center; justify-content: center;">
+            <div class="search-box" style="flex: 1; min-width: 250px; max-width: 400px; position: relative;">
+              <input type="text" id="equipment-search" class="search-input form-control" placeholder="Buscar equipamento..." data-i18n-placeholder="equipment.search" style="width:100%; padding: 0.75rem 1rem; border-radius: 12px; font-size: 1rem;">
+            </div>
+            <select id="equipment-category-filter" class="filter-select" style="padding: 0.75rem 1rem; border: 2px solid var(--color-gray-300); border-radius: 12px; font-size: 1rem; min-width: 200px;">
+              <option value="">Todas as Categorias</option>
+              <option value="CAA">Comunicação Aumentativa e Alternativa</option>
+              <option value="VidaDiaria">Auxílio para Vida Diária e Prática</option>
+              <option value="AcessibilidadeComputador">Acessibilidade no Computador</option>
+              <option value="BaixaVisao">Baixa Visão e Tradução Sensorial</option>
+              <option value="LivrosJogos">Livros e Jogos Adaptados</option>
+            </select>
+            <!-- Botão movido para fora do select -->
+            <button id="equipment-clear-filters" class="btn btn-secondary" style="padding: 0.75rem 1rem; white-space:nowrap;" data-i18n="equipment.clearFilters">Limpar Filtros</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Equipment Grid -->
+      <section class="equipment-grid" style="padding: clamp(3rem, 6vw, 5rem) 0;">
+        <div class="container">
+          <div id="equipment-container">
+            <div class="loading-container">
+              <div class="loading-spinner"></div>
+              <p data-i18n="common.loading">Carregando...</p>
+            </div>
+          </div>
+          <!-- Paginação -->
+          <div id="equipment-pagination" style="margin-top: var(--spacing-2xl);"></div>
+        </div>
+      </section>
+
+      <!-- Modal Container -->
+      <div id="modal-container"></div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

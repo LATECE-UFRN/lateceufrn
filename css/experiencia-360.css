@@ -1,0 +1,71 @@
+/**
+ * experiencia-360.css — Estilos específicos para a página da Experiência 360º
+ * Mantém consistência com o Design System do LATECE
+ * Agora localizado em /css/ (raiz do projeto)
+ */
+
+/* ============================================
+   HERO DA EXPERIÊNCIA 360
+   ============================================ */
+.hero-360 {
+  --hero-bg-top: var(--color-purple-800);
+  --hero-bg-mid: var(--color-purple-500);
+  --hero-bg-bottom: var(--color-purple-900);
+  --hero-bg-glow: rgba(255, 255, 255, 0.15);
+  --hero-shape-color: rgba(123, 58, 237, 0.30);
+  --hero-highlight-start: #C4B5FD;
+  --hero-highlight-end: #FFFFFF;
+}
+
+.hero-360 .hero-title .hero-highlight {
+  background: linear-gradient(to right, var(--hero-highlight-start), var(--hero-highlight-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* ============================================
+   CARDS DE AMBIENTES (FALLBACK ACESSÍVEL)
+   ============================================ */
+.ambientes-grid .card {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-subtle);
+}
+
+.ambientes-grid .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--border-interactive);
+}
+
+.ambientes-grid .card h3 {
+  color: var(--color-primary);
+}
+
+.ambientes-grid .card p {
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 768px) {
+  .ambientes-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-360 .hero-title {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  }
+  .hero-360 .hero-subtitle {
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+  }
+}
