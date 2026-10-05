@@ -1,0 +1,18 @@
+# ============================================================
+# robots.txt — Portal LATECE
+# Domínio de produção: https://latece.ufrn.br/ (a definir institucionalmente)
+# Hospedagem atual: GitHub Pages — subdiretório /lateceufrn/
+# ============================================================
+
+User-agent: *
+Allow: /
+
+# Área administrativa — não deve ser indexada
+Disallow: /admin/
+Disallow: /login.html
+
+# Endpoint de redirecionamento pós-formulário (parâmetro ?success)
+Disallow: /*?success=
+
+# Sitemap (a criar em fase futura — registrado como PD-4.2)
+# Sitemap: https://latece.ufrn.br/sitemap.xml

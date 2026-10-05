@@ -3,6 +3,8 @@
  * Carrega arquivos de tradução usando resolvePath, e não modifica a URL.
  */
 
+import { devLog, devWarn } from './dev-log.js';
+
 // Estado
 const state = {
   locale: 'pt',
@@ -51,12 +53,12 @@ async function loadTranslations(locale) {
     const response = await fetch(path);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.translations = await response.json();
-    console.log(`[i18n] Traduções carregadas para: ${locale}`);
+    devLog(`[i18n] Traduções carregadas para: ${locale}`);
   } catch (error) {
     console.error(`[i18n] Erro ao carregar traduções para ${locale}:`, error);
     // Fallback para português
     if (locale !== 'pt') {
-      console.warn('[i18n] Usando fallback para português');
+      devWarn('[i18n] Usando fallback para português');
       await loadTranslations('pt');
       state.locale = 'pt';
     } else {
@@ -79,13 +81,13 @@ export function t(key, params = {}) {
     if (value && typeof value === 'object' && k in value) {
       value = value[k];
     } else {
-      console.warn(`[i18n] Chave não encontrada: ${key}`);
+      devWarn(`[i18n] Chave não encontrada: ${key}`);
       return key;
     }
   }
   
   if (typeof value !== 'string') {
-    console.warn(`[i18n] Valor para a chave ${key} não é uma string:`, value);
+    devWarn(`[i18n] Valor para a chave ${key} não é uma string:`, value);
     return key;
   }
   

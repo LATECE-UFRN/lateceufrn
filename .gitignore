@@ -1,0 +1,75 @@
+# ============================================================
+# .gitignore — Portal LATECE
+# Escopo: EXCLUSIVAMENTE ferramental de desenvolvimento.
+# NÃO ignora arquivos do produto estático (HTML/CSS/JS/JSON/assets).
+# ============================================================
+
+# ----- Sistema Operacional -----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ----- Editores / IDEs -----
+.vscode/
+!.vscode/settings.json.example
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ----- Node.js (ferramental de validação — nunca publicar) -----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----- Caches de ferramentas de validação -----
+.eslintcache
+.stylelintcache
+.cache/
+.parcel-cache/
+
+# ----- Cobertura / relatórios temporários -----
+coverage/
+*.lcov
+pa11y-report.json
+gitleaks-report.json
+
+# ----- Variáveis de ambiente (NUNCA versionar) -----
+.env
+.env.local
+.env.*.local
+.env.production
+
+# ----- Logs -----
+*.log
+logs/
+npm-debug.log
+
+# ----- Temporários -----
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# ============================================================
+# PROTEÇÃO EXPLÍCITA — arquivos que DEVEM permanecer versionados
+# (negação de negação; documental — Git respeita por padrão)
+# ============================================================
+!data/*.json
+!locales/*.json
+!assets/**/*
+!css/**/*.css
+!js/**/*.js
+!*.html
+!manifest.json
+!robots.txt
+!.nojekyll

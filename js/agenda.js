@@ -15,6 +15,7 @@
  *  - Suporte a teclado, temas, i18n e prefers-reduced-motion
  */
 
+import { devWarn } from './dev-log.js';
 import { t, getLocale } from './i18n.js';
 
 // ============================================================
@@ -44,7 +45,7 @@ async function loadAgendaEvents() {
     // Filtro de segurança: cada evento deve ter data e título
     return data.events.filter(ev => ev && typeof ev.date === 'string' && ev.title);
   } catch (error) {
-    console.warn('[agenda] Não foi possível carregar agenda:', error.message);
+    devWarn('[agenda] Não foi possível carregar agenda:', error.message);
     return [];
   }
 }

@@ -1,0 +1,27 @@
+{
+  "version": "0.2",
+  "language": "en,pt-BR",
+  "words": [
+    "LATECE", "UFRN", "UERN", "UERJ", "UFRRJ", "LIFE", "PPGEESP", "PPGEesp",
+    "SENEI", "CBEE", "CONEDU", "ISAAC", "SOBAMA", "CNPq", "FINEP", "CAPES",
+    "Lattes", "lattes", "polimatastudio", "lateceufrn",
+    "CAA", "TTS", "VLibras", "vlibras", "DOMPurify", "jsdelivr", "pa11y",
+    "StaticForms", "staticforms", "gitleaks", "htmlhint", "stylelint",
+    "eslint", "cspell", "nojekyll", "SENEI", "MOsTRE", "Defsen",
+    "Moraes", "Débora", "Deliberato", "Katiene", "Rozejane", "Renata",
+    "Natália", "Rita", "Luciana", "Gabriela", "Marcone", "Wilfredo",
+    "Figuerola", "Raul", "Paradeda", "Márcia", "Pletsch", "Erika",
+    "Soares", "Elizabeth", "Romani", "Flavia", "Roldan", "Gessica",
+    "Fabiely", "Jacyene", "Jefferson", "Kátia", "Lisie", "Apresentacao",
+    "Maristela", "Mosca", "Ronny", "Diogenes", "Artemisia", "Kimberlly"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "package-lock.json",
+    "assets/**",
+    "*.min.js",
+    "*.min.css",
+    "gitleaks-report.json",
+    "pa11y-report.json"
+  ]
+}

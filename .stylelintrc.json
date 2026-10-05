@@ -1,0 +1,22 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "ignoreFiles": [
+    "node_modules/**",
+    "css/experiencia-360.css"
+  ],
+  "rules": {
+    "custom-property-pattern": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "value-keyword-case": null,
+    "font-family-name-quotes": null,
+    "shorthand-property-no-redundant-values": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "at-rule-empty-line-before": null
+  }
+}

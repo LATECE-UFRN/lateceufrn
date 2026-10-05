@@ -212,6 +212,19 @@
             <h2 class="form-title" data-i18n="suggestions.formTitle">Envie sua sugestão</h2>
             <form id="suggestion-form" class="suggestion-form" action="https://api.staticforms.dev/submit" method="POST" novalidate>
               <!-- Campos ocultos obrigatórios da API Static Forms -->
+              <!--
+              Static Forms — API key pública
+              ------------------------------------------------------------
+              A chave `sf_...` é necessariamente exposta no frontend (é um
+              serviço client-side). A proteção contra abuso NÃO pode ser
+              implementada no código; depende de configuração no painel
+              do Static Forms:
+              - Restringir domínio/origem autorizado ao portal oficial;
+              - Configurar rate limiting, se disponível;
+              - Rotacionar a chave se houver indício de abuso.
+              Registrar como DEPENDÊNCIA DE INFRAESTRUTURA (ver Fase 2 —
+              relatório, seção 8).
+              -->
               <input type="hidden" name="apiKey" value="sf_3c5b8e60120c880ee6bcdb04">
               <input type="hidden" name="_redirect" value="https://latece.ufrn.br/sugestoes.html?success=true">
               <!-- O campo _subject será preenchido via JavaScript com o título da sugestão -->
@@ -307,143 +320,8 @@
   <!-- Carrega main.js para injetar header e footer -->
   <script type="module" src="./js/main.js"></script>
 
-  <!-- Script do formulário (executado após main.js) -->
-  <script type="module">
-  import { t } from './js/i18n.js';
+  <!-- Script do formulário (externalizado na Fase 3 para preparar CSP) -->
+  <script type="module" src="./js/sugestoes-init.js"></script>
 
-  const form = document.getElementById('suggestion-form');
-  const emailInput = document.getElementById('suggestion-email');
-  const titleInput = document.getElementById('suggestion-title');
-  const subjectInput = document.getElementById('form-subject');
-  const successMsg = document.getElementById('form-success');
-  const errorMsg = document.getElementById('form-error');
-  const emailError = document.getElementById('email-error');
-
-  // Atualiza o assunto do e-mail com o título da sugestão (se preenchido)
-  titleInput.addEventListener('input', function() {
-    const title = this.value.trim() || 'Nova sugestão - LATECE';
-    subjectInput.value = title;
-  });
-
-  // Validação do email em tempo real (oculta erro ao digitar)
-  emailInput.addEventListener('input', function() {
-    emailError.style.display = 'none';
-  });
-
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault(); // Impede o redirecionamento
-
-    // Limpa mensagens anteriores
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
-    emailError.style.display = 'none';
-
-    // Validações
-    let isValid = true;
-
-    // Categoria
-    const category = document.getElementById('suggestion-category');
-    if (!category.value) {
-      document.getElementById('category-error').style.display = 'block';
-      isValid = false;
-    } else {
-      document.getElementById('category-error').style.display = 'none';
-    }
-
-    // Título
-    const title = titleInput.value.trim();
-    if (title.length < 5) {
-      document.getElementById('title-error').style.display = 'block';
-      isValid = false;
-    } else {
-      document.getElementById('title-error').style.display = 'none';
-    }
-
-    // Descrição
-    const description = document.getElementById('suggestion-description').value.trim();
-    if (description.length < 20) {
-      document.getElementById('description-error').style.display = 'block';
-      isValid = false;
-    } else {
-      document.getElementById('description-error').style.display = 'none';
-    }
-
-    // Impacto
-    const impact = document.getElementById('suggestion-impact');
-    if (!impact.value) {
-      document.getElementById('impact-error').style.display = 'block';
-      isValid = false;
-    } else {
-      document.getElementById('impact-error').style.display = 'none';
-    }
-
-    // Email (obrigatório)
-    const email = emailInput.value.trim();
-    if (!email || !email.includes('@') || !email.includes('.')) {
-      emailError.textContent = 'Por favor, insira um e-mail válido.';
-      emailError.style.display = 'block';
-      isValid = false;
-    } else {
-      emailError.style.display = 'none';
-    }
-
-    if (!isValid) {
-      return;
-    }
-
-    // Exibe loading (opcional)
-    const submitBtn = form.querySelector('.btn-submit');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
-
-    try {
-      // Coleta todos os dados do formulário
-      const formData = new FormData(form);
-      // Converte para objeto para enviar como JSON
-      const data = {};
-      formData.forEach((value, key) => {
-        data[key] = value;
-      });
-
-      // Envia para a API Static Forms via fetch
-      const response = await fetch('https://api.staticforms.dev/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // Sucesso: limpa o formulário e exibe mensagem
-        form.reset();
-        // Reseta o assunto para o padrão
-        subjectInput.value = 'Nova sugestão - LATECE';
-        // Exibe mensagem de sucesso
-        successMsg.style.display = 'block';
-        // Opcional: esconder após alguns segundos
-        setTimeout(() => {
-          successMsg.style.display = 'none';
-        }, 8000);
-      } else {
-        // Erro na resposta da API
-        errorMsg.style.display = 'block';
-      }
-    } catch (error) {
-      console.error('Erro ao enviar:', error);
-      errorMsg.style.display = 'block';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar sugestão';
-    }
-  });
-
-  // Se a URL contiver ?success=true, exibe a mensagem de sucesso (para redirecionamentos, se houver)
-  if (window.location.search.includes('success=true')) {
-    successMsg.style.display = 'block';
-    const newUrl = window.location.pathname;
-    window.history.replaceState({}, document.title, newUrl);
-  }
-  </script>
 </body>
 </html>

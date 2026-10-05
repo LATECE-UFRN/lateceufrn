@@ -4,6 +4,8 @@
  * Versão com logs de depuração para diagnóstico do carrossel.
  */
 
+import { devLog, devWarn } from './dev-log.js';
+
 /**
  * Carrega dados de um arquivo JSON local.
  * @param {string} file - Caminho do arquivo JSON (relativo à raiz do projeto)
@@ -14,11 +16,11 @@ async function loadLocalJSON(file, dataKey = null) {
   try {
     // 1. Resolve o caminho usando BASE_PATH
     const resolvedPath = window.resolvePath(file);
-    console.log(`[data] Tentando carregar: ${file} → resolvido para: ${resolvedPath}`);
+    devLog(`[data] Tentando carregar: ${file} → resolvido para: ${resolvedPath}`);
 
     // 2. Faz o fetch
     const response = await fetch(resolvedPath);
-    console.log(`[data] Status da resposta: ${response.status} ${response.statusText}`);
+    devLog(`[data] Status da resposta: ${response.status} ${response.statusText}`);
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status} - ${response.statusText}`);
@@ -26,16 +28,16 @@ async function loadLocalJSON(file, dataKey = null) {
 
     // 3. Parse do JSON
     const data = await response.json();
-    console.log(`[data] Dados brutos carregados:`, data);
+    devLog(`[data] Dados brutos carregados:`, data);
 
     // 4. Extrai o array conforme a chave ou detecta automaticamente
     if (dataKey && data[dataKey]) {
-      console.log(`[data] Usando chave "${dataKey}" → ${data[dataKey].length} itens`);
+      devLog(`[data] Usando chave "${dataKey}" → ${data[dataKey].length} itens`);
       return data[dataKey];
     }
 
     if (Array.isArray(data)) {
-      console.log(`[data] Dados são um array direto → ${data.length} itens`);
+      devLog(`[data] Dados são um array direto → ${data.length} itens`);
       return data;
     }
 
@@ -43,13 +45,13 @@ async function loadLocalJSON(file, dataKey = null) {
     const possibleKeys = ['items', 'members', 'news', 'publications', 'data', 'results'];
     for (const key of possibleKeys) {
       if (data[key] && Array.isArray(data[key])) {
-        console.log(`[data] Detectada chave "${key}" com ${data[key].length} itens`);
+        devLog(`[data] Detectada chave "${key}" com ${data[key].length} itens`);
         return data[key];
       }
     }
 
     // Se não encontrar, retorna array vazio com aviso
-    console.warn(`[data] Nenhum array encontrado no arquivo ${file}. Estrutura:`, Object.keys(data));
+    devWarn(`[data] Nenhum array encontrado no arquivo ${file}. Estrutura:`, Object.keys(data));
     return [];
   } catch (error) {
     console.error(`[data] ❌ Erro ao carregar ${file}:`, error.message);
@@ -62,9 +64,9 @@ async function loadLocalJSON(file, dataKey = null) {
  * Carrega dados de membros da equipe.
  */
 export async function loadTeamData() {
-  console.log('[data] Carregando equipe...');
+  devLog('[data] Carregando equipe...');
   const result = await loadLocalJSON('data/team.json', 'members');
-  console.log(`[data] Equipe carregada: ${result.length} membros`);
+  devLog(`[data] Equipe carregada: ${result.length} membros`);
   return result;
 }
 
@@ -72,9 +74,9 @@ export async function loadTeamData() {
  * Carrega dados de equipamentos.
  */
 export async function loadEquipmentData() {
-  console.log('[data] Carregando equipamentos...');
+  devLog('[data] Carregando equipamentos...');
   const result = await loadLocalJSON('data/equipment.json', 'items');
-  console.log(`[data] Equipamentos carregados: ${result.length} itens`);
+  devLog(`[data] Equipamentos carregados: ${result.length} itens`);
   return result;
 }
 
@@ -82,9 +84,9 @@ export async function loadEquipmentData() {
  * Carrega dados de publicações.
  */
 export async function loadPublicationsData() {
-  console.log('[data] Carregando publicações...');
+  devLog('[data] Carregando publicações...');
   const result = await loadLocalJSON('data/publications.json', 'items');
-  console.log(`[data] Publicações carregadas: ${result.length} itens`);
+  devLog(`[data] Publicações carregadas: ${result.length} itens`);
   return result;
 }
 
@@ -92,9 +94,9 @@ export async function loadPublicationsData() {
  * Carrega notícias de fallback (usado pelo news.js e pelo carrossel da home).
  */
 export async function loadNewsFallback() {
-  console.log('[data] Carregando notícias (fallback)...');
+  devLog('[data] Carregando notícias (fallback)...');
   const result = await loadLocalJSON('data/news-fallback.json', 'items');
-  console.log(`[data] Notícias carregadas: ${result.length} itens`);
+  devLog(`[data] Notícias carregadas: ${result.length} itens`);
   return result;
 }
 
@@ -133,5 +135,5 @@ if (typeof window !== 'undefined') {
     loadNewsFallback,
     paginateData
   };
-  console.log('[data] Funções exportadas disponíveis em window.__data para depuração.');
+  devLog('[data] Funções exportadas disponíveis em window.__data para depuração.');
 }

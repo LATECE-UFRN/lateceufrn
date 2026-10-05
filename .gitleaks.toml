@@ -1,0 +1,31 @@
+# ============================================================
+# .gitleaks.toml — Portal LATECE
+# Documentação: https://github.com/gitleaks/gitleaks
+# ============================================================
+
+title = "Portal LATECE — gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Exceções legítimas do Portal LATECE"
+
+# Arquivos onde strings tipo 'key' são esperadas e não são segredos reais
+paths = [
+  '''node_modules/.*''',
+  '''package-lock\.json''',
+  '''gitleaks-report\.json''',
+  '''pa11y-report\.json'''
+]
+
+# Regex de exceções explícitas:
+# 1) Chave pública do Static Forms (client-side, por design)
+# 2) Placeholders de documentação
+regexes = [
+  '''sf_3c5b8e60120c880ee6bcdb04''',
+  '''apiKey" value="sf_''',
+  '''API_KEY_PLACEHOLDER''',
+  '''exemplo-de-chave''',
+  '''SUA_CHAVE_AQUI'''
+]

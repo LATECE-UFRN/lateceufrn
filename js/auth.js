@@ -1,30 +1,34 @@
 /**
- * auth.js — Gerenciamento de autenticação JWT
- * Com fallback para credenciais fixas em ambiente sem backend.
+ * auth.js — Gerenciamento de autenticação do painel administrativo
+ *
+ * FASE 1 (P0): Autenticação real removida (não existe backend neste projeto).
+ *  - FALLBACK_CREDENTIALS removido.
+ *  - Geração de token falso via btoa() removida.
+ *  - Nenhuma credencial hardcoded permanece.
+ *  - O frontend NÃO simula mais autenticação.
+ *
+ * Comportamento atual (arquitetura estática, sem backend):
+ *  - login() sempre retorna falha com mensagem clara.
+ *  - isAuthenticated() sempre retorna false.
+ *  - initAuth() redireciona para /login.html em qualquer rota /admin/.
+ *  - logout() limpa qualquer storage residual e redireciona.
+ *
+ * Caso um backend institucional seja adicionado no futuro, esta é a camada
+ * onde a integração deve ocorrer — NUNCA reintroduzindo credenciais client-side.
  */
 
 const TOKEN_KEY = 'auth_token';
 const USER_KEY = 'auth_user';
 
-// Credenciais fixas para fallback (apenas demonstração)
-const FALLBACK_CREDENTIALS = {
-  username: 'admin',
-  password: 'admin123',
-  user: {
-    id: 1,
-    username: 'admin',
-    fullName: 'Administrador',
-    role: 'admin'
-  }
-};
-
 /**
- * Verifica se a API de autenticação está disponível.
- * @returns {Promise<boolean>}
+ * @returns {Promise<boolean>} true se a API de autenticação está disponível.
  */
 export async function isApiAvailable() {
   try {
-    const response = await fetch('/api/health', { method: 'HEAD', timeout: 2000 });
+    const response = await fetch('/api/health', {
+      method: 'HEAD',
+      signal: AbortSignal.timeout ? AbortSignal.timeout(2000) : undefined
+    });
     return response.ok;
   } catch {
     return false;
@@ -32,128 +36,110 @@ export async function isApiAvailable() {
 }
 
 /**
- * Realiza login do usuário.
- * Tenta a API primeiro; se falhar, usa credenciais fixas.
+ * Tenta autenticar via backend real (se disponível).
+ * Sem backend, retorna falha explícita — sem fallback inseguro.
  */
 export async function login(username, password) {
-  // Primeiro, verifica se a API está disponível
   const apiAvailable = await isApiAvailable();
-  
-  if (apiAvailable) {
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-      const data = await response.json();
-      if (response.ok && data.token && data.user) {
-        setToken(data.token);
-        setUser(data.user);
-        return { success: true, user: data.user };
-      }
-      return { success: false, error: data.message || 'Credenciais inválidas' };
-    } catch (error) {
-      console.error('Login API error:', error);
-      // Fallback para credenciais fixas
-      return fallbackLogin(username, password);
+
+  if (!apiAvailable) {
+    return {
+      success: false,
+      error: 'Autenticação não disponível. Este site é estático e não possui backend de autenticação.'
+    };
+  }
+
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+
+    if (!response.ok) {
+      let message = 'Credenciais inválidas.';
+      try {
+        const data = await response.json();
+        message = data.message || data.statusMessage || message;
+      } catch { /* ignore */ }
+      return { success: false, error: message };
     }
-  } else {
-    // API indisponível: usar fallback
-    return fallbackLogin(username, password);
+
+    const data = await response.json();
+    if (data && data.token && data.user) {
+      setToken(data.token);
+      setUser(data.user);
+      return { success: true, user: data.user };
+    }
+    return { success: false, error: 'Resposta inválida do servidor.' };
+  } catch (error) {
+    console.error('Login error:', error);
+    return { success: false, error: 'Erro ao conectar ao servidor.' };
   }
 }
 
 /**
- * Login com credenciais fixas (fallback)
- */
-function fallbackLogin(username, password) {
-  if (username === FALLBACK_CREDENTIALS.username && password === FALLBACK_CREDENTIALS.password) {
-    // Gerar um token fictício
-    const fakeToken = btoa(JSON.stringify({ 
-      user: FALLBACK_CREDENTIALS.user,
-      exp: Date.now() + 3600000 
-    }));
-    setToken(fakeToken);
-    setUser(FALLBACK_CREDENTIALS.user);
-    return { success: true, user: FALLBACK_CREDENTIALS.user };
-  }
-  return { success: false, error: 'Usuário ou senha inválidos. (fallback: admin/admin123)' };
-}
-
-/**
- * Logout
+ * Logout: remove qualquer dado residual e (opcionalmente) redireciona.
  */
 export function logout(redirect = true) {
   removeToken();
   removeUser();
   if (redirect) {
-    window.location.href = '/login.html';
+    window.location.href = './login.html';
   }
 }
 
 /**
- * Verifica se o usuário está autenticado
+ * Verifica se o usuário está autenticado.
+ * Sem backend real, sempre retorna false — nunca aceita token falso.
  */
 export function isAuthenticated() {
   const token = getToken();
   if (!token) return false;
-  try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    const exp = payload.exp;
-    if (exp && Date.now() >= exp * 1000) {
-      removeToken();
-      removeUser();
-      return false;
-    }
-    return true;
-  } catch {
-    removeToken();
-    removeUser();
-    return false;
-  }
+  // Nenhuma validação client-side é confiável.
+  // Se um backend real existir, a validação deve ocorrer via /api/auth/verify.
+  return false;
 }
 
-/**
- * Obtém o token armazenado
- */
+// ============================================================
+// Storage — helpers (mantidos por compatibilidade estrutural)
+// ============================================================
+
 export function getToken() {
-  return localStorage.getItem(TOKEN_KEY);
+  try { return localStorage.getItem(TOKEN_KEY); } catch { return null; }
 }
 
 export function setToken(token) {
-  localStorage.setItem(TOKEN_KEY, token);
+  try { localStorage.setItem(TOKEN_KEY, token); } catch { /* ignore */ }
 }
 
 export function removeToken() {
-  localStorage.removeItem(TOKEN_KEY);
+  try { localStorage.removeItem(TOKEN_KEY); } catch { /* ignore */ }
 }
 
 export function getUser() {
   try {
     const data = localStorage.getItem(USER_KEY);
     return data ? JSON.parse(data) : null;
-  } catch {
-    return null;
-  }
+  } catch { return null; }
 }
 
 export function setUser(user) {
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  try { localStorage.setItem(USER_KEY, JSON.stringify(user)); } catch { /* ignore */ }
 }
 
 export function removeUser() {
-  localStorage.removeItem(USER_KEY);
+  try { localStorage.removeItem(USER_KEY); } catch { /* ignore */ }
 }
 
 export function isAdmin() {
   const user = getUser();
-  return user && user.role === 'admin';
+  return !!(user && user.role === 'admin');
 }
 
 export function isEditor() {
   const user = getUser();
-  return user && (user.role === 'admin' || user.role === 'editor');
+  return !!(user && (user.role === 'admin' || user.role === 'editor'));
 }
 
 export function getUserInitials() {
@@ -168,47 +154,48 @@ export function getUserInitials() {
     .slice(0, 2);
 }
 
+/**
+ * Verifica token via backend. Sem backend, retorna inválido.
+ */
 export async function verifyToken() {
   const token = getToken();
   if (!token) return { valid: false };
-  // Se a API estiver disponível, valida com ela
+
   const apiAvailable = await isApiAvailable();
-  if (apiAvailable) {
-    try {
-      const response = await fetch('/api/auth/verify', {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      if (!response.ok) {
-        removeToken();
-        removeUser();
-        return { valid: false };
-      }
-      const data = await response.json();
-      if (data.user) {
-        setUser(data.user);
-        return { valid: true, user: data.user };
-      }
-      return { valid: false };
-    } catch {
-      // Se falhar, considera o token válido se existir (fallback)
-      return { valid: true };
-    }
+  if (!apiAvailable) {
+    // Sem backend, um token nunca pode ser considerado válido.
+    return { valid: false };
   }
-  // API indisponível: token é válido se existir
-  return { valid: true };
+
+  try {
+    const response = await fetch('/api/auth/verify', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (!response.ok) {
+      removeToken();
+      removeUser();
+      return { valid: false };
+    }
+    const data = await response.json();
+    if (data && data.user) {
+      setUser(data.user);
+      return { valid: true, user: data.user };
+    }
+    return { valid: false };
+  } catch {
+    return { valid: false };
+  }
 }
 
-export async function initAuth(protectedPath = '/admin/', redirectTo = '/login.html') {
+/**
+ * Protege rotas /admin/. Sem backend, sempre redireciona.
+ */
+export async function initAuth(protectedPath = '/admin/', redirectTo = './login.html') {
   const currentPath = window.location.pathname;
-  if (!currentPath.startsWith(protectedPath) && currentPath !== '/admin' && currentPath !== '/admin/') {
-    return true;
-  }
-
-  const token = getToken();
-  if (!token) {
-    window.location.href = redirectTo;
-    return false;
-  }
+  const isProtected = currentPath.startsWith(protectedPath) ||
+                      currentPath === '/admin' ||
+                      currentPath === '/admin/';
+  if (!isProtected) return true;
 
   const result = await verifyToken();
   if (!result.valid) {

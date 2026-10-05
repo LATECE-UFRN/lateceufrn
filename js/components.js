@@ -1,11 +1,15 @@
 /**
  * Fábrica de componentes reutilizáveis.
  * Retorna strings HTML para injeção no DOM.
- * 
- * Versão 3.5 — Link da Experiência 360º aponta para experiencia-360.html (raiz)
+ *
+ * FASE 1 (P0): escaping centralizado via js/security.js.
+ *  - Todos os campos textuais passam por escapeHtml().
+ *  - URLs passam por safeUrl().
+ *  - news.content NÃO é tratado aqui (o caller deve sanitizar via sanitizeHtml).
  */
-
+import { devLog } from './dev-log.js';
 import { t, getLocale, setLocale } from './i18n.js';
+import { escapeHtml, safeUrl } from './security.js';
 
 // ============================================
 // HEADER E FOOTER
@@ -15,14 +19,12 @@ export function createHeader(isAuthenticated = false) {
   const locale = getLocale();
   const flags = { pt: '🇧🇷', en: '🇺🇸', es: '🇪🇸' };
   const languageNames = { pt: 'Português', en: 'English', es: 'Español' };
-  
-  // Resolve caminhos para imagens
+
   const logoPath = window.resolvePath('assets/images/logos/logo.png');
   const instagramIcon = window.resolvePath('assets/images/icons/instagram.png');
   const youtubeIcon = window.resolvePath('assets/images/icons/youtube.png');
 
   return `
-    <!-- TOP BAR — VISÍVEL EM DESKTOP -->
     <div class="top-bar" role="banner" aria-label="Barra superior">
       <div class="container top-bar-content">
         <div class="contact-info">
@@ -61,18 +63,15 @@ export function createHeader(isAuthenticated = false) {
       </div>
     </div>
 
-    <!-- MAIN HEADER (BARRA DE MENU) — FIXA -->
     <header class="main-header" role="banner">
       <div class="container">
         <div class="header-content">
-          <!-- Logo -->
           <a href="./" class="logo" aria-label="Página inicial do LATECE">
             <div class="logo-icon">
               <img src="${logoPath}" alt="LATECE" loading="lazy" onerror="this.style.display='none'">
             </div>
           </a>
 
-          <!-- Desktop Navigation -->
           <nav class="desktop-nav" aria-label="Navegação principal">
             <ul class="nav-list">
               <li><a href="./" class="nav-link" data-i18n="nav.home">Início</a></li>
@@ -82,12 +81,10 @@ export function createHeader(isAuthenticated = false) {
               <li><a href="./publications.html" class="nav-link" data-i18n="nav.publications">Publicações</a></li>
               <li><a href="./news.html" class="nav-link" data-i18n="nav.news">Notícias</a></li>
               <li><a href="./sugestoes.html" class="nav-link" data-i18n="nav.suggestions">Sugestões</a></li>
-              <!-- LINK CORRIGIDO: aponta para experiencia-360.html (raiz) -->
               <li><a href="./experiencia-360.html" class="nav-link" data-i18n="nav.experiencia360">Experiência 360º</a></li>
             </ul>
           </nav>
 
-          <!-- User Section -->
           <div class="user-section">
             ${isAuthenticated ? `
               <div class="user-menu-container">
@@ -105,7 +102,6 @@ export function createHeader(isAuthenticated = false) {
             `}
           </div>
 
-          <!-- Mobile Menu Button -->
           <button class="mobile-menu-button" aria-label="Menu" aria-expanded="false">
             <span class="hamburger">
               <span class="line"></span>
@@ -116,7 +112,6 @@ export function createHeader(isAuthenticated = false) {
         </div>
       </div>
 
-      <!-- Mobile Menu -->
       <div class="mobile-menu">
         <div class="container">
           <nav class="mobile-nav" aria-label="Menu mobile">
@@ -127,10 +122,8 @@ export function createHeader(isAuthenticated = false) {
             <a href="./publications.html" class="mobile-nav-link" data-i18n="nav.publications">Publicações</a>
             <a href="./news.html" class="mobile-nav-link" data-i18n="nav.news">Notícias</a>
             <a href="./sugestoes.html" class="mobile-nav-link" data-i18n="nav.suggestions">Sugestões</a>
-            <!-- LINK CORRIGIDO: aponta para experiencia-360.html (raiz) -->
             <a href="./experiencia-360.html" class="mobile-nav-link" data-i18n="nav.experiencia360">Experiência 360º</a>
 
-            <!-- Seletor de idioma inline (mobile) -->
             <button type="button"
                     class="mobile-nav-link mobile-nav-link--locale"
                     id="locale-toggle-mobile"
@@ -177,7 +170,6 @@ export function createHeader(isAuthenticated = false) {
 }
 
 export function createFooter(locale) {
-  // Resolve caminhos para imagens
   const logoPath = window.resolvePath('assets/images/logos/logo.png');
   const ufrnLogoPath = window.resolvePath('assets/images/logos/ufrn-logo-branca.png');
   const instagramIcon = window.resolvePath('assets/images/icons/instagram.png');
@@ -187,7 +179,6 @@ export function createFooter(locale) {
     <footer class="site-footer" role="contentinfo">
       <div class="container">
         <div class="footer-grid">
-          <!-- Coluna 1: LATECE + LOGOS INSTITUCIONAIS -->
           <div class="footer-section">
             <h3>LATECE</h3>
             <p>Laboratório de Tecnologia Assistiva do Centro de Educação</p>
@@ -198,7 +189,6 @@ export function createFooter(locale) {
             </div>
           </div>
 
-          <!-- Coluna 2: Links Rápidos -->
           <div class="footer-section">
             <h4>Links Rápidos</h4>
             <ul class="footer-list">
@@ -212,7 +202,6 @@ export function createFooter(locale) {
             </ul>
           </div>
 
-          <!-- Coluna 3: Contato -->
           <div class="footer-section">
             <h4>Contato</h4>
             <div class="contact-info-footer">
@@ -241,25 +230,24 @@ export function createFooter(locale) {
             </div>
           </div>
 
-          <!-- Coluna 4: Localização -->
           <div class="footer-section">
             <h4>Localização</h4>
             <div class="footer-map-wrapper">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d386.96333122227526!2d-35.196772314257146!3d-5.838746034104346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff9fcdaa5513%3A0x345d0d58925d5142!2sCentro%20de%20Educa%C3%A7%C3%A3o%20-%20CE%20%2F%20UFRN!5e1!3m2!1spt-BR!2sbr!4v1787425996456!5m2!1spt-BR!2sbr" 
-                width="100%" 
-                height="100%" 
-                style="border:0;display:block;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Mapa de localização do LATECE"
-              ></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d386.96333122227526!2d-35.196772314257146!3d-5.838746034104346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff9fcdaa5513%3A0x345d0d58925d5142!2sCentro%20de%20Educa%C3%A7%C3%A3o%20-%20CE%20%2F%20UFRN!5e1!3m2!1spt-BR!2sbr!4v1787425996456!5m2!1spt-BR!2sbr"
+            width="100%"
+            height="100%"
+            style="border:0;display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            sandbox="allow-scripts allow-same-origin allow-popups"
+            title="Mapa de localização do LATECE"
+          ></iframe>
             </div>
           </div>
         </div>
 
-        <!-- Rodapé inferior -->
         <div class="footer-bottom">
           <p class="copyright">&copy; 2026 LATECE — Todos os direitos reservados.</p>
           <div class="footer-bottom-links">
@@ -273,53 +261,55 @@ export function createFooter(locale) {
 }
 
 // ============================================
-// CARDS
+// EQUIPE
 // ============================================
 
 export function createTeamCard(member, locale = 'pt') {
+  const name = escapeHtml(member.name || '');
+  const roleLabel = escapeHtml(member.roleLabel || member.role || '');
+  const institution = escapeHtml(member.institution || '');
+
   const hasPhoto = member.showPhoto !== false && member.photoUrl && member.photoUrl.trim() !== '';
-  const initials = member.name
-    .split(' ')
-    .filter(Boolean)
-    .map(n => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
+  const initials = escapeHtml(
+    (member.name || '')
+      .split(' ')
+      .filter(Boolean)
+      .map(n => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2)
+  );
 
-  // Foto ou placeholder (com resolvePath)
-let photoHtml = '';
-// Para os grupos que não devem ter foto nem placeholder
-const noPhotoRoles = ['partner', 'collaborator', 'developer'];
-if (!noPhotoRoles.includes(member.role)) {
-  if (hasPhoto) {
-    const photoPath = window.resolvePath(member.photoUrl.replace(/^\//, ''));
-    photoHtml = `<img src="${photoPath}" alt="${member.name}" class="team-photo" loading="lazy">`;
-  } else {
-    photoHtml = `
-      <div class="team-avatar-placeholder">
-        ${initials}
-      </div>
-    `;
+  let photoHtml = '';
+  const noPhotoRoles = ['partner', 'collaborator', 'developer'];
+  if (!noPhotoRoles.includes(member.role)) {
+    if (hasPhoto) {
+      const rawPath = String(member.photoUrl).replace(/^\//, '');
+      const photoPath = safeUrl(window.resolvePath(rawPath), { allowDataImage: true });
+      if (photoPath) {
+        photoHtml = `<img src="${photoPath}" alt="${name}" class="team-photo" loading="lazy">`;
+      }
+    } else {
+      photoHtml = `<div class="team-avatar-placeholder">${initials}</div>`;
+    }
   }
-}
-// Caso contrário, photoHtml permanece vazio (sem foto e sem placeholder)
 
-  // Ícone Lattes (sempre visível, com link se houver URL)
   const lattesIconPath = window.resolvePath('assets/images/icons/lattes.png');
-  const lattesIconHtml = member.lattesUrl
-    ? `<a href="${member.lattesUrl}" target="_blank" rel="noopener noreferrer" class="team-lattes-link" aria-label="Currículo Lattes de ${member.name}">
+  const lattesHref = member.lattesUrl ? safeUrl(member.lattesUrl) : '';
+  const lattesIconHtml = lattesHref
+    ? `<a href="${lattesHref}" target="_blank" rel="noopener noreferrer" class="team-lattes-link" aria-label="Currículo Lattes de ${name}">
          <img src="${lattesIconPath}" alt="Lattes" class="team-lattes-icon">
        </a>`
     : `<img src="${lattesIconPath}" alt="Lattes" class="team-lattes-icon">`;
 
   return `
-    <div class="team-card" data-id="${member.id}">
+    <div class="team-card" data-id="${escapeHtml(member.id)}">
       ${photoHtml}
       <div class="team-info">
-        <h3 class="team-name">${member.name}</h3>
-        <p class="team-role">${member.roleLabel || member.role}</p>
+        <h3 class="team-name">${name}</h3>
+        <p class="team-role">${roleLabel}</p>
         <hr class="team-divider">
-        <p class="team-institution">${member.institution || ''}</p>
+        <p class="team-institution">${institution}</p>
         <div class="team-lattes-wrapper">
           ${lattesIconHtml}
         </div>
@@ -328,17 +318,16 @@ if (!noPhotoRoles.includes(member.role)) {
   `;
 }
 
-/**
- * Cria um item de lista horizontal para os grupos:
- * Pesquisadores Parceiros, Colaboradores, Desenvolvedores.
- * Estrutura: Nome | Função | Instituição | Lattes (sem avatar).
- */
 export function createTeamListItem(member) {
+  const name = escapeHtml(member.name || '');
+  const roleLabel = escapeHtml(member.roleLabel || member.role || '');
+  const institution = escapeHtml(member.institution || '');
   const lattesIconPath = window.resolvePath('assets/images/icons/lattes.png');
-  const lattesIconHtml = member.lattesUrl
-    ? `<a href="${member.lattesUrl}" target="_blank" rel="noopener noreferrer"
+  const lattesHref = member.lattesUrl ? safeUrl(member.lattesUrl) : '';
+  const lattesIconHtml = lattesHref
+    ? `<a href="${lattesHref}" target="_blank" rel="noopener noreferrer"
           class="team-list-lattes-link"
-          aria-label="Currículo Lattes de ${member.name}">
+          aria-label="Currículo Lattes de ${name}">
          <img src="${lattesIconPath}" alt="Lattes" class="team-list-lattes-icon">
        </a>`
     : `<img src="${lattesIconPath}" alt="Lattes" class="team-list-lattes-icon">`;
@@ -346,13 +335,13 @@ export function createTeamListItem(member) {
   return `
     <li class="team-list-item">
       <div class="team-list-cell team-list-cell--name">
-        <span class="team-list-name">${member.name}</span>
+        <span class="team-list-name">${name}</span>
       </div>
       <div class="team-list-cell team-list-cell--role">
-        <span class="team-list-role">${member.roleLabel || member.role}</span>
+        <span class="team-list-role">${roleLabel}</span>
       </div>
       <div class="team-list-cell team-list-cell--institution">
-        <span class="team-list-institution">${member.institution || ''}</span>
+        <span class="team-list-institution">${institution}</span>
       </div>
       <div class="team-list-cell team-list-cell--lattes">
         ${lattesIconHtml}
@@ -361,88 +350,69 @@ export function createTeamListItem(member) {
   `;
 }
 
-/**
- * Cria um card de equipamento com suporte a download (quando disponível).
- * Estrutura esperada: { id, name, category, imageUrl, description, download: { type, url, size, version, platform, license } }
- */
+// ============================================
+// EQUIPAMENTOS
+// ============================================
+
+const EQUIPMENT_CATEGORY_MAP = {
+  'CAA': t('equipment.categories.CAA') || 'Comunicação Aumentativa e Alternativa',
+  'VidaDiaria': t('equipment.categories.VidaDiaria') || 'Auxílio para Vida Diária',
+  'AcessibilidadeComputador': t('equipment.categories.AcessibilidadeComputador') || 'Acessibilidade no Computador',
+  'BaixaVisao': t('equipment.categories.BaixaVisao') || 'Baixa Visão',
+  'LivrosJogos': t('equipment.categories.LivrosJogos') || 'Livros e Jogos Adaptados'
+};
+
+function getEquipmentCategoryLabel(cat) {
+  return escapeHtml(EQUIPMENT_CATEGORY_MAP[cat] || cat || '');
+}
+
 export function createEquipmentCard(equipment) {
-  console.log('[components] Criando card para:', equipment.name, 'imageUrl:', equipment.imageUrl);
-  
-  // Tratamento da imagem com resolvePath
-  let imagePath = equipment.imageUrl || '';
-  if (imagePath.startsWith('/')) {
-    imagePath = imagePath.substring(1);
-  }
-  
-  let finalImage;
-  if (imagePath) {
-    finalImage = window.resolvePath(imagePath);
-  } else {
-    finalImage = window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
-  }
-  
-  console.log('[components] Caminho final da imagem:', finalImage);
+  const name = escapeHtml(equipment.name || '');
+  const categoryLabel = getEquipmentCategoryLabel(equipment.category);
+  const description = equipment.description ? escapeHtml(equipment.description) : '';
 
-  // Categoria (traduzida)
-  const categoryMap = {
-    'CAA': t('equipment.categories.CAA') || 'Comunicação Aumentativa e Alternativa',
-    'VidaDiaria': t('equipment.categories.VidaDiaria') || 'Auxílio para Vida Diária',
-    'AcessibilidadeComputador': t('equipment.categories.AcessibilidadeComputador') || 'Acessibilidade no Computador',
-    'BaixaVisao': t('equipment.categories.BaixaVisao') || 'Baixa Visão',
-    'LivrosJogos': t('equipment.categories.LivrosJogos') || 'Livros e Jogos Adaptados'
-  };
-  const categoryLabel = categoryMap[equipment.category] || equipment.category;
+  let imagePath = String(equipment.imageUrl || '').replace(/^\//, '');
+  const rawSrc = imagePath
+    ? window.resolvePath(imagePath)
+    : window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
+  const finalImage = safeUrl(rawSrc, { allowDataImage: true }) || window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
 
-  // Download
   let downloadHtml = '';
   const d = equipment.download;
   if (d && d.url) {
-    let fileUrl = d.url || '';
-    if (fileUrl.startsWith('/')) {
-      fileUrl = fileUrl.substring(1);
-    }
-    const finalFileUrl = fileUrl ? window.resolvePath(fileUrl) : '#';
-
-    const iconMap = {
-      'PDF': '📄',
-      'APK': '📱',
-      'EXE': '🖥️',
-      'ZIP': '📦',
-      'DOCX': '📝',
-      'PPTX': '📊',
-      'MP3': '🎵',
-      'MP4': '🎬'
-    };
-    const icon = iconMap[d.type] || '📎';
-
+    let fileUrl = String(d.url).replace(/^\//, '');
+    const finalFileUrl = safeUrl(window.resolvePath(fileUrl)) || '#';
+    const iconMap = { 'PDF': '📄', 'APK': '📱', 'EXE': '🖥️', 'ZIP': '📦', 'DOCX': '📝', 'PPTX': '📊', 'MP3': '🎵', 'MP4': '🎬' };
+    const dType = String(d.type || '').toUpperCase();
+    const icon = iconMap[dType] || '📎';
     const metaParts = [];
-    if (d.size) metaParts.push(d.size);
-    if (d.version) metaParts.push(`v${d.version}`);
-    if (d.platform) metaParts.push(d.platform);
+    if (d.size) metaParts.push(escapeHtml(d.size));
+    if (d.version) metaParts.push('v' + escapeHtml(d.version));
+    if (d.platform) metaParts.push(escapeHtml(d.platform));
     const metaText = metaParts.length ? ` (${metaParts.join(', ')})` : '';
 
     downloadHtml = `
       <div class="equipment-download" style="margin-top:var(--space-3); padding-top:var(--space-2); border-top:1px solid var(--color-border);">
-        <a href="${finalFileUrl}" class="btn btn-primary btn-sm download-btn" download aria-label="Baixar ${d.type} de ${equipment.name}" style="display:inline-flex; align-items:center; gap:var(--space-2);">
+        <a href="${finalFileUrl}" class="btn btn-primary btn-sm download-btn" download aria-label="Baixar ${escapeHtml(dType)} de ${name}" style="display:inline-flex; align-items:center; gap:var(--space-2);">
           <span>${icon}</span>
-          <span>Baixar ${d.type}${metaText}</span>
+          <span>Baixar ${escapeHtml(dType)}${metaText}</span>
         </a>
-        ${d.license ? `<span style="font-size:var(--font-size-caption); color:var(--color-text-muted); margin-left:var(--space-2);">${d.license}</span>` : ''}
+        ${d.license ? `<span style="font-size:var(--font-size-caption); color:var(--color-text-muted); margin-left:var(--space-2);">${escapeHtml(d.license)}</span>` : ''}
       </div>
     `;
   }
 
   return `
-    <div class="equipment-card" data-id="${equipment.id}" role="button" tabindex="0" aria-label="${equipment.name}">
+    <div class="equipment-card" data-id="${escapeHtml(equipment.id)}" role="button" tabindex="0" aria-label="${name}">
       <div class="equipment-image">
-        <img src="${finalImage}" alt="${equipment.name}" loading="lazy" onerror="this.onerror=null; this.src='${window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg')}';">
+        <img src="${finalImage}" alt="${name}" loading="lazy" onerror="this.onerror=null; this.src='${window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg')}';">
       </div>
       <div class="equipment-body">
-        <h3 class="equipment-name">${equipment.name}</h3>
+        <h3 class="equipment-name">${name}</h3>
         <span class="equipment-category">${categoryLabel}</span>
-        ${equipment.description ? `<p class="equipment-description">${equipment.description}</p>` : ''}
+        ${description ? `<p class="equipment-description">${description}</p>` : ''}
         ${downloadHtml}
-        <button class="btn btn-sm btn-secondary view-details-btn" data-id="${equipment.id}" style="margin-top:var(--space-3);">
+        <button class="btn btn-sm btn-secondary view-details-btn" data-id="${escapeHtml(equipment.id)}" style="margin-top:var(--space-3);">
           Ver detalhes
         </button>
       </div>
@@ -450,50 +420,27 @@ export function createEquipmentCard(equipment) {
   `;
 }
 
-/**
- * Normaliza as imagens de um equipamento em um array de URLs resolvidas.
- * Suporta:
- *   - equipment.images = ["path1", "path2"]  → múltiplas imagens
- *   - equipment.imageUrl = "path"            → única imagem (fallback)
- *   - ausência de ambos                       → placeholder existente
- */
 function getEquipmentImages(equipment) {
+  const resolve = (p) => {
+    let s = String(p).trim();
+    if (s.startsWith('/')) s = s.substring(1);
+    return safeUrl(window.resolvePath(s), { allowDataImage: true });
+  };
+
   if (Array.isArray(equipment.images) && equipment.images.length > 0) {
-    return equipment.images
-      .filter(Boolean)
-      .map(img => {
-        let p = String(img).trim();
-        if (p.startsWith('/')) p = p.substring(1);
-        return window.resolvePath(p);
-      });
+    return equipment.images.filter(Boolean).map(resolve).filter(Boolean);
   }
-  let imagePath = equipment.imageUrl || '';
-  if (imagePath.startsWith('/')) imagePath = imagePath.substring(1);
+  let imagePath = String(equipment.imageUrl || '').replace(/^\//, '');
   const fallback = imagePath
     ? window.resolvePath(imagePath)
     : window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
-  return [fallback];
+  return [safeUrl(fallback, { allowDataImage: true }) || fallback];
 }
 
-/**
- * Cria modal de equipamento com imagem usando resolvePath.
- */
 export function createEquipmentModal(equipment) {
-  let imagePath = equipment.imageUrl || '';
-  if (imagePath.startsWith('/')) {
-    imagePath = imagePath.substring(1);
-  }
-  const image = imagePath ? window.resolvePath(imagePath) : window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
-
-  const categoryMap = {
-    'CAA': t('equipment.categories.CAA') || 'Comunicação Aumentativa e Alternativa',
-    'VidaDiaria': t('equipment.categories.VidaDiaria') || 'Auxílio para Vida Diária',
-    'AcessibilidadeComputador': t('equipment.categories.AcessibilidadeComputador') || 'Acessibilidade no Computador',
-    'BaixaVisao': t('equipment.categories.BaixaVisao') || 'Baixa Visão',
-    'LivrosJogos': t('equipment.categories.LivrosJogos') || 'Livros e Jogos Adaptados'
-  };
-  const categoryLabel = categoryMap[equipment.category] || equipment.category;
-
+  const name = escapeHtml(equipment.name || '');
+  const categoryLabel = getEquipmentCategoryLabel(equipment.category);
+  const description = equipment.description ? escapeHtml(equipment.description) : '';
   const images = getEquipmentImages(equipment);
   const hasMultiple = images.length > 1;
   const placeholder = window.resolvePath('assets/images/illustrations/placeholder-equipment.jpg');
@@ -504,7 +451,7 @@ export function createEquipmentModal(equipment) {
         ${images.map((src, i) => `
           <img class="equipment-gallery-img ${i === 0 ? 'is-active' : ''}"
                src="${src}"
-               alt="${equipment.name} — ${i + 1}"
+               alt="${name} — ${i + 1}"
                data-index="${i}"
                loading="${i === 0 ? 'eager' : 'lazy'}"
                onerror="this.onerror=null; this.src='${placeholder}';">
@@ -530,7 +477,7 @@ export function createEquipmentModal(equipment) {
     <div class="modal modal--equipment"
          role="dialog"
          aria-modal="true"
-         aria-labelledby="modal-title-${equipment.id}">
+         aria-labelledby="modal-title-${escapeHtml(equipment.id)}">
 
       <button type="button"
               class="equipment-nav-btn equipment-nav-btn--prev"
@@ -544,9 +491,9 @@ export function createEquipmentModal(equipment) {
         <button class="close-button" aria-label="${t('common.close') || 'Fechar'}">×</button>
         ${galleryHtml}
         <div class="modal-body">
-          <h2 id="modal-title-${equipment.id}">${equipment.name}</h2>
+          <h2 id="modal-title-${escapeHtml(equipment.id)}">${name}</h2>
           <span class="equipment-category">${categoryLabel}</span>
-          ${equipment.description ? `<p>${equipment.description}</p>` : ''}
+          ${description ? `<p>${description}</p>` : ''}
         </div>
       </div>
 
@@ -561,70 +508,80 @@ export function createEquipmentModal(equipment) {
   `;
 }
 
+// ============================================
+// PUBLICAÇÕES
+// ============================================
+
+const PUB_TYPE_MAP = {
+  'article': t('publications.types.article') || 'Artigo',
+  'tcc': t('publications.types.tcc') || 'TCC',
+  'material': t('publications.types.material') || 'Material',
+  'report': t('publications.types.report') || 'Relatório',
+  'presentation': t('publications.types.presentation') || 'Apresentação',
+  'dissertation': t('publications.types.dissertation') || 'Dissertação',
+  'thesis': t('publications.types.thesis') || 'Tese',
+  'chapter': t('publications.types.chapter') || 'Capítulo',
+  'book': t('publications.types.book') || 'Livro'
+};
+
 export function createPublicationItem(pub, locale = 'pt') {
-  const typeMap = {
-    'article': t('publications.types.article') || 'Artigo',
-    'tcc': t('publications.types.tcc') || 'TCC',
-    'material': t('publications.types.material') || 'Material',
-    'report': t('publications.types.report') || 'Relatório',
-    'presentation': t('publications.types.presentation') || 'Apresentação',
-    'dissertation': t('publications.types.dissertation') || 'Dissertação',
-    'thesis': t('publications.types.thesis') || 'Tese',
-    'chapter': t('publications.types.chapter') || 'Capítulo',
-    'book': t('publications.types.book') || 'Livro'
-  };
-  const typeLabel = typeMap[pub.type] || pub.type;
+  const title = escapeHtml(pub.title || '');
+  const authors = escapeHtml(pub.authors || '');
+  const typeLabel = escapeHtml(PUB_TYPE_MAP[pub.type] || pub.type || '');
+  const year = escapeHtml(pub.year || '');
+  const statusText = pub.status ? escapeHtml(t(`publications.statusLabels.${pub.status}`, pub.status)) : '';
+  const abstract = pub.abstract ? escapeHtml(pub.abstract.slice(0, 200)) + (pub.abstract.length > 200 ? '…' : '') : '';
+  const fileUrl = pub.fileUrl ? safeUrl(pub.fileUrl) : '';
+  const externalLink = pub.externalLink ? safeUrl(pub.externalLink) : '';
 
   return `
-    <div class="publication-item" data-id="${pub.id}">
+    <div class="publication-item" data-id="${escapeHtml(pub.id)}">
       <div class="pub-header">
-        <h3 class="pub-title">${pub.title}</h3>
+        <h3 class="pub-title">${title}</h3>
         <span class="pub-type">${typeLabel}</span>
       </div>
-      <p class="pub-authors">${pub.authors}</p>
-      <p class="pub-meta">${pub.year} · ${pub.status ? t(`publications.statusLabels.${pub.status}`, pub.status) : ''}</p>
-      ${pub.abstract ? `<p class="pub-abstract">${pub.abstract.slice(0, 200)}${pub.abstract.length > 200 ? '…' : ''}</p>` : ''}
+      <p class="pub-authors">${authors}</p>
+      <p class="pub-meta">${year} · ${statusText}</p>
+      ${abstract ? `<p class="pub-abstract">${abstract}</p>` : ''}
       <div class="pub-actions">
-        <button class="btn btn-sm btn-secondary view-details-btn" data-id="${pub.id}">${t('publications.viewDetails') || 'Ver detalhes'}</button>
-        ${pub.fileUrl ? `<a href="${pub.fileUrl}" target="_blank" class="btn btn-sm btn-primary download-btn" data-id="${pub.id}">${t('publications.download') || 'Baixar'}</a>` : ''}
-        ${pub.externalLink ? `<a href="${pub.externalLink}" target="_blank" class="btn btn-sm btn-outline">${t('publications.access') || 'Acessar'}</a>` : ''}
+        <button class="btn btn-sm btn-secondary view-details-btn" data-id="${escapeHtml(pub.id)}">${t('publications.viewDetails') || 'Ver detalhes'}</button>
+        ${fileUrl ? `<a href="${fileUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary download-btn" data-id="${escapeHtml(pub.id)}">${t('publications.download') || 'Baixar'}</a>` : ''}
+        ${externalLink ? `<a href="${externalLink}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">${t('publications.access') || 'Acessar'}</a>` : ''}
       </div>
     </div>
   `;
 }
 
 export function createPublicationModal(pub, locale = 'pt') {
-  const typeMap = {
-    'article': t('publications.types.article') || 'Artigo',
-    'tcc': t('publications.types.tcc') || 'TCC',
-    'material': t('publications.types.material') || 'Material',
-    'report': t('publications.types.report') || 'Relatório',
-    'presentation': t('publications.types.presentation') || 'Apresentação',
-    'dissertation': t('publications.types.dissertation') || 'Dissertação',
-    'thesis': t('publications.types.thesis') || 'Tese',
-    'chapter': t('publications.types.chapter') || 'Capítulo',
-    'book': t('publications.types.book') || 'Livro'
-  };
-  const typeLabel = typeMap[pub.type] || pub.type;
+  const title = escapeHtml(pub.title || '');
+  const authors = escapeHtml(pub.authors || '');
+  const typeLabel = escapeHtml(PUB_TYPE_MAP[pub.type] || pub.type || '');
+  const year = escapeHtml(pub.year || '');
+  const statusText = pub.status ? escapeHtml(t(`publications.statusLabels.${pub.status}`, pub.status)) : '';
+  const abstract = pub.abstract ? escapeHtml(pub.abstract) : '';
+  const keywords = Array.isArray(pub.keywords) ? pub.keywords.map(k => escapeHtml(k)).join(', ') : '';
+  const fileUrl = pub.fileUrl ? safeUrl(pub.fileUrl) : '';
+  const externalLink = pub.externalLink ? safeUrl(pub.externalLink) : '';
+  const doi = pub.doi ? escapeHtml(pub.doi) : '';
 
   return `
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-pub-title-${pub.id}">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-pub-title-${escapeHtml(pub.id)}">
       <div class="modal-content">
         <button class="close-button" aria-label="Fechar">×</button>
         <div class="modal-body">
-          <h2 id="modal-pub-title-${pub.id}">${pub.title}</h2>
+          <h2 id="modal-pub-title-${escapeHtml(pub.id)}">${title}</h2>
           <div class="pub-detail-meta">
             <span><strong>${t('publications.modal.publicationType') || 'Tipo'}:</strong> ${typeLabel}</span>
-            <span><strong>${t('publications.modal.year') || 'Ano'}:</strong> ${pub.year}</span>
-            <span><strong>${t('publications.modal.authors') || 'Autores'}:</strong> ${pub.authors}</span>
-            ${pub.status ? `<span><strong>${t('publications.modal.status') || 'Status'}:</strong> ${t(`publications.statusLabels.${pub.status}`, pub.status)}</span>` : ''}
+            <span><strong>${t('publications.modal.year') || 'Ano'}:</strong> ${year}</span>
+            <span><strong>${t('publications.modal.authors') || 'Autores'}:</strong> ${authors}</span>
+            ${statusText ? `<span><strong>${t('publications.modal.status') || 'Status'}:</strong> ${statusText}</span>` : ''}
           </div>
-          ${pub.abstract ? `<div class="pub-abstract-full"><strong>${t('publications.modal.abstract') || 'Resumo'}:</strong><p>${pub.abstract}</p></div>` : ''}
-          ${pub.keywords && pub.keywords.length ? `<div><strong>${t('publications.modal.keywords') || 'Palavras-chave'}:</strong> ${pub.keywords.join(', ')}</div>` : ''}
+          ${abstract ? `<div class="pub-abstract-full"><strong>${t('publications.modal.abstract') || 'Resumo'}:</strong><p>${abstract}</p></div>` : ''}
+          ${keywords ? `<div><strong>${t('publications.modal.keywords') || 'Palavras-chave'}:</strong> ${keywords}</div>` : ''}
           <div class="pub-actions-modal">
-            ${pub.fileUrl ? `<a href="${pub.fileUrl}" target="_blank" class="btn btn-primary download-btn" data-id="${pub.id}">${t('publications.download') || 'Baixar'}</a>` : ''}
-            ${pub.externalLink ? `<a href="${pub.externalLink}" target="_blank" class="btn btn-secondary">${t('publications.access') || 'Acessar'}</a>` : ''}
-            ${pub.doi ? `<a href="https://doi.org/${pub.doi}" target="_blank" class="btn btn-outline">DOI</a>` : ''}
+            ${fileUrl ? `<a href="${fileUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary download-btn" data-id="${escapeHtml(pub.id)}">${t('publications.download') || 'Baixar'}</a>` : ''}
+            ${externalLink ? `<a href="${externalLink}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">${t('publications.access') || 'Acessar'}</a>` : ''}
+            ${doi ? `<a href="https://doi.org/${encodeURIComponent(pub.doi)}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">DOI</a>` : ''}
           </div>
         </div>
       </div>
@@ -637,25 +594,29 @@ export function createPublicationModal(pub, locale = 'pt') {
 // ============================================
 
 export function createNewsCard(news) {
-  let imagePath = news.imageUrl || '';
-  if (imagePath.startsWith('/')) {
-    imagePath = imagePath.substring(1);
-  }
-  const imageUrl = imagePath ? window.resolvePath(imagePath) : window.resolvePath('assets/images/illustrations/placeholder-news.jpg');
+  const title = escapeHtml(news.title || 'Sem título');
+  const excerpt = news.excerpt ? escapeHtml(news.excerpt) : '';
+  const category = news.category ? escapeHtml(news.category) : '';
+  const id = escapeHtml(news.id);
+
+  let imagePath = String(news.imageUrl || '').replace(/^\//, '');
+  const rawSrc = imagePath
+    ? window.resolvePath(imagePath)
+    : window.resolvePath('assets/images/illustrations/placeholder-news.jpg');
+  const imageUrl = safeUrl(rawSrc, { allowDataImage: true }) || '';
+
   const formattedDate = news.createdAt
-    ? new Date(news.createdAt).toLocaleDateString('pt-BR', {
-        year: 'numeric', month: 'long', day: 'numeric'
-      })
+    ? escapeHtml(new Date(news.createdAt).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' }))
     : '';
   const isVideo = news.isVideo === true;
-  
+
   return `
-    <article class="news-card" data-id="${news.id}">
+    <article class="news-card" data-id="${id}">
       <div class="card-image-wrapper">
         ${isVideo ? `
           <div class="video-placeholder">
             <div class="video-thumbnail">
-              <img class="video-thumb-img" src="${getYouTubeThumbnail(news.videoUrl, imageUrl)}" alt="${news.title}" loading="lazy">
+              <img class="video-thumb-img" src="${getYouTubeThumbnail(news.videoUrl, imageUrl)}" alt="${title}" loading="lazy">
               <div class="play-button-overlay">
                 <svg class="play-icon" width="52" height="52" viewBox="0 0 24 24" fill="white">
                   <path d="M8 5v14l11-7z"/>
@@ -669,13 +630,13 @@ export function createNewsCard(news) {
       </div>
       <div class="card-body">
         <div class="card-meta">
-          ${news.category ? `<span class="card-category">${news.category}</span>` : ''}
+          ${category ? `<span class="card-category">${category}</span>` : ''}
           ${formattedDate ? `<span>${formattedDate}</span>` : ''}
         </div>
-        <h3 class="card-title">${news.title || 'Sem título'}</h3>
-        ${news.excerpt ? `<p class="card-excerpt">${news.excerpt}</p>` : ''}
+        <h3 class="card-title">${title}</h3>
+        ${excerpt ? `<p class="card-excerpt">${excerpt}</p>` : ''}
         <div class="card-footer">
-          <a href="./news-detail.html?id=${news.id}" class="btn btn-primary btn-sm">
+          <a href="./news-detail.html?id=${id}" class="btn btn-primary btn-sm">
             ${isVideo ? '▶ Assistir' : 'Leia Mais'}
           </a>
         </div>
@@ -684,34 +645,61 @@ export function createNewsCard(news) {
   `;
 }
 
+/**
+ * IMPORTANTE: news.content deve chegar JÁ sanitizado (via sanitizeHtml() em main.js).
+ * Este componente NÃO escapa o content — ele é HTML legítimo.
+ */
 export function createNewsDetail(news, locale = 'pt') {
+  const title = escapeHtml(news.title || '');
+  const excerpt = news.excerpt ? escapeHtml(news.excerpt) : '';
+  const category = news.category ? escapeHtml(news.category) : '';
   const formattedDate = news.createdAt
-    ? new Date(news.createdAt).toLocaleDateString('pt-BR', {
-        day: '2-digit', month: 'long', year: 'numeric'
-      })
+    ? escapeHtml(new Date(news.createdAt).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }))
     : '';
+  const authorName = news.authorName ? escapeHtml(news.authorName) : '';
 
-  let imagePath = news.imageUrl || '';
-  if (imagePath.startsWith('/')) {
-    imagePath = imagePath.substring(1);
-  }
-  const imageUrl = imagePath ? window.resolvePath(imagePath) : window.resolvePath('assets/images/illustrations/placeholder-news.jpg');
+  let imagePath = String(news.imageUrl || '').replace(/^\//, '');
+  const rawSrc = imagePath
+    ? window.resolvePath(imagePath)
+    : window.resolvePath('assets/images/illustrations/placeholder-news.jpg');
+  const imageUrl = safeUrl(rawSrc, { allowDataImage: true }) || '';
   const isVideo = news.isVideo === true;
 
   const shareUrl = encodeURIComponent(window.location.href);
   const shareText = encodeURIComponent(news.title || '');
 
+  // content é HTML sanitizado externamente (via sanitizeHtml em main.js)
+  const contentHtml = news.content || '<p>Conteúdo não disponível.</p>';
+
+  const tags = Array.isArray(news.tags)
+    ? news.tags.map(tag => `<span class="tag" style="background:var(--color-gray-50);border:1px solid var(--color-gray-200);padding:0.25rem 0.75rem;border-radius:4px;margin-right:0.5rem;font-size:0.875rem;">${escapeHtml(tag)}</span>`).join('')
+    : '';
+
+  const linksHtml = Array.isArray(news.links) && news.links.length > 0
+    ? news.links.map(link => {
+        const href = safeUrl(link.url || '');
+        const label = escapeHtml(link.label || link.url || '');
+        if (!href) return '';
+        return `
+          <a href="${href}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.5rem;padding:0.75rem 1rem;background:rgba(46,16,101,0.05);border:1px solid rgba(46,16,101,0.15);border-radius:var(--radius-md);text-decoration:none;color:var(--color-primary);font-weight:600;transition:all var(--transition-fast);">
+            <span>🔗</span>
+            <span>${label}</span>
+          </a>
+        `;
+      }).join('')
+    : '';
+
   return `
     <a href="./news.html" class="back-link" style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--color-primary);text-decoration:none;font-weight:500;margin-bottom:var(--spacing-lg);">← ${t('news.backToNews') || 'Voltar para Notícias'}</a>
 
     <header class="article-header">
-      <p class="category-tag" style="display:inline-block;background:var(--color-primary);color:var(--color-white);padding:0.25rem 0.75rem;border-radius:999px;font-size:0.875rem;font-weight:600;margin-bottom:var(--spacing-md);">${news.category || ''}</p>
-      <h1 class="article-title" style="font-size:clamp(1.8rem, 3vw, 2.8rem);font-weight:800;color:var(--color-gray-900);line-height:1.2;">${news.title}</h1>
-      ${news.excerpt ? `<p class="article-excerpt" style="font-size:1.2rem;color:var(--color-gray-500);margin-top:var(--spacing-md);">${news.excerpt}</p>` : ''}
+      ${category ? `<p class="category-tag" style="display:inline-block;background:var(--color-primary);color:var(--color-white);padding:0.25rem 0.75rem;border-radius:999px;font-size:0.875rem;font-weight:600;margin-bottom:var(--spacing-md);">${category}</p>` : ''}
+      <h1 class="article-title" style="font-size:clamp(1.8rem, 3vw, 2.8rem);font-weight:800;color:var(--color-gray-900);line-height:1.2;">${title}</h1>
+      ${excerpt ? `<p class="article-excerpt" style="font-size:1.2rem;color:var(--color-gray-500);margin-top:var(--spacing-md);">${excerpt}</p>` : ''}
       <div class="article-meta" style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--spacing-xl);color:var(--color-gray-500);font-size:0.9rem;">
         <div class="author-info" style="display:flex;align-items:center;gap:0.75rem;">
           <span>${formattedDate}</span>
-          ${news.authorName ? `<span>• por ${news.authorName}</span>` : ''}
+          ${authorName ? `<span>• por ${authorName}</span>` : ''}
         </div>
       </div>
     </header>
@@ -719,45 +707,42 @@ export function createNewsDetail(news, locale = 'pt') {
     ${isVideo && news.videoUrl ? `
       <figure class="featured-video-container" style="margin:var(--spacing-xl) 0;">
         <div class="video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius-md);background:#000;">
-          <iframe 
-            src="${getEmbedUrl(news.videoUrl)}" 
-            width="100%" 
-            height="100%" 
+        <iframe
+            src="${getEmbedUrl(news.videoUrl)}"
+            width="100%"
+            height="100%"
             style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
-          ></iframe>
+            sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox"
+            title="${escapeHtml(news.title || 'Vídeo')}"
+        ></iframe>
         </div>
       </figure>
-    ` : news.imageUrl ? `
+    ` : imageUrl ? `
       <figure class="featured-image-container" style="margin:var(--spacing-xl) 0;border-radius:var(--radius-md);overflow:hidden;">
-        <img src="${imageUrl}" alt="${news.title}" style="width:100%;height:auto;display:block;">
+        <img src="${imageUrl}" alt="${title}" style="width:100%;height:auto;display:block;">
       </figure>
     ` : ''}
 
     <div class="article-content" style="line-height:1.8;font-size:1.1rem;color:var(--color-gray-800);">
-      ${news.content || '<p>Conteúdo não disponível.</p>'}
+      ${contentHtml}
     </div>
 
     <footer class="article-footer" style="margin-top:var(--spacing-2xl);padding-top:var(--spacing-xl);border-top:1px solid var(--color-gray-200);">
-      ${news.tags && news.tags.length > 0 ? `
+      ${tags ? `
         <div class="tags-section" style="margin-bottom:var(--spacing-lg);">
           <strong style="margin-right:var(--spacing-md);">${t('news.tags') || 'Tags'}:</strong>
-          ${news.tags.map(tag => `<span class="tag" style="background:var(--color-gray-50);border:1px solid var(--color-gray-200);padding:0.25rem 0.75rem;border-radius:4px;margin-right:0.5rem;font-size:0.875rem;">${tag}</span>`).join('')}
+          ${tags}
         </div>
       ` : ''}
 
-      ${news.links && news.links.length > 0 ? `
+      ${linksHtml ? `
         <div class="links-section" style="margin-bottom:var(--spacing-lg);">
           <strong style="display:block;margin-bottom:var(--spacing-sm);">📌 Links Relacionados</strong>
           <div style="display:flex;flex-direction:column;gap:0.5rem;">
-            ${news.links.map(link => `
-              <a href="${link.url}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.5rem;padding:0.75rem 1rem;background:rgba(46,16,101,0.05);border:1px solid rgba(46,16,101,0.15);border-radius:var(--radius-md);text-decoration:none;color:var(--color-primary);font-weight:600;transition:all var(--transition-fast);">
-                <span>🔗</span>
-                <span>${link.label}</span>
-              </a>
-            `).join('')}
+            ${linksHtml}
           </div>
         </div>
       ` : ''}
@@ -776,33 +761,23 @@ export function createNewsDetail(news, locale = 'pt') {
 }
 
 // ============================================
-// PAGINAÇÃO (universal)
+// PAGINAÇÃO
 // ============================================
 
 export function createPagination(currentPage, totalPages, baseUrl = '') {
   if (totalPages <= 1) return '';
-  
   const pages = [];
   const start = Math.max(1, currentPage - 2);
   const end = Math.min(totalPages, currentPage + 2);
-  
-  for (let i = start; i <= end; i++) {
-    pages.push(i);
-  }
-  
+  for (let i = start; i <= end; i++) pages.push(i);
+
   return `
     <nav class="pagination-nav" style="display:flex;justify-content:center;align-items:center;gap:0.5rem;margin-top:var(--spacing-2xl);" aria-label="Paginação">
-      <button class="pagination-btn" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''} aria-label="Página anterior">
-        ‹
-      </button>
+      <button class="pagination-btn" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''} aria-label="Página anterior">‹</button>
       ${pages.map(p => `
-        <button class="pagination-btn ${p === currentPage ? 'active' : ''}" data-page="${p}" aria-label="Ir para página ${p}" ${p === currentPage ? 'aria-current="page"' : ''}>
-          ${p}
-        </button>
+        <button class="pagination-btn ${p === currentPage ? 'active' : ''}" data-page="${p}" aria-label="Ir para página ${p}" ${p === currentPage ? 'aria-current="page"' : ''}>${p}</button>
       `).join('')}
-      <button class="pagination-btn" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''} aria-label="Próxima página">
-        ›
-      </button>
+      <button class="pagination-btn" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''} aria-label="Próxima página">›</button>
     </nav>
   `;
 }
@@ -827,20 +802,19 @@ export function createCarousel(newsItems) {
 }
 
 // ============================================
-// FUNÇÕES AUXILIARES
+// AUXILIARES
 // ============================================
 
 function getYouTubeThumbnail(videoUrl, fallbackImage) {
   if (!videoUrl) return fallbackImage || '';
-  const match = videoUrl.match(/\/embed\/([^?]+)/);
+  const match = String(videoUrl).match(/\/embed\/([A-Za-z0-9_-]+)/);
   if (!match) return fallbackImage || '';
   return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
 }
 
 function getEmbedUrl(videoUrl) {
   if (!videoUrl) return '';
-  let url = videoUrl.replace('www.youtube.com', 'www.youtube-nocookie.com');
-  const separator = url.includes('?') ? '&' : '?';
-  url += `${separator}rel=0&modestbranding=1`;
-  return url;
+  const match = String(videoUrl).match(/\/embed\/([A-Za-z0-9_-]+)(?:\?[^"']*)?/);
+  if (!match) return '';
+  return `https://www.youtube-nocookie.com/embed/${match[1]}?rel=0&modestbranding=1`;
 }

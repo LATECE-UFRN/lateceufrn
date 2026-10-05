@@ -100,24 +100,8 @@
     </div>
   </div>
 
-  <script>
-    (function() {
-      // Função para obter a raiz do site (com BASE_PATH)
-      function getHomeUrl() {
-        if (window.BASE_PATH) {
-          return window.BASE_PATH + '/';
-        }
-        // Fallback: tenta extrair o subdiretório da URL atual
-        const path = window.location.pathname;
-        const match = path.match(/^(\/lateceufrn)/);
-        if (match) return match[1] + '/';
-        // Último recurso: volta para a raiz
-        return '/';
-      }
-      const homeUrl = getHomeUrl();
-      document.getElementById('back-home-link').href = homeUrl;
-      document.getElementById('footer-home-link').href = homeUrl;
-    })();
-  </script>
+  <script src="./js/path.js"></script>
+  <script src="./js/404-init.js"></script>
+
 </body>
 </html>

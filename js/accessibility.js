@@ -4,6 +4,8 @@
  * e Leitura Assistida (integrada com speech.js)
  */
 
+import { devWarn } from './dev-log.js';
+
 // Importação dinâmica para evitar dependência circular
 let speechModule = null;
 const getSpeech = async () => {
@@ -11,7 +13,7 @@ const getSpeech = async () => {
     try {
       speechModule = await import('./speech.js');
     } catch (e) {
-      console.warn('[accessibility] Módulo speech.js não encontrado. Leitura Assistida indisponível.');
+      devWarn('[accessibility] Módulo speech.js não encontrado. Leitura Assistida indisponível.');
       speechModule = false;
     }
   }

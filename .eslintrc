@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "globals": {
+    "BASE_PATH": "readonly",
+    "resolvePath": "readonly",
+    "console": "readonly",
+    "window": "readonly",
+    "document": "readonly",
+    "localStorage": "readonly",
+    "fetch": "readonly",
+    "DOMPurify": "readonly",
+    "IntersectionObserver": "readonly",
+    "CustomEvent": "readonly"
+  },
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "no-console": "off",
+    "no-undef": "error",
+    "no-implicit-globals": "warn",
+    "eqeqeq": ["warn", "always"],
+    "curly": ["warn", "multi-line"],
+    "no-var": "error",
+    "prefer-const": "warn",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-new-func": "error",
+    "no-script-url": "error"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "js/experiencia-360.js",
+    "js/experiencia-360-indisponivel-init.js"
+  ]
+}

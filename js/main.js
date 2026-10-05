@@ -7,7 +7,9 @@ import { createHeader, createFooter, createNewsCard, createCarousel, createTeamC
 import { initAccessibility, closeAccessibilityPanel } from './accessibility.js';
 import { initI18n, t, getLocale, setLocale } from './i18n.js';
 import { loadTeamData, loadEquipmentData, loadPublicationsData, loadNewsFallback, paginateData } from './data.js';
+import { devLog } from './dev-log.js';
 import { fetchNews, fetchNewsById, formatDate, getAvailableCategories } from './news.js';
+import { sanitizeHtml } from './security.js';
 import { initSpeech } from './speech.js'; // NOVO: importação do módulo de leitura assistida
 import { initAgenda } from './agenda.js'; // NOVO: agenda na seção "Nossa Missão"
 
@@ -1224,6 +1226,10 @@ async function loadNewsDetailPage() {
   try {
     const news = await fetchNewsById(parseInt(id, 10));
     if (news) {
+            // ✅ FASE 1 (P0): sanitizar news.content antes de renderizar.
+      if (news.content) {
+        news.content = await sanitizeHtml(news.content);
+      }
       container.innerHTML = createNewsDetail(news, getLocale());
       const titleEl = document.getElementById('news-detail-title');
       const dateEl = document.getElementById('news-detail-date');
@@ -1569,7 +1575,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     case 'credits':
       break;
     default:
-      console.log('Página desconhecida:', page);
+      devLog('Página desconhecida:', page);
   }
 
   initScrollReveal();
@@ -1587,5 +1593,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   window.syncHeaderScrollState = syncHeaderScrollState;
-  console.log('Portal LATECE — carregado. Página:', page);
+  devLog('Portal LATECE — carregado. Página:', page);
 });

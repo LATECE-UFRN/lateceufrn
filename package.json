@@ -1,0 +1,32 @@
+{
+  "name": "latece-portal-tooling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ferramental de validação do Portal LATECE (dev-only). Não faz parte do produto estático.",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "validate:json": "node scripts/validate-json.js",
+    "lint:js": "eslint \"js/**/*.js\"",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:html": "htmlhint \"*.html\" \"admin/*.html\"",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "security:secrets": "gitleaks detect --no-git --source . --config .gitleaks.toml --report-format json --report-path gitleaks-report.json",
+    "test:a11y": "node scripts/test-a11y.js",
+    "validate": "npm run validate:json && npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "htmlhint": "^1.1.4",
+    "pa11y": "^6.2.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "comments": {
+    "gitleaks": "Instalar via binário: https://github.com/gitleaks/gitleaks (não é pacote npm).",
+    "a11y": "Pa11y é executado contra servidor HTTP local iniciado pelo próprio script.",
+    "private": "Este pacote NUNCA deve ser publicado no npm."
+  }
+}

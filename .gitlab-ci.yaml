@@ -1,0 +1,74 @@
+# ============================================================
+# .gitlab-ci.yml — Portal LATECE
+# Pipeline de validação. Publicação depende da infra UFRN.
+# ============================================================
+
+stages:
+  - validate
+  - lint
+  - security
+  - accessibility
+
+default:
+  image: node:20-alpine
+  before_script:
+    - npm ci --no-audit --no-fund
+
+# ---------- VALIDATE ----------
+validate:json:
+  stage: validate
+  script:
+    - npm run validate:json
+  allow_failure: false
+
+# ---------- LINT ----------
+lint:js:
+  stage: lint
+  script:
+    - npm run lint:js
+  allow_failure: false
+
+lint:css:
+  stage: lint
+  script:
+    - npm run lint:css
+  allow_failure: true
+
+lint:html:
+  stage: lint
+  script:
+    - npm run lint:html
+  allow_failure: true
+
+# ---------- SECURITY ----------
+security:secrets:
+  stage: security
+  image: zricethezav/gitleaks:latest
+  before_script: []
+  script:
+    - gitleaks detect --no-git --source . --config .gitleaks.toml --verbose
+  allow_failure: false
+
+# ---------- ACCESSIBILITY ----------
+test:a11y:
+  stage: accessibility
+  script:
+    - npm run test:a11y
+  artifacts:
+    when: always
+    paths:
+      - pa11y-report.json
+    expire_in: 30 days
+  allow_failure: true
+
+# ============================================================
+# DEPLOY — BLOQUEADO
+# A publicação depende de decisão institucional (ARCH-012).
+# NÃO descomentar até que a infra UFRN seja definida.
+# ============================================================
+# deploy:pages:
+#   stage: deploy
+#   script:
+#     - echo "Deploy depende da infraestrutura UFRN"
+#   only:
+#     - main
