@@ -1,8 +1,7 @@
 {
   "extends": ["stylelint-config-standard"],
   "ignoreFiles": [
-    "node_modules/**",
-    "css/experiencia-360.css"
+    "node_modules/**"
   ],
   "rules": {
     "custom-property-pattern": null,

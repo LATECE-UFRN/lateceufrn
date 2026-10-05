@@ -81,7 +81,6 @@ export function createHeader(isAuthenticated = false) {
               <li><a href="./publications.html" class="nav-link" data-i18n="nav.publications">Publicações</a></li>
               <li><a href="./news.html" class="nav-link" data-i18n="nav.news">Notícias</a></li>
               <li><a href="./sugestoes.html" class="nav-link" data-i18n="nav.suggestions">Sugestões</a></li>
-              <li><a href="./experiencia-360.html" class="nav-link" data-i18n="nav.experiencia360">Experiência 360º</a></li>
             </ul>
           </nav>
 
@@ -122,8 +121,6 @@ export function createHeader(isAuthenticated = false) {
             <a href="./publications.html" class="mobile-nav-link" data-i18n="nav.publications">Publicações</a>
             <a href="./news.html" class="mobile-nav-link" data-i18n="nav.news">Notícias</a>
             <a href="./sugestoes.html" class="mobile-nav-link" data-i18n="nav.suggestions">Sugestões</a>
-            <a href="./experiencia-360.html" class="mobile-nav-link" data-i18n="nav.experiencia360">Experiência 360º</a>
-
             <button type="button"
                     class="mobile-nav-link mobile-nav-link--locale"
                     id="locale-toggle-mobile"
@@ -198,7 +195,6 @@ export function createFooter(locale) {
               <li><a href="./publications.html" class="footer-link">Publicações</a></li>
               <li><a href="./news.html" class="footer-link">Notícias</a></li>
               <li><a href="./sugestoes.html" class="footer-link">Sugestões</a></li>
-              <li><a href="./experiencia-360.html" class="footer-link">Experiência 360°</a></li>
             </ul>
           </div>
 

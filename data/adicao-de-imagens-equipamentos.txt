@@ -1,0 +1,14 @@
+    {
+      "id": 1,
+      "name": "Prancha de Comunicação",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/PRANCHA-DE-CAA.jpeg",
+      "images": [
+        "assets/images/equipment/comunicacao/PRANCHA-DE-CAA.jpeg",
+        "assets/images/equipment/comunicacao/PRANCHA-DE-CAA-2.jpeg",
+        "assets/images/equipment/comunicacao/PRANCHA-DE-CAA-3.jpeg"
+      ],
+      "description": "Prancha com pictogramas para apoio à comunicação alternativa.",
+      "order": 0,
+      "download": null
+    },
