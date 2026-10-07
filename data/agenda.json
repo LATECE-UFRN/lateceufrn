@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updatedAt": "2026-09-17T00:00:00Z",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-07T00:00:00Z",
   "events": [
     {
       "id": 1,
@@ -33,6 +33,237 @@
       "description": "Reunião semanal da equipe do projeto LATECE.",
       "location": "Sala de reuniões do LATECE",
       "category": "reuniao",
+      "link": null
+    },
+    {
+      "id": 4,
+      "date": "2026-05-22",
+      "time": "19:00",
+      "endTime": "22:00",
+      "title": "Módulo 1 — Aula Inaugural: Desenho Universal no Contexto Escolar Inclusivo",
+      "description": "Curso de Formação AEE — Planejamento, Estratégias Colaborativas e Recursos Pedagógicos no Atendimento Educacional Especializado (SME Natal / 2026). Atividade vivencial. Profa. Dra. Izadora Martins da Silva Souza (UFRRJ). Turno: NOTURNO. Carga horária: 3h/4h. Carga horária total do curso: 100h.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 5,
+      "date": "2026-06-09",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Módulo 2 — Concepções de Ensino e Aprendizagem de Estudantes com Deficiência em Contextos Inclusivos",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Dra. Adriane Cenci (UFRN). Turno: MATUTINO — professores do turno vespertino receberão a gravação. Carga horária: 3h/4h.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 6,
+      "date": "2026-07-16",
+      "time": "19:00",
+      "endTime": "22:00",
+      "title": "Módulo 3 — Do Currículo Funcional às Práticas Pedagógicas em Contexto Escolar Inclusivo",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Dra. Claudia Togashi (SME-RJ). Turno: NOTURNO. Carga horária: 3h.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 7,
+      "date": "2026-07-24",
+      "time": "13:00",
+      "endTime": "17:00",
+      "title": "Módulo 4 — Habilidades Sociais de Estudantes com Deficiência e Possibilidades de Intervenção na Escola",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Ms. Niedja Marques de Souza (UFRN). Turno: VESPERTINO — professores do turno matutino receberão a gravação. Carga horária: 4h/3h.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 8,
+      "date": "2026-08-28",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Módulo 5 — Tecnologia Assistiva e Comunicação Aumentativa e Alternativa (manhã)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Profa. Ms. Renata Lima de Morais (UFRN/SME Natal). Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "UFRN — Auditório CE",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 9,
+      "date": "2026-08-28",
+      "time": "13:00",
+      "endTime": "17:00",
+      "title": "Módulo 5 — Tecnologia Assistiva e Comunicação Aumentativa e Alternativa (tarde)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Profa. Ms. Renata Lima de Morais (UFRN/SME Natal). Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "UFRN — Auditório CE",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 10,
+      "date": "2026-09-04",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Módulo 5 — Tecnologia Assistiva e Comunicação Aumentativa e Alternativa (manhã)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Continuação do Módulo 5. Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "UFRN — Auditório CE",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 11,
+      "date": "2026-09-04",
+      "time": "13:00",
+      "endTime": "17:00",
+      "title": "Módulo 5 — Tecnologia Assistiva e Comunicação Aumentativa e Alternativa (tarde)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Continuação do Módulo 5. Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "UFRN — Auditório CE",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 12,
+      "date": "2026-09-18",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Módulo 6 — Planejamento de Práticas Colaborativas na Escola e a Construção do PEI",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Ms. Mariana Orrico (CEESP/UFRN). Turno: MATUTINO — professores do turno vespertino receberão a gravação. Carga horária: 4h/3h.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 13,
+      "date": "2026-09-25",
+      "time": "13:00",
+      "endTime": "17:00",
+      "title": "Módulo 6 — Planejamento de Práticas Colaborativas na Escola e a Construção do PEI (tarde)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Continuação do Módulo 6. Profa. Ms. Mariana Orrico (CEESP/UFRN). Turno: VESPERTINO — professores do turno matutino receberão a gravação. Carga horária: 4h/3h.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 14,
+      "date": "2026-09-30",
+      "time": "08:30",
+      "endTime": "11:30",
+      "title": "Audiodescrição na escola — Encontro presencial",
+      "description": "Curso de Extensão: \"Audiodescrição na escola: quando as palavras tornam a imagem acessível\". Público: professores do Ensino Fundamental, professores do AEE e estagiários da Educação Especial. Modalidade híbrida — este é o encontro presencial. Carga horária total: 20h.",
+      "location": "Centro de Educação — UFRN",
+      "category": "curso",
+      "link": "https://latece-ufrn.github.io/audiodescricao-na-escola/"
+    },
+    {
+      "id": 15,
+      "date": "2026-09-30",
+      "time": "08:30",
+      "endTime": "10:30",
+      "title": "Audiodescrição na escola — Encontro online",
+      "description": "Curso de Extensão: \"Audiodescrição na escola: quando as palavras tornam a imagem acessível\". Modalidade híbrida — este é o encontro remoto. Carga horária total: 20h.",
+      "location": "Google Meet",
+      "category": "curso",
+      "link": "https://latece-ufrn.github.io/audiodescricao-na-escola/"
+    },
+    {
+      "id": 16,
+      "date": "2026-10-19",
+      "time": "07:30",
+      "endTime": "11:30",
+      "title": "Oficina Livro para todos — Turno matutino",
+      "description": "Oficina de formação continuada: \"Livro para todos — Acessibilidade para inclusão de estudantes com Necessidades Complexas de Comunicação\". Público-alvo: professores das bibliotecas da Rede Municipal de Ensino. Realização: CODESP/SME em parceria com a Biblioteca Municipal Prof.ª Elienai Cartaxo (Parnamirim/RN) e LATECE. Lanche coletivo — cada participante traz um item para compartilhar.",
+      "location": "Laboratório UAB — piso térreo da SME",
+      "category": "oficina",
+      "link": "https://latece-ufrn.github.io/oficina-livro-para-todos/"
+    },
+    {
+      "id": 17,
+      "date": "2026-10-19",
+      "time": "13:30",
+      "endTime": "17:30",
+      "title": "Oficina Livro para todos — Turno vespertino",
+      "description": "Oficina de formação continuada: \"Livro para todos — Acessibilidade para inclusão de estudantes com Necessidades Complexas de Comunicação\". Público-alvo: professores das bibliotecas da Rede Municipal de Ensino. Realização: CODESP/SME em parceria com a Biblioteca Municipal Prof.ª Elienai Cartaxo (Parnamirim/RN) e LATECE. Lanche coletivo — cada participante traz um item para compartilhar.",
+      "location": "Laboratório UAB — piso térreo da SME",
+      "category": "oficina",
+      "link": "https://latece-ufrn.github.io/oficina-livro-para-todos/"
+    },
+    {
+      "id": 18,
+      "date": "2026-10-23",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Módulo 7 — Planejamento das Ações Pedagógicas: da Avaliação ao Plano de AEE (manhã)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Dra. Erika Soares e Profa. Ms. Iara Souza (SME Natal). Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "Auditório da SME",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 19,
+      "date": "2026-10-23",
+      "time": "13:00",
+      "endTime": "17:00",
+      "title": "Módulo 7 — Planejamento das Ações Pedagógicas: da Avaliação ao Plano de AEE (tarde)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Dra. Erika Soares e Profa. Ms. Iara Souza (SME Natal). Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "Auditório da SME",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 20,
+      "date": "2026-10-30",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Módulo 8 — Metodologia do Estudo de Caso (manhã)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Esp. Ana Karla Moura, Profa. Esp. Kalliny Alves, Profa. Esp. Larissa Cavalcanti e Prof. Ms. Mariana Medeiros (SME Natal). Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "Auditório da SME",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 21,
+      "date": "2026-10-30",
+      "time": "13:00",
+      "endTime": "17:00",
+      "title": "Módulo 8 — Metodologia do Estudo de Caso (tarde)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Esp. Ana Karla Moura, Profa. Esp. Kalliny Alves, Profa. Esp. Larissa Cavalcanti e Prof. Ms. Mariana Medeiros (SME Natal). Turno: MATUTINO E VESPERTINO. Carga horária: 4h/3h.",
+      "location": "Auditório da SME",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 22,
+      "date": "2026-11-13",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Módulo 9 — Plano de Atendimento Educacional Especializado",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Atividade vivencial. Profa. Dra. Débora Pereira (SME Parnamirim). Turno: MATUTINO — professores do turno vespertino receberão a gravação. Carga horária: 3h/4h.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 23,
+      "date": "2026-11-27",
+      "time": "08:00",
+      "endTime": "12:00",
+      "title": "Orientação para Sistematização de Práticas Pedagógicas no AEE (data a confirmar)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Coordenação do AEE. Turno: MATUTINO E VESPERTINO. Carga horária: 6h/7h. DATA A CONFIRMAR — o cronograma informa apenas \"a confirmar (sexta)\" para o mês de novembro. A data aqui registrada é uma estimativa para a última sexta-feira do mês; ajustar quando houver confirmação oficial.",
+      "location": "Google Meet",
+      "category": "formacao",
+      "link": null
+    },
+    {
+      "id": 24,
+      "date": "2026-12-11",
+      "time": "08:00",
+      "endTime": "18:00",
+      "title": "Seminário: Práticas Pedagógicas Colaborativas — Construindo Experiências Inclusivas nas Unidades de Ensino de Natal (data a confirmar)",
+      "description": "Curso de Formação AEE (SME Natal / 2026). Encerramento do curso. Turno: MATUTINO E VESPERTINO. Carga horária: 10h. DATA A CONFIRMAR — o cronograma indica apenas \"dezembro (sexta)\". A data aqui registrada é uma estimativa; ajustar quando houver confirmação oficial.",
+      "location": "CEMURE",
+      "category": "seminario",
       "link": null
     }
   ]
