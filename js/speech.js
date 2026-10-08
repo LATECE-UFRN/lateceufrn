@@ -1,65 +1,196 @@
 /**
  * speech.js — Leitura Assistida por Voz (Text-to-Speech)
- * Utiliza Web Speech API, integrado ao painel de acessibilidade.
- * Estado: habilitado/desabilitado via localStorage.
+ *
+ * v3 — adiciona fallback automático via Google Translate TTS:
+ *   • Detecta falha silenciosa do SAPI5 no Windows (onstart nunca dispara
+ *     mas onend dispara, sem áudio).
+ *   • Troca para <audio> com endpoint do Google Translate na primeira falha.
+ *   • Persiste a escolha em localStorage (latece-speech-engine).
+ *   • Preserva chunking, pause/resume/stop, token de geração e watchdog.
+ *
+ * API pública: initSpeech, toggleSpeech, isSpeechEnabled, getSpeechState
  */
 
 const STORAGE_KEY = 'latece-speech-enabled';
+const ENGINE_KEY = 'latece-speech-engine'; // 'webspeech' | 'audio'
+const CHUNK_MAX_CHARS = 180;
+const VOICE_WAIT_MS = 2000;
+const WATCHDOG_MS = 4000;
+const AUDIO_FALLBACK_ENDPOINT = 'https://translate.google.com/translate_tts';
+
 let isEnabled = false;
 let isSpeaking = false;
 let isPaused = false;
-let utterance = null;
-let currentUtterance = null;
 let currentTexts = [];
 let currentIndex = 0;
 let floatingButton = null;
 let controlsContainer = null;
+
+let generationToken = 0;
+let activeEngine = localStorage.getItem(ENGINE_KEY) || 'webspeech';
+
+// Web Speech API
+let voices = [];
+let voicesReady = false;
+
+// Fallback <audio>
+let currentAudio = null;
 
 // ============================================================
 // INICIALIZAÇÃO
 // ============================================================
 
 export function initSpeech() {
-  // Carregar estado do localStorage
-  const saved = localStorage.getItem(STORAGE_KEY);
-  isEnabled = saved === 'true';
-  if (isEnabled) {
-    createFloatingButton();
-  }
-  // Ouvir mudanças no estado via evento personalizado
-  document.addEventListener('speech-toggle', (e) => {
-    const enabled = e.detail.enabled;
-    setEnabled(enabled);
-  });
+  isEnabled = localStorage.getItem(STORAGE_KEY) === 'true';
+  loadVoices();
+  if (isEnabled) createFloatingButton();
+  document.addEventListener('speech-toggle', (e) => setEnabled(e.detail.enabled));
 }
-
-// ============================================================
-// ATIVAÇÃO/DESATIVAÇÃO
-// ============================================================
 
 function setEnabled(enabled) {
   isEnabled = enabled;
   localStorage.setItem(STORAGE_KEY, String(enabled));
-  if (enabled) {
-    createFloatingButton();
-  } else {
-    stopSpeech();
-    removeFloatingButton();
-  }
+  if (enabled) createFloatingButton();
+  else { stopSpeech(); removeFloatingButton(); }
 }
 
 export function toggleSpeech() {
   setEnabled(!isEnabled);
-  // Disparar evento para sincronizar com o painel de acessibilidade
   document.dispatchEvent(new CustomEvent('speech-state-changed', { detail: { enabled: isEnabled } }));
 }
 
-export function isSpeechEnabled() {
-  return isEnabled;
+export function isSpeechEnabled() { return isEnabled; }
+export function getSpeechState() { return { isEnabled, isSpeaking, isPaused, engine: activeEngine }; }
+
+// ============================================================
+// VOZES — carregamento e escolha
+// ============================================================
+
+function loadVoices() {
+  if (!('speechSynthesis' in window)) return;
+  const read = () => {
+    voices = window.speechSynthesis.getVoices();
+    if (voices.length > 0) { voicesReady = true; return true; }
+    return false;
+  };
+  if (read()) return;
+  const handler = () => { if (read()) window.speechSynthesis.removeEventListener('voiceschanged', handler); };
+  window.speechSynthesis.addEventListener('voiceschanged', handler);
+  setTimeout(() => { if (!voicesReady) read(); }, VOICE_WAIT_MS);
+}
+
+async function waitForVoices() {
+  if (voicesReady || voices.length > 0) return;
+  await new Promise((resolve) => {
+    const timer = setTimeout(resolve, VOICE_WAIT_MS);
+    const handler = () => {
+      voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        voicesReady = true;
+        clearTimeout(timer);
+        window.speechSynthesis.removeEventListener('voiceschanged', handler);
+        resolve();
+      }
+    };
+    window.speechSynthesis.addEventListener('voiceschanged', handler);
+  });
+}
+
+// Vozes que reportam como disponíveis mas não produzem áudio no Chrome desktop.
+const BROKEN_VOICE_PATTERNS = [/microsoft\s+daniel/i];
+const PREFERRED_VOICE_PATTERNS = [
+  /microsoft\s+maria/i, /microsoft\s+francisca/i,
+  /google\s+português/i, /google\s+portuguese/i,
+  /luciana/i, /fernanda/i
+];
+
+function isBrokenVoice(v) { return v && v.name && BROKEN_VOICE_PATTERNS.some((r) => r.test(v.name)); }
+function isPreferredVoice(v) { return v && v.name && PREFERRED_VOICE_PATTERNS.some((r) => r.test(v.name)); }
+
+function pickVoice(lang) {
+  if (!voices.length) return null;
+  const target = (lang || 'pt-BR').toLowerCase();
+  const prefix = target.split('-')[0];
+  const candidates = voices.filter((v) => {
+    const vl = v.lang.toLowerCase();
+    return (vl === target || vl.startsWith(prefix)) && !isBrokenVoice(v);
+  });
+  if (candidates.length === 0) return voices.find((v) => v.lang.toLowerCase().startsWith(prefix)) || null;
+  const pref = candidates.find(isPreferredVoice);
+  if (pref) return pref;
+  const local = candidates.find((v) => v.localService);
+  return local || candidates[0];
 }
 
 // ============================================================
-// BOTÃO FLUTUANTE E CONTROLES
+// CHUNKING
+// ============================================================
+
+function chunkText(text, maxLen = CHUNK_MAX_CHARS) {
+  if (!text) return [];
+  const t = text.trim();
+  if (t.length <= maxLen) return [t];
+  const parts = t.match(/[^.!?;:]+[.!?;:]?\s*/g) || [t];
+  const chunks = [];
+  let buf = '';
+  for (const p of parts) {
+    if ((buf + p).length > maxLen && buf) { chunks.push(buf.trim()); buf = p; }
+    else { buf += p; }
+    while (buf.length > maxLen) {
+      const cut = buf.lastIndexOf(' ', maxLen);
+      const take = cut > 0 ? cut : maxLen;
+      chunks.push(buf.slice(0, take).trim());
+      buf = buf.slice(take).trim();
+    }
+  }
+  if (buf.trim()) chunks.push(buf.trim());
+  return chunks;
+}
+
+// ============================================================
+// EXTRAÇÃO DE CONTEÚDO
+// ============================================================
+
+function extractTextContent() {
+  const main = document.querySelector('main');
+  if (!main) return [];
+  const selectors = [
+    'h1','h2','h3','h4','h5','h6','p','li','label',
+    '.hero-title','.hero-subtitle','.hero-badge','.section-title','.card-title','.card-text',
+    '.article-title','.article-content p','.news-card .card-title','.news-card .card-excerpt',
+    '.team-card .team-name','.team-card .team-role',
+    '.equipment-card .equipment-name','.equipment-card .equipment-description',
+    '.publication-item .pub-title','.publication-item .pub-authors','.publication-item .pub-abstract'
+  ];
+  const seen = new Set();
+  const out = [];
+main.querySelectorAll(selectors.join(',')).forEach((el) => {
+  if (el.getAttribute('aria-hidden') === 'true' || el.hidden) return;
+
+  // Respeita regiões marcadas para não serem lidas pela Leitura Assistida.
+  // O atributo data-no-tts NÃO afeta leitores de tela; afeta apenas este módulo.
+  if (el.closest('[data-no-tts]')) return;
+
+  const s = window.getComputedStyle(el);
+  if (s.display === 'none' || s.visibility === 'hidden' || s.opacity === '0') return;
+  let text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!text) return;
+    const key = text.slice(0, 60);
+    if (seen.has(key)) return;
+    seen.add(key);
+    const aria = el.getAttribute('aria-label');
+    if (aria && aria.trim() !== text) text = aria.trim() + '. ' + text;
+    out.push(text);
+  });
+  if (out.length === 0) {
+    const fb = (main.textContent || '').replace(/\s+/g, ' ').trim();
+    if (fb) out.push(fb);
+  }
+  return out;
+}
+
+// ============================================================
+// UI — botão flutuante e controles
 // ============================================================
 
 function createFloatingButton() {
@@ -67,300 +198,325 @@ function createFloatingButton() {
   floatingButton = document.createElement('div');
   floatingButton.id = 'speech-float-btn';
   floatingButton.setAttribute('role', 'button');
+  floatingButton.setAttribute('tabindex', '0');
   floatingButton.setAttribute('aria-label', 'Controles de leitura assistida');
   floatingButton.setAttribute('aria-expanded', 'false');
-  floatingButton.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-    background: var(--color-primary);
-    color: var(--text-on-primary);
-    border: none;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 1.5rem;
-    box-shadow: var(--shadow-elevated);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-fast), background var(--transition-fast);
-  `;
+  floatingButton.style.cssText = `position:fixed;bottom:20px;left:20px;z-index:1000;background:var(--color-primary);color:var(--text-on-primary);border:none;border-radius:50%;width:56px;height:56px;font-size:1.5rem;box-shadow:var(--shadow-elevated);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .25s,background .25s;`;
   floatingButton.textContent = '🔊';
   floatingButton.addEventListener('click', toggleControls);
+  floatingButton.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleControls(); }
+  });
   document.body.appendChild(floatingButton);
 
-  // Criar container de controles (inicialmente oculto)
   controlsContainer = document.createElement('div');
   controlsContainer.id = 'speech-controls';
-  controlsContainer.style.cssText = `
-    position: fixed;
-    bottom: 90px;
-    left: 20px;
-    background: var(--surface-modal);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-heavy);
-    border: 1px solid var(--border);
-    padding: 16px;
-    display: none;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 180px;
-    z-index: 1001;
-  `;
+  controlsContainer.style.cssText = `position:fixed;bottom:90px;left:20px;background:var(--surface-modal);border-radius:var(--radius-lg);box-shadow:var(--shadow-heavy);border:1px solid var(--border);padding:16px;display:none;flex-direction:column;gap:8px;min-width:200px;z-index:1001;`;
   controlsContainer.innerHTML = `
-    <button class="speech-control-btn" data-action="play" style="background:none;border:none;text-align:left;padding:6px 12px;cursor:pointer;font-size:0.95rem;color:var(--text-primary);">▶ Ler página</button>
-    <button class="speech-control-btn" data-action="pause" style="background:none;border:none;text-align:left;padding:6px 12px;cursor:pointer;font-size:0.95rem;color:var(--text-primary);">⏸ Pausar</button>
-    <button class="speech-control-btn" data-action="resume" style="background:none;border:none;text-align:left;padding:6px 12px;cursor:pointer;font-size:0.95rem;color:var(--text-primary);">▶ Continuar</button>
-    <button class="speech-control-btn" data-action="stop" style="background:none;border:none;text-align:left;padding:6px 12px;cursor:pointer;font-size:0.95rem;color:var(--text-primary);">⏹ Parar</button>
+    <button class="speech-control-btn" data-action="play">▶ Ler página</button>
+    <button class="speech-control-btn" data-action="pause">⏸ Pausar</button>
+    <button class="speech-control-btn" data-action="resume">▶ Continuar</button>
+    <button class="speech-control-btn" data-action="stop">⏹ Parar</button>
     <hr style="border-color:var(--border-light);margin:4px 0;">
-    <button class="speech-control-btn" data-action="close" style="background:none;border:none;text-align:left;padding:6px 12px;cursor:pointer;font-size:0.95rem;color:var(--text-muted);">✕ Fechar controles</button>
+    <button class="speech-control-btn" data-action="close">✕ Fechar controles</button>
   `;
-  document.body.appendChild(controlsContainer);
-
-  // Eventos dos botões
-  controlsContainer.querySelectorAll('.speech-control-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const action = btn.dataset.action;
-      switch (action) {
-        case 'play': startReading(); break;
-        case 'pause': pauseSpeech(); break;
-        case 'resume': resumeSpeech(); break;
-        case 'stop': stopSpeech(); break;
-        case 'close': toggleControls(); break;
-        default: break;
-      }
+  controlsContainer.querySelectorAll('.speech-control-btn').forEach((btn) => {
+    btn.style.cssText = 'background:none;border:none;text-align:left;padding:6px 12px;cursor:pointer;font-size:.95rem;color:var(--text-primary);border-radius:6px;';
+    btn.addEventListener('click', () => {
+      const a = btn.dataset.action;
+      if (a === 'play') startReading();
+      else if (a === 'pause') pauseSpeech();
+      else if (a === 'resume') resumeSpeech();
+      else if (a === 'stop') stopSpeech();
+      else if (a === 'close') toggleControls();
     });
   });
+  document.body.appendChild(controlsContainer);
 
-  // Fechar controles ao clicar fora
   document.addEventListener('click', (e) => {
-    if (controlsContainer && controlsContainer.style.display === 'flex') {
-      if (!controlsContainer.contains(e.target) && e.target !== floatingButton) {
-        controlsContainer.style.display = 'none';
-        floatingButton.setAttribute('aria-expanded', 'false');
-      }
+    if (controlsContainer && controlsContainer.style.display === 'flex' &&
+        !controlsContainer.contains(e.target) && e.target !== floatingButton) {
+      controlsContainer.style.display = 'none';
+      floatingButton.setAttribute('aria-expanded', 'false');
     }
   });
-
-  // Atualizar estado dos botões (play/pause/resume) conforme a fala
   updateControlsState();
 }
 
 function removeFloatingButton() {
-  if (floatingButton) {
-    floatingButton.remove();
-    floatingButton = null;
-  }
-  if (controlsContainer) {
-    controlsContainer.remove();
-    controlsContainer = null;
-  }
+  if (floatingButton) { floatingButton.remove(); floatingButton = null; }
+  if (controlsContainer) { controlsContainer.remove(); controlsContainer = null; }
 }
 
 function toggleControls() {
-  if (!controlsContainer) return;
+  if (!controlsContainer || !floatingButton) return;
   const isOpen = controlsContainer.style.display === 'flex';
   controlsContainer.style.display = isOpen ? 'none' : 'flex';
   floatingButton.setAttribute('aria-expanded', String(!isOpen));
-  if (!isOpen) {
-    // Atualizar estado dos botões ao abrir
-    updateControlsState();
-  }
+  if (!isOpen) updateControlsState();
 }
 
 function updateControlsState() {
   if (!controlsContainer) return;
-  const playBtn = controlsContainer.querySelector('[data-action="play"]');
-  const pauseBtn = controlsContainer.querySelector('[data-action="pause"]');
-  const resumeBtn = controlsContainer.querySelector('[data-action="resume"]');
-  const stopBtn = controlsContainer.querySelector('[data-action="stop"]');
-
+  const play = controlsContainer.querySelector('[data-action="play"]');
+  const pause = controlsContainer.querySelector('[data-action="pause"]');
+  const resume = controlsContainer.querySelector('[data-action="resume"]');
+  const stop = controlsContainer.querySelector('[data-action="stop"]');
+  if (!play) return;
   if (isSpeaking && !isPaused) {
-    playBtn.style.display = 'none';
-    pauseBtn.style.display = 'block';
-    resumeBtn.style.display = 'none';
-    stopBtn.style.display = 'block';
+    play.style.display = 'none'; pause.style.display = 'block';
+    resume.style.display = 'none'; stop.style.display = 'block';
   } else if (isSpeaking && isPaused) {
-    playBtn.style.display = 'none';
-    pauseBtn.style.display = 'none';
-    resumeBtn.style.display = 'block';
-    stopBtn.style.display = 'block';
+    play.style.display = 'none'; pause.style.display = 'none';
+    resume.style.display = 'block'; stop.style.display = 'block';
   } else {
-    playBtn.style.display = 'block';
-    pauseBtn.style.display = 'none';
-    resumeBtn.style.display = 'none';
-    stopBtn.style.display = 'none';
+    play.style.display = 'block'; pause.style.display = 'none';
+    resume.style.display = 'none'; stop.style.display = 'none';
   }
 }
 
 // ============================================================
-// LEITURA — EXTRAÇÃO DE CONTEÚDO
+// MOTOR DE FALA — Web Speech API
 // ============================================================
 
-function extractTextContent() {
-  const main = document.querySelector('main');
-  if (!main) return [];
+async function speakWithWebSpeech(text, token, onEnded, onFailedSilent) {
+  await waitForVoices();
+  if (token !== generationToken) return;
 
-  // Ordem semântica: título da página, headings, parágrafos, links, botões, etc.
-  const elements = [];
-  const selectors = [
-    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-    'p', 'li', 'a', 'button', 'label',
-    '.hero-title', '.hero-subtitle', '.hero-badge',
-    '.section-title', '.card-title', '.card-text',
-    '.article-title', '.article-content p',
-    '.news-card .card-title', '.news-card .card-excerpt',
-    '.team-card .team-name', '.team-card .team-role',
-    '.equipment-card .equipment-name', '.equipment-card .equipment-description',
-    '.publication-item .pub-title', '.publication-item .pub-authors', '.publication-item .pub-abstract'
-  ];
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = document.documentElement.lang || 'pt-BR';
+  utter.rate = 1.0;
+  utter.pitch = 1.0;
+  utter.volume = 1;
+  const voice = pickVoice(utter.lang);
+  if (voice) utter.voice = voice;
 
-  // Coletar texto de cada elemento, evitando duplicatas e conteúdo oculto
-  const seen = new Set();
-  const allElements = main.querySelectorAll(selectors.join(','));
-  allElements.forEach(el => {
-    // Ignorar elementos com aria-hidden="true" ou hidden
-    if (el.getAttribute('aria-hidden') === 'true' || el.hidden) return;
-    // Ignorar elementos que não são visíveis (display:none ou visibility:hidden)
-    const style = window.getComputedStyle(el);
-    if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') return;
-    // Extrair texto, removendo espaços extras
-    let text = el.textContent.trim();
-    if (!text) return;
-    // Evitar duplicatas (ex: mesmo texto em heading e parágrafo)
-    const key = text.slice(0, 60);
-    if (seen.has(key)) return;
-    seen.add(key);
-    // Considerar aria-label se existir e diferente do texto
-    const ariaLabel = el.getAttribute('aria-label');
-    if (ariaLabel && ariaLabel.trim() !== text) {
-      text = ariaLabel.trim() + '. ' + text;
-    }
-    elements.push(text);
-  });
+  let started = false;
+  let resolved = false;
 
-  // Se nenhum elemento foi encontrado, usar o conteúdo do main como fallback
-  if (elements.length === 0) {
-    const mainText = main.textContent.trim();
-    if (mainText) elements.push(mainText);
-  }
+  const finish = (ok) => {
+    if (resolved) return;
+    resolved = true;
+    clearTimeout(watchdog);
+    if (token !== generationToken) return;
+    if (ok) onEnded();
+    else onFailedSilent();
+  };
 
-  return elements;
+  utter.onstart = () => { started = true; updateControlsState(); };
+  utter.onend = () => finish(true);
+  utter.onerror = (e) => {
+    const reason = e && e.error;
+    if (reason === 'interrupted' || reason === 'canceled') return;
+    // Falha real
+    if (started) finish(true);        // meio da fala → avança normalmente
+    else finish(false);               // nunca começou → avisa
+  };
+
+const watchdog = setTimeout(() => {
+  if (started) return;
+  if (token !== generationToken) return;
+  if (!isSpeaking || isPaused) return;
+  try { window.speechSynthesis.cancel(); } catch { /* noop */ }
+  finish(false); // não iniciou em 4s → considera falha silenciosa
+}, WATCHDOG_MS);
+
+  try { window.speechSynthesis.speak(utter); }
+  catch (err) { clearTimeout(watchdog); finish(false); }
 }
 
 // ============================================================
-// CONTROLE DE LEITURA (Web Speech API)
+// MOTOR DE FALA — Fallback <audio> (Google Translate TTS)
+// ============================================================
+
+function speakWithAudioFallback(text, token, onEnded, onFailed) {
+  if (token !== generationToken) return;
+
+  // Sanitiza o texto (Google Translate não lida bem com certos caracteres)
+  const clean = text
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 200); // limite de segurança da API
+
+  if (!clean) { onEnded(); return; }
+
+  const lang = (document.documentElement.lang || 'pt-BR').split('-')[0] === 'pt'
+    ? 'pt-BR'
+    : (document.documentElement.lang || 'pt-BR');
+
+  const url = `${AUDIO_FALLBACK_ENDPOINT}?ie=UTF-8&q=${encodeURIComponent(clean)}&tl=${encodeURIComponent(lang)}&client=tw-ob&total=1&idx=0&textlen=${clean.length}`;
+
+  const audio = new Audio();
+  audio.crossOrigin = 'anonymous';
+  audio.src = url;
+  audio.preload = 'auto';
+  currentAudio = audio;
+
+  let resolved = false;
+  const finish = (ok) => {
+    if (resolved) return;
+    resolved = true;
+    if (currentAudio === audio) currentAudio = null;
+    if (token !== generationToken) return;
+    if (ok) onEnded(); else onFailed();
+  };
+
+  audio.addEventListener('ended', () => finish(true));
+  audio.addEventListener('error', () => finish(false));
+  audio.addEventListener('stalled', () => { /* deixa o watchdog cuidar */ });
+
+const watchdog = setTimeout(() => {
+  if (token !== generationToken) return;
+  if (audio.readyState < 2) {
+    try { audio.pause(); } catch { /* noop */ }
+    finish(false);
+  }
+}, WATCHDOG_MS);
+
+  audio.addEventListener('playing', () => clearTimeout(watchdog), { once: true });
+
+  audio.play().catch(() => { clearTimeout(watchdog); finish(false); });
+}
+
+// ============================================================
+// CONTROLE DE LEITURA
 // ============================================================
 
 function startReading() {
-  if (!window.speechSynthesis) {
+  // Verifica suporte
+  const hasSpeech = 'speechSynthesis' in window;
+  const useAudio = activeEngine === 'audio' || !hasSpeech;
+
+  if (!hasSpeech && !useAudio) {
     alert('Seu navegador não suporta síntese de voz.');
     return;
   }
-  if (isSpeaking && !isPaused) {
-    // Já está falando, apenas reiniciar?
-    stopSpeech();
+
+  // Se já estava lendo, invalida e cancela
+if (isSpeaking) {
+  generationToken++;
+  try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch { /* noop */ }
+  if (currentAudio) {
+    try { currentAudio.pause(); currentAudio.src = ''; } catch { /* noop */ }
+    currentAudio = null;
   }
-  // Extrair texto
-  const texts = extractTextContent();
-  if (texts.length === 0) {
+}
+
+  const rawTexts = extractTextContent();
+  if (rawTexts.length === 0) {
     alert('Nenhum conteúdo textual encontrado para leitura.');
     return;
   }
+
+  const texts = [];
+  for (const t of rawTexts) {
+    for (const c of chunkText(t)) if (c.trim()) texts.push(c.trim());
+  }
+
   currentTexts = texts;
   currentIndex = 0;
   isSpeaking = true;
   isPaused = false;
-  readNext();
+  generationToken++;
+  const token = generationToken;
+
   updateControlsState();
+  readNext(token);
 }
 
-function readNext() {
+function readNext(token) {
+  if (token !== generationToken) return;
+  if (!isSpeaking || isPaused) return;
+
   if (currentIndex >= currentTexts.length) {
-    // Fim da leitura
-    isSpeaking = false;
-    isPaused = false;
-    updateControlsState();
+    finishReading(token);
     return;
   }
+
   const text = currentTexts[currentIndex];
-  if (!text) {
+  if (!text) { currentIndex++; readNext(token); return; }
+
+  const goNext = () => {
+    if (token !== generationToken) return;
     currentIndex++;
-    readNext();
-    return;
-  }
+    if (isSpeaking && !isPaused) readNext(token);
+  };
 
-  // Criar utterance
-  utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = document.documentElement.lang || 'pt-BR';
-  utterance.rate = 1.0;
-  utterance.pitch = 1.0;
-  utterance.volume = 1;
-
-  // Obter vozes disponíveis e escolher uma voz pt-BR se possível
-  const voices = window.speechSynthesis.getVoices();
-  const ptBRVoice = voices.find(v => v.lang.startsWith('pt') && v.lang.includes('BR'));
-  if (ptBRVoice) utterance.voice = ptBRVoice;
-
-  // Eventos
-  utterance.onend = () => {
-    currentIndex++;
-    if (isSpeaking && !isPaused) {
-      readNext();
+  const onSilentFailure = () => {
+    if (token !== generationToken) return;
+    if (activeEngine !== 'audio') {
+      // Primeira falha silenciosa → muda para o fallback e reinicia do ponto atual
+      console.warn('[speech] Web Speech API não produziu áudio. Alternando para fallback.');
+      activeEngine = 'audio';
+      localStorage.setItem(ENGINE_KEY, 'audio');
+      // Re-tenta o MESMO trecho com o fallback
+      speakWithAudioFallback(text, token, goNext, goNext);
     } else {
-      // Se pausado ou interrompido, não continua
-    }
-  };
-  utterance.onerror = (event) => {
-    console.warn('Erro na síntese:', event);
-    // Tentar continuar mesmo assim
-    currentIndex++;
-    if (isSpeaking && !isPaused) {
-      readNext();
+      // Já estamos no fallback e falhou → segue em frente mesmo assim
+      goNext();
     }
   };
 
-  // Armazenar utterance atual para possível cancelamento
-  currentUtterance = utterance;
-  window.speechSynthesis.speak(utterance);
+  if (activeEngine === 'audio') {
+    speakWithAudioFallback(text, token, goNext, onSilentFailure);
+  } else {
+    speakWithWebSpeech(text, token, goNext, onSilentFailure);
+  }
+}
+
+function finishReading(token) {
+  if (token !== generationToken) return;
+  isSpeaking = false;
+  isPaused = false;
+  currentIndex = 0;
+  currentTexts = [];
+  currentAudio = null;
   updateControlsState();
 }
+
+// ============================================================
+// PAUSA / RETOMADA / PARADA (opera em ambos os motores)
+// ============================================================
 
 function pauseSpeech() {
-  if (isSpeaking && !isPaused) {
-    window.speechSynthesis.pause();
-    isPaused = true;
-    updateControlsState();
+  if (!isSpeaking || isPaused) return;
+  if (activeEngine === 'audio') {
+    if (currentAudio) {
+      try { currentAudio.pause(); } catch { /* noop */ }
+    }
+  } else {
+    try { window.speechSynthesis.pause(); } catch { /* noop */ }
   }
+  isPaused = true;
+  updateControlsState();
 }
 
 function resumeSpeech() {
-  if (isSpeaking && isPaused) {
-    window.speechSynthesis.resume();
-    isPaused = false;
-    updateControlsState();
+  if (!isSpeaking || !isPaused) return;
+  if (activeEngine === 'audio') {
+    if (currentAudio) {
+      currentAudio.play().catch(() => { /* noop */ });
+    }
+  } else {
+    try { window.speechSynthesis.resume(); } catch { /* noop */ }
   }
+  isPaused = false;
+  updateControlsState();
 }
 
 function stopSpeech() {
-  if (window.speechSynthesis) {
-    window.speechSynthesis.cancel();
+  generationToken++;
+  try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch { /* noop */ }
+  if (currentAudio) {
+    try { currentAudio.pause(); currentAudio.src = ''; } catch { /* noop */ }
+    currentAudio = null;
   }
   isSpeaking = false;
   isPaused = false;
   currentIndex = 0;
   currentTexts = [];
-  currentUtterance = null;
   updateControlsState();
-}
-
-// ============================================================
-// EXPORTAÇÃO PARA USO EXTERNO
-// ============================================================
-
-export function getSpeechState() {
-  return { isEnabled, isSpeaking, isPaused };
 }
