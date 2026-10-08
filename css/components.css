@@ -2977,6 +2977,154 @@ main {
 }
 
 /* ============================================================
+   NEWS DETAIL — Ícones de compartilhamento e links relacionados
+   SVGs inline (Simple Icons + Lucide), coloridos por currentColor
+   ============================================================ */
+
+/* ---- Ícone genérico de link (dentro dos "Links Relacionados") ---- */
+.related-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+.related-link-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.related-link:hover .related-link-icon {
+  color: var(--color-primary-dark, var(--color-primary));
+}
+
+/* ---- Título "Links Relacionados" (com ícone de pin) ---- */
+.links-section-title {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+.links-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--color-primary);
+}
+.links-section-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---- Seção de compartilhamento ---- */
+.share-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3, 0.75rem);
+}
+.share-label {
+  color: var(--text-primary);
+}
+
+.share-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  background: transparent;
+  text-decoration: none;
+  transition:
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.share-link svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  pointer-events: none;
+}
+
+.share-link:hover,
+.share-link:focus-visible {
+  transform: translateY(-2px);
+}
+.share-link:focus-visible {
+  outline: 2px solid var(--border-focus, var(--color-primary));
+  outline-offset: 2px;
+}
+
+/* Cores de marca no hover (UX familiar) */
+.share-link--twitter:hover,
+.share-link--twitter:focus-visible {
+  color: #1DA1F2;
+  background: rgba(29, 161, 242, 0.12);
+}
+.share-link--facebook:hover,
+.share-link--facebook:focus-visible {
+  color: #1877F2;
+  background: rgba(24, 119, 242, 0.12);
+}
+.share-link--linkedin:hover,
+.share-link--linkedin:focus-visible {
+  color: #0A66C2;
+  background: rgba(10, 102, 194, 0.12);
+}
+.share-link--whatsapp:hover,
+.share-link--whatsapp:focus-visible {
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.14);
+}
+
+/* ---- Tema escuro ---- */
+[data-theme="dark"] .share-link {
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .share-link:hover,
+[data-theme="dark"] .share-link:focus-visible {
+  /* mantém as cores de marca — alto contraste garantido sobre fundo escuro */
+}
+
+/* ---- Alto contraste — desliga cores de marca, impõe monocromático ---- */
+.high-contrast .share-link,
+.high-contrast .share-link:hover,
+.high-contrast .share-link:focus-visible {
+  color: var(--color-text) !important;
+  background: var(--color-bg) !important;
+  border: 2px solid var(--color-text) !important;
+}
+.high-contrast .related-link-icon,
+.high-contrast .links-section-icon {
+  color: var(--color-text) !important;
+}
+
+/* ---- Movimento reduzido ---- */
+@media (prefers-reduced-motion: reduce) {
+  .share-link {
+    transition: none;
+  }
+  .share-link:hover,
+  .share-link:focus-visible {
+    transform: none;
+  }
+}
+
+/* ============================================================
    TEMA DARK — Ajustes específicos para [data-theme="dark"]
    ============================================================ */
 [data-theme="dark"] .hero-home::before {
@@ -4230,11 +4378,24 @@ main {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
+
+  /* ---- Estado inativo: empilhado atrás, invisível, não interativo ---- */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.9s ease, visibility 0s linear 0.9s;
-  overflow: hidden;
+  z-index: 1;
+
+  /* Pista de GPU para o fade rodar na placa de vídeo, sem repaint */
+  will-change: opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+
+  /* Fade de 1.2s com cubic-bezier suave; visibility só cai DEPOIS do fade */
+  transition:
+    opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s linear 1.2s;
 }
 
 .hero-carousel .hero-slide.is-active {
@@ -4242,7 +4403,20 @@ main {
   visibility: visible;
   pointer-events: auto;
   z-index: 2;
-  transition: opacity 0.9s ease, visibility 0s linear 0s;
+
+  /* Entrada: fade em 1.2s, visibility imediata (para ficar clicável já na entrada) */
+  transition:
+    opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s linear 0s;
+
+  /* Efeito Ken Burns — zoom-out lento no background, apenas no slide ativo */
+  animation: heroKenBurns 8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Zoom-out sutil: começa com a imagem 3% maior e vai suavemente até 100% */
+@keyframes heroKenBurns {
+  from { background-size: 103% auto; }
+  to   { background-size: 100% auto; }
 }
 
 /* Sobreposições por slide (preservam o visual institucional) */
@@ -4417,6 +4591,8 @@ main {
   .hero-carousel .hero-slide,
   .hero-carousel .hero-slide.is-active {
     transition: opacity 0.15s linear, visibility 0s linear;
+    animation: none !important;   /* desliga o Ken Burns */
+    background-size: cover !important;
   }
   .hero-carousel .hero-carousel-arrow:hover {
     transform: translateY(-50%);

@@ -287,6 +287,10 @@ function initHeroCarousel() {
   const carousel = document.querySelector('[data-carousel]');
   if (!carousel) return;
 
+  // Idempotência — evita inicialização dupla (bugs sutis de foco/intervalos)
+  if (carousel.dataset.carouselInit === 'true') return;
+  carousel.dataset.carouselInit = 'true';
+
   const slides = carousel.querySelectorAll('.hero-slide');
   const dots = carousel.querySelectorAll('.hero-carousel-dot');
   const prevBtn = carousel.querySelector('[data-carousel-prev]');
@@ -295,10 +299,10 @@ function initHeroCarousel() {
   if (slides.length < 2) return;
 
   const AUTOPLAY_INTERVAL = 6500;
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let currentIndex = 0;
   let autoTimer = null;
+  let userInteracted = false;
 
   function goToSlide(index) {
     const total = slides.length;
@@ -308,8 +312,10 @@ function initHeroCarousel() {
     const oldSlide = slides[currentIndex];
     const newSlide = slides[newIndex];
 
-    oldSlide.classList.remove('is-active');
-    oldSlide.setAttribute('aria-hidden', 'true');
+    if (oldSlide) {
+      oldSlide.classList.remove('is-active');
+      oldSlide.setAttribute('aria-hidden', 'true');
+    }
 
     newSlide.classList.add('is-active');
     newSlide.setAttribute('aria-hidden', 'false');
@@ -329,12 +335,6 @@ function initHeroCarousel() {
   function nextSlide() { goToSlide(currentIndex + 1); }
   function prevSlide() { goToSlide(currentIndex - 1); }
 
-  function startAuto() {
-    if (prefersReducedMotion) return;
-    stopAuto();
-    autoTimer = window.setInterval(nextSlide, AUTOPLAY_INTERVAL);
-  }
-
   function stopAuto() {
     if (autoTimer) {
       window.clearInterval(autoTimer);
@@ -342,41 +342,55 @@ function initHeroCarousel() {
     }
   }
 
+  function startAuto() {
+    stopAuto();
+    // Autoplay SEMPRE ativo — a preferência por movimento reduzido é
+    // tratada via CSS (transições instantâneas), não bloqueando a rotação.
+    autoTimer = window.setInterval(() => {
+      // Só roda se a aba estiver visível (proteção extra)
+      if (document.hidden) return;
+      nextSlide();
+    }, AUTOPLAY_INTERVAL);
+    devLog('[carousel] autoplay iniciado (' + AUTOPLAY_INTERVAL + 'ms)');
+  }
+
   function restartAuto() {
+    userInteracted = true;
     stopAuto();
     startAuto();
   }
 
-  // Controles manuais
+  /* ----- Controles manuais ----- */
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      restartAuto();
-    });
+    nextBtn.addEventListener('click', () => { nextSlide(); restartAuto(); });
   }
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      prevSlide();
-      restartAuto();
-    });
+    prevBtn.addEventListener('click', () => { prevSlide(); restartAuto(); });
   }
 
   dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      goToSlide(i);
-      restartAuto();
-    });
+    dot.addEventListener('click', () => { goToSlide(i); restartAuto(); });
   });
 
-  // Pausa ao interagir (hover/foco)
-  carousel.addEventListener('mouseenter', stopAuto);
-  carousel.addEventListener('mouseleave', startAuto);
-  carousel.addEventListener('focusin', stopAuto);
+  /* ----- Pausa/retomada em hover e foco -----
+     pointerenter/pointerleave cobrem mouse E toque de forma mais
+     previsível que mouseenter/mouseleave. O foco (focusin/focusout)
+     só pausa depois que o usuário efetivamente interagiu, evitando
+     que o foco programático inicial congele o autoplay. */
+  carousel.addEventListener('pointerenter', stopAuto);
+  carousel.addEventListener('pointerleave', () => {
+    // Não retoma se a aba estiver oculta
+    if (!document.hidden) startAuto();
+  });
+
+  carousel.addEventListener('focusin', () => {
+    if (userInteracted) stopAuto();
+  });
   carousel.addEventListener('focusout', (e) => {
-    if (!carousel.contains(e.relatedTarget)) startAuto();
+    if (!carousel.contains(e.relatedTarget) && !document.hidden) startAuto();
   });
 
-  // Navegação por teclado (setas esquerda/direita)
+  /* ----- Navegação por teclado (setas esquerda/direita) ----- */
   carousel.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
@@ -389,12 +403,16 @@ function initHeroCarousel() {
     }
   });
 
-  // Pausa quando a aba perde visibilidade
+  /* ----- Pausa quando a aba perde visibilidade ----- */
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopAuto();
-    else startAuto();
+    if (document.hidden) {
+      stopAuto();
+    } else {
+      startAuto();
+    }
   });
 
+  /* ----- Início ----- */
   startAuto();
 }
 
