@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updatedAt": "2026-08-20T00:00:00Z",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-19T00:00:00Z",
   "items": [
     {
       "id": 1,
@@ -69,6 +69,70 @@
       "videoUrl": null,
       "links": [
         { "label": "Siga no Instagram @latece_ufrn", "url": "https://www.instagram.com/latece_ufrn/" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Módulo 5 do Curso AEE aborda Tecnologia Assistiva e Comunicação Aumentativa e Alternativa",
+      "excerpt": "Primeiro encontro do Módulo 5 reuniu professores do AEE no Auditório do Centro de Educação da UFRN para formação sobre TA e CAA.",
+      "content": "<p>O <strong>Módulo 5</strong> do curso de formação continuada <em>\"Planejamento, Estratégias Colaborativas e Recursos Pedagógicos no Atendimento Educacional Especializado\"</em>, promovido pela Secretaria Municipal de Educação (SME Natal / 2026), foi dedicado ao tema <strong>Tecnologia Assistiva e Comunicação Aumentativa e Alternativa</strong>.</p><p>O primeiro encontro aconteceu em <strong>28 de agosto de 2026</strong>, no <strong>Auditório do Centro de Educação da UFRN</strong>, e foi conduzido pela Profa. Ms. <strong>Renata Lima de Morais</strong> (UFRN/SME Natal), com carga horária de 4h no turno matutino e 3h no turno vespertino.</p><p>A atividade teve caráter formativo e prático, abordando recursos, estratégias e a aplicação da Tecnologia Assistiva e da Comunicação Aumentativa e Alternativa (CAA) no contexto do Atendimento Educacional Especializado (AEE).</p><p>O LATECE reafirma seu compromisso com a formação continuada de professores da rede pública e com a promoção da acessibilidade e da inclusão educacional em todos os níveis de ensino.</p>",
+      "category": "Evento",
+      "createdAt": "2026-08-28T08:00:00",
+      "updatedAt": "2026-08-28T08:00:00",
+      "imageUrl": "assets/images/news/modulo-5-aee.png",
+      "status": "published",
+      "authorId": 1,
+      "isVideo": false,
+      "videoUrl": null,
+      "links": null
+    },
+    {
+      "id": 6,
+      "title": "Módulo 5 é ampliado com segundo encontro sobre Tecnologia Assistiva e CAA",
+      "excerpt": "Continuação do Módulo 5 reforçou a formação prática em TA e CAA no Auditório do Centro de Educação da UFRN.",
+      "content": "<p>Dando continuidade à formação em <strong>Tecnologia Assistiva e Comunicação Aumentativa e Alternativa</strong>, o <strong>Módulo 5</strong> do curso <em>\"Planejamento, Estratégias Colaborativas e Recursos Pedagógicos no AEE\"</em> realizou seu segundo encontro em <strong>04 de setembro de 2026</strong>, novamente no <strong>Auditório do Centro de Educação da UFRN</strong>.</p><p>A atividade, conduzida pela Profa. Ms. <strong>Renata Lima de Morais</strong> (UFRN/SME Natal), manteve a carga horária de 4h (matutino) e 3h (vespertino), atendendo aos professores do AEE da Rede Municipal de Ensino de Natal.</p><p>Neste segundo encontro, os participantes puderam aprofundar os conteúdos iniciados no mês de agosto, com discussões práticas sobre recursos de acessibilidade, comunicação alternativa e estratégias pedagógicas para estudantes com necessidades complexas de comunicação.</p><p>A parceria entre a SME Natal, o Centro de Educação da UFRN e o LATECE tem sido fundamental para a consolidação desta formação, que integra teoria e prática no contexto da Educação Especial.</p>",
+      "category": "Evento",
+      "createdAt": "2026-09-04T08:00:00",
+      "updatedAt": "2026-09-04T08:00:00",
+      "imageUrl": "assets/images/news/modulo-5-aee.png",
+      "status": "published",
+      "authorId": 1,
+      "isVideo": false,
+      "videoUrl": null,
+      "links": null
+    },
+    {
+      "id": 7,
+      "title": "Curso de Extensão “Audiodescrição na escola: quando as palavras tornam a imagem acessível” inicia em 30 de setembro",
+      "excerpt": "Formação híbrida de 20 horas sobre audiodescrição como recurso de acessibilidade e inclusão educacional para professores da Educação Especial.",
+      "content": "<p>Inicia em <strong>30 de setembro de 2026</strong> o Curso de Extensão <em>\"Audiodescrição na escola: quando as palavras tornam a imagem acessível\"</em>, uma formação híbrida de <strong>20 horas</strong> voltada para professores do Ensino Fundamental, professores do Atendimento Educacional Especializado (AEE) e estagiários que atuam na Educação Especial.</p><p>O curso tem como objetivo central discutir a <strong>audiodescrição como recurso de acessibilidade</strong>, apresentando como a tradução de informações visuais em descrições verbais pode ampliar a participação e a inclusão educacional de estudantes que não acessam plenamente o conteúdo visual.</p><p>A formação combina <strong>encontros presenciais</strong>, realizados no Centro de Educação da UFRN (08h30 às 11h30), e <strong>encontros online</strong>, realizados pela plataforma Google Meet (08h30 às 10h30).</p><p>O curso é uma realização do CE/UFRN, com envolvimento do SIA/UFRN, do TECIncluir e do LATECE — Laboratório de Tecnologia Assistiva do Centro de Educação —, além da participação da Prefeitura do Natal e da Secretaria Municipal de Educação (SME/ASCOM).</p><p>Uma oportunidade importante para quem atua na ponta da Educação Especial e deseja ampliar seu repertório sobre acessibilidade e Tecnologia Assistiva.</p>",
+      "category": "Notícia",
+      "createdAt": "2026-09-30T08:00:00",
+      "updatedAt": "2026-09-30T08:00:00",
+      "imageUrl": "assets/images/news/audiodescricao.png",
+      "status": "published",
+      "authorId": 1,
+      "isVideo": false,
+      "videoUrl": null,
+      "links": [
+        { "label": "Mais informações sobre o curso", "url": "https://latece-ufrn.github.io/audiodescricao-na-escola/" }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Oficina Livro para Todos: acessibilidade e inclusão nas bibliotecas escolares",
+      "excerpt": "Formação continuada em 19 de outubro, nos turnos matutino e vespertino, no Laboratório UAB — piso térreo da SME, para professores das bibliotecas da rede.",
+      "content": "<p>A <strong>Oficina Livro para Todos</strong> é uma ação de formação continuada destinada aos <strong>professores das bibliotecas da Rede Municipal de Ensino</strong>, com foco na <strong>acessibilidade e na inclusão de estudantes com Necessidades Complexas de Comunicação</strong>.</p><p>O encontro acontece em <strong>19 de outubro de 2026</strong>, em dois turnos — <strong>matutino (07h30 às 11h30)</strong> e <strong>vespertino (13h30 às 17h30)</strong> —, no <strong>Laboratório UAB, piso térreo da SME</strong>.</p><p>A oficina tem como tema central a utilização de recursos e estratégias que permitam que livros, leitura e experiências em bibliotecas sejam acessíveis a todos os estudantes, especialmente àqueles que apresentam necessidades complexas de comunicação. A proposta se aproxima da <strong>Comunicação Aumentativa e Alternativa (CAA)</strong> e da <strong>Tecnologia Assistiva</strong>.</p><p>A organização é da <strong>Coordenadoria de Educação Especial (CODESP/SME)</strong>, com parceria entre a CODESP, a Biblioteca Municipal Prof.ª Elienai Cartaxo (Parnamirim/RN) e o LATECE — Laboratório de Tecnologia Assistiva do Centro de Educação da UFRN.</p><p>O encontro também contará com um <strong>lanche coletivo</strong>: cada participante é convidado a trazer um item para compartilhar, tornando o momento ainda mais especial.</p><p><strong>Mais leitura para todos!</strong></p>",
+      "category": "Evento",
+      "createdAt": "2026-10-19T07:30:00",
+      "updatedAt": "2026-10-19T07:30:00",
+      "imageUrl": "assets/images/news/oficina-livro-para-todos.png",
+      "status": "published",
+      "authorId": 1,
+      "isVideo": false,
+      "videoUrl": null,
+      "links": [
+        { "label": "Mais informações sobre a oficina", "url": "https://latece-ufrn.github.io/oficina-livro-para-todos/" }
       ]
     }
   ]
