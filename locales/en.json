@@ -63,7 +63,13 @@
     "dayNoEvents": "Day {day}, no activities",
     "selectDayHint": "Select a day to view activities.",
     "noEventsOnDay": "No activities on this day.",
-    "moreInfo": "More information"
+    "moreInfo": "More information",
+    "summary": {
+    "regionLabel": "Monthly activity summary",
+    "noEvents": "No activities scheduled for this month.",
+    "header": "Activities for {month}:",
+    "item": "Day {day}: {titles}"
+    }
   },
     "about": {
     "title": "About LATECE — Assistive Technology Laboratory UFRN",

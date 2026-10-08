@@ -135,6 +135,45 @@ function formatTimeRange(ev) {
   return '';
 }
 
+/**
+ * Constrói o resumo acessível de atividades do mês corrente.
+ * Lista APENAS dias com eventos — nunca os dias vazios.
+ * É consumido pelo leitor de tela e pela Leitura Assistida (speech.js).
+ */
+function buildAgendaA11ySummary(year, month) {
+  const monthEvents = getEventsForMonth(year, month);
+  const monthName = state.currentMonth.toLocaleDateString(getLocaleCode(), { month: 'long' });
+
+  if (monthEvents.length === 0) {
+    return `
+      <div class="latece-agenda-summary sr-only" role="region" aria-label="${escapeHtml(t('agenda.summary.regionLabel'))}">
+        <p>${escapeHtml(t('agenda.summary.noEvents'))}</p>
+      </div>
+    `;
+  }
+
+  // Agrupa por data → uma linha por dia
+  const byDate = new Map();
+  monthEvents.forEach((ev) => {
+    if (!byDate.has(ev.date)) byDate.set(ev.date, []);
+    byDate.get(ev.date).push(ev);
+  });
+
+  const sortedDates = [...byDate.keys()].sort();
+  const items = sortedDates.map((dateKey) => {
+    const dayNum = parseInt(dateKey.split('-')[2], 10);
+    const titles = byDate.get(dateKey).map((ev) => escapeHtml(ev.title)).join('; ');
+    return `<li>${t('agenda.summary.item', { day: dayNum, titles })}</li>`;
+  }).join('');
+
+  return `
+    <div class="latece-agenda-summary sr-only" role="region" aria-label="${escapeHtml(t('agenda.summary.regionLabel'))}">
+      <p>${t('agenda.summary.header', { month: escapeHtml(monthName) })}</p>
+      <ul>${items}</ul>
+    </div>
+  `;
+}
+
 // ============================================================
 // RENDERIZAÇÃO
 // ============================================================
@@ -212,35 +251,40 @@ function renderAgenda() {
     rowsHtml += `<tr>${rowCells}</tr>`;
   }
 
-  agendaContainer.innerHTML = `
-    <div class="latece-agenda" role="region" aria-label="${escapeHtml(t('agenda.regionLabel'))}">
-      <div class="latece-agenda-header">
-        <button type="button"
-                class="latece-agenda-nav latece-agenda-nav--prev"
-                aria-label="${escapeHtml(t('agenda.prevMonth'))}">‹</button>
-        <h3 class="latece-agenda-month" aria-live="polite">${escapeHtml(monthLabel)}</h3>
-        <button type="button"
-                class="latece-agenda-nav latece-agenda-nav--next"
-                aria-label="${escapeHtml(t('agenda.nextMonth'))}">›</button>
-      </div>
-
-      <table class="latece-agenda-grid" role="grid"
-             aria-label="${escapeHtml(t('agenda.gridLabel', { month: monthLabel }))}">
-        <thead>
-          <tr>
-            ${weekdays.map(wd => `<th scope="col" class="latece-agenda-weekday">${escapeHtml(wd)}</th>`).join('')}
-          </tr>
-        </thead>
-        <tbody>
-          ${rowsHtml}
-        </tbody>
-      </table>
-
-      <div class="latece-agenda-events" aria-live="polite" aria-atomic="true">
-        ${renderEventsPanel()}
-      </div>
+agendaContainer.innerHTML = `
+  <div class="latece-agenda" role="region" aria-label="${escapeHtml(t('agenda.regionLabel'))}">
+    <div class="latece-agenda-header">
+      <button type="button"
+              class="latece-agenda-nav latece-agenda-nav--prev"
+              aria-label="${escapeHtml(t('agenda.prevMonth'))}">‹</button>
+      <h3 class="latece-agenda-month" aria-live="polite">${escapeHtml(monthLabel)}</h3>
+      <button type="button"
+              class="latece-agenda-nav latece-agenda-nav--next"
+              aria-label="${escapeHtml(t('agenda.nextMonth'))}">›</button>
     </div>
-  `;
+
+    <!-- Resumo para leitura assistida e leitores de tela:
+         lê só os dias do mês corrente que possuem eventos. -->
+    ${buildAgendaA11ySummary(year, month)}
+
+    <table class="latece-agenda-grid" role="grid"
+           aria-label="${escapeHtml(t('agenda.gridLabel', { month: monthLabel }))}"
+           data-no-tts>
+      <thead>
+        <tr>
+          ${weekdays.map(wd => `<th scope="col" class="latece-agenda-weekday">${escapeHtml(wd)}</th>`).join('')}
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
+      </tbody>
+    </table>
+
+    <div class="latece-agenda-events" aria-live="polite" aria-atomic="true" data-no-tts>
+      ${renderEventsPanel()}
+    </div>
+  </div>
+`;
 
   attachHandlers();
 }
