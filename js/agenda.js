@@ -136,17 +136,27 @@ function formatTimeRange(ev) {
 }
 
 /**
- * Constrói o resumo acessível de atividades do mês corrente.
+ * Constrói o resumo acessível das atividades do MÊS ATUAL (hoje).
+ *
+ * Importante: usa SEMPRE `new Date()` como referência — nunca `state.currentMonth`.
+ * O calendário visual pode estar navegando em outro mês, mas o resumo de voz
+ * deve refletir exclusivamente o mês em que o usuário está acessando a página.
+ *
  * Lista APENAS dias com eventos — nunca os dias vazios.
  * É consumido pelo leitor de tela e pela Leitura Assistida (speech.js).
  */
-function buildAgendaA11ySummary(year, month) {
+function buildAgendaA11ySummary() {
+  const ref = new Date();
+  const year = ref.getFullYear();
+  const month = ref.getMonth();
+
   const monthEvents = getEventsForMonth(year, month);
-  const monthName = state.currentMonth.toLocaleDateString(getLocaleCode(), { month: 'long' });
+  const monthName = ref.toLocaleDateString(getLocaleCode(), { month: 'long' });
 
   if (monthEvents.length === 0) {
     return `
       <div class="latece-agenda-summary sr-only" role="region" aria-label="${escapeHtml(t('agenda.summary.regionLabel'))}">
+        <p>${t('agenda.summary.header', { month: escapeHtml(monthName) })}</p>
         <p>${escapeHtml(t('agenda.summary.noEvents'))}</p>
       </div>
     `;
@@ -190,23 +200,20 @@ function renderAgenda() {
   const daysWithEvents = new Set(monthEvents.map(ev => ev.date));
 
   const firstDay = new Date(year, month, 1);
-  const startWeekday = firstDay.getDay(); // 0=domingo
+  const startWeekday = firstDay.getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const today = new Date();
   const todayKey = formatDateKey(today);
 
-  // Construção das linhas do calendário
   let rowCells = '';
   let cellCount = 0;
   let rowsHtml = '';
 
-  // Células vazias iniciais (antes do dia 1)
   for (let i = 0; i < startWeekday; i++) {
     rowCells += '<td class="latece-agenda-day latece-agenda-day--empty" aria-hidden="true"></td>';
     cellCount++;
   }
 
-  // Dias do mês
   for (let d = 1; d <= daysInMonth; d++) {
     const dateObj = new Date(year, month, d);
     const dateKey = formatDateKey(dateObj);
@@ -242,7 +249,6 @@ function renderAgenda() {
     }
   }
 
-  // Preenchimento final da última linha
   if (cellCount > 0) {
     while (cellCount < 7) {
       rowCells += '<td class="latece-agenda-day latece-agenda-day--empty" aria-hidden="true"></td>';
@@ -251,40 +257,42 @@ function renderAgenda() {
     rowsHtml += `<tr>${rowCells}</tr>`;
   }
 
-agendaContainer.innerHTML = `
-  <div class="latece-agenda" role="region" aria-label="${escapeHtml(t('agenda.regionLabel'))}">
-    <div class="latece-agenda-header">
-      <button type="button"
-              class="latece-agenda-nav latece-agenda-nav--prev"
-              aria-label="${escapeHtml(t('agenda.prevMonth'))}">‹</button>
-      <h3 class="latece-agenda-month" aria-live="polite">${escapeHtml(monthLabel)}</h3>
-      <button type="button"
-              class="latece-agenda-nav latece-agenda-nav--next"
-              aria-label="${escapeHtml(t('agenda.nextMonth'))}">›</button>
+  agendaContainer.innerHTML = `
+    <!-- 1. Resumo acessível — SEMPRE do mês ATUAL (hoje).
+         Fora do bloco data-no-tts, para ser lido pela Leitura Assistida.
+         Reflete o mês de hoje mesmo que o calendário esteja navegando outro mês. -->
+    ${buildAgendaA11ySummary()}
+
+    <!-- 2. Bloco visual interativo — ignorado pela Leitura Assistida.
+         Mantém-se acessível a leitores de tela nativos (NVDA, VoiceOver, TalkBack). -->
+    <div class="latece-agenda" role="region" aria-label="${escapeHtml(t('agenda.regionLabel'))}" data-no-tts>
+      <div class="latece-agenda-header">
+        <button type="button"
+                class="latece-agenda-nav latece-agenda-nav--prev"
+                aria-label="${escapeHtml(t('agenda.prevMonth'))}">‹</button>
+        <h3 class="latece-agenda-month" aria-live="polite">${escapeHtml(monthLabel)}</h3>
+        <button type="button"
+                class="latece-agenda-nav latece-agenda-nav--next"
+                aria-label="${escapeHtml(t('agenda.nextMonth'))}">›</button>
+      </div>
+
+      <table class="latece-agenda-grid" role="grid"
+             aria-label="${escapeHtml(t('agenda.gridLabel', { month: monthLabel }))}">
+        <thead>
+          <tr>
+            ${weekdays.map(wd => `<th scope="col" class="latece-agenda-weekday">${escapeHtml(wd)}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${rowsHtml}
+        </tbody>
+      </table>
+
+      <div class="latece-agenda-events" aria-live="polite" aria-atomic="true">
+        ${renderEventsPanel()}
+      </div>
     </div>
-
-    <!-- Resumo para leitura assistida e leitores de tela:
-         lê só os dias do mês corrente que possuem eventos. -->
-    ${buildAgendaA11ySummary(year, month)}
-
-    <table class="latece-agenda-grid" role="grid"
-           aria-label="${escapeHtml(t('agenda.gridLabel', { month: monthLabel }))}"
-           data-no-tts>
-      <thead>
-        <tr>
-          ${weekdays.map(wd => `<th scope="col" class="latece-agenda-weekday">${escapeHtml(wd)}</th>`).join('')}
-        </tr>
-      </thead>
-      <tbody>
-        ${rowsHtml}
-      </tbody>
-    </table>
-
-    <div class="latece-agenda-events" aria-live="polite" aria-atomic="true" data-no-tts>
-      ${renderEventsPanel()}
-    </div>
-  </div>
-`;
+  `;
 
   attachHandlers();
 }
