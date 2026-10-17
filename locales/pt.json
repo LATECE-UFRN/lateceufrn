@@ -63,7 +63,13 @@
     "dayNoEvents": "Dia {day}, sem atividades",
     "selectDayHint": "Selecione um dia para ver as atividades.",
     "noEventsOnDay": "Nenhuma atividade neste dia.",
-    "moreInfo": "Mais informações"
+    "moreInfo": "Mais informações",
+    "summary": {
+    "regionLabel": "Resumo de atividades do mês",
+    "noEvents": "Nenhuma atividade programada para este mês.",
+    "header": "Atividades do mês de {month}:",
+    "item": "Dia {day}: {titles}"
+    }
   },
     "about": {
     "title": "Sobre o LATECE — Laboratório de Tecnologia Assistiva UFRN",
