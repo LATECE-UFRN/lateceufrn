@@ -635,7 +635,7 @@ export function createNewsCard(news) {
             </div>
           </div>
         ` : `
-          <div class="card-image" style="background-image: url('${imageUrl}');"></div>
+          <img class="card-image" src="${imageUrl}" alt="${title}" loading="lazy">
         `}
       </div>
       <div class="card-body">
@@ -731,8 +731,8 @@ const linksHtml = Array.isArray(news.links) && news.links.length > 0
         </div>
       </figure>
     ` : imageUrl ? `
-      <figure class="featured-image-container" style="margin:var(--spacing-xl) 0;border-radius:var(--radius-md);overflow:hidden;">
-        <img src="${imageUrl}" alt="${title}" style="width:100%;height:auto;display:block;">
+      <figure class="featured-image-container" style="margin:var(--spacing-xl) 0;border-radius:var(--radius-md);overflow:hidden;aspect-ratio: 16 / 9;position: relative;">
+        <img src="${imageUrl}" alt="${title}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
       </figure>
     ` : ''}
 

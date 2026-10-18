@@ -133,41 +133,16 @@
     },
     {
       "id": 11,
-      "name": "Livro em Braille",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-braille-1.jpg",
-      "images": [
-        "assets/images/equipment/livros-jogos/livro-braille-1.jpg",
-        "assets/images/equipment/livros-jogos/livro-braille-2.jpg"
-      ],
-      "description": "Livro adaptado em escrita Braille.",
+      "name": "Chaveiro",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/comunicacao/chaveiro.jpg",
+      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
       "order": 10,
-      "download": null
+      "download": null,
+      "validationStatus": "pending"
     },
     {
       "id": 12,
-      "name": "Jogo Adaptado em Braille",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/jogo-adaptado-braille.jpg",
-      "description": "Jogo educativo adaptado com peças em Braille.",
-      "order": 11,
-      "download": null
-    },
-    {
-      "id": 13,
-      "name": "Livro Adaptado em CAA",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-adaptado-caa-1.jpg",
-      "images": [
-        "assets/images/equipment/livros-jogos/livro-adaptado-caa-1.jpg",
-        "assets/images/equipment/livros-jogos/livro-adaptado-caa-2.jpg"
-      ],
-      "description": "Livro adaptado em comunicação aumentativa e alternativa.",
-      "order": 12,
-      "download": null
-    },
-    {
-      "id": 14,
       "name": "Baralho em Braille",
       "category": "EsporteLazer",
       "imageUrl": "assets/images/equipment/esporte-lazer/baralho-braille-1.jpg",
@@ -176,83 +151,102 @@
         "assets/images/equipment/esporte-lazer/baralho-braille-2.jpg"
       ],
       "description": "O baralho em Braille foi desenvolvido especialmente para deficientes visuais, sendo eles cegos ou com baixa visão. Utiliza o sistema Braille.",
+      "order": 11,
+      "download": null
+    },
+    {
+      "id": 13,
+      "name": "Teclado Adaptado",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/teclado-adaptado.jpg",
+      "description": "Teclado adaptado com teclas ampliadas, coloridas e de fácil visualização, que facilita a digitação e a identificação das teclas por pessoas com dificuldades motoras ou cognitivas.",
+      "order": 12,
+      "download": null
+    },
+    {
+      "id": 14,
+      "name": "Aranha Mola",
+      "category": "BaixaVisao",
+      "imageUrl": "assets/images/equipment/baixa-visao/prancha-alimentacao.jpg",
+      "description": "Prancha de alimentação  desenvolvida para atividade de vida diária, para pessoas com deficiência visual, sentido de busca e direção,direita,esquerda.",
       "order": 13,
       "download": null
     },
     {
       "id": 15,
-      "name": "Teclado Adaptado",
+      "name": "Intellikeys",
       "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/teclado-adaptado.jpg",
-      "description": "Teclado adaptado com teclas ampliadas, coloridas e de fácil visualização, que facilita a digitação e a identificação das teclas por pessoas com dificuldades motoras ou cognitivas.",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/intellikeys-1.jpg",
+      "images": [
+        "assets/images/equipment/acessibilidade-computador/intellikeys-1.jpg",
+        "assets/images/equipment/acessibilidade-computador/intellikeys-2.jpg",
+        "assets/images/equipment/acessibilidade-computador/intellikeys-3.jpg"
+      ],
+      "description": "O Intellikeys é definido como um teclado alternativo e programável de tecnologia assistiva, desenvolvido para substituir ou complementar o teclado convencional de computadores, facilitando o acesso digital para pessoas com deficiências físicas, visuais ou cognitivas. A sua principal característica é a flexibilidade: em vez de teclas físicas fixas, ele possui uma superfície plana sensível ao toque que muda de função e layout conforme a lâmina impressa (overlay) que é deslizada sobre ele.",
       "order": 14,
       "download": null
     },
     {
-      "id": 18,
-      "name": "Intellikeys",
+      "id": 16,
+      "name": "Livro: Geometria do Corpo - Imaginando Linhas",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-geometria-imaginando.jpg",
+      "description": "Audiolivro com audiodescrição e vídeo com a contação de história em Libras e escrita em Braille.",
+      "order": 15,
+      "download": null,
+      "validationStatus": "pending"
+    },
+    {
+      "id": 17,
+      "name": "Teclado Tátil",
       "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/intellikeys.jpg",
-      "description": "O Intellikeys é definido como um teclado alternativo e programável de tecnologia assistiva, desenvolvido para substituir ou complementar o teclado convencional de computadores, facilitando o acesso digital para pessoas com deficiências físicas, visuais ou cognitivas. A sua principal característica é a flexibilidade: em vez de teclas físicas fixas, ele possui uma superfície plana sensível ao toque que muda de função e layout conforme a lâmina impressa (overlay) que é deslizada sobre ele.",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/teclado-tatil.jpg",
+      "description": "O teclado tátil foi elaborado com teclas em Braille e caracteres ampliados de alto contraste adaptados para Braille e baixa visão através de etiquetas especialmente criadas para esse fim.",
+      "order": 16,
+      "download": null
+    },
+    {
+      "id": 18,
+      "name": "TICs",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/tics-1.jpg",
+      "images": [
+        "assets/images/equipment/acessibilidade-computador/tics-1.jpg",
+        "assets/images/equipment/acessibilidade-computador/tics-2.jpg"
+      ],
+      "description": "O Teclado Inteligente TIX é um dispositivo de tecnologia assistiva desenvolvido para dar autonomia no uso de computadores a pessoas com deficiências físicas, motoras ou intelectuais severas.",
       "order": 17,
       "download": null
     },
     {
       "id": 19,
-      "name": "Mouse Adaptado",
-      "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/mouse-adaptado.jpg",
-      "description": "Dispositivo apontador adaptado para facilitar o uso por pessoas com limitações motoras, podendo possuir botões ampliados e formato ergonômico.",
+      "name": "Aranha Mola",
+      "category": "VidaDiaria",
+      "imageUrl": "assets/images/equipment/vida/aranha-mola.jpg",
+      "description": "Adaptador ergonômico flexível, que permite ajustes graduais. Pensado para facilitar, direcionar ou substituir a pinça trípode, necessária para a realizar algumas atividades.",
       "order": 18,
       "download": null
     },
     {
       "id": 20,
-      "name": "Teclado Tátil",
-      "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/teclado-tatil.jpg",
-      "description": "O teclado tátil foi elaborado com teclas em Braille e caracteres ampliados de alto contraste adaptados para Braille e baixa visão através de etiquetas especialmente criadas para esse fim.",
+      "name": "Relógio com Números em Braille",
+      "category": "VidaDiaria",
+      "imageUrl": "assets/images/equipment/vida/relogio-braille.jpg",
+      "description": "Os usuários do Sistema Braille podem aprender a ler as horas com este Relógio desenvolvido para estimular esta aprendizagem tão importante. Por meio da aprendizagem da leitura das horas é possível estimular a autonomia da criança em relação ao seu tempo.",
       "order": 19,
       "download": null
     },
     {
       "id": 21,
-      "name": "TICs",
-      "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/tics.jpg",
-      "description": "O Teclado Inteligente TIX é um dispositivo de tecnologia assistiva desenvolvido para dar autonomia no uso de computadores a pessoas com deficiências físicas, motoras ou intelectuais severas.",
+      "name": "Adaptador de Lápis",
+      "category": "VidaDiaria",
+      "imageUrl": "assets/images/equipment/vida/adaptador-lapis.jpg",
+      "description": "O adaptador para lápis é um acessório ergonômico especialmente desenvolvido para promover conforto, precisão e independência durante o ato da escrita. Ideal para crianças em fase de alfabetização, pessoas com coordenação motora fina comprometida, idosos ou indivíduos com TEA, esse apoio de escrita garante um encaixe firme dos dedos, corrigindo a postura e tornando a escrita mais fluida e segura.",
       "order": 20,
       "download": null
     },
     {
       "id": 22,
-      "name": "Aranha Mola",
-      "category": "VidaDiaria",
-      "imageUrl": "assets/images/equipment/vida/aranha-mola.jpg",
-      "description": "Adaptador ergonômico flexível, que permite ajustes graduais. Pensado para facilitar, direcionar ou substituir a pinça trípode, necessária para a realizar algumas atividades.",
-      "order": 21,
-      "download": null
-    },
-    {
-      "id": 23,
-      "name": "Relógio com Números em Braille",
-      "category": "VidaDiaria",
-      "imageUrl": "assets/images/equipment/vida/relogio-braille.jpg",
-      "description": "Os usuários do Sistema Braille podem aprender a ler as horas com este Relógio desenvolvido para estimular esta aprendizagem tão importante. Por meio da aprendizagem da leitura das horas é possível estimular a autonomia da criança em relação ao seu tempo.",
-      "order": 22,
-      "download": null
-    },
-    {
-      "id": 24,
-      "name": "Adaptador de Lápis",
-      "category": "VidaDiaria",
-      "imageUrl": "assets/images/equipment/vida/adaptador-lapis.jpg",
-      "description": "O adaptador para lápis é um acessório ergonômico especialmente desenvolvido para promover conforto, precisão e independência durante o ato da escrita. Ideal para crianças em fase de alfabetização, pessoas com coordenação motora fina comprometida, idosos ou indivíduos com TEA, esse apoio de escrita garante um encaixe firme dos dedos, corrigindo a postura e tornando a escrita mais fluida e segura.",
-      "order": 23,
-      "download": null
-    },
-    {
-      "id": 25,
       "name": "Passador de Páginas",
       "category": "VidaDiaria",
       "imageUrl": "assets/images/equipment/vida/passador-paginas-1.jpg",
@@ -263,20 +257,20 @@
         "assets/images/equipment/vida/passador-paginas-4.jpg"
       ],
       "description": "Passador de páginas para livro feito com palito de picolé e também com eva.",
-      "order": 24,
+      "order": 21,
       "download": null
     },
     {
-      "id": 26,
+      "id": 23,
       "name": "TD Snap",
       "category": "CAA",
       "imageUrl": "assets/images/equipment/comunicacao/td-snap.jpg",
       "description": "O TD Snap é um software de comunicação que ajuda na alfabetização e no desenvolvimento cognitivo de pessoas com deficiências.",
-      "order": 25,
+      "order": 22,
       "download": null
     },
     {
-      "id": 27,
+      "id": 24,
       "name": "Símbolos Tangíveis",
       "category": "CAA",
       "imageUrl": "assets/images/equipment/comunicacao/simbolos-tangiveis-1.jpg",
@@ -285,29 +279,29 @@
         "assets/images/equipment/comunicacao/simbolos-tangiveis-2.jpg"
       ],
       "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
-      "order": 26,
+      "order": 23,
       "download": null
     },
         {
-      "id": 27,
+      "id": 25,
       "name": "Símbolos Táteis",
       "category": "CAA",
       "imageUrl": "assets/images/equipment/comunicacao/simbolos-tateis.jpg",
       "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
-      "order": 26,
+      "order": 24,
       "download": null
     },
     {
-      "id": 28,
+      "id": 26,
       "name": "Hand Talk",
       "category": "CAA",
       "imageUrl": "assets/images/equipment/comunicacao/hand-talk.jpg",
       "description": "O Hand Talk é um aplicativo com conteúdos traduzidos do português para Língua Brasileira de Sinais (Libras) e do inglês para Língua de Sinais Americana (ASL).",
-      "order": 27,
+      "order": 25,
       "download": null
     },
     {
-      "id": 29,
+      "id": 27,
       "name": "LibrasLab",
       "category": "CAA",
       "imageUrl": "assets/images/equipment/comunicacao/libraslab-1.jpg",
@@ -316,122 +310,164 @@
         "assets/images/equipment/comunicacao/libraslab-2.jpg"
       ],
       "description": "O LIBRASLAB é um aplicativo interativo projetado para ensinar a Língua Brasileira de Sinais (Libras) de forma divertida e eficiente.",
+      "order": 26,
+      "download": null
+    },
+    {
+      "id": 28,
+      "name": "Boardmaker",
+      "category": "CAA",
+      "imageUrl": "assets/images/equipment/esporte-lazer/boardmaker.jpg",
+      "description": "Software de Comunicação Aumentativa e Alternativa, que possibilita a criação de atividades dinâmicas, pranchas de comunicação e rotina visual, com mais de 5000 símbolos pictográficos para a comunicação.",
+      "order": 27,
+      "download": null
+    },
+    {
+      "id": 29,
+      "name": "Colmeia",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/colmeia-1.jpg",
+      "images": [
+        "assets/images/equipment/acessibilidade-computador/colmeia-1.jpg",
+        "assets/images/equipment/acessibilidade-computador/colmeia-2.jpg",
+        "assets/images/equipment/acessibilidade-computador/colmeia-3.jpg"
+      ],
+      "description": "Acessório acoplado a um teclado de computador, com a finalidade de auxiliar usuários que possuem pouca coordenação motora/mobilidade reduzida nos membros superiores. A colmeia impede que mais de uma tecla seja pressionada ao mesmo tempo ou que uma tecla seja pressionada indevidamente.",
       "order": 28,
       "download": null
     },
     {
       "id": 30,
-      "name": "Boardmaker",
-      "category": "CAA",
-      "imageUrl": "assets/images/equipment/comunicacao/boardmaker.jpg",
-      "description": "Software de Comunicação Aumentativa e Alternativa, que possibilita a criação de atividades dinâmicas, pranchas de comunicação e rotina visual, com mais de 5000 símbolos pictográficos para a comunicação.",
+      "name": "Mouse Bigtrack",
+      "category": "AcessibilidadeComputador",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/mouse-bigtrack-1.jpg",
+      "images": [
+        "assets/images/equipment/acessibilidade-computador/mouse-bigtrack-1.jpg",
+        "assets/images/equipment/acessibilidade-computador/mouse-bigtrack-2.jpg"
+      ],
+      "description": "O BIGtrack é um mouse USB robusto que possui uma esfera, ele possui os botões esquerdo e direito do mouse, localizados na parte superior do dispositivo, para evitar cliques indesejados/involuntários.",
       "order": 29,
       "download": null
     },
     {
       "id": 31,
-      "name": "Colmeia",
+      "name": "Teclado Infantil",
       "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/colmeia.jpg",
-      "description": "Acessório acoplado a um teclado de computador, com a finalidade de auxiliar usuários que possuem pouca coordenação motora/mobilidade reduzida nos membros superiores. A colmeia impede que mais de uma tecla seja pressionada ao mesmo tempo ou que uma tecla seja pressionada indevidamente.",
+      "imageUrl": "assets/images/equipment/acessibilidade-computador/teclado-infantil-1.jpg",
+      "images": [
+        "assets/images/equipment/acessibilidade-computador/teclado-infantil-1.jpg",
+        "assets/images/equipment/acessibilidade-computador/teclado-infantil-2.jpg"
+      ],
+      "description": "Teclado projetado para crianças e indivíduos com deficiências motoras. Apoia o aprendizado de digitar, ler e usar computadores, ao mesmo tempo em que promove a acessibilidade digital para pessoas com deficiência.",
       "order": 30,
       "download": null
     },
     {
       "id": 32,
-      "name": "Mouse Bigtrack",
-      "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/mouse-bigtrack.jpg",
-      "description": "O BIGtrack é um mouse USB robusto que possui uma esfera, ele possui os botões esquerdo e direito do mouse, localizados na parte superior do dispositivo, para evitar cliques indesejados/involuntários.",
+      "name": "Bola com Guizo",
+      "category": "EsporteLazer",
+      "imageUrl": "assets/images/equipment/esporte-lazer/bola-com-guizo.jpg",
+      "description": "A bola com guizo é ideal para quem tem deficiência visual e está iniciando nas práticas esportivas.",
       "order": 31,
       "download": null
     },
     {
       "id": 33,
-      "name": "Teclado Infantil",
-      "category": "AcessibilidadeComputador",
-      "imageUrl": "assets/images/equipment/acessibilidade-computador/teclado-infantil.jpg",
-      "description": "Teclado projetado para crianças e indivíduos com deficiências motoras. Apoia o aprendizado de digitar, ler e usar computadores, ao mesmo tempo em que promove a acessibilidade digital para pessoas com deficiência.",
+      "name": "Jogo Quadrado Soma",
+      "category": "EsporteLazer",
+      "imageUrl": "assets/images/equipment/esporte-lazer/jogo-quadrado-soma-1.jpg",
+      "images": [
+        "assets/images/equipment/esporte-lazer/jogo-quadrado-soma-1.jpg",
+        "assets/images/equipment/esporte-lazer/jogo-quadrado-soma-2.jpg",
+        "assets/images/equipment/esporte-lazer/jogo-quadrado-soma-3.jpg",
+        "assets/images/equipment/esporte-lazer/jogo-quadrado-soma-4.jpg",
+        "assets/images/equipment/esporte-lazer/jogo-quadrado-soma-5.jpg"
+      ],
+      "description": "O Jogo Quadrado Soma é um jogo de quebra-cabeças matemático, do tipo 'quadrado mágico', acessível para pessoas com deficiência visual.",
       "order": 32,
       "download": null
     },
     {
       "id": 34,
-      "name": "Bola com Guizo",
+      "name": "Cubos de alto contraste",
       "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/bola-com-guizo.jpg",
-      "description": "A bola com guizo é ideal para quem tem deficiência visual e está iniciando nas práticas esportivas.",
+      "imageUrl": "assets/images/equipment/esporte-lazer/cubos-alto-contraste.jpg",
+      "description": "Cubo de alto contraste para estimular a visão da criança com deficiência visual.",
       "order": 33,
       "download": null
     },
     {
       "id": 35,
-      "name": "Jogo Quadrado Soma",
+      "name": "Alfabeto de encaixe em Libras",
       "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/jogo-quadrado-soma.jpg",
-      "description": "O Jogo Quadrado Soma é um jogo de quebra-cabeças matemático, do tipo 'quadrado mágico', acessível para pessoas com deficiência visual.",
+      "imageUrl": "assets/images/equipment/esporte-lazer/alfabeto-encaixe-libras.jpg",
+      "description": "Alfabeto de encaixe em Libras, produzido em MDF. Este brinquedo ajuda a desenvolver a socialização e a associação entre as letras.",
       "order": 34,
       "download": null
     },
     {
       "id": 36,
-      "name": "Jogo Quarto",
+      "name": "Alfabeto em Braille",
       "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/jogo-quarto.jpg",
-      "description": "O Jogo Quarto é um jogo semelhante ao jogo da velha, porém com algumas diferenças.",
+      "imageUrl": "assets/images/equipment/esporte-lazer/alfabeto-braille.jpg",
+      "description": "Recurso de alfabeto em Braille produzido em MDF, possibilitando a construção de diversas palavras.",
       "order": 35,
       "download": null
     },
     {
       "id": 37,
-      "name": "Baralho em Braille",
+      "name": "Jogo de dominó com sinais em Libras",
       "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/baralho-braille.jpg",
-      "description": "O baralho em Braille foi desenvolvido especialmente para deficientes visuais, sendo eles cegos ou com baixa visão. Utiliza o sistema Braille.",
+      "imageUrl": "assets/images/equipment/esporte-lazer/jogo-domino-libras.jpg",
+      "description": "Jogo de dominó produzido em MDF, com a letra escrita na Língua Portuguesa com a correspondência na datilologia (alfabeto manual) da Língua Brasileira de Sinais.",
       "order": 36,
       "download": null
     },
     {
       "id": 38,
-      "name": "Cubos de alto contraste",
-      "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/cubos-alto-contraste.jpg",
-      "description": "Cubo de alto contraste para estimular a visão da criança com deficiência visual.",
-      "order": 37,
-      "download": null
-    },
-    {
-      "id": 39,
-      "name": "Alfabeto de encaixe em Libras",
-      "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/alfabeto-encaixe-libras.jpg",
-      "description": "Alfabeto de encaixe em Libras, produzido em MDF. Este brinquedo ajuda a desenvolver a socialização e a associação entre as letras.",
-      "order": 38,
-      "download": null
-    },
-    {
-      "id": 40,
-      "name": "Alfabeto em Braille",
-      "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/alfabeto-braille.jpg",
-      "description": "Recurso de alfabeto em Braille produzido em MDF, possibilitando a construção de diversas palavras.",
-      "order": 39,
-      "download": null
-    },
-    {
-      "id": 41,
-      "name": "Jogo de dominó com sinais em Libras",
-      "category": "EsporteLazer",
-      "imageUrl": "assets/images/equipment/esporte-lazer/jogo-domino-libras.jpg",
-      "description": "Jogo de dominó produzido em MDF, com a letra escrita na Língua Portuguesa com a correspondência na datilologia (alfabeto manual) da Língua Brasileira de Sinais.",
-      "order": 40,
-      "download": null
-    },
-    {
-      "id": 42,
       "name": "Livro: Cabelinho Vermelho e o Lobo Bobo",
       "category": "LivrosJogos",
       "imageUrl": "assets/images/equipment/livros-jogos/livro-cabelinho-vermelho.jpg",
+      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "order": 37,
+      "download": null,
+      "validationStatus": "pending"
+    },
+    {
+      "id": 39,
+      "name": "Livro: Muito Cansado e Bem Acordado",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-muito-cansado.jpg",
+      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "order": 38,
+      "download": null,
+      "validationStatus": "pending"
+    },
+    {
+      "id": 40,
+      "name": "Livro: Eu Amo Carinho",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-eu-amo-carinho.jpg",
+      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "order": 39,
+      "download": null,
+      "validationStatus": "pending"
+    },
+    {
+      "id": 41,
+      "name": "Livro: A Raposa Vai de Carro",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-raposa-vai-de-carro.jpg",
+      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "order": 40,
+      "download": null,
+      "validationStatus": "pending"
+    },
+    {
+      "id": 42,
+      "name": "Livro: Um Pequeno Grande Mundo",
+      "category": "LivrosJogos",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-pequeno-grande-mundo.jpg",
       "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
       "order": 41,
       "download": null,
@@ -439,9 +475,9 @@
     },
     {
       "id": 43,
-      "name": "Livro: Muito Cansado e Bem Acordado",
+      "name": "Livro: Eu Adoro Você",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-muito-cansado.jpg",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-eu-adoro-voce.jpg",
       "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
       "order": 42,
       "download": null,
@@ -449,9 +485,9 @@
     },
     {
       "id": 44,
-      "name": "Livro: Eu Amo Carinho",
+      "name": "Livro: A Lagarta e a Borboleta",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-eu-amo-carinho.jpg",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-lagarta-borboleta.jpg",
       "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
       "order": 43,
       "download": null,
@@ -459,9 +495,9 @@
     },
     {
       "id": 45,
-      "name": "Livro: A Raposa Vai de Carro",
+      "name": "Livro: Bem Lá no Alto",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-raposa-vai-de-carro.jpg",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-bem-la-no-alto.jpg",
       "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
       "order": 44,
       "download": null,
@@ -469,150 +505,83 @@
     },
     {
       "id": 46,
-      "name": "Livro: Um Pequeno Grande Mundo",
+      "name": "Livro: O menino que via com as mãos",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-pequeno-grande-mundo.jpg",
-      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-menino-via-maos.jpg",
+      "description": "Livro com escrita em Braille.",
       "order": 45,
       "download": null,
       "validationStatus": "pending"
     },
     {
       "id": 47,
-      "name": "Livro: Eu Adoro Você",
+      "name": "Livro: Popó vai à escola",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-eu-adoro-voce.jpg",
-      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-popo-vai-escola.jpg",
+      "description": "Obra em linguagem acessível. Poesia que narra o cotidiano escolar de uma criança com deficiência.",
       "order": 46,
       "download": null,
       "validationStatus": "pending"
     },
     {
       "id": 48,
-      "name": "Livro: A Lagarta e a Borboleta",
+      "name": "Livro: O sorriso de Popó",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-lagarta-borboleta.jpg",
-      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-sorriso-popo-1.jpg",
+      "images": [
+        "assets/images/equipment/livros-jogos/livro-sorriso-popo-1.jpg",
+        "assets/images/equipment/livros-jogos/livro-sorriso-popo-2.jpg"
+      ],
+      "description": "Obra em linguagem acessível e com escrita Braille. Livro que celebra a diversidade, a inclusão e afeto familiar.",
       "order": 47,
       "download": null,
       "validationStatus": "pending"
     },
     {
       "id": 49,
-      "name": "Livro: Bem Lá no Alto",
+      "name": "Livro: Geometria do Corpo - Descobrindo Formas",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-bem-la-no-alto.jpg",
-      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-geometria-descobrindo.jpg",
+      "description": "Audiolivro com audiodescrição e vídeo com a contação de história em Libras e escrita em Braille.",
       "order": 48,
       "download": null,
       "validationStatus": "pending"
     },
     {
       "id": 50,
-      "name": "Livro: Eu amo beijinhos",
+      "name": "Livro: Como eu vou (CAA)",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-eu-amo-beijinhos.jpg",
-      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-como-eu-vou-caa-1.jpg",
+      "images": [
+        "assets/images/equipment/livros-jogos/livro-como-eu-vou-caa-1.jpg",
+        "assets/images/equipment/livros-jogos/livro-como-eu-vou-caa-2.jpg"
+      ],
+      "description": "Audiolivro com audiodescrição, vídeo com a contação de história em Libras e comunicação aumentativa e alternativa.",
       "order": 49,
-      "download": null
+      "download": null,
+      "validationStatus": "pending"
     },
     {
       "id": 51,
-      "name": "Livro: O menino que via com as mãos",
+      "name": "Livro: O dia mágico do Pipo",
       "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-menino-via-maos.jpg",
-      "description": "Livro com escrita em Braille.",
+      "imageUrl": "assets/images/equipment/livros-jogos/livro-dia-magico-pipo-1.jpg",
+      "images": [
+        "assets/images/equipment/livros-jogos/livro-dia-magico-pipo-1.jpg",
+        "assets/images/equipment/livros-jogos/livro-dia-magico-pipo-2.jpg"
+      ],
+      "description": "Livro com linguagem simples, texto ampliado, com contraste e letra maiúscula. Também há presença de texto escrito com símbolos e prancha de comunicação.",
       "order": 50,
       "download": null,
       "validationStatus": "pending"
     },
     {
       "id": 52,
-      "name": "Livro: Popó vai à escola",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-popo-vai-escola.jpg",
-      "description": "Obra em linguagem acessível. Poesia que narra o cotidiano escolar de uma criança com deficiência.",
-      "order": 51,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 53,
-      "name": "Livro: O sorriso de Popó",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-sorriso-popo.jpg",
-      "description": "Obra em linguagem acessível e com escrita Braille. Livro que celebra a diversidade, a inclusão e afeto familiar.",
-      "order": 52,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 54,
-      "name": "Livro: Geometria do Corpo - Descobrindo Formas",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-geometria-descobrindo.jpg",
-      "description": "Audiolivro com audiodescrição e vídeo com a contação de história em Libras e escrita em Braille.",
-      "order": 53,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 55,
-      "name": "Livro: Como eu vou (CAA)",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-como-eu-vou-caa.jpg",
-      "description": "Audiolivro com audiodescrição, vídeo com a contação de história em Libras e comunicação aumentativa e alternativa.",
-      "order": 54,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 56,
-      "name": "Livro: Como eu vou (Braille)",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-como-eu-vou-braille.jpg",
-      "description": "Audiolivro com audiodescrição, vídeo com a contação de história em Libras e escrita em Braille.",
-      "order": 55,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 57,
-      "name": "Livro: O dia mágico do Pipo",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-dia-magico-pipo.jpg",
-      "description": "Livro com linguagem simples, texto ampliado, com contraste e letra maiúscula. Também há presença de texto escrito com símbolos e prancha de comunicação.",
-      "order": 56,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 58,
       "name": "Livro: O sonho de Laurinha",
       "category": "LivrosJogos",
       "imageUrl": "assets/images/equipment/livros-jogos/livro-sonho-laurinha.jpg",
       "description": "Livro com escrita Braille, audiolivro e Libras através da leitura de QrCode.",
-      "order": 57,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 59,
-      "name": "Livro: Geometria do Corpo - Imaginando Linhas",
-      "category": "LivrosJogos",
-      "imageUrl": "assets/images/equipment/livros-jogos/livro-geometria-imaginando.jpg",
-      "description": "Audiolivro com audiodescrição e vídeo com a contação de história em Libras e escrita em Braille.",
-      "order": 58,
-      "download": null,
-      "validationStatus": "pending"
-    },
-    {
-      "id": 60,
-      "name": "Chaveiro",
-      "category": "CAA",
-      "imageUrl": "assets/images/equipment/comunicacao/chaveiro.jpg",
-      "description": "Aguarde. Em breve adicionaremos a descrição desse recurso.",
-      "order": 59,
+      "order": 51,
       "download": null,
       "validationStatus": "pending"
     }
