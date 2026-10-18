@@ -368,7 +368,8 @@ const EQUIPMENT_CATEGORY_MAP = {
   'VidaDiaria': t('equipment.categories.VidaDiaria') || 'Auxílio para Vida Diária',
   'AcessibilidadeComputador': t('equipment.categories.AcessibilidadeComputador') || 'Acessibilidade no Computador',
   'BaixaVisao': t('equipment.categories.BaixaVisao') || 'Baixa Visão',
-  'LivrosJogos': t('equipment.categories.LivrosJogos') || 'Livros e Jogos Adaptados'
+  'LivrosJogos': t('equipment.categories.LivrosJogos') || 'Livros e Jogos Adaptados',
+  'EsporteLazer': t('equipment.categories.EsporteLazer') || 'Esporte e Lazer'
 };
 
 function getEquipmentCategoryLabel(cat) {
